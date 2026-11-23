@@ -1,0 +1,7 @@
+[project]
+name = "open-apt-agent"
+version = "0.1.0"
+description = "Interfaces for defensive security log analysis"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = []
