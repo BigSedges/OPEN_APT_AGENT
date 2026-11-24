@@ -12,6 +12,7 @@
 - `apt_agent/analysis.py` 定义供 LLM 适配器实现的分析接口，接收案件和检索片段。
 - `apt_agent/pipeline.py` 定义流水线契约，`apt_agent/config.py` 定义初始配置。
 - `tests/` 预留后续单元测试位置。
+- `apt_agent/log_type.py` 日志类型定义模块，方便工具选择以及Agent任务编排。
 
 ## 开发入口
 
