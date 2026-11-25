@@ -1,0 +1,1512 @@
+[
+  {
+    "question_id": "q001",
+    "question": "What does the official documentation explain about sysmon / Event ID 7: Image loaded?",
+    "language": "en",
+    "category": "field_explanation",
+    "group_id": "sysmon/14",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "sysmon/14/part-0": 2
+    },
+    "document_relevance": {
+      "sysmon/14": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "sysmon/14/part-0",
+      "source_url": "https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon#event-id-7-image-loaded",
+      "origin_chunk_id": "sysmon/14",
+      "start": 0,
+      "end": 492
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q005",
+    "question": "What does the official documentation explain about sysmon / Event ID 23: FileDelete (File Delete archived)?",
+    "language": "en",
+    "category": "field_explanation",
+    "group_id": "sysmon/30",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "sysmon/30/part-0": 2
+    },
+    "document_relevance": {
+      "sysmon/30": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "sysmon/30/part-0",
+      "source_url": "https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon#event-id-23-filedelete-file-delete-archived",
+      "origin_chunk_id": "sysmon/30",
+      "start": 0,
+      "end": 323
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q022",
+    "question": "What does the official documentation explain about windows-4624 / Security Monitoring Recommendations?",
+    "language": "en",
+    "category": "field_explanation",
+    "group_id": "windows-4624/4",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "windows-4624/4/part-0": 2
+    },
+    "document_relevance": {
+      "windows-4624/4": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "windows-4624/4/part-0",
+      "source_url": "https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/event-4624#security-monitoring-recommendations",
+      "origin_chunk_id": "windows-4624/4",
+      "start": 0,
+      "end": 2996
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q030",
+    "question": "What does the official documentation explain about sysmon / Event ID 2: A process changed a file creation time?",
+    "language": "en",
+    "category": "field_explanation",
+    "group_id": "sysmon/9",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "sysmon/9/part-0": 2
+    },
+    "document_relevance": {
+      "sysmon/9": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "sysmon/9/part-0",
+      "source_url": "https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon#event-id-2-a-process-changed-a-file-creation-time",
+      "origin_chunk_id": "sysmon/9",
+      "start": 0,
+      "end": 422
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q038",
+    "question": "What does the official documentation explain about sysmon / Event ID 9: RawAccessRead?",
+    "language": "en",
+    "category": "field_explanation",
+    "group_id": "sysmon/16",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "sysmon/16/part-0": 2
+    },
+    "document_relevance": {
+      "sysmon/16": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "sysmon/16/part-0",
+      "source_url": "https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon#event-id-9-rawaccessread",
+      "origin_chunk_id": "sysmon/16",
+      "start": 0,
+      "end": 322
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q002",
+    "question": "What does the official documentation explain about windows-4624 / Logon types and descriptions?",
+    "language": "en",
+    "category": "field_explanation",
+    "group_id": "windows-4624/3",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "windows-4624/3/part-1": 2
+    },
+    "document_relevance": {
+      "windows-4624/3": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "windows-4624/3/part-1",
+      "source_url": "https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/event-4624#logon-types-and-descriptions",
+      "origin_chunk_id": "windows-4624/3",
+      "start": 2820,
+      "end": 5801
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q006",
+    "question": "What does the official documentation explain about zeek-dns / Understanding the Second dns.log Entry?",
+    "language": "en",
+    "category": "field_explanation",
+    "group_id": "zeek-dns/2",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "zeek-dns/2/part-0": 2
+    },
+    "document_relevance": {
+      "zeek-dns/2": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "zeek-dns/2/part-0",
+      "source_url": "https://docs.zeek.org/en/lts/reference/logs/dns.html",
+      "origin_chunk_id": "zeek-dns/2",
+      "start": 0,
+      "end": 912
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q007",
+    "question": "What does the official documentation explain about windows-4624 / Logon types and descriptions?",
+    "language": "en",
+    "category": "field_explanation",
+    "group_id": "windows-4624/3",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "windows-4624/3/part-2": 2
+    },
+    "document_relevance": {
+      "windows-4624/3": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "windows-4624/3/part-2",
+      "source_url": "https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/event-4624#logon-types-and-descriptions",
+      "origin_chunk_id": "windows-4624/3",
+      "start": 5801,
+      "end": 8713
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q008",
+    "question": "What does the official documentation explain about windows-4624 / Logon types and descriptions?",
+    "language": "en",
+    "category": "field_explanation",
+    "group_id": "windows-4624/3",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "windows-4624/3/part-0": 2
+    },
+    "document_relevance": {
+      "windows-4624/3": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "windows-4624/3/part-0",
+      "source_url": "https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/event-4624#logon-types-and-descriptions",
+      "origin_chunk_id": "windows-4624/3",
+      "start": 0,
+      "end": 2820
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q009",
+    "question": "What does the official documentation explain about zeek-conn / conn.log?",
+    "language": "en",
+    "category": "field_explanation",
+    "group_id": "zeek-conn/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "zeek-conn/0/part-0": 2
+    },
+    "document_relevance": {
+      "zeek-conn/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "zeek-conn/0/part-0",
+      "source_url": "https://docs.zeek.org/en/lts/reference/logs/conn.html",
+      "origin_chunk_id": "zeek-conn/0",
+      "start": 0,
+      "end": 1012
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q015",
+    "question": "What does the official documentation explain about windows-4624 / Logon types and descriptions?",
+    "language": "en",
+    "category": "field_explanation",
+    "group_id": "windows-4624/3",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "windows-4624/3/part-3": 2
+    },
+    "document_relevance": {
+      "windows-4624/3": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "windows-4624/3/part-3",
+      "source_url": "https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/event-4624#logon-types-and-descriptions",
+      "origin_chunk_id": "windows-4624/3",
+      "start": 8713,
+      "end": 10697
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q016",
+    "question": "What does the official documentation explain about zeek-dns / Inspecting the dns.log?",
+    "language": "en",
+    "category": "field_explanation",
+    "group_id": "zeek-dns/1",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "zeek-dns/1/part-0": 2
+    },
+    "document_relevance": {
+      "zeek-dns/1": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "zeek-dns/1/part-0",
+      "source_url": "https://docs.zeek.org/en/lts/reference/logs/dns.html",
+      "origin_chunk_id": "zeek-dns/1",
+      "start": 0,
+      "end": 3193
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q019",
+    "question": "What does the official documentation explain about zeek-conn / Understanding the First conn.log Entry?",
+    "language": "en",
+    "category": "field_explanation",
+    "group_id": "zeek-conn/3",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "zeek-conn/3/part-0": 2
+    },
+    "document_relevance": {
+      "zeek-conn/3": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "zeek-conn/3/part-0",
+      "source_url": "https://docs.zeek.org/en/lts/reference/logs/conn.html",
+      "origin_chunk_id": "zeek-conn/3",
+      "start": 0,
+      "end": 1384
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q021",
+    "question": "What does the official documentation explain about sysmon / Event ID 8: CreateRemoteThread?",
+    "language": "en",
+    "category": "field_explanation",
+    "group_id": "sysmon/15",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "sysmon/15/part-0": 2
+    },
+    "document_relevance": {
+      "sysmon/15": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "sysmon/15/part-0",
+      "source_url": "https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon#event-id-8-createremotethread",
+      "origin_chunk_id": "sysmon/15",
+      "start": 0,
+      "end": 493
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q042",
+    "question": "What telemetry, matching conditions and false-positive caveats apply to First Time Seen Remote Named Pipe?",
+    "language": "en",
+    "category": "detection_prerequisites",
+    "group_id": "sigma/52d8b0c6-53d6-439a-9e41-52ad442ad9ad/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "sigma/52d8b0c6-53d6-439a-9e41-52ad442ad9ad/0/part-0": 2
+    },
+    "document_relevance": {
+      "sigma/52d8b0c6-53d6-439a-9e41-52ad442ad9ad/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "sigma/52d8b0c6-53d6-439a-9e41-52ad442ad9ad/0/part-0",
+      "source_url": "https://github.com/SigmaHQ/sigma/blob/7228cccddc63a771924ab585e072f4fbb63690fb/rules/windows/builtin/security/win_security_lm_namedpipe.yml",
+      "origin_chunk_id": "sigma/52d8b0c6-53d6-439a-9e41-52ad442ad9ad/0",
+      "start": 0,
+      "end": 1497
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q043",
+    "question": "What telemetry, matching conditions and false-positive caveats apply to Use Of The SFTP.EXE Binary As A LOLBIN?",
+    "language": "en",
+    "category": "detection_prerequisites",
+    "group_id": "sigma/a85ffc3a-e8fd-4040-93bf-78aff284d801/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "sigma/a85ffc3a-e8fd-4040-93bf-78aff284d801/0/part-0": 2
+    },
+    "document_relevance": {
+      "sigma/a85ffc3a-e8fd-4040-93bf-78aff284d801/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "sigma/a85ffc3a-e8fd-4040-93bf-78aff284d801/0/part-0",
+      "source_url": "https://github.com/SigmaHQ/sigma/blob/7228cccddc63a771924ab585e072f4fbb63690fb/rules/windows/process_creation/proc_creation_win_lolbin_sftp.yml",
+      "origin_chunk_id": "sigma/a85ffc3a-e8fd-4040-93bf-78aff284d801/0",
+      "start": 0,
+      "end": 1105
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q053",
+    "question": "What telemetry, matching conditions and false-positive caveats apply to Publisher Attachment File Dropped In Suspicious Location?",
+    "language": "en",
+    "category": "detection_prerequisites",
+    "group_id": "sigma/3d2a2d59-929c-4b78-8c1a-145dfe9e07b1/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "sigma/3d2a2d59-929c-4b78-8c1a-145dfe9e07b1/0/part-0": 2
+    },
+    "document_relevance": {
+      "sigma/3d2a2d59-929c-4b78-8c1a-145dfe9e07b1/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "sigma/3d2a2d59-929c-4b78-8c1a-145dfe9e07b1/0/part-0",
+      "source_url": "https://github.com/SigmaHQ/sigma/blob/7228cccddc63a771924ab585e072f4fbb63690fb/rules/windows/file/file_event/file_event_win_office_publisher_files_in_susp_locations.yml",
+      "origin_chunk_id": "sigma/3d2a2d59-929c-4b78-8c1a-145dfe9e07b1/0",
+      "start": 0,
+      "end": 847
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q065",
+    "question": "What telemetry, matching conditions and false-positive caveats apply to Potentially Suspicious Call To Win32_NTEventlogFile Class - PSScript?",
+    "language": "en",
+    "category": "detection_prerequisites",
+    "group_id": "sigma/e2812b49-bae0-4b21-b366-7c142eafcde2/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "sigma/e2812b49-bae0-4b21-b366-7c142eafcde2/0/part-0": 2
+    },
+    "document_relevance": {
+      "sigma/e2812b49-bae0-4b21-b366-7c142eafcde2/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "sigma/e2812b49-bae0-4b21-b366-7c142eafcde2/0/part-0",
+      "source_url": "https://github.com/SigmaHQ/sigma/blob/7228cccddc63a771924ab585e072f4fbb63690fb/rules/windows/powershell/powershell_script/posh_ps_win32_nteventlogfile_usage.yml",
+      "origin_chunk_id": "sigma/e2812b49-bae0-4b21-b366-7c142eafcde2/0",
+      "start": 0,
+      "end": 1182
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q069",
+    "question": "What telemetry, matching conditions and false-positive caveats apply to Suspicious Copy From or To System Directory?",
+    "language": "en",
+    "category": "detection_prerequisites",
+    "group_id": "sigma/fff9d2b7-e11c-4a69-93d3-40ef66189767/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "sigma/fff9d2b7-e11c-4a69-93d3-40ef66189767/0/part-0": 2
+    },
+    "document_relevance": {
+      "sigma/fff9d2b7-e11c-4a69-93d3-40ef66189767/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "sigma/fff9d2b7-e11c-4a69-93d3-40ef66189767/0/part-0",
+      "source_url": "https://github.com/SigmaHQ/sigma/blob/7228cccddc63a771924ab585e072f4fbb63690fb/rules/windows/process_creation/proc_creation_win_susp_copy_system_dir.yml",
+      "origin_chunk_id": "sigma/fff9d2b7-e11c-4a69-93d3-40ef66189767/0",
+      "start": 0,
+      "end": 2610
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q077",
+    "question": "What telemetry, matching conditions and false-positive caveats apply to Cisco Discovery?",
+    "language": "en",
+    "category": "detection_prerequisites",
+    "group_id": "sigma/9705a6a1-6db6-4a16-a987-15b7151e299b/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "sigma/9705a6a1-6db6-4a16-a987-15b7151e299b/0/part-0": 2
+    },
+    "document_relevance": {
+      "sigma/9705a6a1-6db6-4a16-a987-15b7151e299b/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "sigma/9705a6a1-6db6-4a16-a987-15b7151e299b/0/part-0",
+      "source_url": "https://github.com/SigmaHQ/sigma/blob/7228cccddc63a771924ab585e072f4fbb63690fb/rules/network/cisco/aaa/cisco_cli_discovery.yml",
+      "origin_chunk_id": "sigma/9705a6a1-6db6-4a16-a987-15b7151e299b/0",
+      "start": 0,
+      "end": 979
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q079",
+    "question": "What telemetry, matching conditions and false-positive caveats apply to Moriya Rootkit - System?",
+    "language": "en",
+    "category": "detection_prerequisites",
+    "group_id": "sigma/25b9c01c-350d-4b95-bed1-836d04a4f324/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "sigma/25b9c01c-350d-4b95-bed1-836d04a4f324/0/part-0": 2
+    },
+    "document_relevance": {
+      "sigma/25b9c01c-350d-4b95-bed1-836d04a4f324/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "sigma/25b9c01c-350d-4b95-bed1-836d04a4f324/0/part-0",
+      "source_url": "https://github.com/SigmaHQ/sigma/blob/7228cccddc63a771924ab585e072f4fbb63690fb/rules/windows/builtin/system/service_control_manager/win_system_moriya_rootkit.yml",
+      "origin_chunk_id": "sigma/25b9c01c-350d-4b95-bed1-836d04a4f324/0",
+      "start": 0,
+      "end": 679
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q041",
+    "question": "What telemetry, matching conditions and false-positive caveats apply to Invoke-Obfuscation Via Use Rundll32 - Security?",
+    "language": "en",
+    "category": "detection_prerequisites",
+    "group_id": "sigma/cd0f7229-d16f-42de-8fe3-fba365fbcb3a/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "sigma/cd0f7229-d16f-42de-8fe3-fba365fbcb3a/0/part-0": 2
+    },
+    "document_relevance": {
+      "sigma/cd0f7229-d16f-42de-8fe3-fba365fbcb3a/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "sigma/cd0f7229-d16f-42de-8fe3-fba365fbcb3a/0/part-0",
+      "source_url": "https://github.com/SigmaHQ/sigma/blob/7228cccddc63a771924ab585e072f4fbb63690fb/rules/windows/builtin/security/win_security_invoke_obfuscation_via_use_rundll32_services_security.yml",
+      "origin_chunk_id": "sigma/cd0f7229-d16f-42de-8fe3-fba365fbcb3a/0",
+      "start": 0,
+      "end": 1030
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q044",
+    "question": "What telemetry, matching conditions and false-positive caveats apply to Registry Modification to Hidden File Extension?",
+    "language": "en",
+    "category": "detection_prerequisites",
+    "group_id": "sigma/5df86130-4e95-4a54-90f7-26541b40aec2/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "sigma/5df86130-4e95-4a54-90f7-26541b40aec2/0/part-0": 2
+    },
+    "document_relevance": {
+      "sigma/5df86130-4e95-4a54-90f7-26541b40aec2/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "sigma/5df86130-4e95-4a54-90f7-26541b40aec2/0/part-0",
+      "source_url": "https://github.com/SigmaHQ/sigma/blob/7228cccddc63a771924ab585e072f4fbb63690fb/rules/windows/registry/registry_set/registry_set_hidden_extention.yml",
+      "origin_chunk_id": "sigma/5df86130-4e95-4a54-90f7-26541b40aec2/0",
+      "start": 0,
+      "end": 1333
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q051",
+    "question": "What telemetry, matching conditions and false-positive caveats apply to Logged-On User Password Change Via Ksetup.EXE?",
+    "language": "en",
+    "category": "detection_prerequisites",
+    "group_id": "sigma/c9783e20-4793-4164-ba96-d9ee483992c4/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "sigma/c9783e20-4793-4164-ba96-d9ee483992c4/0/part-0": 2
+    },
+    "document_relevance": {
+      "sigma/c9783e20-4793-4164-ba96-d9ee483992c4/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "sigma/c9783e20-4793-4164-ba96-d9ee483992c4/0/part-0",
+      "source_url": "https://github.com/SigmaHQ/sigma/blob/7228cccddc63a771924ab585e072f4fbb63690fb/rules/windows/process_creation/proc_creation_win_ksetup_password_change_user.yml",
+      "origin_chunk_id": "sigma/c9783e20-4793-4164-ba96-d9ee483992c4/0",
+      "start": 0,
+      "end": 709
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q058",
+    "question": "What telemetry, matching conditions and false-positive caveats apply to Mshtml.DLL RunHTMLApplication Suspicious Usage?",
+    "language": "en",
+    "category": "detection_prerequisites",
+    "group_id": "sigma/4782eb5a-a513-4523-a0ac-f3082b26ac5c/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "sigma/4782eb5a-a513-4523-a0ac-f3082b26ac5c/0/part-0": 2
+    },
+    "document_relevance": {
+      "sigma/4782eb5a-a513-4523-a0ac-f3082b26ac5c/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "sigma/4782eb5a-a513-4523-a0ac-f3082b26ac5c/0/part-0",
+      "source_url": "https://github.com/SigmaHQ/sigma/blob/7228cccddc63a771924ab585e072f4fbb63690fb/rules/windows/process_creation/proc_creation_win_rundll32_mshtml_runhtmlapplication.yml",
+      "origin_chunk_id": "sigma/4782eb5a-a513-4523-a0ac-f3082b26ac5c/0",
+      "start": 0,
+      "end": 1421
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q064",
+    "question": "What telemetry, matching conditions and false-positive caveats apply to Potential UAC Bypass Via Sdclt.EXE?",
+    "language": "en",
+    "category": "detection_prerequisites",
+    "group_id": "sigma/40f9af16-589d-4984-b78d-8c2aec023197/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "sigma/40f9af16-589d-4984-b78d-8c2aec023197/0/part-0": 2
+    },
+    "document_relevance": {
+      "sigma/40f9af16-589d-4984-b78d-8c2aec023197/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "sigma/40f9af16-589d-4984-b78d-8c2aec023197/0/part-0",
+      "source_url": "https://github.com/SigmaHQ/sigma/blob/7228cccddc63a771924ab585e072f4fbb63690fb/rules/windows/process_creation/proc_creation_win_uac_bypass_sdclt.yml",
+      "origin_chunk_id": "sigma/40f9af16-589d-4984-b78d-8c2aec023197/0",
+      "start": 0,
+      "end": 944
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q066",
+    "question": "What telemetry, matching conditions and false-positive caveats apply to Scripting/CommandLine Process Spawned Regsvr32?",
+    "language": "en",
+    "category": "detection_prerequisites",
+    "group_id": "sigma/ab37a6ec-6068-432b-a64e-2c7bf95b1d22/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "sigma/ab37a6ec-6068-432b-a64e-2c7bf95b1d22/0/part-0": 2
+    },
+    "document_relevance": {
+      "sigma/ab37a6ec-6068-432b-a64e-2c7bf95b1d22/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "sigma/ab37a6ec-6068-432b-a64e-2c7bf95b1d22/0/part-0",
+      "source_url": "https://github.com/SigmaHQ/sigma/blob/7228cccddc63a771924ab585e072f4fbb63690fb/rules/windows/process_creation/proc_creation_win_regsvr32_susp_parent.yml",
+      "origin_chunk_id": "sigma/ab37a6ec-6068-432b-a64e-2c7bf95b1d22/0",
+      "start": 0,
+      "end": 1528
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q070",
+    "question": "What telemetry, matching conditions and false-positive caveats apply to CodeIntegrity - Revoked Kernel Driver Loaded?",
+    "language": "en",
+    "category": "detection_prerequisites",
+    "group_id": "sigma/320fccbf-5e32-4101-82b8-2679c5f007c6/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "sigma/320fccbf-5e32-4101-82b8-2679c5f007c6/0/part-0": 2
+    },
+    "document_relevance": {
+      "sigma/320fccbf-5e32-4101-82b8-2679c5f007c6/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "sigma/320fccbf-5e32-4101-82b8-2679c5f007c6/0/part-0",
+      "source_url": "https://github.com/SigmaHQ/sigma/blob/7228cccddc63a771924ab585e072f4fbb63690fb/rules/windows/builtin/code_integrity/win_codeintegrity_revoked_driver_loaded.yml",
+      "origin_chunk_id": "sigma/320fccbf-5e32-4101-82b8-2679c5f007c6/0",
+      "start": 0,
+      "end": 1190
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q072",
+    "question": "What telemetry, matching conditions and false-positive caveats apply to FortiGate - User Group Modified?",
+    "language": "en",
+    "category": "detection_prerequisites",
+    "group_id": "sigma/69ffc84e-8b1a-4024-8351-e018f66b8275/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "sigma/69ffc84e-8b1a-4024-8351-e018f66b8275/0/part-0": 2
+    },
+    "document_relevance": {
+      "sigma/69ffc84e-8b1a-4024-8351-e018f66b8275/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "sigma/69ffc84e-8b1a-4024-8351-e018f66b8275/0/part-0",
+      "source_url": "https://github.com/SigmaHQ/sigma/blob/7228cccddc63a771924ab585e072f4fbb63690fb/rules/network/fortinet/fortigate/fortinet_fortigate_user_group_modified.yml",
+      "origin_chunk_id": "sigma/69ffc84e-8b1a-4024-8351-e018f66b8275/0",
+      "start": 0,
+      "end": 1045
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q083",
+    "question": "For Registry Edit from Screensaver, which ATT&CK techniques and telemetry requirements are explicitly documented?",
+    "language": "en",
+    "category": "technique_association",
+    "group_id": "car/CAR-2020-11-011/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "car/CAR-2020-11-011/0/part-0": 2
+    },
+    "document_relevance": {
+      "car/CAR-2020-11-011/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "car/CAR-2020-11-011/0/part-0",
+      "source_url": "https://github.com/mitre-attack/car/blob/1b922fe1527d956e222a99473472e594f10f610b/analytics/CAR-2020-11-011.yaml",
+      "origin_chunk_id": "car/CAR-2020-11-011/0",
+      "start": 0,
+      "end": 1827
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q085",
+    "question": "For Rare LolBAS Command Lines, which ATT&CK techniques and telemetry requirements are explicitly documented?",
+    "language": "en",
+    "category": "technique_association",
+    "group_id": "car/CAR-2020-05-003/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "car/CAR-2020-05-003/0/part-0": 2
+    },
+    "document_relevance": {
+      "car/CAR-2020-05-003/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "car/CAR-2020-05-003/0/part-0",
+      "source_url": "https://github.com/mitre-attack/car/blob/1b922fe1527d956e222a99473472e594f10f610b/analytics/CAR-2020-05-003.yaml",
+      "origin_chunk_id": "car/CAR-2020-05-003/0",
+      "start": 0,
+      "end": 9437
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q095",
+    "question": "For Running executables with same hash and different names, which ATT&CK techniques and telemetry requirements are explicitly documented?",
+    "language": "en",
+    "category": "technique_association",
+    "group_id": "car/CAR-2013-05-009/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "car/CAR-2013-05-009/0/part-0": 2
+    },
+    "document_relevance": {
+      "car/CAR-2013-05-009/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "car/CAR-2013-05-009/0/part-0",
+      "source_url": "https://github.com/mitre-attack/car/blob/1b922fe1527d956e222a99473472e594f10f610b/analytics/CAR-2013-05-009.yaml",
+      "origin_chunk_id": "car/CAR-2013-05-009/0",
+      "start": 0,
+      "end": 3067
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q096",
+    "question": "For UAC Bypass, which ATT&CK techniques and telemetry requirements are explicitly documented?",
+    "language": "en",
+    "category": "technique_association",
+    "group_id": "car/CAR-2019-04-001/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "car/CAR-2019-04-001/0/part-0": 2
+    },
+    "document_relevance": {
+      "car/CAR-2019-04-001/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "car/CAR-2019-04-001/0/part-0",
+      "source_url": "https://github.com/mitre-attack/car/blob/1b922fe1527d956e222a99473472e594f10f610b/analytics/CAR-2019-04-001.yaml",
+      "origin_chunk_id": "car/CAR-2019-04-001/0",
+      "start": 0,
+      "end": 4497
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q097",
+    "question": "For Disable UAC, which ATT&CK techniques and telemetry requirements are explicitly documented?",
+    "language": "en",
+    "category": "technique_association",
+    "group_id": "car/CAR-2021-01-008/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "car/CAR-2021-01-008/0/part-0": 2
+    },
+    "document_relevance": {
+      "car/CAR-2021-01-008/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "car/CAR-2021-01-008/0/part-0",
+      "source_url": "https://github.com/mitre-attack/car/blob/1b922fe1527d956e222a99473472e594f10f610b/analytics/CAR-2021-01-008.yaml",
+      "origin_chunk_id": "car/CAR-2021-01-008/0",
+      "start": 0,
+      "end": 1954
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q099",
+    "question": "For NTFS Alternate Data Stream Execution - LOLBAS, which ATT&CK techniques and telemetry requirements are explicitly documented?",
+    "language": "en",
+    "category": "technique_association",
+    "group_id": "car/CAR-2020-08-002/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "car/CAR-2020-08-002/0/part-0": 2
+    },
+    "document_relevance": {
+      "car/CAR-2020-08-002/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "car/CAR-2020-08-002/0/part-0",
+      "source_url": "https://github.com/mitre-attack/car/blob/1b922fe1527d956e222a99473472e594f10f610b/analytics/CAR-2020-08-002.yaml",
+      "origin_chunk_id": "car/CAR-2020-08-002/0",
+      "start": 0,
+      "end": 4479
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q100",
+    "question": "For RunDLL32.exe monitoring, which ATT&CK techniques and telemetry requirements are explicitly documented?",
+    "language": "en",
+    "category": "technique_association",
+    "group_id": "car/CAR-2014-03-006/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "car/CAR-2014-03-006/0/part-0": 2
+    },
+    "document_relevance": {
+      "car/CAR-2014-03-006/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "car/CAR-2014-03-006/0/part-0",
+      "source_url": "https://github.com/mitre-attack/car/blob/1b922fe1527d956e222a99473472e594f10f610b/analytics/CAR-2014-03-006.yaml",
+      "origin_chunk_id": "car/CAR-2014-03-006/0",
+      "start": 0,
+      "end": 2170
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q102",
+    "question": "For Remotely Launched Executables via Services, which ATT&CK techniques and telemetry requirements are explicitly documented?",
+    "language": "en",
+    "category": "technique_association",
+    "group_id": "car/CAR-2014-03-005/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "car/CAR-2014-03-005/0/part-0": 2
+    },
+    "document_relevance": {
+      "car/CAR-2014-03-005/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "car/CAR-2014-03-005/0/part-0",
+      "source_url": "https://github.com/mitre-attack/car/blob/1b922fe1527d956e222a99473472e594f10f610b/analytics/CAR-2014-03-005.yaml",
+      "origin_chunk_id": "car/CAR-2014-03-005/0",
+      "start": 0,
+      "end": 2304
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q109",
+    "question": "For Remote Desktop Logon, which ATT&CK techniques and telemetry requirements are explicitly documented?",
+    "language": "en",
+    "category": "technique_association",
+    "group_id": "car/CAR-2016-04-005/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "car/CAR-2016-04-005/0/part-0": 2
+    },
+    "document_relevance": {
+      "car/CAR-2016-04-005/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "car/CAR-2016-04-005/0/part-0",
+      "source_url": "https://github.com/mitre-attack/car/blob/1b922fe1527d956e222a99473472e594f10f610b/analytics/CAR-2016-04-005.yaml",
+      "origin_chunk_id": "car/CAR-2016-04-005/0",
+      "start": 0,
+      "end": 1454
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q084",
+    "question": "For Batch File Write to System32, which ATT&CK techniques and telemetry requirements are explicitly documented?",
+    "language": "en",
+    "category": "technique_association",
+    "group_id": "car/CAR-2021-05-002/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "car/CAR-2021-05-002/0/part-0": 2
+    },
+    "document_relevance": {
+      "car/CAR-2021-05-002/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "car/CAR-2021-05-002/0/part-0",
+      "source_url": "https://github.com/mitre-attack/car/blob/1b922fe1527d956e222a99473472e594f10f610b/analytics/CAR-2021-05-002.yaml",
+      "origin_chunk_id": "car/CAR-2021-05-002/0",
+      "start": 0,
+      "end": 2799
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q094",
+    "question": "For User Activity from Clearing Event Logs, which ATT&CK techniques and telemetry requirements are explicitly documented?",
+    "language": "en",
+    "category": "technique_association",
+    "group_id": "car/CAR-2016-04-002/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "car/CAR-2016-04-002/0/part-0": 2
+    },
+    "document_relevance": {
+      "car/CAR-2016-04-002/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "car/CAR-2016-04-002/0/part-0",
+      "source_url": "https://github.com/mitre-attack/car/blob/1b922fe1527d956e222a99473472e594f10f610b/analytics/CAR-2016-04-002.yaml",
+      "origin_chunk_id": "car/CAR-2016-04-002/0",
+      "start": 0,
+      "end": 5641
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q101",
+    "question": "For Suspicious Run Locations, which ATT&CK techniques and telemetry requirements are explicitly documented?",
+    "language": "en",
+    "category": "technique_association",
+    "group_id": "car/CAR-2013-05-002/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "car/CAR-2013-05-002/0/part-0": 2
+    },
+    "document_relevance": {
+      "car/CAR-2013-05-002/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "car/CAR-2013-05-002/0/part-0",
+      "source_url": "https://github.com/mitre-attack/car/blob/1b922fe1527d956e222a99473472e594f10f610b/analytics/CAR-2013-05-002.yaml",
+      "origin_chunk_id": "car/CAR-2013-05-002/0",
+      "start": 0,
+      "end": 3045
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q103",
+    "question": "For Command Launched from WinLogon, which ATT&CK techniques and telemetry requirements are explicitly documented?",
+    "language": "en",
+    "category": "technique_association",
+    "group_id": "car/CAR-2014-11-008/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "car/CAR-2014-11-008/0/part-0": 2
+    },
+    "document_relevance": {
+      "car/CAR-2014-11-008/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "car/CAR-2014-11-008/0/part-0",
+      "source_url": "https://github.com/mitre-attack/car/blob/1b922fe1527d956e222a99473472e594f10f610b/analytics/CAR-2014-11-008.yaml",
+      "origin_chunk_id": "car/CAR-2014-11-008/0",
+      "start": 0,
+      "end": 2876
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q129",
+    "question": "请解释 Analytic 1574 的行为特征、适用平台以及文档明确提到的检测依据。",
+    "language": "zh",
+    "category": "cross_language",
+    "group_id": "x-mitre-analytic--682f84f1-5571-4d41-b071-53c8f72a88f1",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "x-mitre-analytic--682f84f1-5571-4d41-b071-53c8f72a88f1/0/part-0": 2
+    },
+    "document_relevance": {
+      "x-mitre-analytic--682f84f1-5571-4d41-b071-53c8f72a88f1": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "x-mitre-analytic--682f84f1-5571-4d41-b071-53c8f72a88f1/0/part-0",
+      "source_url": "https://attack.mitre.org/detectionstrategies/DET0570#AN1574",
+      "origin_chunk_id": "x-mitre-analytic--682f84f1-5571-4d41-b071-53c8f72a88f1/0",
+      "start": 0,
+      "end": 266
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q112",
+    "question": "请解释 Application Shimming 的行为特征、适用平台以及文档明确提到的检测依据。",
+    "language": "zh",
+    "category": "cross_language",
+    "group_id": "attack-pattern--42fe883a-21ea-4cfb-b94a-78b6476dcc83",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "attack-pattern--42fe883a-21ea-4cfb-b94a-78b6476dcc83/0/part-0": 2
+    },
+    "document_relevance": {
+      "attack-pattern--42fe883a-21ea-4cfb-b94a-78b6476dcc83": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "attack-pattern--42fe883a-21ea-4cfb-b94a-78b6476dcc83/0/part-0",
+      "source_url": "https://attack.mitre.org/techniques/T1546/011",
+      "origin_chunk_id": "attack-pattern--42fe883a-21ea-4cfb-b94a-78b6476dcc83/0",
+      "start": 0,
+      "end": 2200
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q113",
+    "question": "请解释 Analytic 0163 的行为特征、适用平台以及文档明确提到的检测依据。",
+    "language": "zh",
+    "category": "cross_language",
+    "group_id": "x-mitre-analytic--2e700f3b-bf9c-427c-a099-b80d233c1ccb",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "x-mitre-analytic--2e700f3b-bf9c-427c-a099-b80d233c1ccb/0/part-0": 2
+    },
+    "document_relevance": {
+      "x-mitre-analytic--2e700f3b-bf9c-427c-a099-b80d233c1ccb": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "x-mitre-analytic--2e700f3b-bf9c-427c-a099-b80d233c1ccb/0/part-0",
+      "source_url": "https://attack.mitre.org/detectionstrategies/DET0059#AN0163",
+      "origin_chunk_id": "x-mitre-analytic--2e700f3b-bf9c-427c-a099-b80d233c1ccb/0",
+      "start": 0,
+      "end": 228
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q122",
+    "question": "请解释 Server 的行为特征、适用平台以及文档明确提到的检测依据。",
+    "language": "zh",
+    "category": "cross_language",
+    "group_id": "attack-pattern--60c4b628-4807-4b0b-bbf5-fdac8643c337",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "attack-pattern--60c4b628-4807-4b0b-bbf5-fdac8643c337/0/part-0": 2
+    },
+    "document_relevance": {
+      "attack-pattern--60c4b628-4807-4b0b-bbf5-fdac8643c337": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "attack-pattern--60c4b628-4807-4b0b-bbf5-fdac8643c337/0/part-0",
+      "source_url": "https://attack.mitre.org/techniques/T1583/004",
+      "origin_chunk_id": "attack-pattern--60c4b628-4807-4b0b-bbf5-fdac8643c337/0",
+      "start": 0,
+      "end": 1191
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q126",
+    "question": "请解释 Account Discovery 的行为特征、适用平台以及文档明确提到的检测依据。",
+    "language": "zh",
+    "category": "cross_language",
+    "group_id": "attack-pattern--72b74d71-8169-42aa-92e0-e7b04b9f5a08",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "attack-pattern--72b74d71-8169-42aa-92e0-e7b04b9f5a08/0/part-0": 2
+    },
+    "document_relevance": {
+      "attack-pattern--72b74d71-8169-42aa-92e0-e7b04b9f5a08": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "attack-pattern--72b74d71-8169-42aa-92e0-e7b04b9f5a08/0/part-0",
+      "source_url": "https://attack.mitre.org/techniques/T1087",
+      "origin_chunk_id": "attack-pattern--72b74d71-8169-42aa-92e0-e7b04b9f5a08/0",
+      "start": 0,
+      "end": 1056
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q128",
+    "question": "请解释 Analytic 0743 的行为特征、适用平台以及文档明确提到的检测依据。",
+    "language": "zh",
+    "category": "cross_language",
+    "group_id": "x-mitre-analytic--8cbeecbb-429f-4f30-9f42-266aaa7b2c0f",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "x-mitre-analytic--8cbeecbb-429f-4f30-9f42-266aaa7b2c0f/0/part-0": 2
+    },
+    "document_relevance": {
+      "x-mitre-analytic--8cbeecbb-429f-4f30-9f42-266aaa7b2c0f": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "x-mitre-analytic--8cbeecbb-429f-4f30-9f42-266aaa7b2c0f/0/part-0",
+      "source_url": "https://attack.mitre.org/detectionstrategies/DET0267#AN0743",
+      "origin_chunk_id": "x-mitre-analytic--8cbeecbb-429f-4f30-9f42-266aaa7b2c0f/0",
+      "start": 0,
+      "end": 98
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q138",
+    "question": "Does event 900007 conclusively prove an APT attack?",
+    "language": "en",
+    "category": "unanswerable",
+    "group_id": "unknown-context-7",
+    "answerable": false,
+    "necessary_points": [
+      "Explain missing context or unsupported premise"
+    ],
+    "draft_qrels": {},
+    "document_relevance": {},
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q145",
+    "question": "Which private employee performed the intrusion on host LAB-14 yesterday?",
+    "language": "en",
+    "category": "unanswerable",
+    "group_id": "unknown-context-14",
+    "answerable": false,
+    "necessary_points": [
+      "Explain missing context or unsupported premise"
+    ],
+    "draft_qrels": {},
+    "document_relevance": {},
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q146",
+    "question": "Does event 900015 conclusively prove an APT attack?",
+    "language": "en",
+    "category": "unanswerable",
+    "group_id": "unknown-context-15",
+    "answerable": false,
+    "necessary_points": [
+      "Explain missing context or unsupported premise"
+    ],
+    "draft_qrels": {},
+    "document_relevance": {},
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q148",
+    "question": "Does event 900017 conclusively prove an APT attack?",
+    "language": "en",
+    "category": "unanswerable",
+    "group_id": "unknown-context-17",
+    "answerable": false,
+    "necessary_points": [
+      "Explain missing context or unsupported premise"
+    ],
+    "draft_qrels": {},
+    "document_relevance": {},
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "q131",
+    "question": "Which private employee performed the intrusion on host LAB-0 yesterday?",
+    "language": "en",
+    "category": "unanswerable",
+    "group_id": "unknown-context-0",
+    "answerable": false,
+    "necessary_points": [
+      "Explain missing context or unsupported premise"
+    ],
+    "draft_qrels": {},
+    "document_relevance": {},
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "fp003",
+    "question": "For What telemetry, matching conditions and false-positive caveats apply to Invoke-Obfuscation RUNDLL LAUNCHER - System? Which benign explanations or missing prerequisites should be checked?",
+    "language": "en",
+    "category": "false_positives",
+    "group_id": "sigma/11b52f18-aaec-4d60-9143-5dd8cc4706b9/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "sigma/11b52f18-aaec-4d60-9143-5dd8cc4706b9/0/part-0": 2
+    },
+    "document_relevance": {
+      "sigma/11b52f18-aaec-4d60-9143-5dd8cc4706b9/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "sigma/11b52f18-aaec-4d60-9143-5dd8cc4706b9/0/part-0",
+      "source_url": "https://github.com/SigmaHQ/sigma/blob/7228cccddc63a771924ab585e072f4fbb63690fb/rules/windows/builtin/system/service_control_manager/win_system_invoke_obfuscation_via_rundll_services.yml",
+      "origin_chunk_id": "sigma/11b52f18-aaec-4d60-9143-5dd8cc4706b9/0",
+      "start": 0,
+      "end": 783
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "fp004",
+    "question": "For What telemetry, matching conditions and false-positive caveats apply to HackTool - GMER Rootkit Detector and Remover Execution? Which benign explanations or missing prerequisites should be checked?",
+    "language": "en",
+    "category": "false_positives",
+    "group_id": "sigma/9082ff1f-88ab-4678-a3cc-5bcff99fc74d/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "sigma/9082ff1f-88ab-4678-a3cc-5bcff99fc74d/0/part-0": 2
+    },
+    "document_relevance": {
+      "sigma/9082ff1f-88ab-4678-a3cc-5bcff99fc74d/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "sigma/9082ff1f-88ab-4678-a3cc-5bcff99fc74d/0/part-0",
+      "source_url": "https://github.com/SigmaHQ/sigma/blob/7228cccddc63a771924ab585e072f4fbb63690fb/rules/windows/process_creation/proc_creation_win_hktl_gmer.yml",
+      "origin_chunk_id": "sigma/9082ff1f-88ab-4678-a3cc-5bcff99fc74d/0",
+      "start": 0,
+      "end": 806
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "fp006",
+    "question": "For What does the official documentation explain about sysmon / Event ID 28: FileBlockShredding? Which benign explanations or missing prerequisites should be checked?",
+    "language": "en",
+    "category": "false_positives",
+    "group_id": "sysmon/35",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "sysmon/35/part-0": 2
+    },
+    "document_relevance": {
+      "sysmon/35": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "sysmon/35/part-0",
+      "source_url": "https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon#event-id-28-fileblockshredding",
+      "origin_chunk_id": "sysmon/35",
+      "start": 0,
+      "end": 98
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "fp008",
+    "question": "For What does the official documentation explain about sysmon / Event ID 4: Sysmon service state changed? Which benign explanations or missing prerequisites should be checked?",
+    "language": "en",
+    "category": "false_positives",
+    "group_id": "sysmon/11",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "sysmon/11/part-0": 2
+    },
+    "document_relevance": {
+      "sysmon/11": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "sysmon/11/part-0",
+      "source_url": "https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon#event-id-4-sysmon-service-state-changed",
+      "origin_chunk_id": "sysmon/11",
+      "start": 0,
+      "end": 92
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "fp014",
+    "question": "For What does the official documentation explain about sysmon / Event ID 11: FileCreate? Which benign explanations or missing prerequisites should be checked?",
+    "language": "en",
+    "category": "false_positives",
+    "group_id": "sysmon/18",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "sysmon/18/part-0": 2
+    },
+    "document_relevance": {
+      "sysmon/18": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "sysmon/18/part-0",
+      "source_url": "https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon#event-id-11-filecreate",
+      "origin_chunk_id": "sysmon/18",
+      "start": 0,
+      "end": 265
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "fp016",
+    "question": "For What telemetry, matching conditions and false-positive caveats apply to First Time Seen Remote Named Pipe? Which benign explanations or missing prerequisites should be checked?",
+    "language": "en",
+    "category": "false_positives",
+    "group_id": "sigma/52d8b0c6-53d6-439a-9e41-52ad442ad9ad/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "sigma/52d8b0c6-53d6-439a-9e41-52ad442ad9ad/0/part-0": 2
+    },
+    "document_relevance": {
+      "sigma/52d8b0c6-53d6-439a-9e41-52ad442ad9ad/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "sigma/52d8b0c6-53d6-439a-9e41-52ad442ad9ad/0/part-0",
+      "source_url": "https://github.com/SigmaHQ/sigma/blob/7228cccddc63a771924ab585e072f4fbb63690fb/rules/windows/builtin/security/win_security_lm_namedpipe.yml",
+      "origin_chunk_id": "sigma/52d8b0c6-53d6-439a-9e41-52ad442ad9ad/0",
+      "start": 0,
+      "end": 1497
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  },
+  {
+    "question_id": "fp017",
+    "question": "For What telemetry, matching conditions and false-positive caveats apply to Use Of The SFTP.EXE Binary As A LOLBIN? Which benign explanations or missing prerequisites should be checked?",
+    "language": "en",
+    "category": "false_positives",
+    "group_id": "sigma/a85ffc3a-e8fd-4040-93bf-78aff284d801/0",
+    "answerable": true,
+    "necessary_points": null,
+    "draft_qrels": {
+      "sigma/a85ffc3a-e8fd-4040-93bf-78aff284d801/0/part-0": 2
+    },
+    "document_relevance": {
+      "sigma/a85ffc3a-e8fd-4040-93bf-78aff284d801/0": 2
+    },
+    "reason": "Source-derived assistant draft; relevance requires review",
+    "source_locator": {
+      "chunk_id": "sigma/a85ffc3a-e8fd-4040-93bf-78aff284d801/0/part-0",
+      "source_url": "https://github.com/SigmaHQ/sigma/blob/7228cccddc63a771924ab585e072f4fbb63690fb/rules/windows/process_creation/proc_creation_win_lolbin_sftp.yml",
+      "origin_chunk_id": "sigma/a85ffc3a-e8fd-4040-93bf-78aff284d801/0",
+      "start": 0,
+      "end": 1105
+    },
+    "annotator": "assistant",
+    "human_status": "unreviewed",
+    "split": "dev"
+  }
+]

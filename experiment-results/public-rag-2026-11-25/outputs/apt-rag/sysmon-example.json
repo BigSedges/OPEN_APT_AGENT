@@ -1,0 +1,32 @@
+[
+  {
+    "source": "https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon#event-id-1-process-creation",
+    "chunk_id": "sysmon/1",
+    "text": "ProcessGuid is a process-instance identifier for linking readings when numeric ProcessId values are reused. The process creation event describes the new image and its invocation.",
+    "score": 0.9919354838709679,
+    "title": "Sysmon",
+    "section": "Process creation",
+    "version": "docs snapshot 2026-11-25",
+    "license": "Original summary; Microsoft Learn source terms apply to source"
+  },
+  {
+    "source": "https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon#event-id-5-process-terminated",
+    "chunk_id": "sysmon/5",
+    "text": "UtcTime and ProcessGuid identify when a process instance ended. ProcessId is also supplied.",
+    "score": 0.9919354838709679,
+    "title": "Sysmon",
+    "section": "Process termination",
+    "version": "docs snapshot 2026-11-25",
+    "license": "Original summary; Microsoft Learn source terms apply to source"
+  },
+  {
+    "source": "https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon#event-id-3-network-connection",
+    "chunk_id": "sysmon/3",
+    "text": "Sysmon records a TCP or UDP connection alongside ProcessGuid and ProcessId. The GUID associates the network record with the process. Network connection monitoring is disabled by default.",
+    "score": 0.9682539682539681,
+    "title": "Sysmon",
+    "section": "Network connection",
+    "version": "docs snapshot 2026-11-25",
+    "license": "Original summary; Microsoft Learn source terms apply to source"
+  }
+]

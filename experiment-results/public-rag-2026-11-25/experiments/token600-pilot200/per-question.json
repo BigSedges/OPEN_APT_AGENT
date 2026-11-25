@@ -1,0 +1,4732 @@
+[
+  {
+    "question_id": "q001",
+    "rankings": {
+      "bm25": [
+        "sysmon/14/part-0/tok-0",
+        "sigma/320fccbf-5e32-4101-82b8-2679c5f007c6/0/part-0/tok-0",
+        "sysmon/9/part-0/tok-0",
+        "sysmon/15/part-0/tok-0",
+        "sigma/ff0f2b05-09db-4095-b96d-1b75ca24894a/0/part-0/tok-0",
+        "windows-4624/3/part-3/tok-0",
+        "car/CAR-2014-03-006/0/part-0/tok-0",
+        "sigma/69ffc84e-8b1a-4024-8351-e018f66b8275/0/part-0/tok-0",
+        "x-mitre-data-component--5297a638-1382-4f0c-8472-0d21830bf705/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0"
+      ],
+      "dense": [
+        "sysmon/14/part-0/tok-0",
+        "sigma/0248a7bc-8a9a-4cd8-a57e-3ae8e073a073/0/part-0/tok-0",
+        "x-mitre-data-component--5297a638-1382-4f0c-8472-0d21830bf705/0/part-0/tok-0",
+        "sigma/320fccbf-5e32-4101-82b8-2679c5f007c6/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-1",
+        "sysmon/39/part-0/tok-0",
+        "car/CAR-2019-04-001/0/part-0/tok-1",
+        "car/CAR-2016-04-002/0/part-0/tok-1",
+        "sysmon/35/part-0/tok-0",
+        "car/CAR-2020-08-002/0/part-0/tok-1"
+      ],
+      "hybrid": [
+        "sysmon/14/part-0/tok-0",
+        "sigma/320fccbf-5e32-4101-82b8-2679c5f007c6/0/part-0/tok-0",
+        "x-mitre-data-component--5297a638-1382-4f0c-8472-0d21830bf705/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-1",
+        "sysmon/9/part-0/tok-0",
+        "sigma/ff0f2b05-09db-4095-b96d-1b75ca24894a/0/part-0/tok-0",
+        "sysmon/30/part-0/tok-0",
+        "sysmon/11/part-0/tok-0",
+        "sysmon/35/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 38.02109999969616,
+      "dense": 181.73909999995885,
+      "hybrid": 220.2563999994709
+    },
+    "category": "field_explanation",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q005",
+    "rankings": {
+      "bm25": [
+        "sysmon/9/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "car/CAR-2016-04-002/0/part-0/tok-0",
+        "sysmon/30/part-0/tok-0",
+        "sysmon/35/part-0/tok-0",
+        "sysmon/16/part-0/tok-0",
+        "sysmon/18/part-0/tok-0",
+        "sysmon/14/part-0/tok-0",
+        "x-mitre-data-component--5297a638-1382-4f0c-8472-0d21830bf705/0/part-0/tok-0",
+        "car/CAR-2013-05-009/0/part-0/tok-1"
+      ],
+      "dense": [
+        "sysmon/30/part-0/tok-0",
+        "sysmon/35/part-0/tok-0",
+        "car/CAR-2016-04-002/0/part-0/tok-1",
+        "sysmon/39/part-0/tok-0",
+        "sysmon/14/part-0/tok-0",
+        "car/CAR-2016-04-002/0/part-0/tok-0",
+        "sysmon/18/part-0/tok-0",
+        "x-mitre-data-component--5297a638-1382-4f0c-8472-0d21830bf705/0/part-0/tok-0",
+        "sigma/6e2a900a-ced9-4e4a-a9c2-13e706f9518a/0/part-0/tok-0",
+        "sysmon/9/part-0/tok-0"
+      ],
+      "hybrid": [
+        "sysmon/30/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "sysmon/35/part-0/tok-0",
+        "car/CAR-2016-04-002/0/part-0/tok-0",
+        "sysmon/9/part-0/tok-0",
+        "sysmon/14/part-0/tok-0",
+        "sysmon/18/part-0/tok-0",
+        "sysmon/16/part-0/tok-0",
+        "x-mitre-data-component--5297a638-1382-4f0c-8472-0d21830bf705/0/part-0/tok-0",
+        "car/CAR-2016-04-002/0/part-0/tok-1"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 0.25,
+          "ndcg": 0.4306765580733931
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 0.25,
+          "ndcg": 0.4306765580733931
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 38.83510000014212,
+      "dense": 178.3528999999362,
+      "hybrid": 217.68240000028527
+    },
+    "category": "field_explanation",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q022",
+    "rankings": {
+      "bm25": [
+        "windows-4624/4/part-0/tok-0",
+        "windows-4624/3/part-1/tok-0",
+        "sigma/c598cc0c-9e70-4852-b9eb-8921af79f598/0/part-0/tok-0",
+        "windows-4624/3/part-3/tok-0",
+        "windows-4624/3/part-0/tok-1",
+        "car/CAR-2016-04-005/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "windows-4624/4/part-0/tok-1",
+        "attack-pattern--7ad38ef1-381a-406d-872a-38b136eb5ecc/0/part-0/tok-0",
+        "windows-4624/3/part-2/tok-1"
+      ],
+      "dense": [
+        "windows-4624/4/part-0/tok-0",
+        "windows-4624/3/part-1/tok-0",
+        "windows-4624/3/part-2/tok-0",
+        "windows-4624/3/part-3/tok-0",
+        "windows-4624/3/part-0/tok-0",
+        "windows-4624/4/part-0/tok-1",
+        "windows-4624/3/part-2/tok-1",
+        "windows-4624/3/part-1/tok-1",
+        "car/CAR-2013-05-002/0/part-0/tok-0",
+        "windows-4624/3/part-0/tok-1"
+      ],
+      "hybrid": [
+        "windows-4624/4/part-0/tok-0",
+        "windows-4624/3/part-1/tok-0",
+        "windows-4624/3/part-3/tok-0",
+        "windows-4624/4/part-0/tok-1",
+        "windows-4624/3/part-0/tok-1",
+        "windows-4624/3/part-2/tok-1",
+        "car/CAR-2016-04-005/0/part-0/tok-0",
+        "windows-4624/3/part-1/tok-1",
+        "windows-4624/3/part-2/tok-0",
+        "car/CAR-2014-03-006/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 0.5,
+          "mrr": 1.0,
+          "ndcg": 0.6131471927654584
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.8065735963827292
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 0.5,
+          "mrr": 1.0,
+          "ndcg": 0.6131471927654584
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.8315546295836226
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.8772153153380493
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.8772153153380493
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 40.66629999988436,
+      "dense": 164.56049999987954,
+      "hybrid": 205.72729999958028
+    },
+    "category": "field_explanation",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q030",
+    "rankings": {
+      "bm25": [
+        "sysmon/9/part-0/tok-0",
+        "x-mitre-data-component--5297a638-1382-4f0c-8472-0d21830bf705/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "sysmon/16/part-0/tok-0",
+        "sysmon/14/part-0/tok-0",
+        "windows-4624/3/part-1/tok-0",
+        "sysmon/30/part-0/tok-0",
+        "car/CAR-2013-05-009/0/part-0/tok-1",
+        "windows-4624/3/part-0/tok-1"
+      ],
+      "dense": [
+        "sysmon/9/part-0/tok-0",
+        "sysmon/18/part-0/tok-0",
+        "x-mitre-data-component--5297a638-1382-4f0c-8472-0d21830bf705/0/part-0/tok-0",
+        "sysmon/14/part-0/tok-0",
+        "sysmon/11/part-0/tok-0",
+        "sysmon/35/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "x-mitre-data-component--84572de3-9583-4c73-aabd-06ea88123dd8/0/part-0/tok-0",
+        "sysmon/15/part-0/tok-0",
+        "sysmon/16/part-0/tok-0"
+      ],
+      "hybrid": [
+        "sysmon/9/part-0/tok-0",
+        "x-mitre-data-component--5297a638-1382-4f0c-8472-0d21830bf705/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "sysmon/14/part-0/tok-0",
+        "sysmon/16/part-0/tok-0",
+        "sysmon/18/part-0/tok-0",
+        "sysmon/35/part-0/tok-0",
+        "sysmon/30/part-0/tok-0",
+        "sysmon/15/part-0/tok-0",
+        "car/CAR-2013-05-009/0/part-0/tok-1"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 37.17969999979687,
+      "dense": 186.04539999978442,
+      "hybrid": 223.68729999971038
+    },
+    "category": "field_explanation",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q038",
+    "rankings": {
+      "bm25": [
+        "sysmon/39/part-0/tok-0",
+        "sysmon/16/part-0/tok-0",
+        "sysmon/9/part-0/tok-0",
+        "x-mitre-data-component--5297a638-1382-4f0c-8472-0d21830bf705/0/part-0/tok-0",
+        "sysmon/30/part-0/tok-0",
+        "sysmon/11/part-0/tok-0",
+        "attack-pattern--7ad38ef1-381a-406d-872a-38b136eb5ecc/0/part-0/tok-0",
+        "windows-4624/4/part-0/tok-0",
+        "car/CAR-2013-05-009/0/part-0/tok-1",
+        "sysmon/14/part-0/tok-0"
+      ],
+      "dense": [
+        "sysmon/16/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "car/CAR-2016-04-002/0/part-0/tok-1",
+        "x-mitre-data-component--5297a638-1382-4f0c-8472-0d21830bf705/0/part-0/tok-0",
+        "windows-4624/3/part-1/tok-0",
+        "car/CAR-2019-04-001/0/part-0/tok-1",
+        "car/CAR-2019-04-001/0/part-0/tok-0",
+        "windows-4624/3/part-2/tok-0",
+        "sigma/30fc8de7-d833-40c4-96b6-28319fbc4f6c/0/part-0/tok-0",
+        "sigma/6d844f0f-1c18-41af-8f19-33e7654edfc3/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "sysmon/39/part-0/tok-0",
+        "sysmon/16/part-0/tok-0",
+        "x-mitre-data-component--5297a638-1382-4f0c-8472-0d21830bf705/0/part-0/tok-0",
+        "windows-4624/3/part-1/tok-0",
+        "sysmon/35/part-0/tok-0",
+        "sigma/6e2a900a-ced9-4e4a-a9c2-13e706f9518a/0/part-0/tok-0",
+        "sysmon/14/part-0/tok-0",
+        "sysmon/9/part-0/tok-0",
+        "sigma/30fc8de7-d833-40c4-96b6-28319fbc4f6c/0/part-0/tok-0",
+        "windows-4624/3/part-2/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714574
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714574
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714574
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714574
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 41.216999999960535,
+      "dense": 180.37619999995513,
+      "hybrid": 222.1255999997993
+    },
+    "category": "field_explanation",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q002",
+    "rankings": {
+      "bm25": [
+        "windows-4624/4/part-0/tok-0",
+        "windows-4624/3/part-1/tok-0",
+        "windows-4624/3/part-2/tok-1",
+        "zeek-conn/0/part-0/tok-0",
+        "windows-4624/3/part-3/tok-0",
+        "windows-4624/3/part-1/tok-1",
+        "car/CAR-2016-04-005/0/part-0/tok-0",
+        "windows-4624/3/part-0/tok-1",
+        "windows-4624/3/part-2/tok-0",
+        "windows-4624/4/part-0/tok-1"
+      ],
+      "dense": [
+        "windows-4624/3/part-0/tok-0",
+        "windows-4624/3/part-2/tok-1",
+        "windows-4624/3/part-1/tok-1",
+        "windows-4624/3/part-2/tok-0",
+        "windows-4624/4/part-0/tok-0",
+        "windows-4624/4/part-0/tok-1",
+        "windows-4624/3/part-1/tok-0",
+        "car/CAR-2016-04-005/0/part-0/tok-0",
+        "windows-4624/3/part-3/tok-0",
+        "windows-4624/3/part-0/tok-1"
+      ],
+      "hybrid": [
+        "windows-4624/3/part-2/tok-1",
+        "windows-4624/4/part-0/tok-0",
+        "windows-4624/3/part-1/tok-0",
+        "windows-4624/3/part-1/tok-1",
+        "windows-4624/3/part-0/tok-0",
+        "windows-4624/3/part-2/tok-0",
+        "windows-4624/3/part-3/tok-0",
+        "car/CAR-2016-04-005/0/part-0/tok-0",
+        "windows-4624/4/part-0/tok-1",
+        "windows-4624/3/part-0/tok-1"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 0.5,
+          "mrr": 0.5,
+          "ndcg": 0.3868528072345416
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6052602440527058
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 0.5,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.3065735963827292
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5109559939712154
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5706417189553201
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5706417189553201
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 39.51509999978953,
+      "dense": 177.71609999999782,
+      "hybrid": 217.70500000002357
+    },
+    "category": "field_explanation",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q006",
+    "rankings": {
+      "bm25": [
+        "zeek-dns/2/part-0/tok-0",
+        "zeek-conn/0/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-1",
+        "zeek-conn/3/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-0",
+        "car/CAR-2014-03-006/0/part-0/tok-0",
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "attack-pattern--7ad38ef1-381a-406d-872a-38b136eb5ecc/0/part-0/tok-0",
+        "sigma/4f8a1c2e-7d3b-4e5f-9a6c-0b1d2e3f4a5b/0/part-0/tok-0"
+      ],
+      "dense": [
+        "zeek-dns/2/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-0",
+        "zeek-conn/3/part-0/tok-0",
+        "zeek-conn/0/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-1",
+        "sigma/9705a6a1-6db6-4a16-a987-15b7151e299b/0/part-0/tok-0",
+        "x-mitre-analytic--0cadbf9f-befa-4bd8-85b8-e5af53383953/0/part-0/tok-0",
+        "sigma/d88d0ab2-e696-4d40-a2ed-9790064e66b3/0/part-0/tok-0",
+        "sigma/52d8b0c6-53d6-439a-9e41-52ad442ad9ad/0/part-0/tok-0",
+        "sigma/4f8a1c2e-7d3b-4e5f-9a6c-0b1d2e3f4a5b/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "zeek-dns/2/part-0/tok-0",
+        "zeek-conn/0/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-0",
+        "zeek-conn/3/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-1",
+        "sigma/4f8a1c2e-7d3b-4e5f-9a6c-0b1d2e3f4a5b/0/part-0/tok-0",
+        "x-mitre-analytic--0cadbf9f-befa-4bd8-85b8-e5af53383953/0/part-0/tok-0",
+        "car/CAR-2014-03-006/0/part-0/tok-0",
+        "sigma/065cceea-77ec-4030-9052-fc0affea7110/0/part-0/tok-0",
+        "attack-pattern--7ad38ef1-381a-406d-872a-38b136eb5ecc/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 36.63230000029216,
+      "dense": 186.97079999992638,
+      "hybrid": 224.13280000046143
+    },
+    "category": "field_explanation",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q007",
+    "rankings": {
+      "bm25": [
+        "windows-4624/4/part-0/tok-0",
+        "windows-4624/3/part-1/tok-0",
+        "windows-4624/3/part-2/tok-1",
+        "zeek-conn/0/part-0/tok-0",
+        "windows-4624/3/part-3/tok-0",
+        "windows-4624/3/part-1/tok-1",
+        "car/CAR-2016-04-005/0/part-0/tok-0",
+        "windows-4624/3/part-0/tok-1",
+        "windows-4624/3/part-2/tok-0",
+        "windows-4624/4/part-0/tok-1"
+      ],
+      "dense": [
+        "windows-4624/3/part-0/tok-0",
+        "windows-4624/3/part-2/tok-1",
+        "windows-4624/3/part-1/tok-1",
+        "windows-4624/3/part-2/tok-0",
+        "windows-4624/4/part-0/tok-0",
+        "windows-4624/4/part-0/tok-1",
+        "windows-4624/3/part-1/tok-0",
+        "car/CAR-2016-04-005/0/part-0/tok-0",
+        "windows-4624/3/part-3/tok-0",
+        "windows-4624/3/part-0/tok-1"
+      ],
+      "hybrid": [
+        "windows-4624/3/part-2/tok-1",
+        "windows-4624/4/part-0/tok-0",
+        "windows-4624/3/part-1/tok-0",
+        "windows-4624/3/part-1/tok-1",
+        "windows-4624/3/part-0/tok-0",
+        "windows-4624/3/part-2/tok-0",
+        "windows-4624/3/part-3/tok-0",
+        "car/CAR-2016-04-005/0/part-0/tok-0",
+        "windows-4624/4/part-0/tok-1",
+        "windows-4624/3/part-0/tok-1"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 0.5,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.3065735963827292
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.49114929316229744
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6509209298071326
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6509209298071326
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 0.5,
+          "mrr": 1.0,
+          "ndcg": 0.6131471927654584
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.8315546295836226
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 37.54539999999906,
+      "dense": 164.83279999965816,
+      "hybrid": 202.8597999997146
+    },
+    "category": "field_explanation",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q008",
+    "rankings": {
+      "bm25": [
+        "windows-4624/4/part-0/tok-0",
+        "windows-4624/3/part-1/tok-0",
+        "windows-4624/3/part-2/tok-1",
+        "zeek-conn/0/part-0/tok-0",
+        "windows-4624/3/part-3/tok-0",
+        "windows-4624/3/part-1/tok-1",
+        "car/CAR-2016-04-005/0/part-0/tok-0",
+        "windows-4624/3/part-0/tok-1",
+        "windows-4624/3/part-2/tok-0",
+        "windows-4624/4/part-0/tok-1"
+      ],
+      "dense": [
+        "windows-4624/3/part-0/tok-0",
+        "windows-4624/3/part-2/tok-1",
+        "windows-4624/3/part-1/tok-1",
+        "windows-4624/3/part-2/tok-0",
+        "windows-4624/4/part-0/tok-0",
+        "windows-4624/4/part-0/tok-1",
+        "windows-4624/3/part-1/tok-0",
+        "car/CAR-2016-04-005/0/part-0/tok-0",
+        "windows-4624/3/part-3/tok-0",
+        "windows-4624/3/part-0/tok-1"
+      ],
+      "hybrid": [
+        "windows-4624/3/part-2/tok-1",
+        "windows-4624/4/part-0/tok-0",
+        "windows-4624/3/part-1/tok-0",
+        "windows-4624/3/part-1/tok-1",
+        "windows-4624/3/part-0/tok-0",
+        "windows-4624/3/part-2/tok-0",
+        "windows-4624/3/part-3/tok-0",
+        "car/CAR-2016-04-005/0/part-0/tok-0",
+        "windows-4624/4/part-0/tok-1",
+        "windows-4624/3/part-0/tok-1"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0
+        },
+        "10": {
+          "recall": 0.5,
+          "mrr": 0.125,
+          "ndcg": 0.1934264036172708
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 0.5,
+          "mrr": 1.0,
+          "ndcg": 0.6131471927654584
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.7903864795495061
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 0.5,
+          "mrr": 0.2,
+          "ndcg": 0.23719771276929622
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 0.2,
+          "ndcg": 0.41443699955334395
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 36.64789999993445,
+      "dense": 180.59630000016114,
+      "hybrid": 217.86259999998947
+    },
+    "category": "field_explanation",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q009",
+    "rankings": {
+      "bm25": [
+        "zeek-conn/0/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-1",
+        "zeek-conn/3/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-0",
+        "zeek-dns/2/part-0/tok-0",
+        "attack-pattern--7ad38ef1-381a-406d-872a-38b136eb5ecc/0/part-0/tok-0",
+        "attack-pattern--3975dbb5-0e1e-4f5b-bae1-cf2ab84b46dc/0/part-0/tok-0",
+        "sysmon/9/part-0/tok-0",
+        "car/CAR-2016-04-002/0/part-0/tok-1",
+        "x-mitre-data-component--5297a638-1382-4f0c-8472-0d21830bf705/0/part-0/tok-0"
+      ],
+      "dense": [
+        "zeek-conn/0/part-0/tok-0",
+        "zeek-conn/3/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-1",
+        "zeek-dns/1/part-0/tok-0",
+        "zeek-dns/2/part-0/tok-0",
+        "car/CAR-2014-11-008/0/part-0/tok-1",
+        "windows-4624/3/part-2/tok-1",
+        "car/CAR-2014-11-008/0/part-0/tok-0",
+        "attack-pattern--7ad38ef1-381a-406d-872a-38b136eb5ecc/0/part-0/tok-0",
+        "car/CAR-2021-05-007/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "zeek-conn/0/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-1",
+        "zeek-conn/3/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-0",
+        "zeek-dns/2/part-0/tok-0",
+        "attack-pattern--7ad38ef1-381a-406d-872a-38b136eb5ecc/0/part-0/tok-0",
+        "car/CAR-2016-04-002/0/part-0/tok-1",
+        "car/CAR-2014-11-008/0/part-0/tok-0",
+        "car/CAR-2021-05-007/0/part-0/tok-0",
+        "windows-4624/3/part-2/tok-1"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 44.36889999988125,
+      "dense": 183.3053000000291,
+      "hybrid": 228.34179999972548
+    },
+    "category": "field_explanation",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q015",
+    "rankings": {
+      "bm25": [
+        "windows-4624/4/part-0/tok-0",
+        "windows-4624/3/part-1/tok-0",
+        "windows-4624/3/part-2/tok-1",
+        "zeek-conn/0/part-0/tok-0",
+        "windows-4624/3/part-3/tok-0",
+        "windows-4624/3/part-1/tok-1",
+        "car/CAR-2016-04-005/0/part-0/tok-0",
+        "windows-4624/3/part-0/tok-1",
+        "windows-4624/3/part-2/tok-0",
+        "windows-4624/4/part-0/tok-1"
+      ],
+      "dense": [
+        "windows-4624/3/part-0/tok-0",
+        "windows-4624/3/part-2/tok-1",
+        "windows-4624/3/part-1/tok-1",
+        "windows-4624/3/part-2/tok-0",
+        "windows-4624/4/part-0/tok-0",
+        "windows-4624/4/part-0/tok-1",
+        "windows-4624/3/part-1/tok-0",
+        "car/CAR-2016-04-005/0/part-0/tok-0",
+        "windows-4624/3/part-3/tok-0",
+        "windows-4624/3/part-0/tok-1"
+      ],
+      "hybrid": [
+        "windows-4624/3/part-2/tok-1",
+        "windows-4624/4/part-0/tok-0",
+        "windows-4624/3/part-1/tok-0",
+        "windows-4624/3/part-1/tok-1",
+        "windows-4624/3/part-0/tok-0",
+        "windows-4624/3/part-2/tok-0",
+        "windows-4624/3/part-3/tok-0",
+        "car/CAR-2016-04-005/0/part-0/tok-0",
+        "windows-4624/4/part-0/tok-1",
+        "windows-4624/3/part-0/tok-1"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 0.2,
+          "ndcg": 0.38685280723454163
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 0.2,
+          "ndcg": 0.38685280723454163
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 0.1111111111111111,
+          "ndcg": 0.3010299956639812
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 0.14285714285714285,
+          "ndcg": 0.3333333333333333
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 43.15939999969487,
+      "dense": 181.7439999999806,
+      "hybrid": 225.49279999975624
+    },
+    "category": "field_explanation",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q016",
+    "rankings": {
+      "bm25": [
+        "zeek-dns/1/part-0/tok-1",
+        "zeek-conn/0/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-0",
+        "zeek-conn/3/part-0/tok-0",
+        "zeek-dns/2/part-0/tok-0",
+        "attack-pattern--7ad38ef1-381a-406d-872a-38b136eb5ecc/0/part-0/tok-0",
+        "sigma/4f8a1c2e-7d3b-4e5f-9a6c-0b1d2e3f4a5b/0/part-0/tok-0",
+        "attack-pattern--3975dbb5-0e1e-4f5b-bae1-cf2ab84b46dc/0/part-0/tok-0",
+        "sysmon/9/part-0/tok-0",
+        "car/CAR-2016-04-002/0/part-0/tok-1"
+      ],
+      "dense": [
+        "zeek-dns/1/part-0/tok-0",
+        "zeek-conn/0/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-1",
+        "zeek-conn/3/part-0/tok-0",
+        "zeek-dns/2/part-0/tok-0",
+        "sigma/9705a6a1-6db6-4a16-a987-15b7151e299b/0/part-0/tok-0",
+        "x-mitre-analytic--0cadbf9f-befa-4bd8-85b8-e5af53383953/0/part-0/tok-0",
+        "car/CAR-2016-04-005/0/part-0/tok-0",
+        "sigma/52d8b0c6-53d6-439a-9e41-52ad442ad9ad/0/part-0/tok-0",
+        "x-mitre-analytic--c15f60a8-6e58-460f-8dcf-1bce272b5eaf/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "zeek-dns/1/part-0/tok-1",
+        "zeek-dns/1/part-0/tok-0",
+        "zeek-conn/0/part-0/tok-0",
+        "zeek-conn/3/part-0/tok-0",
+        "zeek-dns/2/part-0/tok-0",
+        "x-mitre-analytic--0cadbf9f-befa-4bd8-85b8-e5af53383953/0/part-0/tok-0",
+        "sigma/4f8a1c2e-7d3b-4e5f-9a6c-0b1d2e3f4a5b/0/part-0/tok-0",
+        "x-mitre-analytic--c15f60a8-6e58-460f-8dcf-1bce272b5eaf/0/part-0/tok-0",
+        "sigma/065cceea-77ec-4030-9052-fc0affea7110/0/part-0/tok-0",
+        "attack-pattern--3975dbb5-0e1e-4f5b-bae1-cf2ab84b46dc/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.9197207891481876
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.9197207891481876
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.9197207891481876
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.9197207891481876
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 41.01989999981015,
+      "dense": 196.5120999998362,
+      "hybrid": 237.9996999998184
+    },
+    "category": "field_explanation",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q019",
+    "rankings": {
+      "bm25": [
+        "zeek-conn/0/part-0/tok-0",
+        "zeek-conn/3/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-1",
+        "zeek-dns/2/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-0",
+        "car/CAR-2014-03-006/0/part-0/tok-0",
+        "attack-pattern--7ad38ef1-381a-406d-872a-38b136eb5ecc/0/part-0/tok-0",
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "car/CAR-2014-11-008/0/part-0/tok-0",
+        "attack-pattern--3975dbb5-0e1e-4f5b-bae1-cf2ab84b46dc/0/part-0/tok-0"
+      ],
+      "dense": [
+        "zeek-conn/0/part-0/tok-0",
+        "zeek-conn/3/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-1",
+        "zeek-dns/1/part-0/tok-0",
+        "zeek-dns/2/part-0/tok-0",
+        "car/CAR-2014-11-008/0/part-0/tok-1",
+        "car/CAR-2021-05-007/0/part-0/tok-0",
+        "sigma/52d8b0c6-53d6-439a-9e41-52ad442ad9ad/0/part-0/tok-0",
+        "attack-pattern--7ad38ef1-381a-406d-872a-38b136eb5ecc/0/part-0/tok-0",
+        "sigma/6d844f0f-1c18-41af-8f19-33e7654edfc3/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "zeek-conn/0/part-0/tok-0",
+        "zeek-conn/3/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-1",
+        "zeek-dns/2/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-0",
+        "attack-pattern--7ad38ef1-381a-406d-872a-38b136eb5ecc/0/part-0/tok-0",
+        "car/CAR-2014-11-008/0/part-0/tok-0",
+        "sigma/52d8b0c6-53d6-439a-9e41-52ad442ad9ad/0/part-0/tok-0",
+        "car/CAR-2014-03-006/0/part-0/tok-0",
+        "car/CAR-2021-05-007/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714574
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714574
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714574
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714574
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714574
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714574
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 37.87469999997484,
+      "dense": 190.2839999997923,
+      "hybrid": 228.65609999962544
+    },
+    "category": "field_explanation",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q021",
+    "rankings": {
+      "bm25": [
+        "sysmon/15/part-0/tok-0",
+        "sysmon/9/part-0/tok-0",
+        "x-mitre-data-component--5297a638-1382-4f0c-8472-0d21830bf705/0/part-0/tok-0",
+        "sysmon/30/part-0/tok-0",
+        "sysmon/11/part-0/tok-0",
+        "attack-pattern--7ad38ef1-381a-406d-872a-38b136eb5ecc/0/part-0/tok-0",
+        "windows-4624/3/part-0/tok-0",
+        "sysmon/16/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "windows-4624/4/part-0/tok-0"
+      ],
+      "dense": [
+        "sysmon/15/part-0/tok-0",
+        "x-mitre-data-component--5297a638-1382-4f0c-8472-0d21830bf705/0/part-0/tok-0",
+        "car/CAR-2016-04-002/0/part-0/tok-1",
+        "sysmon/35/part-0/tok-0",
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "car/CAR-2016-04-005/0/part-0/tok-0",
+        "sigma/52d8b0c6-53d6-439a-9e41-52ad442ad9ad/0/part-0/tok-0",
+        "car/CAR-2014-11-008/0/part-0/tok-1",
+        "sigma/586a8d6b-6bfe-4ad9-9d78-888cd2fe50c3/0/part-0/tok-0",
+        "sigma/6d844f0f-1c18-41af-8f19-33e7654edfc3/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "sysmon/15/part-0/tok-0",
+        "x-mitre-data-component--5297a638-1382-4f0c-8472-0d21830bf705/0/part-0/tok-0",
+        "sysmon/35/part-0/tok-0",
+        "sysmon/9/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "sysmon/16/part-0/tok-0",
+        "windows-4624/3/part-0/tok-0",
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "sysmon/18/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 42.618599999968865,
+      "dense": 203.7878000001001,
+      "hybrid": 246.8672999998489
+    },
+    "category": "field_explanation",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q042",
+    "rankings": {
+      "bm25": [
+        "sigma/52d8b0c6-53d6-439a-9e41-52ad442ad9ad/0/part-0/tok-0",
+        "sigma/586a8d6b-6bfe-4ad9-9d78-888cd2fe50c3/0/part-0/tok-0",
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-1",
+        "zeek-dns/1/part-0/tok-0",
+        "attack-pattern--130d4494-b2d6-4040-bcea-6e59f05222fe/0/part-0/tok-0",
+        "attack-pattern--42fe883a-21ea-4cfb-b94a-78b6476dcc83/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "car/CAR-2020-05-003/0/part-0/tok-0"
+      ],
+      "dense": [
+        "sigma/52d8b0c6-53d6-439a-9e41-52ad442ad9ad/0/part-0/tok-0",
+        "sigma/586a8d6b-6bfe-4ad9-9d78-888cd2fe50c3/0/part-0/tok-0",
+        "sigma/b1377339-fda6-477a-b455-ac0923f9ec2c/0/part-0/tok-0",
+        "sigma/6e2a900a-ced9-4e4a-a9c2-13e706f9518a/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "car/CAR-2021-05-007/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0",
+        "car/CAR-2013-05-009/0/part-0/tok-0",
+        "attack-pattern--3986e7fd-a8e9-4ecb-bfc6-55920855912b/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "sigma/52d8b0c6-53d6-439a-9e41-52ad442ad9ad/0/part-0/tok-0",
+        "sigma/586a8d6b-6bfe-4ad9-9d78-888cd2fe50c3/0/part-0/tok-0",
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "sigma/b1377339-fda6-477a-b455-ac0923f9ec2c/0/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-1",
+        "sigma/6e2a900a-ced9-4e4a-a9c2-13e706f9518a/0/part-0/tok-0",
+        "car/CAR-2021-05-007/0/part-0/tok-0",
+        "car/CAR-2016-04-005/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 46.902200000204175,
+      "dense": 198.15180000023247,
+      "hybrid": 245.59430000044813
+    },
+    "category": "detection_prerequisites",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q043",
+    "rankings": {
+      "bm25": [
+        "sigma/a85ffc3a-e8fd-4040-93bf-78aff284d801/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-1",
+        "sysmon/39/part-0/tok-0",
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "attack-pattern--42fe883a-21ea-4cfb-b94a-78b6476dcc83/0/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-0",
+        "sigma/ab37a6ec-6068-432b-a64e-2c7bf95b1d22/0/part-0/tok-0",
+        "sigma/cc268ac1-42d9-40fd-9ed3-8c4e1a5b87e6/0/part-0/tok-0",
+        "sigma/bdc64095-d59a-42a2-8588-71fd9c9d9abc/0/part-0/tok-0"
+      ],
+      "dense": [
+        "sigma/a85ffc3a-e8fd-4040-93bf-78aff284d801/0/part-0/tok-0",
+        "sigma/cc268ac1-42d9-40fd-9ed3-8c4e1a5b87e6/0/part-0/tok-0",
+        "sigma/fff9d2b7-e11c-4a69-93d3-40ef66189767/0/part-0/tok-0",
+        "car/CAR-2021-05-007/0/part-0/tok-0",
+        "car/CAR-2020-05-003/0/part-0/tok-0",
+        "car/CAR-2013-05-009/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0",
+        "x-mitre-analytic--55083ce8-b00e-4501-97db-829082bdbb48/0/part-0/tok-0",
+        "car/CAR-2020-08-002/0/part-0/tok-0",
+        "sigma/cc9cbe82-7bc0-4ef5-bc23-bbfb83947be7/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "sigma/a85ffc3a-e8fd-4040-93bf-78aff284d801/0/part-0/tok-0",
+        "sigma/cc268ac1-42d9-40fd-9ed3-8c4e1a5b87e6/0/part-0/tok-0",
+        "car/CAR-2020-05-003/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "sigma/9aa5106d-bce3-4b13-86df-3a20f1d5cf0b/0/part-0/tok-0",
+        "car/CAR-2013-05-009/0/part-0/tok-1",
+        "car/CAR-2021-05-007/0/part-0/tok-0",
+        "sigma/fff9d2b7-e11c-4a69-93d3-40ef66189767/0/part-0/tok-0",
+        "sigma/88f46b67-14d4-4f45-ac2c-d66984f22191/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 38.45079999973677,
+      "dense": 197.32969999995476,
+      "hybrid": 236.27729999998337
+    },
+    "category": "detection_prerequisites",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q053",
+    "rankings": {
+      "bm25": [
+        "sigma/3d2a2d59-929c-4b78-8c1a-145dfe9e07b1/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "sysmon/30/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-1",
+        "sysmon/39/part-0/tok-0",
+        "car/CAR-2021-05-002/0/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-0",
+        "sigma/fff9d2b7-e11c-4a69-93d3-40ef66189767/0/part-0/tok-0",
+        "sigma/bdc64095-d59a-42a2-8588-71fd9c9d9abc/0/part-0/tok-0",
+        "x-mitre-analytic--6522e464-d3f5-45dd-bfbf-2759f3fa6de2/0/part-0/tok-0"
+      ],
+      "dense": [
+        "sigma/3d2a2d59-929c-4b78-8c1a-145dfe9e07b1/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0",
+        "sigma/54f0434b-726f-48a1-b2aa-067df14516e4/0/part-0/tok-0",
+        "sigma/6e2a900a-ced9-4e4a-a9c2-13e706f9518a/0/part-0/tok-0",
+        "sigma/b110ebaf-697f-4da1-afd5-b536fa27a2c1/0/part-0/tok-0",
+        "sigma/0248a7bc-8a9a-4cd8-a57e-3ae8e073a073/0/part-0/tok-0",
+        "sigma/fff9d2b7-e11c-4a69-93d3-40ef66189767/0/part-0/tok-0",
+        "sigma/3b4e950b-a3ea-44d3-877e-432071990709/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "car/CAR-2021-05-007/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "sigma/3d2a2d59-929c-4b78-8c1a-145dfe9e07b1/0/part-0/tok-0",
+        "sigma/fff9d2b7-e11c-4a69-93d3-40ef66189767/0/part-0/tok-0",
+        "sigma/54f0434b-726f-48a1-b2aa-067df14516e4/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "sigma/3b4e950b-a3ea-44d3-877e-432071990709/0/part-0/tok-0",
+        "sigma/f2c64357-b1d2-41b7-849f-34d2682c0fad/0/part-0/tok-0",
+        "sigma/bdc64095-d59a-42a2-8588-71fd9c9d9abc/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0",
+        "car/CAR-2021-05-012/0/part-0/tok-1"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 39.658199999848875,
+      "dense": 195.04209999968225,
+      "hybrid": 235.16529999960767
+    },
+    "category": "detection_prerequisites",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q065",
+    "rankings": {
+      "bm25": [
+        "sigma/e2812b49-bae0-4b21-b366-7c142eafcde2/0/part-0/tok-0",
+        "sigma/c453ab7a-1f5c-4716-a3b4-dea8135fb43a/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-1",
+        "sigma/f2c64357-b1d2-41b7-849f-34d2682c0fad/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "sigma/3c89a1e8-0fba-449e-8f1b-8409d6267ec8/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "x-mitre-analytic--6522e464-d3f5-45dd-bfbf-2759f3fa6de2/0/part-0/tok-0",
+        "sysmon/30/part-0/tok-0"
+      ],
+      "dense": [
+        "sigma/e2812b49-bae0-4b21-b366-7c142eafcde2/0/part-0/tok-0",
+        "sigma/b110ebaf-697f-4da1-afd5-b536fa27a2c1/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "sigma/d2e3f2f6-7e09-4bf2-bc5d-90186809e7fb/0/part-0/tok-0",
+        "sigma/28c8f68b-098d-45af-8d43-8089f3e35403/0/part-0/tok-0",
+        "car/CAR-2021-05-002/0/part-0/tok-0",
+        "sigma/ab37a6ec-6068-432b-a64e-2c7bf95b1d22/0/part-0/tok-0",
+        "sigma/f2c64357-b1d2-41b7-849f-34d2682c0fad/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "sigma/e2812b49-bae0-4b21-b366-7c142eafcde2/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "sigma/f2c64357-b1d2-41b7-849f-34d2682c0fad/0/part-0/tok-0",
+        "car/CAR-2021-05-002/0/part-0/tok-0",
+        "sigma/ab37a6ec-6068-432b-a64e-2c7bf95b1d22/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0",
+        "sigma/975b2262-9a49-439d-92a6-0709cccdf0b2/0/part-0/tok-0",
+        "sigma/3c89a1e8-0fba-449e-8f1b-8409d6267ec8/0/part-0/tok-0",
+        "sigma/bdc64095-d59a-42a2-8588-71fd9c9d9abc/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 38.99520000004486,
+      "dense": 216.68610000006083,
+      "hybrid": 256.2017000004744
+    },
+    "category": "detection_prerequisites",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q069",
+    "rankings": {
+      "bm25": [
+        "sigma/fff9d2b7-e11c-4a69-93d3-40ef66189767/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "car/CAR-2021-05-002/0/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-1",
+        "sysmon/30/part-0/tok-0",
+        "x-mitre-analytic--6522e464-d3f5-45dd-bfbf-2759f3fa6de2/0/part-0/tok-0",
+        "sigma/f2c64357-b1d2-41b7-849f-34d2682c0fad/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-1",
+        "car/CAR-2013-05-002/0/part-0/tok-0"
+      ],
+      "dense": [
+        "sigma/fff9d2b7-e11c-4a69-93d3-40ef66189767/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0",
+        "car/CAR-2021-05-007/0/part-0/tok-0",
+        "sigma/3d2a2d59-929c-4b78-8c1a-145dfe9e07b1/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-1",
+        "sigma/f2c64357-b1d2-41b7-849f-34d2682c0fad/0/part-0/tok-0",
+        "sigma/b7e2a8d4-74bb-4b78-adc9-3f92af2d4829/0/part-0/tok-0",
+        "sigma/6e2a900a-ced9-4e4a-a9c2-13e706f9518a/0/part-0/tok-0",
+        "sigma/54f0434b-726f-48a1-b2aa-067df14516e4/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "sigma/fff9d2b7-e11c-4a69-93d3-40ef66189767/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0",
+        "car/CAR-2021-05-002/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-1",
+        "sigma/f2c64357-b1d2-41b7-849f-34d2682c0fad/0/part-0/tok-0",
+        "car/CAR-2021-05-007/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "sigma/bdc64095-d59a-42a2-8588-71fd9c9d9abc/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 36.71580000036556,
+      "dense": 173.92590000008568,
+      "hybrid": 211.3935000006677
+    },
+    "category": "detection_prerequisites",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q077",
+    "rankings": {
+      "bm25": [
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "sigma/9705a6a1-6db6-4a16-a987-15b7151e299b/0/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-1",
+        "sysmon/39/part-0/tok-0",
+        "x-mitre-analytic--6522e464-d3f5-45dd-bfbf-2759f3fa6de2/0/part-0/tok-0",
+        "sigma/6d844f0f-1c18-41af-8f19-33e7654edfc3/0/part-0/tok-0",
+        "sysmon/30/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "zeek-dns/2/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-0"
+      ],
+      "dense": [
+        "sigma/9705a6a1-6db6-4a16-a987-15b7151e299b/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "car/CAR-2021-05-007/0/part-0/tok-0",
+        "sigma/6d844f0f-1c18-41af-8f19-33e7654edfc3/0/part-0/tok-0",
+        "sigma/6e2a900a-ced9-4e4a-a9c2-13e706f9518a/0/part-0/tok-0",
+        "sigma/52d8b0c6-53d6-439a-9e41-52ad442ad9ad/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "x-mitre-analytic--6f7fa682-fd50-4de4-add3-cbaa3c127b70/0/part-0/tok-0",
+        "x-mitre-analytic--72033f2d-a943-40be-862c-051317ec541c/0/part-0/tok-0",
+        "attack-pattern--3986e7fd-a8e9-4ecb-bfc6-55920855912b/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "sigma/9705a6a1-6db6-4a16-a987-15b7151e299b/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "sigma/6d844f0f-1c18-41af-8f19-33e7654edfc3/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "x-mitre-analytic--6522e464-d3f5-45dd-bfbf-2759f3fa6de2/0/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-1",
+        "attack-pattern--e358d692-23c0-4a31-9eb6-ecc13a8d7735/0/part-0/tok-0",
+        "car/CAR-2021-05-007/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "attack-pattern--01c9b54f-c04e-41ba-b0c3-cfe784b3a463/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714574
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714574
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 36.916800000199146,
+      "dense": 190.8120000002782,
+      "hybrid": 228.43200000033903
+    },
+    "category": "detection_prerequisites",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q079",
+    "rankings": {
+      "bm25": [
+        "sigma/25b9c01c-350d-4b95-bed1-836d04a4f324/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-1",
+        "sysmon/39/part-0/tok-0",
+        "sigma/9082ff1f-88ab-4678-a3cc-5bcff99fc74d/0/part-0/tok-0",
+        "x-mitre-analytic--6522e464-d3f5-45dd-bfbf-2759f3fa6de2/0/part-0/tok-0",
+        "sysmon/30/part-0/tok-0",
+        "attack-pattern--42fe883a-21ea-4cfb-b94a-78b6476dcc83/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "zeek-dns/2/part-0/tok-0"
+      ],
+      "dense": [
+        "sigma/25b9c01c-350d-4b95-bed1-836d04a4f324/0/part-0/tok-0",
+        "sigma/9082ff1f-88ab-4678-a3cc-5bcff99fc74d/0/part-0/tok-0",
+        "sigma/0248a7bc-8a9a-4cd8-a57e-3ae8e073a073/0/part-0/tok-0",
+        "attack-pattern--3986e7fd-a8e9-4ecb-bfc6-55920855912b/0/part-0/tok-0",
+        "car/CAR-2013-01-002/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "sigma/6e2a900a-ced9-4e4a-a9c2-13e706f9518a/0/part-0/tok-0",
+        "sigma/c598cc0c-9e70-4852-b9eb-8921af79f598/0/part-0/tok-0",
+        "car/CAR-2021-05-007/0/part-0/tok-0",
+        "sigma/b110ebaf-697f-4da1-afd5-b536fa27a2c1/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "sigma/25b9c01c-350d-4b95-bed1-836d04a4f324/0/part-0/tok-0",
+        "sigma/9082ff1f-88ab-4678-a3cc-5bcff99fc74d/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-1",
+        "sysmon/39/part-0/tok-0",
+        "car/CAR-2013-01-002/0/part-0/tok-0",
+        "car/CAR-2016-04-005/0/part-0/tok-0",
+        "sigma/fff9d2b7-e11c-4a69-93d3-40ef66189767/0/part-0/tok-0",
+        "attack-pattern--7decb26c-715c-40cf-b7e0-026f7d7cc215/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 40.48689999990529,
+      "dense": 171.1276999999427,
+      "hybrid": 212.14300000019648
+    },
+    "category": "detection_prerequisites",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q041",
+    "rankings": {
+      "bm25": [
+        "sigma/cd0f7229-d16f-42de-8fe3-fba365fbcb3a/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "sigma/11b52f18-aaec-4d60-9143-5dd8cc4706b9/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-1",
+        "sysmon/39/part-0/tok-0",
+        "sigma/3c89a1e8-0fba-449e-8f1b-8409d6267ec8/0/part-0/tok-0",
+        "car/CAR-2014-03-006/0/part-0/tok-0",
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "attack-pattern--2b742742-28c3-4e1b-bab7-8350d6300fa7/0/part-0/tok-0"
+      ],
+      "dense": [
+        "sigma/cd0f7229-d16f-42de-8fe3-fba365fbcb3a/0/part-0/tok-0",
+        "sigma/11b52f18-aaec-4d60-9143-5dd8cc4706b9/0/part-0/tok-0",
+        "car/CAR-2014-03-006/0/part-0/tok-0",
+        "sigma/b110ebaf-697f-4da1-afd5-b536fa27a2c1/0/part-0/tok-0",
+        "sigma/3c89a1e8-0fba-449e-8f1b-8409d6267ec8/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "x-mitre-analytic--865c00d7-fc01-4ce6-8fc8-d7a84f2ded36/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "car/CAR-2021-05-007/0/part-0/tok-0",
+        "sigma/586a8d6b-6bfe-4ad9-9d78-888cd2fe50c3/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "sigma/cd0f7229-d16f-42de-8fe3-fba365fbcb3a/0/part-0/tok-0",
+        "sigma/11b52f18-aaec-4d60-9143-5dd8cc4706b9/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "car/CAR-2014-03-006/0/part-0/tok-0",
+        "sigma/3c89a1e8-0fba-449e-8f1b-8409d6267ec8/0/part-0/tok-0",
+        "x-mitre-analytic--865c00d7-fc01-4ce6-8fc8-d7a84f2ded36/0/part-0/tok-0",
+        "sigma/586a8d6b-6bfe-4ad9-9d78-888cd2fe50c3/0/part-0/tok-0",
+        "sigma/d2e3f2f6-7e09-4bf2-bc5d-90186809e7fb/0/part-0/tok-0",
+        "x-mitre-analytic--ee4e3e61-e138-498b-93bf-3a5f8fea691c/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 36.694400000214955,
+      "dense": 177.72820000027423,
+      "hybrid": 214.9164000006749
+    },
+    "category": "detection_prerequisites",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q044",
+    "rankings": {
+      "bm25": [
+        "sigma/5df86130-4e95-4a54-90f7-26541b40aec2/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "x-mitre-data-component--84572de3-9583-4c73-aabd-06ea88123dd8/0/part-0/tok-0",
+        "sysmon/30/part-0/tok-0",
+        "sigma/d88d0ab2-e696-4d40-a2ed-9790064e66b3/0/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-1",
+        "sysmon/39/part-0/tok-0",
+        "car/CAR-2021-05-002/0/part-0/tok-0",
+        "sigma/c453ab7a-1f5c-4716-a3b4-dea8135fb43a/0/part-0/tok-0",
+        "sigma/f2c64357-b1d2-41b7-849f-34d2682c0fad/0/part-0/tok-0"
+      ],
+      "dense": [
+        "sigma/5df86130-4e95-4a54-90f7-26541b40aec2/0/part-0/tok-0",
+        "sigma/d88d0ab2-e696-4d40-a2ed-9790064e66b3/0/part-0/tok-0",
+        "sigma/b110ebaf-697f-4da1-afd5-b536fa27a2c1/0/part-0/tok-0",
+        "x-mitre-data-component--84572de3-9583-4c73-aabd-06ea88123dd8/0/part-0/tok-0",
+        "car/CAR-2020-11-011/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0",
+        "sigma/6e2a900a-ced9-4e4a-a9c2-13e706f9518a/0/part-0/tok-0",
+        "sigma/3d2a2d59-929c-4b78-8c1a-145dfe9e07b1/0/part-0/tok-0",
+        "sigma/c453ab7a-1f5c-4716-a3b4-dea8135fb43a/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "sigma/5df86130-4e95-4a54-90f7-26541b40aec2/0/part-0/tok-0",
+        "sigma/d88d0ab2-e696-4d40-a2ed-9790064e66b3/0/part-0/tok-0",
+        "x-mitre-data-component--84572de3-9583-4c73-aabd-06ea88123dd8/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "sigma/c453ab7a-1f5c-4716-a3b4-dea8135fb43a/0/part-0/tok-0",
+        "car/CAR-2020-11-011/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "car/CAR-2021-05-002/0/part-0/tok-0",
+        "sigma/3d2a2d59-929c-4b78-8c1a-145dfe9e07b1/0/part-0/tok-0",
+        "sigma/b110ebaf-697f-4da1-afd5-b536fa27a2c1/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 37.76379999999335,
+      "dense": 203.94960000021456,
+      "hybrid": 242.19129999983124
+    },
+    "category": "detection_prerequisites",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q051",
+    "rankings": {
+      "bm25": [
+        "sigma/c9783e20-4793-4164-ba96-d9ee483992c4/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "windows-4624/3/part-0/tok-0",
+        "sigma/b1377339-fda6-477a-b455-ac0923f9ec2c/0/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-1",
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "x-mitre-analytic--7d0595b9-eca7-488d-bbc2-ed02ff4ced9b/0/part-0/tok-0",
+        "sigma/74403157-20f5-415d-89a7-c505779585cf/0/part-0/tok-0"
+      ],
+      "dense": [
+        "sigma/c9783e20-4793-4164-ba96-d9ee483992c4/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "sigma/5df86130-4e95-4a54-90f7-26541b40aec2/0/part-0/tok-0",
+        "sigma/6e2a900a-ced9-4e4a-a9c2-13e706f9518a/0/part-0/tok-0",
+        "windows-4624/3/part-3/tok-0",
+        "sigma/d88d0ab2-e696-4d40-a2ed-9790064e66b3/0/part-0/tok-0",
+        "attack-pattern--3986e7fd-a8e9-4ecb-bfc6-55920855912b/0/part-0/tok-0",
+        "car/CAR-2019-04-001/0/part-0/tok-0",
+        "sigma/b110ebaf-697f-4da1-afd5-b536fa27a2c1/0/part-0/tok-0",
+        "car/CAR-2020-11-011/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "sigma/c9783e20-4793-4164-ba96-d9ee483992c4/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "sigma/b1377339-fda6-477a-b455-ac0923f9ec2c/0/part-0/tok-0",
+        "attack-pattern--3986e7fd-a8e9-4ecb-bfc6-55920855912b/0/part-0/tok-0",
+        "windows-4624/3/part-3/tok-0",
+        "x-mitre-analytic--7d0595b9-eca7-488d-bbc2-ed02ff4ced9b/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "car/CAR-2019-04-001/0/part-0/tok-0",
+        "sigma/74403157-20f5-415d-89a7-c505779585cf/0/part-0/tok-0",
+        "windows-4624/3/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 41.80399999995643,
+      "dense": 174.99309999993784,
+      "hybrid": 217.30259999958434
+    },
+    "category": "detection_prerequisites",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q058",
+    "rankings": {
+      "bm25": [
+        "sigma/4782eb5a-a513-4523-a0ac-f3082b26ac5c/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "sigma/bdc64095-d59a-42a2-8588-71fd9c9d9abc/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "sigma/74403157-20f5-415d-89a7-c505779585cf/0/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-1",
+        "sigma/ab37a6ec-6068-432b-a64e-2c7bf95b1d22/0/part-0/tok-0",
+        "x-mitre-analytic--6522e464-d3f5-45dd-bfbf-2759f3fa6de2/0/part-0/tok-0",
+        "sysmon/30/part-0/tok-0"
+      ],
+      "dense": [
+        "sigma/4782eb5a-a513-4523-a0ac-f3082b26ac5c/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0",
+        "car/CAR-2014-03-006/0/part-0/tok-0",
+        "sigma/f0507c0f-a3a2-40f5-acc6-7f543c334993/0/part-0/tok-0",
+        "sigma/8d1e674c-5c03-4be1-949c-4b85a472dc16/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "x-mitre-analytic--5f8b5ef5-8b4a-4713-a694-dc0746669a73/0/part-0/tok-0",
+        "sigma/cea72823-df4d-4567-950c-0b579eaf0846/0/part-0/tok-0",
+        "sigma/28c8f68b-098d-45af-8d43-8089f3e35403/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "sigma/4782eb5a-a513-4523-a0ac-f3082b26ac5c/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "car/CAR-2014-03-006/0/part-0/tok-0",
+        "sigma/bdc64095-d59a-42a2-8588-71fd9c9d9abc/0/part-0/tok-0",
+        "sigma/f0507c0f-a3a2-40f5-acc6-7f543c334993/0/part-0/tok-0",
+        "sigma/e2812b49-bae0-4b21-b366-7c142eafcde2/0/part-0/tok-0",
+        "sigma/8d1e674c-5c03-4be1-949c-4b85a472dc16/0/part-0/tok-0",
+        "sigma/f2c64357-b1d2-41b7-849f-34d2682c0fad/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 37.30230000019219,
+      "dense": 183.03460000015548,
+      "hybrid": 220.78600000031656
+    },
+    "category": "detection_prerequisites",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q064",
+    "rankings": {
+      "bm25": [
+        "sigma/40f9af16-589d-4984-b78d-8c2aec023197/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "car/CAR-2019-04-001/0/part-0/tok-1",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "car/CAR-2019-04-001/0/part-0/tok-0",
+        "attack-pattern--42fe883a-21ea-4cfb-b94a-78b6476dcc83/0/part-0/tok-0",
+        "car/CAR-2021-01-008/0/part-0/tok-0",
+        "sigma/30fc8de7-d833-40c4-96b6-28319fbc4f6c/0/part-0/tok-0",
+        "sigma/b110ebaf-697f-4da1-afd5-b536fa27a2c1/0/part-0/tok-0",
+        "sigma/ab37a6ec-6068-432b-a64e-2c7bf95b1d22/0/part-0/tok-0"
+      ],
+      "dense": [
+        "sigma/40f9af16-589d-4984-b78d-8c2aec023197/0/part-0/tok-0",
+        "car/CAR-2019-04-001/0/part-0/tok-0",
+        "car/CAR-2019-04-001/0/part-0/tok-1",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "car/CAR-2021-05-007/0/part-0/tok-0",
+        "car/CAR-2021-01-008/0/part-0/tok-0",
+        "sigma/30fc8de7-d833-40c4-96b6-28319fbc4f6c/0/part-0/tok-0",
+        "sigma/b110ebaf-697f-4da1-afd5-b536fa27a2c1/0/part-0/tok-0",
+        "sigma/6e2a900a-ced9-4e4a-a9c2-13e706f9518a/0/part-0/tok-0",
+        "sigma/586a8d6b-6bfe-4ad9-9d78-888cd2fe50c3/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "sigma/40f9af16-589d-4984-b78d-8c2aec023197/0/part-0/tok-0",
+        "car/CAR-2019-04-001/0/part-0/tok-1",
+        "car/CAR-2019-04-001/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "car/CAR-2021-01-008/0/part-0/tok-0",
+        "sigma/30fc8de7-d833-40c4-96b6-28319fbc4f6c/0/part-0/tok-0",
+        "sigma/b110ebaf-697f-4da1-afd5-b536fa27a2c1/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "sigma/6e2a900a-ced9-4e4a-a9c2-13e706f9518a/0/part-0/tok-0",
+        "sigma/f2c64357-b1d2-41b7-849f-34d2682c0fad/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 40.013400000134425,
+      "dense": 196.497399999771,
+      "hybrid": 237.03059999979814
+    },
+    "category": "detection_prerequisites",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q066",
+    "rankings": {
+      "bm25": [
+        "sigma/ab37a6ec-6068-432b-a64e-2c7bf95b1d22/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-1",
+        "sysmon/39/part-0/tok-0",
+        "sigma/3c89a1e8-0fba-449e-8f1b-8409d6267ec8/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "sigma/cea2b7ea-792b-405f-95a1-b903ea06458f/0/part-0/tok-0",
+        "x-mitre-analytic--6522e464-d3f5-45dd-bfbf-2759f3fa6de2/0/part-0/tok-0",
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "sysmon/30/part-0/tok-0"
+      ],
+      "dense": [
+        "sigma/ab37a6ec-6068-432b-a64e-2c7bf95b1d22/0/part-0/tok-0",
+        "sigma/f92a6f1e-a512-4a15-9735-da09e78d7273/0/part-0/tok-0",
+        "car/CAR-2021-05-002/0/part-0/tok-0",
+        "car/CAR-2021-05-002/0/part-0/tok-1",
+        "car/CAR-2014-03-006/0/part-0/tok-0",
+        "sigma/b110ebaf-697f-4da1-afd5-b536fa27a2c1/0/part-0/tok-0",
+        "sigma/3c89a1e8-0fba-449e-8f1b-8409d6267ec8/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0",
+        "x-mitre-analytic--865c00d7-fc01-4ce6-8fc8-d7a84f2ded36/0/part-0/tok-0",
+        "sigma/28c8f68b-098d-45af-8d43-8089f3e35403/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "sigma/ab37a6ec-6068-432b-a64e-2c7bf95b1d22/0/part-0/tok-0",
+        "sigma/3c89a1e8-0fba-449e-8f1b-8409d6267ec8/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "car/CAR-2021-05-002/0/part-0/tok-0",
+        "sigma/f2c64357-b1d2-41b7-849f-34d2682c0fad/0/part-0/tok-0",
+        "sigma/cea2b7ea-792b-405f-95a1-b903ea06458f/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "x-mitre-analytic--865c00d7-fc01-4ce6-8fc8-d7a84f2ded36/0/part-0/tok-0",
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "car/CAR-2014-03-006/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 38.731300000108604,
+      "dense": 191.76920000018072,
+      "hybrid": 230.97320000033505
+    },
+    "category": "detection_prerequisites",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q070",
+    "rankings": {
+      "bm25": [
+        "sigma/320fccbf-5e32-4101-82b8-2679c5f007c6/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-1",
+        "sigma/bdc64095-d59a-42a2-8588-71fd9c9d9abc/0/part-0/tok-0",
+        "attack-pattern--42fe883a-21ea-4cfb-b94a-78b6476dcc83/0/part-0/tok-0",
+        "x-mitre-analytic--6f2fdf37-f603-4264-aed1-24fe2d1aa094/0/part-0/tok-0",
+        "x-mitre-analytic--6522e464-d3f5-45dd-bfbf-2759f3fa6de2/0/part-0/tok-0",
+        "sysmon/30/part-0/tok-0",
+        "sysmon/14/part-0/tok-0"
+      ],
+      "dense": [
+        "sigma/320fccbf-5e32-4101-82b8-2679c5f007c6/0/part-0/tok-0",
+        "car/CAR-2021-05-007/0/part-0/tok-0",
+        "sigma/b110ebaf-697f-4da1-afd5-b536fa27a2c1/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "sigma/6e2a900a-ced9-4e4a-a9c2-13e706f9518a/0/part-0/tok-0",
+        "sigma/7f2954d2-99c2-4d42-a065-ca36740f187b/0/part-0/tok-0",
+        "sigma/0e8cfe08-02c9-4815-a2f8-0d157b7ed33e/0/part-0/tok-0",
+        "sigma/0248a7bc-8a9a-4cd8-a57e-3ae8e073a073/0/part-0/tok-0",
+        "sigma/52d8b0c6-53d6-439a-9e41-52ad442ad9ad/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "sigma/320fccbf-5e32-4101-82b8-2679c5f007c6/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-1",
+        "windows-4624/3/part-3/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "sysmon/14/part-0/tok-0",
+        "car/CAR-2021-05-007/0/part-0/tok-0",
+        "x-mitre-analytic--6f2fdf37-f603-4264-aed1-24fe2d1aa094/0/part-0/tok-0",
+        "sigma/c598cc0c-9e70-4852-b9eb-8921af79f598/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 38.73359999988679,
+      "dense": 199.9046000000817,
+      "hybrid": 239.13279999987935
+    },
+    "category": "detection_prerequisites",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q072",
+    "rankings": {
+      "bm25": [
+        "sigma/69ffc84e-8b1a-4024-8351-e018f66b8275/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-1",
+        "sysmon/39/part-0/tok-0",
+        "windows-4624/3/part-1/tok-0",
+        "x-mitre-analytic--6522e464-d3f5-45dd-bfbf-2759f3fa6de2/0/part-0/tok-0",
+        "sysmon/30/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "attack-pattern--42fe883a-21ea-4cfb-b94a-78b6476dcc83/0/part-0/tok-0",
+        "sigma/b237c54b-0f15-4612-a819-44b735e0de27/0/part-0/tok-0"
+      ],
+      "dense": [
+        "sigma/69ffc84e-8b1a-4024-8351-e018f66b8275/0/part-0/tok-0",
+        "sigma/d88d0ab2-e696-4d40-a2ed-9790064e66b3/0/part-0/tok-0",
+        "x-mitre-analytic--72033f2d-a943-40be-862c-051317ec541c/0/part-0/tok-0",
+        "attack-pattern--768dce68-8d0d-477a-b01d-0eea98b963a1/0/part-0/tok-0",
+        "car/CAR-2021-05-007/0/part-0/tok-0",
+        "attack-pattern--3986e7fd-a8e9-4ecb-bfc6-55920855912b/0/part-0/tok-0",
+        "sigma/4fee3d51-8069-4a4c-a0f7-924fcaff2c70/0/part-0/tok-0",
+        "sigma/52d8b0c6-53d6-439a-9e41-52ad442ad9ad/0/part-0/tok-0",
+        "sigma/b110ebaf-697f-4da1-afd5-b536fa27a2c1/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "sigma/69ffc84e-8b1a-4024-8351-e018f66b8275/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "x-mitre-analytic--6522e464-d3f5-45dd-bfbf-2759f3fa6de2/0/part-0/tok-0",
+        "sigma/b237c54b-0f15-4612-a819-44b735e0de27/0/part-0/tok-0",
+        "sigma/4fee3d51-8069-4a4c-a0f7-924fcaff2c70/0/part-0/tok-0",
+        "attack-pattern--3986e7fd-a8e9-4ecb-bfc6-55920855912b/0/part-0/tok-0",
+        "attack-pattern--42fe883a-21ea-4cfb-b94a-78b6476dcc83/0/part-0/tok-0",
+        "sigma/5df86130-4e95-4a54-90f7-26541b40aec2/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "sigma/b110ebaf-697f-4da1-afd5-b536fa27a2c1/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 37.75919999998223,
+      "dense": 200.08610000013505,
+      "hybrid": 238.78890000014508
+    },
+    "category": "detection_prerequisites",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q083",
+    "rankings": {
+      "bm25": [
+        "car/CAR-2020-11-011/0/part-0/tok-0",
+        "attack-pattern--7decb26c-715c-40cf-b7e0-026f7d7cc215/0/part-0/tok-0",
+        "attack-pattern--31fe0ba2-62fd-4fd9-9293-4043d84f7fe9/0/part-0/tok-0",
+        "windows-4624/4/part-0/tok-0",
+        "car/CAR-2013-01-002/0/part-0/tok-0",
+        "x-mitre-analytic--6522e464-d3f5-45dd-bfbf-2759f3fa6de2/0/part-0/tok-0",
+        "attack-pattern--768dce68-8d0d-477a-b01d-0eea98b963a1/0/part-0/tok-0",
+        "x-mitre-analytic--0cadbf9f-befa-4bd8-85b8-e5af53383953/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "attack-pattern--3975dbb5-0e1e-4f5b-bae1-cf2ab84b46dc/0/part-0/tok-0"
+      ],
+      "dense": [
+        "car/CAR-2020-11-011/0/part-0/tok-0",
+        "car/CAR-2013-01-002/0/part-0/tok-0",
+        "sigma/5df86130-4e95-4a54-90f7-26541b40aec2/0/part-0/tok-0",
+        "sigma/d88d0ab2-e696-4d40-a2ed-9790064e66b3/0/part-0/tok-0",
+        "sigma/c453ab7a-1f5c-4716-a3b4-dea8135fb43a/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "car/CAR-2021-01-008/0/part-0/tok-0",
+        "car/CAR-2019-04-001/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "car/CAR-2020-08-002/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "car/CAR-2020-11-011/0/part-0/tok-0",
+        "car/CAR-2013-01-002/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "sigma/c453ab7a-1f5c-4716-a3b4-dea8135fb43a/0/part-0/tok-0",
+        "attack-pattern--7decb26c-715c-40cf-b7e0-026f7d7cc215/0/part-0/tok-0",
+        "sigma/d88d0ab2-e696-4d40-a2ed-9790064e66b3/0/part-0/tok-0",
+        "car/CAR-2014-11-008/0/part-0/tok-0",
+        "sigma/162e69a7-7981-4344-84a9-0f1c9a217a52/0/part-0/tok-0",
+        "car/CAR-2021-05-002/0/part-0/tok-0",
+        "sigma/b110ebaf-697f-4da1-afd5-b536fa27a2c1/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 38.836000000173954,
+      "dense": 218.81919999987076,
+      "hybrid": 258.15929999998843
+    },
+    "category": "technique_association",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q085",
+    "rankings": {
+      "bm25": [
+        "car/CAR-2020-05-003/0/part-0/tok-0",
+        "car/CAR-2020-05-003/0/part-0/tok-1",
+        "attack-pattern--7decb26c-715c-40cf-b7e0-026f7d7cc215/0/part-0/tok-0",
+        "car/CAR-2020-08-002/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "attack-pattern--31fe0ba2-62fd-4fd9-9293-4043d84f7fe9/0/part-0/tok-0",
+        "windows-4624/4/part-0/tok-0",
+        "attack-pattern--72b74d71-8169-42aa-92e0-e7b04b9f5a08/0/part-0/tok-0",
+        "attack-pattern--768dce68-8d0d-477a-b01d-0eea98b963a1/0/part-0/tok-0",
+        "car/CAR-2014-11-008/0/part-0/tok-0"
+      ],
+      "dense": [
+        "car/CAR-2020-05-003/0/part-0/tok-0",
+        "car/CAR-2020-05-003/0/part-0/tok-1",
+        "car/CAR-2020-08-002/0/part-0/tok-0",
+        "car/CAR-2020-08-002/0/part-0/tok-1",
+        "car/CAR-2014-11-008/0/part-0/tok-0",
+        "car/CAR-2020-08-002/0/part-0/tok-2",
+        "sigma/f2c64357-b1d2-41b7-849f-34d2682c0fad/0/part-0/tok-0",
+        "car/CAR-2016-04-005/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "x-mitre-analytic--685b05a6-92a3-417d-a917-8e7689e43237/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "car/CAR-2020-05-003/0/part-0/tok-0",
+        "car/CAR-2020-05-003/0/part-0/tok-1",
+        "car/CAR-2020-08-002/0/part-0/tok-0",
+        "car/CAR-2014-11-008/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "car/CAR-2020-08-002/0/part-0/tok-2",
+        "car/CAR-2014-03-006/0/part-0/tok-0",
+        "attack-pattern--3986e7fd-a8e9-4ecb-bfc6-55920855912b/0/part-0/tok-0",
+        "sigma/9aa5106d-bce3-4b13-86df-3a20f1d5cf0b/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 42.809500000203116,
+      "dense": 196.99390000005224,
+      "hybrid": 240.25890000029904
+    },
+    "category": "technique_association",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q095",
+    "rankings": {
+      "bm25": [
+        "car/CAR-2013-05-009/0/part-0/tok-0",
+        "car/CAR-2013-05-009/0/part-0/tok-1",
+        "windows-4624/4/part-0/tok-0",
+        "attack-pattern--768dce68-8d0d-477a-b01d-0eea98b963a1/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "windows-4624/3/part-0/tok-0",
+        "attack-pattern--2b742742-28c3-4e1b-bab7-8350d6300fa7/0/part-0/tok-0",
+        "attack-pattern--7decb26c-715c-40cf-b7e0-026f7d7cc215/0/part-0/tok-0",
+        "attack-pattern--3986e7fd-a8e9-4ecb-bfc6-55920855912b/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0"
+      ],
+      "dense": [
+        "car/CAR-2013-05-009/0/part-0/tok-0",
+        "car/CAR-2013-05-009/0/part-0/tok-1",
+        "car/CAR-2020-08-002/0/part-0/tok-0",
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "car/CAR-2020-08-002/0/part-0/tok-1",
+        "car/CAR-2021-05-007/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0",
+        "x-mitre-analytic--55083ce8-b00e-4501-97db-829082bdbb48/0/part-0/tok-0",
+        "car/CAR-2020-05-003/0/part-0/tok-0",
+        "car/CAR-2013-01-002/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "car/CAR-2013-05-009/0/part-0/tok-0",
+        "car/CAR-2013-05-009/0/part-0/tok-1",
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0",
+        "car/CAR-2020-05-003/0/part-0/tok-0",
+        "car/CAR-2013-01-002/0/part-0/tok-0",
+        "car/CAR-2021-05-007/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "attack-pattern--8e350c1d-ac79-4b5c-bd4e-7476d7e84ec5/0/part-0/tok-0",
+        "sigma/162e69a7-7981-4344-84a9-0f1c9a217a52/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 38.98140000001149,
+      "dense": 179.11729999968884,
+      "hybrid": 218.60819999983505
+    },
+    "category": "technique_association",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q096",
+    "rankings": {
+      "bm25": [
+        "attack-pattern--7decb26c-715c-40cf-b7e0-026f7d7cc215/0/part-0/tok-0",
+        "sigma/40f9af16-589d-4984-b78d-8c2aec023197/0/part-0/tok-0",
+        "attack-pattern--42fe883a-21ea-4cfb-b94a-78b6476dcc83/0/part-0/tok-0",
+        "car/CAR-2019-04-001/0/part-0/tok-0",
+        "sigma/30fc8de7-d833-40c4-96b6-28319fbc4f6c/0/part-0/tok-0",
+        "car/CAR-2019-04-001/0/part-0/tok-1",
+        "attack-pattern--31fe0ba2-62fd-4fd9-9293-4043d84f7fe9/0/part-0/tok-0",
+        "windows-4624/4/part-0/tok-0",
+        "attack-pattern--768dce68-8d0d-477a-b01d-0eea98b963a1/0/part-0/tok-0",
+        "car/CAR-2021-01-008/0/part-0/tok-0"
+      ],
+      "dense": [
+        "car/CAR-2019-04-001/0/part-0/tok-0",
+        "car/CAR-2019-04-001/0/part-0/tok-1",
+        "sigma/40f9af16-589d-4984-b78d-8c2aec023197/0/part-0/tok-0",
+        "car/CAR-2021-01-008/0/part-0/tok-0",
+        "sigma/30fc8de7-d833-40c4-96b6-28319fbc4f6c/0/part-0/tok-0",
+        "car/CAR-2013-01-002/0/part-0/tok-0",
+        "car/CAR-2021-05-007/0/part-0/tok-0",
+        "attack-pattern--3986e7fd-a8e9-4ecb-bfc6-55920855912b/0/part-0/tok-0",
+        "car/CAR-2020-08-002/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "car/CAR-2019-04-001/0/part-0/tok-0",
+        "sigma/40f9af16-589d-4984-b78d-8c2aec023197/0/part-0/tok-0",
+        "car/CAR-2019-04-001/0/part-0/tok-1",
+        "sigma/30fc8de7-d833-40c4-96b6-28319fbc4f6c/0/part-0/tok-0",
+        "car/CAR-2021-01-008/0/part-0/tok-0",
+        "car/CAR-2013-01-002/0/part-0/tok-0",
+        "attack-pattern--3986e7fd-a8e9-4ecb-bfc6-55920855912b/0/part-0/tok-0",
+        "attack-pattern--31fe0ba2-62fd-4fd9-9293-4043d84f7fe9/0/part-0/tok-0",
+        "sigma/b110ebaf-697f-4da1-afd5-b536fa27a2c1/0/part-0/tok-0",
+        "car/CAR-2020-05-003/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 0.5,
+          "mrr": 0.25,
+          "ndcg": 0.26406812257259094
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 0.25,
+          "ndcg": 0.48247555939075515
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.9197207891481876
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.9197207891481876
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 37.67680000009932,
+      "dense": 181.23019999984535,
+      "hybrid": 219.40459999996165
+    },
+    "category": "technique_association",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q097",
+    "rankings": {
+      "bm25": [
+        "attack-pattern--42fe883a-21ea-4cfb-b94a-78b6476dcc83/0/part-0/tok-0",
+        "car/CAR-2021-01-008/0/part-0/tok-0",
+        "attack-pattern--7decb26c-715c-40cf-b7e0-026f7d7cc215/0/part-0/tok-0",
+        "attack-pattern--31fe0ba2-62fd-4fd9-9293-4043d84f7fe9/0/part-0/tok-0",
+        "sigma/40f9af16-589d-4984-b78d-8c2aec023197/0/part-0/tok-0",
+        "sigma/9e3cb244-bdb8-4632-8c90-6079c8f4f16d/0/part-0/tok-0",
+        "windows-4624/4/part-0/tok-0",
+        "attack-pattern--768dce68-8d0d-477a-b01d-0eea98b963a1/0/part-0/tok-0",
+        "attack-pattern--01c9b54f-c04e-41ba-b0c3-cfe784b3a463/0/part-0/tok-0",
+        "attack-pattern--3975dbb5-0e1e-4f5b-bae1-cf2ab84b46dc/0/part-0/tok-0"
+      ],
+      "dense": [
+        "car/CAR-2021-01-008/0/part-0/tok-0",
+        "car/CAR-2019-04-001/0/part-0/tok-0",
+        "sigma/40f9af16-589d-4984-b78d-8c2aec023197/0/part-0/tok-0",
+        "car/CAR-2019-04-001/0/part-0/tok-1",
+        "car/CAR-2021-05-007/0/part-0/tok-0",
+        "sigma/9e3cb244-bdb8-4632-8c90-6079c8f4f16d/0/part-0/tok-0",
+        "car/CAR-2013-01-002/0/part-0/tok-0",
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "x-mitre-analytic--f421cbe1-d42e-45e9-adad-12c6ed0a5cb8/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "car/CAR-2021-01-008/0/part-0/tok-0",
+        "sigma/40f9af16-589d-4984-b78d-8c2aec023197/0/part-0/tok-0",
+        "sigma/9e3cb244-bdb8-4632-8c90-6079c8f4f16d/0/part-0/tok-0",
+        "car/CAR-2019-04-001/0/part-0/tok-0",
+        "car/CAR-2019-04-001/0/part-0/tok-1",
+        "car/CAR-2013-01-002/0/part-0/tok-0",
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "car/CAR-2014-11-008/0/part-0/tok-0",
+        "attack-pattern--3986e7fd-a8e9-4ecb-bfc6-55920855912b/0/part-0/tok-0",
+        "attack-pattern--7decb26c-715c-40cf-b7e0-026f7d7cc215/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714574
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714574
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 41.233399999782705,
+      "dense": 200.8850000001985,
+      "hybrid": 242.61109999997643
+    },
+    "category": "technique_association",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q099",
+    "rankings": {
+      "bm25": [
+        "car/CAR-2020-08-002/0/part-0/tok-0",
+        "car/CAR-2020-08-002/0/part-0/tok-2",
+        "car/CAR-2020-08-002/0/part-0/tok-1",
+        "attack-pattern--7decb26c-715c-40cf-b7e0-026f7d7cc215/0/part-0/tok-0",
+        "car/CAR-2020-05-003/0/part-0/tok-0",
+        "attack-pattern--8e350c1d-ac79-4b5c-bd4e-7476d7e84ec5/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "attack-pattern--31fe0ba2-62fd-4fd9-9293-4043d84f7fe9/0/part-0/tok-0",
+        "attack-pattern--42fe883a-21ea-4cfb-b94a-78b6476dcc83/0/part-0/tok-0",
+        "windows-4624/4/part-0/tok-0"
+      ],
+      "dense": [
+        "car/CAR-2020-08-002/0/part-0/tok-0",
+        "car/CAR-2020-08-002/0/part-0/tok-2",
+        "car/CAR-2020-08-002/0/part-0/tok-1",
+        "car/CAR-2020-05-003/0/part-0/tok-0",
+        "windows-4624/3/part-3/tok-0",
+        "windows-4624/3/part-2/tok-1",
+        "car/CAR-2020-05-003/0/part-0/tok-1",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "sigma/0b4ae027-2a2d-4b93-8c7e-962caaba5b2a/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "car/CAR-2020-08-002/0/part-0/tok-0",
+        "car/CAR-2020-08-002/0/part-0/tok-2",
+        "car/CAR-2020-08-002/0/part-0/tok-1",
+        "car/CAR-2020-05-003/0/part-0/tok-0",
+        "attack-pattern--8e350c1d-ac79-4b5c-bd4e-7476d7e84ec5/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "sigma/9aa5106d-bce3-4b13-86df-3a20f1d5cf0b/0/part-0/tok-0",
+        "sigma/a85ffc3a-e8fd-4040-93bf-78aff284d801/0/part-0/tok-0",
+        "attack-pattern--3986e7fd-a8e9-4ecb-bfc6-55920855912b/0/part-0/tok-0",
+        "car/CAR-2013-05-009/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 41.45430000016859,
+      "dense": 199.6473999997761,
+      "hybrid": 241.6889999999512
+    },
+    "category": "technique_association",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q100",
+    "rankings": {
+      "bm25": [
+        "car/CAR-2014-03-006/0/part-0/tok-0",
+        "windows-4624/4/part-0/tok-0",
+        "sysmon/18/part-0/tok-0",
+        "attack-pattern--7decb26c-715c-40cf-b7e0-026f7d7cc215/0/part-0/tok-0",
+        "car/CAR-2014-03-006/0/part-0/tok-1",
+        "attack-pattern--31fe0ba2-62fd-4fd9-9293-4043d84f7fe9/0/part-0/tok-0",
+        "attack-pattern--768dce68-8d0d-477a-b01d-0eea98b963a1/0/part-0/tok-0",
+        "car/CAR-2020-05-003/0/part-0/tok-0",
+        "x-mitre-analytic--9301fed2-1abe-4250-85b0-7794431e9034/0/part-0/tok-0",
+        "car/CAR-2014-11-008/0/part-0/tok-0"
+      ],
+      "dense": [
+        "car/CAR-2014-03-006/0/part-0/tok-0",
+        "car/CAR-2014-03-006/0/part-0/tok-1",
+        "sigma/586a8d6b-6bfe-4ad9-9d78-888cd2fe50c3/0/part-0/tok-0",
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "sigma/cd0f7229-d16f-42de-8fe3-fba365fbcb3a/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "car/CAR-2016-04-005/0/part-0/tok-0",
+        "x-mitre-analytic--ee4e3e61-e138-498b-93bf-3a5f8fea691c/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0",
+        "sigma/3c89a1e8-0fba-449e-8f1b-8409d6267ec8/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "car/CAR-2014-03-006/0/part-0/tok-0",
+        "car/CAR-2014-03-006/0/part-0/tok-1",
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "car/CAR-2016-04-005/0/part-0/tok-0",
+        "car/CAR-2020-05-003/0/part-0/tok-0",
+        "sigma/3c89a1e8-0fba-449e-8f1b-8409d6267ec8/0/part-0/tok-0",
+        "x-mitre-analytic--ee4e3e61-e138-498b-93bf-3a5f8fea691c/0/part-0/tok-0",
+        "x-mitre-analytic--865c00d7-fc01-4ce6-8fc8-d7a84f2ded36/0/part-0/tok-0",
+        "car/CAR-2014-11-008/0/part-0/tok-0",
+        "sigma/cd0f7229-d16f-42de-8fe3-fba365fbcb3a/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.8503449055347546
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.8503449055347546
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 39.5872999997664,
+      "dense": 204.95879999998579,
+      "hybrid": 245.37019999934273
+    },
+    "category": "technique_association",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q102",
+    "rankings": {
+      "bm25": [
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "attack-pattern--7decb26c-715c-40cf-b7e0-026f7d7cc215/0/part-0/tok-0",
+        "car/CAR-2014-11-008/0/part-0/tok-0",
+        "attack-pattern--2b742742-28c3-4e1b-bab7-8350d6300fa7/0/part-0/tok-0",
+        "attack-pattern--fdc47f44-dd32-4b99-af5f-209f556f63c2/0/part-0/tok-0",
+        "attack-pattern--0458aab9-ad42-4eac-9e22-706a95bafee2/0/part-0/tok-0",
+        "attack-pattern--31fe0ba2-62fd-4fd9-9293-4043d84f7fe9/0/part-0/tok-0",
+        "x-mitre-analytic--5f8b5ef5-8b4a-4713-a694-dc0746669a73/0/part-0/tok-0",
+        "car/CAR-2013-05-009/0/part-0/tok-0",
+        "windows-4624/3/part-0/tok-0"
+      ],
+      "dense": [
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "sigma/586a8d6b-6bfe-4ad9-9d78-888cd2fe50c3/0/part-0/tok-0",
+        "car/CAR-2021-05-007/0/part-0/tok-0",
+        "car/CAR-2020-08-002/0/part-0/tok-0",
+        "sigma/fdfcbd78-48f1-4a4b-90ac-d82241e368c5/0/part-0/tok-0",
+        "car/CAR-2016-04-005/0/part-0/tok-0",
+        "car/CAR-2014-11-008/0/part-0/tok-0",
+        "sigma/52d8b0c6-53d6-439a-9e41-52ad442ad9ad/0/part-0/tok-0",
+        "car/CAR-2013-05-009/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "car/CAR-2014-11-008/0/part-0/tok-0",
+        "car/CAR-2013-05-009/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0",
+        "sigma/52d8b0c6-53d6-439a-9e41-52ad442ad9ad/0/part-0/tok-0",
+        "car/CAR-2020-05-003/0/part-0/tok-0",
+        "car/CAR-2014-03-006/0/part-0/tok-0",
+        "car/CAR-2013-01-002/0/part-0/tok-0",
+        "windows-4624/3/part-3/tok-0",
+        "car/CAR-2014-11-008/0/part-0/tok-1"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 43.0250999997952,
+      "dense": 202.61900000014066,
+      "hybrid": 246.16939999987153
+    },
+    "category": "technique_association",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q109",
+    "rankings": {
+      "bm25": [
+        "car/CAR-2016-04-005/0/part-0/tok-0",
+        "car/CAR-2014-11-008/0/part-0/tok-0",
+        "windows-4624/4/part-0/tok-0",
+        "windows-4624/3/part-0/tok-0",
+        "windows-4624/3/part-2/tok-0",
+        "windows-4624/3/part-1/tok-0",
+        "attack-pattern--7decb26c-715c-40cf-b7e0-026f7d7cc215/0/part-0/tok-0",
+        "attack-pattern--fdc47f44-dd32-4b99-af5f-209f556f63c2/0/part-0/tok-0",
+        "attack-pattern--31fe0ba2-62fd-4fd9-9293-4043d84f7fe9/0/part-0/tok-0",
+        "attack-pattern--768dce68-8d0d-477a-b01d-0eea98b963a1/0/part-0/tok-0"
+      ],
+      "dense": [
+        "car/CAR-2016-04-005/0/part-0/tok-0",
+        "windows-4624/3/part-0/tok-0",
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "windows-4624/3/part-2/tok-1",
+        "car/CAR-2014-11-008/0/part-0/tok-0",
+        "sigma/586a8d6b-6bfe-4ad9-9d78-888cd2fe50c3/0/part-0/tok-0",
+        "sigma/b1377339-fda6-477a-b455-ac0923f9ec2c/0/part-0/tok-0",
+        "car/CAR-2014-03-006/0/part-0/tok-0",
+        "windows-4624/3/part-3/tok-0",
+        "car/CAR-2021-05-007/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "car/CAR-2016-04-005/0/part-0/tok-0",
+        "windows-4624/3/part-0/tok-0",
+        "car/CAR-2014-11-008/0/part-0/tok-0",
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "car/CAR-2014-03-006/0/part-0/tok-0",
+        "windows-4624/3/part-2/tok-1",
+        "windows-4624/3/part-3/tok-0",
+        "windows-4624/3/part-2/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "windows-4624/3/part-1/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 38.39079999988826,
+      "dense": 195.55330000002868,
+      "hybrid": 234.4231000001855
+    },
+    "category": "technique_association",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q084",
+    "rankings": {
+      "bm25": [
+        "car/CAR-2021-05-002/0/part-0/tok-0",
+        "car/CAR-2021-05-002/0/part-0/tok-1",
+        "attack-pattern--7decb26c-715c-40cf-b7e0-026f7d7cc215/0/part-0/tok-0",
+        "sysmon/18/part-0/tok-0",
+        "attack-pattern--31fe0ba2-62fd-4fd9-9293-4043d84f7fe9/0/part-0/tok-0",
+        "sigma/fff9d2b7-e11c-4a69-93d3-40ef66189767/0/part-0/tok-0",
+        "sysmon/9/part-0/tok-0",
+        "windows-4624/4/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "attack-pattern--768dce68-8d0d-477a-b01d-0eea98b963a1/0/part-0/tok-0"
+      ],
+      "dense": [
+        "car/CAR-2021-05-002/0/part-0/tok-0",
+        "car/CAR-2021-05-002/0/part-0/tok-1",
+        "car/CAR-2014-03-006/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0",
+        "car/CAR-2021-05-007/0/part-0/tok-0",
+        "car/CAR-2020-08-002/0/part-0/tok-0",
+        "car/CAR-2019-04-001/0/part-0/tok-0",
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "car/CAR-2020-08-002/0/part-0/tok-1",
+        "car/CAR-2019-04-001/0/part-0/tok-1"
+      ],
+      "hybrid": [
+        "car/CAR-2021-05-002/0/part-0/tok-0",
+        "car/CAR-2021-05-002/0/part-0/tok-1",
+        "sysmon/39/part-0/tok-0",
+        "car/CAR-2020-08-002/0/part-0/tok-0",
+        "car/CAR-2013-01-002/0/part-0/tok-0",
+        "car/CAR-2014-03-006/0/part-0/tok-0",
+        "car/CAR-2021-05-007/0/part-0/tok-0",
+        "car/CAR-2019-04-001/0/part-0/tok-0",
+        "sigma/f92a6f1e-a512-4a15-9735-da09e78d7273/0/part-0/tok-0",
+        "car/CAR-2014-03-005/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 39.017499999772554,
+      "dense": 179.9012000001312,
+      "hybrid": 219.4368000000395
+    },
+    "category": "technique_association",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q094",
+    "rankings": {
+      "bm25": [
+        "car/CAR-2016-04-002/0/part-0/tok-0",
+        "car/CAR-2016-04-002/0/part-0/tok-1",
+        "windows-4624/4/part-0/tok-0",
+        "windows-4624/3/part-1/tok-0",
+        "attack-pattern--7decb26c-715c-40cf-b7e0-026f7d7cc215/0/part-0/tok-0",
+        "attack-pattern--31fe0ba2-62fd-4fd9-9293-4043d84f7fe9/0/part-0/tok-0",
+        "sysmon/9/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "windows-4624/3/part-2/tok-0",
+        "sysmon/14/part-0/tok-0"
+      ],
+      "dense": [
+        "car/CAR-2016-04-002/0/part-0/tok-0",
+        "car/CAR-2016-04-002/0/part-0/tok-1",
+        "car/CAR-2019-04-001/0/part-0/tok-0",
+        "x-mitre-data-component--5297a638-1382-4f0c-8472-0d21830bf705/0/part-0/tok-0",
+        "car/CAR-2016-04-005/0/part-0/tok-0",
+        "attack-pattern--3975dbb5-0e1e-4f5b-bae1-cf2ab84b46dc/0/part-0/tok-0",
+        "car/CAR-2013-01-002/0/part-0/tok-0",
+        "car/CAR-2020-11-011/0/part-0/tok-0",
+        "car/CAR-2014-11-008/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "car/CAR-2016-04-002/0/part-0/tok-0",
+        "car/CAR-2016-04-002/0/part-0/tok-1",
+        "x-mitre-data-component--5297a638-1382-4f0c-8472-0d21830bf705/0/part-0/tok-0",
+        "attack-pattern--3975dbb5-0e1e-4f5b-bae1-cf2ab84b46dc/0/part-0/tok-0",
+        "car/CAR-2016-04-005/0/part-0/tok-0",
+        "windows-4624/4/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "car/CAR-2014-03-006/0/part-0/tok-0",
+        "sysmon/14/part-0/tok-0",
+        "windows-4624/3/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 38.59519999969052,
+      "dense": 204.67870000038602,
+      "hybrid": 243.7670000003891
+    },
+    "category": "technique_association",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q101",
+    "rankings": {
+      "bm25": [
+        "car/CAR-2013-05-002/0/part-0/tok-0",
+        "attack-pattern--7decb26c-715c-40cf-b7e0-026f7d7cc215/0/part-0/tok-0",
+        "sysmon/18/part-0/tok-0",
+        "windows-4624/4/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-1",
+        "attack-pattern--31fe0ba2-62fd-4fd9-9293-4043d84f7fe9/0/part-0/tok-0",
+        "car/CAR-2014-11-008/0/part-0/tok-0",
+        "attack-pattern--768dce68-8d0d-477a-b01d-0eea98b963a1/0/part-0/tok-0",
+        "car/CAR-2013-01-002/0/part-0/tok-0",
+        "sigma/fff9d2b7-e11c-4a69-93d3-40ef66189767/0/part-0/tok-0"
+      ],
+      "dense": [
+        "car/CAR-2013-05-002/0/part-0/tok-0",
+        "car/CAR-2013-01-002/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-1",
+        "sigma/f2c64357-b1d2-41b7-849f-34d2682c0fad/0/part-0/tok-0",
+        "sigma/b7e2a8d4-74bb-4b78-adc9-3f92af2d4829/0/part-0/tok-0",
+        "car/CAR-2021-05-007/0/part-0/tok-0",
+        "x-mitre-analytic--72033f2d-a943-40be-862c-051317ec541c/0/part-0/tok-0",
+        "sigma/3c89a1e8-0fba-449e-8f1b-8409d6267ec8/0/part-0/tok-0",
+        "sigma/fff9d2b7-e11c-4a69-93d3-40ef66189767/0/part-0/tok-0",
+        "car/CAR-2014-03-005/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "car/CAR-2013-05-002/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-1",
+        "car/CAR-2013-01-002/0/part-0/tok-0",
+        "sigma/f2c64357-b1d2-41b7-849f-34d2682c0fad/0/part-0/tok-0",
+        "sigma/fff9d2b7-e11c-4a69-93d3-40ef66189767/0/part-0/tok-0",
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "sigma/b7e2a8d4-74bb-4b78-adc9-3f92af2d4829/0/part-0/tok-0",
+        "car/CAR-2014-11-008/0/part-0/tok-0",
+        "sigma/3d2a2d59-929c-4b78-8c1a-145dfe9e07b1/0/part-0/tok-0",
+        "car/CAR-2020-05-003/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.8503449055347546
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.8503449055347546
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.9197207891481876
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.9197207891481876
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 38.490899999942485,
+      "dense": 181.2780999998722,
+      "hybrid": 220.5458999997063
+    },
+    "category": "technique_association",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q103",
+    "rankings": {
+      "bm25": [
+        "car/CAR-2014-11-008/0/part-0/tok-0",
+        "car/CAR-2014-11-008/0/part-0/tok-1",
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "attack-pattern--7decb26c-715c-40cf-b7e0-026f7d7cc215/0/part-0/tok-0",
+        "sigma/7610a4ea-c06d-495f-a2ac-0a696abcfd3b/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "attack-pattern--31fe0ba2-62fd-4fd9-9293-4043d84f7fe9/0/part-0/tok-0",
+        "windows-4624/4/part-0/tok-0",
+        "x-mitre-analytic--6522e464-d3f5-45dd-bfbf-2759f3fa6de2/0/part-0/tok-0",
+        "car/CAR-2020-05-003/0/part-0/tok-0"
+      ],
+      "dense": [
+        "car/CAR-2014-11-008/0/part-0/tok-0",
+        "car/CAR-2014-11-008/0/part-0/tok-1",
+        "sigma/7610a4ea-c06d-495f-a2ac-0a696abcfd3b/0/part-0/tok-0",
+        "car/CAR-2016-04-005/0/part-0/tok-0",
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "car/CAR-2016-04-002/0/part-0/tok-1",
+        "sigma/b1377339-fda6-477a-b455-ac0923f9ec2c/0/part-0/tok-0",
+        "car/CAR-2020-05-003/0/part-0/tok-0",
+        "car/CAR-2014-03-006/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0"
+      ],
+      "hybrid": [
+        "car/CAR-2014-11-008/0/part-0/tok-0",
+        "car/CAR-2014-11-008/0/part-0/tok-1",
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "sigma/7610a4ea-c06d-495f-a2ac-0a696abcfd3b/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "car/CAR-2020-05-003/0/part-0/tok-0",
+        "car/CAR-2014-03-006/0/part-0/tok-0",
+        "car/CAR-2016-04-002/0/part-0/tok-1",
+        "car/CAR-2016-04-005/0/part-0/tok-0",
+        "car/CAR-2021-05-002/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 40.6898999999612,
+      "dense": 193.08009999986098,
+      "hybrid": 234.2996999996103
+    },
+    "category": "technique_association",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q129",
+    "rankings": {
+      "bm25": [
+        "x-mitre-analytic--682f84f1-5571-4d41-b071-53c8f72a88f1/0/part-0/tok-0",
+        "x-mitre-analytic--6522e464-d3f5-45dd-bfbf-2759f3fa6de2/0/part-0/tok-0",
+        "x-mitre-analytic--031ed94b-50d9-451e-a853-29ee8d845773/0/part-0/tok-0",
+        "x-mitre-analytic--8cbeecbb-429f-4f30-9f42-266aaa7b2c0f/0/part-0/tok-0",
+        "x-mitre-analytic--0e7e1861-14be-4862-8cba-6344e6e196f2/0/part-0/tok-0",
+        "x-mitre-analytic--0e832ea1-a261-4bdd-8fc8-ae049468c347/0/part-0/tok-0",
+        "x-mitre-analytic--42683860-d6df-4585-af65-31f783269f8f/0/part-0/tok-0",
+        "x-mitre-analytic--9199891a-1543-4f51-be59-4fffb03dfd43/0/part-0/tok-0",
+        "x-mitre-analytic--00bf6b2e-444a-4a83-aafd-43bc8eea4594/0/part-0/tok-0",
+        "x-mitre-analytic--8825b589-3a6a-483a-9fc0-a4d00b1183ab/0/part-0/tok-0"
+      ],
+      "dense": [
+        "x-mitre-analytic--6f7fa682-fd50-4de4-add3-cbaa3c127b70/0/part-0/tok-0",
+        "x-mitre-analytic--5f8b5ef5-8b4a-4713-a694-dc0746669a73/0/part-0/tok-0",
+        "x-mitre-analytic--f4af0b1b-db51-4266-8b02-2cdfcb191f60/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "x-mitre-analytic--671050c7-7e86-4be7-9ab4-aa9c763fad44/0/part-0/tok-0",
+        "x-mitre-analytic--55083ce8-b00e-4501-97db-829082bdbb48/0/part-0/tok-0",
+        "car/CAR-2013-01-002/0/part-0/tok-0",
+        "x-mitre-analytic--867239cd-7939-446c-9efb-b2a7a5bd5403/0/part-0/tok-0",
+        "x-mitre-analytic--685b05a6-92a3-417d-a917-8e7689e43237/0/part-0/tok-0",
+        "x-mitre-analytic--c031c27b-4d05-406a-8538-04ce1df41d35/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "car/CAR-2013-01-002/0/part-0/tok-0",
+        "x-mitre-analytic--8cbeecbb-429f-4f30-9f42-266aaa7b2c0f/0/part-0/tok-0",
+        "x-mitre-analytic--671050c7-7e86-4be7-9ab4-aa9c763fad44/0/part-0/tok-0",
+        "x-mitre-analytic--6522e464-d3f5-45dd-bfbf-2759f3fa6de2/0/part-0/tok-0",
+        "x-mitre-analytic--f4af0b1b-db51-4266-8b02-2cdfcb191f60/0/part-0/tok-0",
+        "x-mitre-analytic--031ed94b-50d9-451e-a853-29ee8d845773/0/part-0/tok-0",
+        "x-mitre-analytic--5f8b5ef5-8b4a-4713-a694-dc0746669a73/0/part-0/tok-0",
+        "x-mitre-analytic--c031c27b-4d05-406a-8538-04ce1df41d35/0/part-0/tok-0",
+        "x-mitre-analytic--682f84f1-5571-4d41-b071-53c8f72a88f1/0/part-0/tok-0",
+        "x-mitre-analytic--2adf0c92-5d0a-459d-affc-f4abd4d406d0/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0
+        },
+        "10": {
+          "recall": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 0.1111111111111111,
+          "ndcg": 0.3010299956639812
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 39.394699999775185,
+      "dense": 177.68720000003668,
+      "hybrid": 217.63929999997345
+    },
+    "category": "cross_language",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q112",
+    "rankings": {
+      "bm25": [
+        "attack-pattern--42fe883a-21ea-4cfb-b94a-78b6476dcc83/0/part-0/tok-0",
+        "sigma/320fccbf-5e32-4101-82b8-2679c5f007c6/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "sigma/ff0f2b05-09db-4095-b96d-1b75ca24894a/0/part-0/tok-0",
+        "x-mitre-analytic--9d76d84b-6393-45cf-b872-eb5921508ee3/0/part-0/tok-0",
+        "x-mitre-analytic--a677cebe-06e8-4993-bd4c-6a6884862444/0/part-0/tok-0",
+        "sigma/8d1e674c-5c03-4be1-949c-4b85a472dc16/0/part-0/tok-0",
+        "sigma/0e8cfe08-02c9-4815-a2f8-0d157b7ed33e/0/part-0/tok-0",
+        "attack-pattern--df8b2a25-8bdf-4856-953c-a04372b1c161/0/part-0/tok-0",
+        "sigma/b110ebaf-697f-4da1-afd5-b536fa27a2c1/0/part-0/tok-0"
+      ],
+      "dense": [
+        "attack-pattern--42fe883a-21ea-4cfb-b94a-78b6476dcc83/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "sigma/df4dc653-1029-47ba-8231-3c44238cc0ae/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "sigma/b110ebaf-697f-4da1-afd5-b536fa27a2c1/0/part-0/tok-0",
+        "car/CAR-2019-04-001/0/part-0/tok-0",
+        "car/CAR-2013-05-009/0/part-0/tok-0",
+        "x-mitre-analytic--867239cd-7939-446c-9efb-b2a7a5bd5403/0/part-0/tok-0",
+        "x-mitre-analytic--500ae9f9-c6c2-4160-ac03-072d963eba63/0/part-0/tok-0",
+        "sysmon/16/part-0/tok-0"
+      ],
+      "hybrid": [
+        "attack-pattern--42fe883a-21ea-4cfb-b94a-78b6476dcc83/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "sigma/b110ebaf-697f-4da1-afd5-b536fa27a2c1/0/part-0/tok-0",
+        "sigma/8d1e674c-5c03-4be1-949c-4b85a472dc16/0/part-0/tok-0",
+        "sigma/18ee686c-38a3-4f65-9f44-48a077141f42/0/part-0/tok-0",
+        "sigma/28c8f68b-098d-45af-8d43-8089f3e35403/0/part-0/tok-0",
+        "sigma/0e8cfe08-02c9-4815-a2f8-0d157b7ed33e/0/part-0/tok-0",
+        "sigma/ab37a6ec-6068-432b-a64e-2c7bf95b1d22/0/part-0/tok-0",
+        "sigma/320fccbf-5e32-4101-82b8-2679c5f007c6/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 21.646200000304816,
+      "dense": 187.5678000001244,
+      "hybrid": 209.621700000298
+    },
+    "category": "cross_language",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q113",
+    "rankings": {
+      "bm25": [
+        "x-mitre-analytic--2e700f3b-bf9c-427c-a099-b80d233c1ccb/0/part-0/tok-0",
+        "x-mitre-analytic--6522e464-d3f5-45dd-bfbf-2759f3fa6de2/0/part-0/tok-0",
+        "x-mitre-analytic--031ed94b-50d9-451e-a853-29ee8d845773/0/part-0/tok-0",
+        "x-mitre-analytic--8cbeecbb-429f-4f30-9f42-266aaa7b2c0f/0/part-0/tok-0",
+        "x-mitre-analytic--0e7e1861-14be-4862-8cba-6344e6e196f2/0/part-0/tok-0",
+        "x-mitre-analytic--0e832ea1-a261-4bdd-8fc8-ae049468c347/0/part-0/tok-0",
+        "x-mitre-analytic--42683860-d6df-4585-af65-31f783269f8f/0/part-0/tok-0",
+        "x-mitre-analytic--9199891a-1543-4f51-be59-4fffb03dfd43/0/part-0/tok-0",
+        "x-mitre-analytic--00bf6b2e-444a-4a83-aafd-43bc8eea4594/0/part-0/tok-0",
+        "x-mitre-analytic--8825b589-3a6a-483a-9fc0-a4d00b1183ab/0/part-0/tok-0"
+      ],
+      "dense": [
+        "x-mitre-analytic--f4af0b1b-db51-4266-8b02-2cdfcb191f60/0/part-0/tok-0",
+        "x-mitre-analytic--671050c7-7e86-4be7-9ab4-aa9c763fad44/0/part-0/tok-0",
+        "x-mitre-analytic--2e700f3b-bf9c-427c-a099-b80d233c1ccb/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "x-mitre-analytic--0b8b8557-0393-4c63-963f-e5a3b5cc6ad8/0/part-0/tok-0",
+        "x-mitre-analytic--c15f60a8-6e58-460f-8dcf-1bce272b5eaf/0/part-0/tok-0",
+        "x-mitre-analytic--55083ce8-b00e-4501-97db-829082bdbb48/0/part-0/tok-0",
+        "x-mitre-analytic--867239cd-7939-446c-9efb-b2a7a5bd5403/0/part-0/tok-0",
+        "x-mitre-analytic--ee4e3e61-e138-498b-93bf-3a5f8fea691c/0/part-0/tok-0",
+        "x-mitre-analytic--6f7fa682-fd50-4de4-add3-cbaa3c127b70/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "x-mitre-analytic--2e700f3b-bf9c-427c-a099-b80d233c1ccb/0/part-0/tok-0",
+        "x-mitre-analytic--671050c7-7e86-4be7-9ab4-aa9c763fad44/0/part-0/tok-0",
+        "x-mitre-analytic--8cbeecbb-429f-4f30-9f42-266aaa7b2c0f/0/part-0/tok-0",
+        "x-mitre-analytic--f4af0b1b-db51-4266-8b02-2cdfcb191f60/0/part-0/tok-0",
+        "x-mitre-analytic--6522e464-d3f5-45dd-bfbf-2759f3fa6de2/0/part-0/tok-0",
+        "x-mitre-analytic--0e832ea1-a261-4bdd-8fc8-ae049468c347/0/part-0/tok-0",
+        "car/CAR-2013-01-002/0/part-0/tok-0",
+        "x-mitre-analytic--c15f60a8-6e58-460f-8dcf-1bce272b5eaf/0/part-0/tok-0",
+        "x-mitre-analytic--c031c27b-4d05-406a-8538-04ce1df41d35/0/part-0/tok-0",
+        "x-mitre-analytic--f421cbe1-d42e-45e9-adad-12c6ed0a5cb8/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 36.81899999992311,
+      "dense": 200.92960000010862,
+      "hybrid": 238.30279999992854
+    },
+    "category": "cross_language",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q122",
+    "rankings": {
+      "bm25": [
+        "attack-pattern--60c4b628-4807-4b0b-bbf5-fdac8643c337/0/part-0/tok-0",
+        "x-mitre-analytic--671050c7-7e86-4be7-9ab4-aa9c763fad44/0/part-0/tok-0",
+        "windows-4624/3/part-1/tok-0",
+        "attack-pattern--3975dbb5-0e1e-4f5b-bae1-cf2ab84b46dc/0/part-0/tok-0",
+        "windows-4624/3/part-0/tok-1",
+        "sigma/cc9cbe82-7bc0-4ef5-bc23-bbfb83947be7/0/part-0/tok-0",
+        "sigma/c9783e20-4793-4164-ba96-d9ee483992c4/0/part-0/tok-0",
+        "attack-pattern--df8b2a25-8bdf-4856-953c-a04372b1c161/0/part-0/tok-0",
+        "sigma/f0507c0f-a3a2-40f5-acc6-7f543c334993/0/part-0/tok-0",
+        "attack-pattern--3986e7fd-a8e9-4ecb-bfc6-55920855912b/0/part-0/tok-0"
+      ],
+      "dense": [
+        "sigma/9705a6a1-6db6-4a16-a987-15b7151e299b/0/part-0/tok-0",
+        "x-mitre-analytic--671050c7-7e86-4be7-9ab4-aa9c763fad44/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "x-mitre-analytic--f4af0b1b-db51-4266-8b02-2cdfcb191f60/0/part-0/tok-0",
+        "sigma/259e5a6a-b8d2-4c38-86e2-26c5e651361d/0/part-0/tok-0",
+        "sigma/cea2b7ea-792b-405f-95a1-b903ea06458f/0/part-0/tok-0",
+        "sigma/b110ebaf-697f-4da1-afd5-b536fa27a2c1/0/part-0/tok-0",
+        "sigma/f0507c0f-a3a2-40f5-acc6-7f543c334993/0/part-0/tok-0",
+        "car/CAR-2013-01-002/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "x-mitre-analytic--671050c7-7e86-4be7-9ab4-aa9c763fad44/0/part-0/tok-0",
+        "sigma/f0507c0f-a3a2-40f5-acc6-7f543c334993/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "windows-4624/3/part-1/tok-0",
+        "attack-pattern--60c4b628-4807-4b0b-bbf5-fdac8643c337/0/part-0/tok-0",
+        "sigma/cc9cbe82-7bc0-4ef5-bc23-bbfb83947be7/0/part-0/tok-0",
+        "sigma/9705a6a1-6db6-4a16-a987-15b7151e299b/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "attack-pattern--3975dbb5-0e1e-4f5b-bae1-cf2ab84b46dc/0/part-0/tok-0",
+        "car/CAR-2014-03-005/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0
+        },
+        "10": {
+          "recall": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 0.2,
+          "ndcg": 0.38685280723454163
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 0.2,
+          "ndcg": 0.38685280723454163
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 11.248400000113179,
+      "dense": 175.7649000001038,
+      "hybrid": 187.3705000002701
+    },
+    "category": "cross_language",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q126",
+    "rankings": {
+      "bm25": [
+        "x-mitre-analytic--5f584d00-63b5-44c5-b629-ff238f5b9931/0/part-0/tok-0",
+        "attack-pattern--72b74d71-8169-42aa-92e0-e7b04b9f5a08/0/part-0/tok-0",
+        "sigma/9705a6a1-6db6-4a16-a987-15b7151e299b/0/part-0/tok-0",
+        "windows-4624/4/part-0/tok-0",
+        "sigma/3b4e950b-a3ea-44d3-877e-432071990709/0/part-0/tok-0",
+        "x-mitre-analytic--42683860-d6df-4585-af65-31f783269f8f/0/part-0/tok-0",
+        "windows-4624/3/part-1/tok-0",
+        "attack-pattern--768dce68-8d0d-477a-b01d-0eea98b963a1/0/part-0/tok-0",
+        "attack-pattern--01c9b54f-c04e-41ba-b0c3-cfe784b3a463/0/part-0/tok-0",
+        "attack-pattern--e358d692-23c0-4a31-9eb6-ecc13a8d7735/0/part-0/tok-0"
+      ],
+      "dense": [
+        "attack-pattern--72b74d71-8169-42aa-92e0-e7b04b9f5a08/0/part-0/tok-0",
+        "x-mitre-analytic--0b8b8557-0393-4c63-963f-e5a3b5cc6ad8/0/part-0/tok-0",
+        "x-mitre-analytic--5f584d00-63b5-44c5-b629-ff238f5b9931/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "sigma/9705a6a1-6db6-4a16-a987-15b7151e299b/0/part-0/tok-0",
+        "x-mitre-analytic--f4af0b1b-db51-4266-8b02-2cdfcb191f60/0/part-0/tok-0",
+        "sigma/6d844f0f-1c18-41af-8f19-33e7654edfc3/0/part-0/tok-0",
+        "car/CAR-2019-04-001/0/part-0/tok-0",
+        "sigma/df4dc653-1029-47ba-8231-3c44238cc0ae/0/part-0/tok-0",
+        "x-mitre-analytic--cce3f1e3-a688-4519-bd9b-0ec5ba57bc11/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "attack-pattern--72b74d71-8169-42aa-92e0-e7b04b9f5a08/0/part-0/tok-0",
+        "x-mitre-analytic--5f584d00-63b5-44c5-b629-ff238f5b9931/0/part-0/tok-0",
+        "sigma/9705a6a1-6db6-4a16-a987-15b7151e299b/0/part-0/tok-0",
+        "windows-4624/4/part-0/tok-0",
+        "x-mitre-analytic--cce3f1e3-a688-4519-bd9b-0ec5ba57bc11/0/part-0/tok-0",
+        "car/CAR-2019-04-001/0/part-0/tok-0",
+        "sigma/3b4e950b-a3ea-44d3-877e-432071990709/0/part-0/tok-0",
+        "windows-4624/3/part-1/tok-0",
+        "attack-pattern--fdc47f44-dd32-4b99-af5f-209f556f63c2/0/part-0/tok-0",
+        "sigma/f92a6f1e-a512-4a15-9735-da09e78d7273/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714574
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714574
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 22.343999999975495,
+      "dense": 171.51130000002013,
+      "hybrid": 194.2472999999154
+    },
+    "category": "cross_language",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "q128",
+    "rankings": {
+      "bm25": [
+        "x-mitre-analytic--8cbeecbb-429f-4f30-9f42-266aaa7b2c0f/0/part-0/tok-0",
+        "x-mitre-analytic--6522e464-d3f5-45dd-bfbf-2759f3fa6de2/0/part-0/tok-0",
+        "x-mitre-analytic--031ed94b-50d9-451e-a853-29ee8d845773/0/part-0/tok-0",
+        "x-mitre-analytic--0e7e1861-14be-4862-8cba-6344e6e196f2/0/part-0/tok-0",
+        "x-mitre-analytic--0e832ea1-a261-4bdd-8fc8-ae049468c347/0/part-0/tok-0",
+        "x-mitre-analytic--42683860-d6df-4585-af65-31f783269f8f/0/part-0/tok-0",
+        "x-mitre-analytic--9199891a-1543-4f51-be59-4fffb03dfd43/0/part-0/tok-0",
+        "x-mitre-analytic--00bf6b2e-444a-4a83-aafd-43bc8eea4594/0/part-0/tok-0",
+        "x-mitre-analytic--8825b589-3a6a-483a-9fc0-a4d00b1183ab/0/part-0/tok-0",
+        "car/CAR-2013-01-002/0/part-0/tok-0"
+      ],
+      "dense": [
+        "x-mitre-analytic--8cbeecbb-429f-4f30-9f42-266aaa7b2c0f/0/part-0/tok-0",
+        "x-mitre-analytic--55083ce8-b00e-4501-97db-829082bdbb48/0/part-0/tok-0",
+        "x-mitre-analytic--6f7fa682-fd50-4de4-add3-cbaa3c127b70/0/part-0/tok-0",
+        "x-mitre-analytic--685b05a6-92a3-417d-a917-8e7689e43237/0/part-0/tok-0",
+        "x-mitre-analytic--0b8b8557-0393-4c63-963f-e5a3b5cc6ad8/0/part-0/tok-0",
+        "x-mitre-analytic--c15f60a8-6e58-460f-8dcf-1bce272b5eaf/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "x-mitre-analytic--f4af0b1b-db51-4266-8b02-2cdfcb191f60/0/part-0/tok-0",
+        "car/CAR-2013-01-002/0/part-0/tok-0",
+        "x-mitre-analytic--ee4e3e61-e138-498b-93bf-3a5f8fea691c/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "x-mitre-analytic--8cbeecbb-429f-4f30-9f42-266aaa7b2c0f/0/part-0/tok-0",
+        "car/CAR-2013-01-002/0/part-0/tok-0",
+        "x-mitre-analytic--6522e464-d3f5-45dd-bfbf-2759f3fa6de2/0/part-0/tok-0",
+        "x-mitre-analytic--c15f60a8-6e58-460f-8dcf-1bce272b5eaf/0/part-0/tok-0",
+        "x-mitre-analytic--55083ce8-b00e-4501-97db-829082bdbb48/0/part-0/tok-0",
+        "x-mitre-analytic--f4af0b1b-db51-4266-8b02-2cdfcb191f60/0/part-0/tok-0",
+        "x-mitre-analytic--685b05a6-92a3-417d-a917-8e7689e43237/0/part-0/tok-0",
+        "x-mitre-analytic--6f7fa682-fd50-4de4-add3-cbaa3c127b70/0/part-0/tok-0",
+        "x-mitre-analytic--f421cbe1-d42e-45e9-adad-12c6ed0a5cb8/0/part-0/tok-0",
+        "x-mitre-analytic--671050c7-7e86-4be7-9ab4-aa9c763fad44/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 50.79040000009627,
+      "dense": 192.85930000023654,
+      "hybrid": 244.09110000033252
+    },
+    "category": "cross_language",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "fp003",
+    "rankings": {
+      "bm25": [
+        "sigma/11b52f18-aaec-4d60-9143-5dd8cc4706b9/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "sigma/cd0f7229-d16f-42de-8fe3-fba365fbcb3a/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "attack-pattern--2b742742-28c3-4e1b-bab7-8350d6300fa7/0/part-0/tok-0",
+        "zeek-dns/2/part-0/tok-0",
+        "x-mitre-analytic--0cadbf9f-befa-4bd8-85b8-e5af53383953/0/part-0/tok-0",
+        "sysmon/30/part-0/tok-0",
+        "windows-4624/4/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-1"
+      ],
+      "dense": [
+        "sigma/11b52f18-aaec-4d60-9143-5dd8cc4706b9/0/part-0/tok-0",
+        "sigma/cd0f7229-d16f-42de-8fe3-fba365fbcb3a/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "sigma/b110ebaf-697f-4da1-afd5-b536fa27a2c1/0/part-0/tok-0",
+        "car/CAR-2014-03-006/0/part-0/tok-0",
+        "attack-pattern--2e45d340-f00b-4bd6-b5c9-c2ef54b8894c/0/part-0/tok-0",
+        "sigma/40f9af16-589d-4984-b78d-8c2aec023197/0/part-0/tok-0",
+        "sigma/320fccbf-5e32-4101-82b8-2679c5f007c6/0/part-0/tok-0",
+        "x-mitre-analytic--72033f2d-a943-40be-862c-051317ec541c/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "sigma/11b52f18-aaec-4d60-9143-5dd8cc4706b9/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "sigma/cd0f7229-d16f-42de-8fe3-fba365fbcb3a/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "sigma/320fccbf-5e32-4101-82b8-2679c5f007c6/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0",
+        "x-mitre-analytic--0cadbf9f-befa-4bd8-85b8-e5af53383953/0/part-0/tok-0",
+        "attack-pattern--2e45d340-f00b-4bd6-b5c9-c2ef54b8894c/0/part-0/tok-0",
+        "car/CAR-2020-05-003/0/part-0/tok-0",
+        "sysmon/14/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 43.243600000096194,
+      "dense": 223.92160000026706,
+      "hybrid": 267.70120000037423
+    },
+    "category": "false_positives",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "fp004",
+    "rankings": {
+      "bm25": [
+        "sigma/9082ff1f-88ab-4678-a3cc-5bcff99fc74d/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "zeek-dns/2/part-0/tok-0",
+        "car/CAR-2020-05-003/0/part-0/tok-0",
+        "sysmon/30/part-0/tok-0",
+        "zeek-dns/1/part-0/tok-1",
+        "sysmon/14/part-0/tok-0",
+        "sigma/3b4e950b-a3ea-44d3-877e-432071990709/0/part-0/tok-0",
+        "attack-pattern--2b742742-28c3-4e1b-bab7-8350d6300fa7/0/part-0/tok-0"
+      ],
+      "dense": [
+        "sigma/9082ff1f-88ab-4678-a3cc-5bcff99fc74d/0/part-0/tok-0",
+        "sigma/6e2a900a-ced9-4e4a-a9c2-13e706f9518a/0/part-0/tok-0",
+        "sigma/c598cc0c-9e70-4852-b9eb-8921af79f598/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "sigma/9e099d99-44c2-42b6-a6d8-54c3545cab29/0/part-0/tok-0",
+        "sigma/b110ebaf-697f-4da1-afd5-b536fa27a2c1/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "car/CAR-2013-05-009/0/part-0/tok-0",
+        "sigma/cc268ac1-42d9-40fd-9ed3-8c4e1a5b87e6/0/part-0/tok-0",
+        "car/CAR-2013-01-002/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "sigma/9082ff1f-88ab-4678-a3cc-5bcff99fc74d/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "sigma/6e2a900a-ced9-4e4a-a9c2-13e706f9518a/0/part-0/tok-0",
+        "sigma/c598cc0c-9e70-4852-b9eb-8921af79f598/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "car/CAR-2013-05-009/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0",
+        "sigma/320fccbf-5e32-4101-82b8-2679c5f007c6/0/part-0/tok-0",
+        "car/CAR-2013-01-002/0/part-0/tok-0",
+        "sigma/9e099d99-44c2-42b6-a6d8-54c3545cab29/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 45.15910000009171,
+      "dense": 223.6416000000645,
+      "hybrid": 269.3083000003753
+    },
+    "category": "false_positives",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "fp006",
+    "rankings": {
+      "bm25": [
+        "windows-4624/4/part-0/tok-0",
+        "sysmon/14/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0",
+        "car/CAR-2014-03-006/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "car/CAR-2014-11-008/0/part-0/tok-0",
+        "zeek-conn/0/part-0/tok-0",
+        "sysmon/30/part-0/tok-0",
+        "windows-4624/3/part-1/tok-0",
+        "sysmon/9/part-0/tok-0"
+      ],
+      "dense": [
+        "sysmon/35/part-0/tok-0",
+        "sysmon/14/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "car/CAR-2016-04-002/0/part-0/tok-0",
+        "sigma/18ee686c-38a3-4f65-9f44-48a077141f42/0/part-0/tok-0",
+        "car/CAR-2021-05-002/0/part-0/tok-0",
+        "car/CAR-2016-04-002/0/part-0/tok-1",
+        "sysmon/30/part-0/tok-0",
+        "sysmon/18/part-0/tok-0",
+        "attack-pattern--42fe883a-21ea-4cfb-b94a-78b6476dcc83/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "sysmon/14/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "sysmon/30/part-0/tok-0",
+        "sysmon/18/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0",
+        "car/CAR-2016-04-002/0/part-0/tok-0",
+        "car/CAR-2013-05-009/0/part-0/tok-0",
+        "car/CAR-2014-03-006/0/part-0/tok-0",
+        "x-mitre-data-component--5297a638-1382-4f0c-8472-0d21830bf705/0/part-0/tok-0",
+        "sysmon/35/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0
+        },
+        "10": {
+          "recall": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 0.1,
+          "ndcg": 0.2890648263178878
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 38.06480000002921,
+      "dense": 186.0580999996273,
+      "hybrid": 224.61229999953503
+    },
+    "category": "false_positives",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "fp008",
+    "rankings": {
+      "bm25": [
+        "x-mitre-data-component--5297a638-1382-4f0c-8472-0d21830bf705/0/part-0/tok-0",
+        "sysmon/11/part-0/tok-0",
+        "windows-4624/4/part-0/tok-0",
+        "zeek-conn/3/part-0/tok-0",
+        "sysmon/14/part-0/tok-0",
+        "car/CAR-2016-04-002/0/part-0/tok-0",
+        "sigma/69ffc84e-8b1a-4024-8351-e018f66b8275/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "windows-4624/3/part-1/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0"
+      ],
+      "dense": [
+        "sysmon/11/part-0/tok-0",
+        "x-mitre-data-component--5297a638-1382-4f0c-8472-0d21830bf705/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "car/CAR-2016-04-002/0/part-0/tok-1",
+        "sysmon/14/part-0/tok-0",
+        "x-mitre-analytic--72033f2d-a943-40be-862c-051317ec541c/0/part-0/tok-0",
+        "x-mitre-analytic--7d0595b9-eca7-488d-bbc2-ed02ff4ced9b/0/part-0/tok-0",
+        "sysmon/9/part-0/tok-0",
+        "car/CAR-2020-08-002/0/part-0/tok-1",
+        "windows-4624/4/part-0/tok-1"
+      ],
+      "hybrid": [
+        "x-mitre-data-component--5297a638-1382-4f0c-8472-0d21830bf705/0/part-0/tok-0",
+        "sysmon/11/part-0/tok-0",
+        "sysmon/14/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "windows-4624/4/part-0/tok-0",
+        "windows-4624/3/part-1/tok-0",
+        "sysmon/9/part-0/tok-0",
+        "sysmon/30/part-0/tok-0",
+        "car/CAR-2016-04-002/0/part-0/tok-0",
+        "windows-4624/3/part-2/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714574
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714574
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714574
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714574
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 39.157000000159314,
+      "dense": 184.41249999978027,
+      "hybrid": 224.09479999987525
+    },
+    "category": "false_positives",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "fp014",
+    "rankings": {
+      "bm25": [
+        "windows-4624/4/part-0/tok-0",
+        "sysmon/14/part-0/tok-0",
+        "car/CAR-2014-11-008/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "zeek-conn/0/part-0/tok-0",
+        "sysmon/30/part-0/tok-0",
+        "windows-4624/3/part-1/tok-0",
+        "sysmon/9/part-0/tok-0"
+      ],
+      "dense": [
+        "sysmon/18/part-0/tok-0",
+        "car/CAR-2016-04-002/0/part-0/tok-1",
+        "x-mitre-data-component--5297a638-1382-4f0c-8472-0d21830bf705/0/part-0/tok-0",
+        "sysmon/35/part-0/tok-0",
+        "sysmon/14/part-0/tok-0",
+        "sysmon/9/part-0/tok-0",
+        "car/CAR-2016-04-002/0/part-0/tok-0",
+        "sigma/259e5a6a-b8d2-4c38-86e2-26c5e651361d/0/part-0/tok-0",
+        "sigma/f2c64357-b1d2-41b7-849f-34d2682c0fad/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0"
+      ],
+      "hybrid": [
+        "sysmon/14/part-0/tok-0",
+        "sysmon/18/part-0/tok-0",
+        "x-mitre-data-component--5297a638-1382-4f0c-8472-0d21830bf705/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "sysmon/9/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0",
+        "sysmon/30/part-0/tok-0",
+        "car/CAR-2021-05-002/0/part-0/tok-0",
+        "car/CAR-2016-04-002/0/part-0/tok-0",
+        "sysmon/15/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0
+        },
+        "10": {
+          "recall": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714574
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714574
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 40.50520000009783,
+      "dense": 188.14229999998133,
+      "hybrid": 229.1307999998935
+    },
+    "category": "false_positives",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "fp016",
+    "rankings": {
+      "bm25": [
+        "sigma/52d8b0c6-53d6-439a-9e41-52ad442ad9ad/0/part-0/tok-0",
+        "sigma/586a8d6b-6bfe-4ad9-9d78-888cd2fe50c3/0/part-0/tok-0",
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "car/CAR-2014-11-008/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "car/CAR-2020-05-003/0/part-0/tok-0",
+        "windows-4624/3/part-1/tok-0",
+        "attack-pattern--130d4494-b2d6-4040-bcea-6e59f05222fe/0/part-0/tok-0",
+        "zeek-dns/2/part-0/tok-0"
+      ],
+      "dense": [
+        "sigma/52d8b0c6-53d6-439a-9e41-52ad442ad9ad/0/part-0/tok-0",
+        "sigma/586a8d6b-6bfe-4ad9-9d78-888cd2fe50c3/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0",
+        "sigma/b1377339-fda6-477a-b455-ac0923f9ec2c/0/part-0/tok-0",
+        "sigma/54f0434b-726f-48a1-b2aa-067df14516e4/0/part-0/tok-0",
+        "sigma/6e2a900a-ced9-4e4a-a9c2-13e706f9518a/0/part-0/tok-0",
+        "x-mitre-analytic--72033f2d-a943-40be-862c-051317ec541c/0/part-0/tok-0",
+        "car/CAR-2013-05-009/0/part-0/tok-0",
+        "sigma/f2c64357-b1d2-41b7-849f-34d2682c0fad/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "sigma/52d8b0c6-53d6-439a-9e41-52ad442ad9ad/0/part-0/tok-0",
+        "sigma/586a8d6b-6bfe-4ad9-9d78-888cd2fe50c3/0/part-0/tok-0",
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0",
+        "car/CAR-2020-05-003/0/part-0/tok-0",
+        "car/CAR-2013-05-009/0/part-0/tok-0",
+        "x-mitre-analytic--0cadbf9f-befa-4bd8-85b8-e5af53383953/0/part-0/tok-0",
+        "car/CAR-2021-05-007/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 37.756899999749294,
+      "dense": 209.6371000002364,
+      "hybrid": 247.89160000000265
+    },
+    "category": "false_positives",
+    "label_status": "assistant draft; split children inherit parent label"
+  },
+  {
+    "question_id": "fp017",
+    "rankings": {
+      "bm25": [
+        "sigma/a85ffc3a-e8fd-4040-93bf-78aff284d801/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "sysmon/39/part-0/tok-0",
+        "car/CAR-2014-11-008/0/part-0/tok-0",
+        "zeek-dns/2/part-0/tok-0",
+        "car/CAR-2014-03-005/0/part-0/tok-0",
+        "car/CAR-2020-05-003/0/part-0/tok-0",
+        "windows-4624/4/part-0/tok-0",
+        "attack-pattern--42fe883a-21ea-4cfb-b94a-78b6476dcc83/0/part-0/tok-0",
+        "attack-pattern--2b742742-28c3-4e1b-bab7-8350d6300fa7/0/part-0/tok-0"
+      ],
+      "dense": [
+        "sigma/a85ffc3a-e8fd-4040-93bf-78aff284d801/0/part-0/tok-0",
+        "sigma/fff9d2b7-e11c-4a69-93d3-40ef66189767/0/part-0/tok-0",
+        "sigma/cc268ac1-42d9-40fd-9ed3-8c4e1a5b87e6/0/part-0/tok-0",
+        "car/CAR-2020-05-003/0/part-0/tok-0",
+        "car/CAR-2021-05-007/0/part-0/tok-0",
+        "x-mitre-analytic--55083ce8-b00e-4501-97db-829082bdbb48/0/part-0/tok-0",
+        "car/CAR-2013-05-009/0/part-0/tok-0",
+        "sigma/cc9cbe82-7bc0-4ef5-bc23-bbfb83947be7/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0",
+        "sigma/5ef9853e-4d0e-4a70-846f-a9ca37d876da/0/part-0/tok-0"
+      ],
+      "hybrid": [
+        "sigma/a85ffc3a-e8fd-4040-93bf-78aff284d801/0/part-0/tok-0",
+        "car/CAR-2020-05-003/0/part-0/tok-0",
+        "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/tok-0",
+        "car/CAR-2013-05-002/0/part-0/tok-0",
+        "car/CAR-2013-05-009/0/part-0/tok-0",
+        "sigma/cc268ac1-42d9-40fd-9ed3-8c4e1a5b87e6/0/part-0/tok-0",
+        "sigma/9aa5106d-bce3-4b13-86df-3a20f1d5cf0b/0/part-0/tok-0",
+        "car/CAR-2021-05-007/0/part-0/tok-0",
+        "sigma/aaf46cdc-934e-4284-b329-34aa701e3771/0/part-0/tok-0",
+        "sigma/3b4e950b-a3ea-44d3-877e-432071990709/0/part-0/tok-0"
+      ]
+    },
+    "scores": {
+      "bm25": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "dense": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      },
+      "hybrid": {
+        "5": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        },
+        "10": {
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    "latency_ms": {
+      "bm25": 38.64979999980278,
+      "dense": 215.17309999990175,
+      "hybrid": 254.304300000058
+    },
+    "category": "false_positives",
+    "label_status": "assistant draft; split children inherit parent label"
+  }
+]

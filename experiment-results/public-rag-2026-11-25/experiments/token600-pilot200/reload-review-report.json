@@ -1,0 +1,24 @@
+{
+  "fresh_process_reload": "passed",
+  "vector_file_hash": "passed",
+  "shape": [
+    200,
+    1024
+  ],
+  "norm_range": [
+    0.9999999403953552,
+    1.0000001192092896
+  ],
+  "blind_review_questions": 55,
+  "judgments_pending": 981,
+  "seed": 20261125,
+  "filter_parity": {
+    "family": "attack",
+    "modes": [
+      "bm25",
+      "dense",
+      "hybrid"
+    ],
+    "status": "passed"
+  }
+}

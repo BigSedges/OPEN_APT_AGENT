@@ -1,0 +1,38 @@
+{
+  "input_chunks": 5247,
+  "output_chunks": 5254,
+  "source_documents": 2590,
+  "families": {
+    "car": 102,
+    "sigma": 2481,
+    "sysmon": 41,
+    "windows": 12,
+    "zeek": 15,
+    "ecar": 5,
+    "attack": 2598
+  },
+  "relations": 25579,
+  "endpoint_states": {
+    "indexed_chunk": 3757,
+    "retained_context_object": 47176,
+    "revoked": 223,
+    "unresolved": 1,
+    "deprecated": 1
+  },
+  "issues": {
+    "missing_retrieved_at": 5181,
+    "license_unresolved": 5
+  },
+  "duplicate_groups": 9,
+  "excluded_sections": 6,
+  "length_chars": {
+    "0": 19,
+    "50": 922,
+    "95": 2633,
+    "100": 295078
+  },
+  "token_lengths": "pending BGE tokenizer",
+  "near_duplicates": "pending review",
+  "sha256": "235587545b26ff3ee51a7cfb9edc95360b42267d1984c431ae326eab5d6302be",
+  "freeze_status": "candidate; human review and remaining issues pending"
+}

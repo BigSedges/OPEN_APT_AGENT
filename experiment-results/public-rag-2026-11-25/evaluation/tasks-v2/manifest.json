@@ -1,0 +1,16 @@
+{
+  "seed": 20261125,
+  "categories": {
+    "field_explanation": 30,
+    "detection_prerequisites": 35,
+    "technique_association": 30,
+    "cross_language": 20,
+    "unanswerable": 15,
+    "false_positives": 20
+  },
+  "dev": 60,
+  "test": 90,
+  "labels": "assistant drafts; independent relevance and necessary points pending",
+  "revision": "tasks-v2",
+  "test_exposure": "created from prior source-derived drafts; no ranking tuning on test"
+}

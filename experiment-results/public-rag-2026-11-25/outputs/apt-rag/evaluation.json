@@ -1,0 +1,323 @@
+{
+  "annotation": "assistant-drafted; independent human review pending",
+  "queries": 12,
+  "repeats": 3,
+  "results": {
+    "bm25": {
+      "metrics_at_k": {
+        "1": {
+          "recall": 0.7083,
+          "mrr": 0.75,
+          "ndcg": 0.75
+        },
+        "3": {
+          "recall": 0.875,
+          "mrr": 0.8194,
+          "ndcg": 0.8261
+        },
+        "5": {
+          "recall": 0.9167,
+          "mrr": 0.8194,
+          "ndcg": 0.835
+        }
+      },
+      "median_ms": 0.938,
+      "p95_ms": 1.165,
+      "rankings": {
+        "q1": [
+          "sysmon/5",
+          "sysmon/1",
+          "sysmon/3",
+          "sigma/condition"
+        ],
+        "q2": [
+          "windows-security/4624",
+          "windows-security/4688"
+        ],
+        "q3": [
+          "windows-security/4624",
+          "windows-security/4688",
+          "ecar/model",
+          "sysmon/3",
+          "sysmon/1"
+        ],
+        "q4": [
+          "windows-security/4688",
+          "windows-security/4624",
+          "sigma/condition",
+          "zeek/dns",
+          "ecar/model"
+        ],
+        "q5": [
+          "zeek/conn",
+          "sigma/condition",
+          "ecar/model",
+          "zeek/state",
+          "windows-security/4624"
+        ],
+        "q6": [
+          "zeek/dns",
+          "ecar/model",
+          "windows-security/4688",
+          "sysmon/3",
+          "sysmon/1"
+        ],
+        "q7": [
+          "sigma/condition",
+          "ecar/model",
+          "sigma/logsource",
+          "windows-security/4688",
+          "attack/strategy"
+        ],
+        "q8": [
+          "sigma/condition",
+          "car/model",
+          "sigma/logsource"
+        ],
+        "q9": [
+          "car/model",
+          "ecar/model",
+          "zeek/conn",
+          "sigma/condition",
+          "attack/strategy"
+        ],
+        "q10": [
+          "attack/strategy",
+          "sigma/condition",
+          "sysmon/1",
+          "ecar/model",
+          "car/model"
+        ],
+        "q11": [
+          "zeek/state",
+          "zeek/dns",
+          "windows-security/4624",
+          "zeek/conn",
+          "ecar/model"
+        ],
+        "q12": [
+          "sysmon/5",
+          "sysmon/1",
+          "sysmon/3",
+          "sigma/condition",
+          "car/model"
+        ]
+      }
+    },
+    "dense": {
+      "metrics_at_k": {
+        "1": {
+          "recall": 0.625,
+          "mrr": 0.6667,
+          "ndcg": 0.6667
+        },
+        "3": {
+          "recall": 0.875,
+          "mrr": 0.7917,
+          "ndcg": 0.8062
+        },
+        "5": {
+          "recall": 0.9028,
+          "mrr": 0.8083,
+          "ndcg": 0.8141
+        }
+      },
+      "median_ms": 0.927,
+      "p95_ms": 1.295,
+      "rankings": {
+        "q1": [
+          "sysmon/5",
+          "sysmon/1",
+          "sysmon/3",
+          "sigma/condition",
+          "car/model"
+        ],
+        "q2": [
+          "windows-security/4624",
+          "windows-security/4688",
+          "ecar/model",
+          "zeek/state",
+          "sysmon/3"
+        ],
+        "q3": [
+          "windows-security/4624",
+          "windows-security/4688",
+          "sysmon/3",
+          "zeek/state",
+          "ecar/model"
+        ],
+        "q4": [
+          "windows-security/4624",
+          "windows-security/4688",
+          "sysmon/3",
+          "sigma/condition",
+          "sysmon/1"
+        ],
+        "q5": [
+          "zeek/conn",
+          "zeek/state",
+          "sysmon/3",
+          "ecar/model",
+          "zeek/dns"
+        ],
+        "q6": [
+          "zeek/dns",
+          "sigma/condition",
+          "zeek/state",
+          "car/model",
+          "attack/strategy"
+        ],
+        "q7": [
+          "sigma/condition",
+          "sigma/logsource",
+          "sysmon/1",
+          "zeek/state",
+          "sysmon/5"
+        ],
+        "q8": [
+          "sigma/condition",
+          "sigma/logsource",
+          "windows-security/4624",
+          "windows-security/4688",
+          "zeek/dns"
+        ],
+        "q9": [
+          "car/model",
+          "ecar/model",
+          "zeek/state",
+          "sigma/logsource",
+          "sysmon/1"
+        ],
+        "q10": [
+          "attack/strategy",
+          "car/model",
+          "sigma/condition",
+          "sysmon/5",
+          "sysmon/3"
+        ],
+        "q11": [
+          "zeek/state",
+          "ecar/model",
+          "car/model",
+          "zeek/conn",
+          "zeek/dns"
+        ],
+        "q12": [
+          "sysmon/5",
+          "sysmon/1",
+          "sysmon/3",
+          "ecar/model",
+          "car/model"
+        ]
+      }
+    },
+    "hybrid": {
+      "metrics_at_k": {
+        "1": {
+          "recall": 0.7083,
+          "mrr": 0.75,
+          "ndcg": 0.75
+        },
+        "3": {
+          "recall": 0.875,
+          "mrr": 0.8333,
+          "ndcg": 0.837
+        },
+        "5": {
+          "recall": 0.9444,
+          "mrr": 0.85,
+          "ndcg": 0.8547
+        }
+      },
+      "median_ms": 3.491,
+      "p95_ms": 3.947,
+      "rankings": {
+        "q1": [
+          "sysmon/5",
+          "sysmon/1",
+          "sysmon/3",
+          "sigma/condition",
+          "car/model"
+        ],
+        "q2": [
+          "windows-security/4624",
+          "windows-security/4688",
+          "ecar/model",
+          "zeek/state",
+          "sysmon/3"
+        ],
+        "q3": [
+          "windows-security/4624",
+          "windows-security/4688",
+          "sysmon/3",
+          "ecar/model",
+          "zeek/state"
+        ],
+        "q4": [
+          "windows-security/4688",
+          "windows-security/4624",
+          "sigma/condition",
+          "sysmon/3",
+          "attack/strategy"
+        ],
+        "q5": [
+          "zeek/conn",
+          "zeek/state",
+          "ecar/model",
+          "sigma/condition",
+          "sysmon/3"
+        ],
+        "q6": [
+          "zeek/dns",
+          "sigma/condition",
+          "ecar/model",
+          "sysmon/1",
+          "sysmon/3"
+        ],
+        "q7": [
+          "sigma/condition",
+          "sigma/logsource",
+          "ecar/model",
+          "sysmon/1",
+          "zeek/state"
+        ],
+        "q8": [
+          "sigma/condition",
+          "sigma/logsource",
+          "car/model",
+          "windows-security/4624",
+          "windows-security/4688"
+        ],
+        "q9": [
+          "car/model",
+          "ecar/model",
+          "sigma/logsource",
+          "attack/strategy",
+          "zeek/conn"
+        ],
+        "q10": [
+          "attack/strategy",
+          "sigma/condition",
+          "car/model",
+          "ecar/model",
+          "sysmon/5"
+        ],
+        "q11": [
+          "zeek/state",
+          "zeek/dns",
+          "ecar/model",
+          "zeek/conn",
+          "windows-security/4624"
+        ],
+        "q12": [
+          "sysmon/5",
+          "sysmon/1",
+          "sysmon/3",
+          "car/model",
+          "sigma/condition"
+        ]
+      }
+    }
+  },
+  "model": "character-ngram-tfidf-svd"
+}

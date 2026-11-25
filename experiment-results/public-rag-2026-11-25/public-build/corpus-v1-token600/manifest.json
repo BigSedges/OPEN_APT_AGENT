@@ -1,0 +1,37 @@
+{
+  "status": "engineering snapshot; human review and license issues remain",
+  "input_chunks": 5254,
+  "output_chunks": 5432,
+  "sha256": "f2ac5eb4191c54d95b5e5900273b6499fb2328229054788fc9bf7aa1b4d2541b",
+  "tokenizer_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+  "config": {
+    "target_tokens": 600,
+    "sigma": "preserve complete rule",
+    "sigma_warning_tokens": 8000
+  },
+  "missing_retrieved_at": 0,
+  "source_published_at": "unknown unless externally verified",
+  "long_rules": [
+    {
+      "id": "sigma/05296024-fe8a-4baf-8f3d-9a5f5624ceb2/0/part-0",
+      "tokens": 26879
+    },
+    {
+      "id": "sigma/7aaaf4b8-e47c-4295-92ee-6ed40a6f60c8/0/part-0",
+      "tokens": 148740
+    }
+  ],
+  "max_tokens": 148740,
+  "max_chars": 295078,
+  "families": {
+    "car": 197,
+    "sigma": 2481,
+    "sysmon": 42,
+    "windows": 17,
+    "zeek": 23,
+    "ecar": 5,
+    "attack": 2667
+  },
+  "build_seconds": 8.257506999999805,
+  "input_sha256": "235587545b26ff3ee51a7cfb9edc95360b42267d1984c431ae326eab5d6302be"
+}

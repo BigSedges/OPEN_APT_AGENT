@@ -1,0 +1,537 @@
+{
+  "configuration": {
+    "corpus_sha256": "f2ac5eb4191c54d95b5e5900273b6499fb2328229054788fc9bf7aa1b4d2541b",
+    "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+    "max_tokens": 1024,
+    "batch": 2,
+    "cpu_threads": 4,
+    "dimension": 1024,
+    "sample": 200,
+    "excluded_for_budget": [
+      {
+        "chunk_id": "sigma/aff715fa-4dd5-497a-8db3-910bea555566/0/part-0/tok-0",
+        "token_count": 1015
+      },
+      {
+        "chunk_id": "sigma/78bc5783-81d9-4d73-ac97-59f6db4f72a8/0/part-0/tok-0",
+        "token_count": 1048
+      },
+      {
+        "chunk_id": "sigma/d635249d-86b5-4dad-a8c7-d7272b788586/0/part-0/tok-0",
+        "token_count": 968
+      },
+      {
+        "chunk_id": "sigma/f8931561-97f5-4c46-907f-0a4a592e47a7/0/part-0/tok-0",
+        "token_count": 2399
+      },
+      {
+        "chunk_id": "sigma/31d68132-4038-47c7-8f8e-635a39a7c174/0/part-0/tok-0",
+        "token_count": 1321
+      },
+      {
+        "chunk_id": "sigma/bacf58c6-e199-4040-a94f-95dea0f1e45a/0/part-0/tok-0",
+        "token_count": 1417
+      },
+      {
+        "chunk_id": "sigma/69aeb277-f15f-4d2d-b32a-55e883609563/0/part-0/tok-0",
+        "token_count": 996
+      },
+      {
+        "chunk_id": "sigma/4c54ba8f-73d2-4d40-8890-d9cf1dca3d30/0/part-0/tok-0",
+        "token_count": 1012
+      },
+      {
+        "chunk_id": "sigma/4a1b6da0-d94f-4fc3-98fc-2d9cb9e5ee76/0/part-0/tok-0",
+        "token_count": 1476
+      },
+      {
+        "chunk_id": "sigma/14bcba49-a428-42d9-b943-e2ce0f0f7ae6/0/part-0/tok-0",
+        "token_count": 964
+      },
+      {
+        "chunk_id": "sigma/02d1d718-dd13-41af-989d-ea85c7fab93f/0/part-0/tok-0",
+        "token_count": 1075
+      },
+      {
+        "chunk_id": "sigma/66d31e5f-52d6-40a4-9615-002d3789a119/0/part-0/tok-0",
+        "token_count": 1429
+      },
+      {
+        "chunk_id": "sigma/573df571-a223-43bc-846e-3f98da481eca/0/part-0/tok-0",
+        "token_count": 992
+      },
+      {
+        "chunk_id": "sigma/52182dfb-afb7-41db-b4bc-5336cb29b464/0/part-0/tok-0",
+        "token_count": 1045
+      },
+      {
+        "chunk_id": "sigma/19b041f6-e583-40dc-b842-d6fa8011493f/0/part-0/tok-0",
+        "token_count": 3365
+      },
+      {
+        "chunk_id": "sigma/e043f529-8514-4205-8ab0-7f7d2927b400/0/part-0/tok-0",
+        "token_count": 1491
+      },
+      {
+        "chunk_id": "sigma/4d07b1f4-cb00-4470-b9f8-b0191d48ff52/0/part-0/tok-0",
+        "token_count": 2599
+      },
+      {
+        "chunk_id": "sigma/ec82e2a5-81ea-4211-a1f8-37a0286df2c2/0/part-0/tok-0",
+        "token_count": 1179
+      },
+      {
+        "chunk_id": "sigma/05296024-fe8a-4baf-8f3d-9a5f5624ceb2/0/part-0/tok-0",
+        "token_count": 26879
+      },
+      {
+        "chunk_id": "sigma/39b64854-5497-4b57-a448-40977b8c9679/0/part-0/tok-0",
+        "token_count": 1114
+      },
+      {
+        "chunk_id": "sigma/7aaaf4b8-e47c-4295-92ee-6ed40a6f60c8/0/part-0/tok-0",
+        "token_count": 148740
+      },
+      {
+        "chunk_id": "sigma/72cd00d6-490c-4650-86ff-1d11f491daa1/0/part-0/tok-0",
+        "token_count": 2886
+      },
+      {
+        "chunk_id": "sigma/a1dfd976-4852-41d4-9507-dc6590a3ccd0/0/part-0/tok-0",
+        "token_count": 1928
+      },
+      {
+        "chunk_id": "sigma/df6ecb8b-7822-4f4b-b412-08f524b4576c/0/part-0/tok-0",
+        "token_count": 978
+      },
+      {
+        "chunk_id": "sigma/d5866ddf-ce8f-4aea-b28e-d96485a20d3d/0/part-0/tok-0",
+        "token_count": 1759
+      },
+      {
+        "chunk_id": "sigma/f331aa1f-8c53-4fc3-b083-cc159bc971cb/0/part-0/tok-0",
+        "token_count": 4196
+      },
+      {
+        "chunk_id": "sigma/1cf465a1-2609-4c15-9b66-c32dbe4bfd67/0/part-0/tok-0",
+        "token_count": 1206
+      },
+      {
+        "chunk_id": "sigma/092bc4b9-3d1d-43b4-a6b4-8c8acd83522f/0/part-0/tok-0",
+        "token_count": 1334
+      },
+      {
+        "chunk_id": "sigma/552b6b65-df37-4d3e-a258-f2fc4771ae54/0/part-0/tok-0",
+        "token_count": 1562
+      },
+      {
+        "chunk_id": "sigma/4fc0deee-0057-4998-ab31-d24e46e0aba4/0/part-0/tok-0",
+        "token_count": 5998
+      },
+      {
+        "chunk_id": "sigma/6b98b92b-4f00-4f62-b4fe-4d1920215771/0/part-0/tok-0",
+        "token_count": 961
+      },
+      {
+        "chunk_id": "sigma/ad1f4bb9-8dfb-4765-adb6-2a7cfb6c0f94/0/part-0/tok-0",
+        "token_count": 1051
+      },
+      {
+        "chunk_id": "sigma/5c80b618-0dbb-46e6-acbb-03d90bcb6d83/0/part-0/tok-0",
+        "token_count": 1914
+      },
+      {
+        "chunk_id": "sigma/fa5b1358-b040-4403-9868-15f7d9ab6329/0/part-0/tok-0",
+        "token_count": 3751
+      },
+      {
+        "chunk_id": "sigma/297ae038-edc2-4b2e-bb3e-7c5fc94dd5c7/0/part-0/tok-0",
+        "token_count": 3312
+      },
+      {
+        "chunk_id": "sigma/edf3485d-dac4-4d50-90e4-b0e5813f7e60/0/part-0/tok-0",
+        "token_count": 1289
+      },
+      {
+        "chunk_id": "sigma/7e9cf7b6-e827-11ed-a05b-0242ac120003/0/part-0/tok-0",
+        "token_count": 1027
+      },
+      {
+        "chunk_id": "sigma/75e33ce3-ae32-4dcc-9aa8-a2a3029d6f84/0/part-0/tok-0",
+        "token_count": 3392
+      },
+      {
+        "chunk_id": "sigma/e0f8ab85-0ac9-423b-a73a-81b3c7b1aa97/0/part-0/tok-0",
+        "token_count": 1215
+      },
+      {
+        "chunk_id": "sigma/7b434893-c57d-4f41-908d-6a17bf1ae98f/0/part-0/tok-0",
+        "token_count": 1117
+      },
+      {
+        "chunk_id": "sigma/0e7163d4-9e19-4fa7-9be6-000c61aad77a/0/part-0/tok-0",
+        "token_count": 1081
+      },
+      {
+        "chunk_id": "sigma/85adeb13-4fc9-4e68-8a4a-c7cb2c336eb7/0/part-0/tok-0",
+        "token_count": 1069
+      },
+      {
+        "chunk_id": "sigma/58cb02d5-78ce-4692-b3e1-dce850aae41a/0/part-0/tok-0",
+        "token_count": 1062
+      },
+      {
+        "chunk_id": "sigma/fe3ac066-98bb-432a-b1e7-a5229cb39d4a/0/part-0/tok-0",
+        "token_count": 1254
+      },
+      {
+        "chunk_id": "sigma/41025fd7-0466-4650-a813-574aaacbe7f4/0/part-0/tok-0",
+        "token_count": 3955
+      },
+      {
+        "chunk_id": "sigma/7d0d0329-0ef1-4e84-a9f5-49500f9d7c6c/0/part-0/tok-0",
+        "token_count": 3214
+      },
+      {
+        "chunk_id": "sigma/846c7a87-8e14-4569-9d49-ecfd4276a01c/0/part-0/tok-0",
+        "token_count": 1193
+      },
+      {
+        "chunk_id": "sigma/89819aa4-bbd6-46bc-88ec-c7f7fe30efa6/0/part-0/tok-0",
+        "token_count": 3354
+      },
+      {
+        "chunk_id": "sigma/f772cee9-b7c2-4cb2-8f07-49870adc02e0/0/part-0/tok-0",
+        "token_count": 1319
+      },
+      {
+        "chunk_id": "sigma/dcd74b95-3f36-4ed9-9598-0490951643aa/0/part-0/tok-0",
+        "token_count": 1640
+      },
+      {
+        "chunk_id": "sigma/14c71865-6cd3-44ae-adaa-1db923fae5f2/0/part-0/tok-0",
+        "token_count": 1157
+      },
+      {
+        "chunk_id": "sigma/d0d2f720-d14f-448d-8242-51ff396a334e/0/part-0/tok-0",
+        "token_count": 1091
+      },
+      {
+        "chunk_id": "sigma/a18dd26b-6450-46de-8c91-9659150cf088/0/part-0/tok-0",
+        "token_count": 1625
+      },
+      {
+        "chunk_id": "sigma/3f3f3506-1895-401b-9cc3-e86b16e630d0/0/part-0/tok-0",
+        "token_count": 1008
+      },
+      {
+        "chunk_id": "sigma/8518ed3d-f7c9-4601-a26c-f361a4256a0c/0/part-0/tok-0",
+        "token_count": 1235
+      },
+      {
+        "chunk_id": "sigma/42a5f1e7-9603-4f6d-97ae-3f37d130d794/0/part-0/tok-0",
+        "token_count": 1229
+      },
+      {
+        "chunk_id": "sigma/222129f7-f4dc-4568-b0d2-22440a9639ba/0/part-0/tok-0",
+        "token_count": 2328
+      },
+      {
+        "chunk_id": "sigma/dcaa3f04-70c3-427a-80b4-b870d73c94c4/0/part-0/tok-0",
+        "token_count": 1574
+      },
+      {
+        "chunk_id": "sigma/b730a276-6b63-41b8-bcf8-55930c8fc6ee/0/part-0/tok-0",
+        "token_count": 1527
+      },
+      {
+        "chunk_id": "sigma/56454143-524f-49fb-b1c6-3fb8b1ad41fb/0/part-0/tok-0",
+        "token_count": 1202
+      },
+      {
+        "chunk_id": "sigma/4fe074b4-b833-4081-8f24-7dcfeca72b42/0/part-0/tok-0",
+        "token_count": 3383
+      },
+      {
+        "chunk_id": "sigma/24e3e58a-646b-4b50-adef-02ef935b9fc8/0/part-0/tok-0",
+        "token_count": 2779
+      },
+      {
+        "chunk_id": "sigma/10c14723-61c7-4c75-92ca-9af245723ad2/0/part-0/tok-0",
+        "token_count": 1141
+      },
+      {
+        "chunk_id": "sigma/b222df08-0e07-11eb-adc1-0242ac120002/0/part-0/tok-0",
+        "token_count": 1119
+      },
+      {
+        "chunk_id": "sigma/e1561947-b4e3-4a74-9bdd-83baed21bdb5/0/part-0/tok-0",
+        "token_count": 1202
+      },
+      {
+        "chunk_id": "sigma/c2b86e67-b880-4eec-b045-50bc98ef4844/0/part-0/tok-0",
+        "token_count": 1263
+      },
+      {
+        "chunk_id": "sigma/b2317cfa-4a47-4ead-b3ff-297438c0bc2d/0/part-0/tok-0",
+        "token_count": 1772
+      },
+      {
+        "chunk_id": "sigma/c27515df-97a9-4162-8a60-dc0eeb51b775/0/part-0/tok-0",
+        "token_count": 1219
+      },
+      {
+        "chunk_id": "sigma/438025f9-5856-4663-83f7-52f878a70a50/0/part-0/tok-0",
+        "token_count": 1689
+      },
+      {
+        "chunk_id": "sigma/f26c6093-6f14-4b12-800f-0fcb46f5ffd0/0/part-0/tok-0",
+        "token_count": 1249
+      },
+      {
+        "chunk_id": "sigma/62b7ccc9-23b4-471e-aa15-6da3663c4d59/0/part-0/tok-0",
+        "token_count": 1006
+      },
+      {
+        "chunk_id": "sigma/1816994b-42e1-4fb1-afd2-134d88184f71/0/part-0/tok-0",
+        "token_count": 1216
+      },
+      {
+        "chunk_id": "sigma/1ec65a5f-9473-4f12-97da-622044d6df21/0/part-0/tok-0",
+        "token_count": 1866
+      },
+      {
+        "chunk_id": "sigma/b6e04788-29e1-4557-bb14-77f761848ab8/0/part-0/tok-0",
+        "token_count": 1095
+      },
+      {
+        "chunk_id": "sigma/43d91656-a9b2-4541-b7e2-6a9bd3a13f4e/0/part-0/tok-0",
+        "token_count": 1182
+      },
+      {
+        "chunk_id": "sigma/02030f2f-6199-49ec-b258-ea71b07e03dc/0/part-0/tok-0",
+        "token_count": 3163
+      },
+      {
+        "chunk_id": "sigma/36210e0d-5b19-485d-a087-c096088885f0/0/part-0/tok-0",
+        "token_count": 1011
+      },
+      {
+        "chunk_id": "sigma/c86133ad-4725-4bd0-8170-210788e0a7ba/0/part-0/tok-0",
+        "token_count": 2376
+      },
+      {
+        "chunk_id": "sigma/b1cb4ab6-ac31-43f4-adf1-d9d08957419c/0/part-0/tok-0",
+        "token_count": 5176
+      },
+      {
+        "chunk_id": "sigma/b37998de-a70b-4f33-b219-ec36bf433dc0/0/part-0/tok-0",
+        "token_count": 1108
+      },
+      {
+        "chunk_id": "sigma/0d5675be-bc88-4172-86d3-1e96a4476536/0/part-0/tok-0",
+        "token_count": 1307
+      },
+      {
+        "chunk_id": "sigma/0ba1da6d-b6ce-4366-828c-18826c9de23e/0/part-0/tok-0",
+        "token_count": 1054
+      },
+      {
+        "chunk_id": "sigma/e0c69ebd-b54f-4aed-8ae3-e3467843f3f0/0/part-0/tok-0",
+        "token_count": 2227
+      },
+      {
+        "chunk_id": "sigma/e593cf51-88db-4ee1-b920-37e89012a3c9/0/part-0/tok-0",
+        "token_count": 1195
+      },
+      {
+        "chunk_id": "sigma/178e615d-e666-498b-9630-9ed363038101/0/part-0/tok-0",
+        "token_count": 1074
+      },
+      {
+        "chunk_id": "sigma/4a30ac0c-b9d6-4e01-b71a-5f851bbf4259/0/part-0/tok-0",
+        "token_count": 5800
+      },
+      {
+        "chunk_id": "sigma/c98f2a0d-e1b8-4f76-90d3-359caf88d6b9/0/part-0/tok-0",
+        "token_count": 6584
+      },
+      {
+        "chunk_id": "sigma/f9578658-9e71-4711-b634-3f9b50cd3c06/0/part-0/tok-0",
+        "token_count": 4393
+      },
+      {
+        "chunk_id": "sigma/225274c4-8dd1-40db-9e09-71dff4f6fb3c/0/part-0/tok-0",
+        "token_count": 4940
+      },
+      {
+        "chunk_id": "sigma/a238b5d0-ce2d-4414-a676-7a531b3d13d6/0/part-0/tok-0",
+        "token_count": 1069
+      },
+      {
+        "chunk_id": "sigma/cc36992a-4671-4f21-a91d-6c2b72a2edf5/0/part-0/tok-0",
+        "token_count": 1256
+      },
+      {
+        "chunk_id": "sigma/beaa66d6-aa1b-4e3c-80f5-e0145369bfaf/0/part-0/tok-0",
+        "token_count": 1622
+      },
+      {
+        "chunk_id": "sigma/1228c958-e64e-4e71-92ad-7d429f4138ba/0/part-0/tok-0",
+        "token_count": 982
+      },
+      {
+        "chunk_id": "sigma/ce72ef99-22f1-43d4-8695-419dcb5d9330/0/part-0/tok-0",
+        "token_count": 2725
+      },
+      {
+        "chunk_id": "sigma/e4a6b256-3e47-40fc-89d2-7a477edd6915/0/part-0/tok-0",
+        "token_count": 1297
+      },
+      {
+        "chunk_id": "sigma/2617e7ed-adb7-40ba-b0f3-8f9945fe6c09/0/part-0/tok-0",
+        "token_count": 1106
+      },
+      {
+        "chunk_id": "sigma/7cce6fc8-a07f-4d84-a53e-96e1879843c9/0/part-0/tok-0",
+        "token_count": 2313
+      },
+      {
+        "chunk_id": "sigma/bed2a484-9348-4143-8a8a-b801c979301c/0/part-0/tok-0",
+        "token_count": 1058
+      },
+      {
+        "chunk_id": "sigma/a0d7e4d2-bede-4141-8896-bc6e237e977c/0/part-0/tok-0",
+        "token_count": 1206
+      },
+      {
+        "chunk_id": "sigma/96f697b0-b499-4e5d-9908-a67bec11cdb6/0/part-0/tok-0",
+        "token_count": 1430
+      },
+      {
+        "chunk_id": "sigma/9df5f547-c86a-433e-b533-f2794357e242/0/part-0/tok-0",
+        "token_count": 993
+      },
+      {
+        "chunk_id": "sigma/f59c3faf-50f3-464b-9f4c-1b67ab512d99/0/part-0/tok-0",
+        "token_count": 1393
+      },
+      {
+        "chunk_id": "sigma/20f0ee37-5942-4e45-b7d5-c5b5db9df5cd/0/part-0/tok-0",
+        "token_count": 3180
+      },
+      {
+        "chunk_id": "sigma/cbf93e5d-ca6c-4722-8bea-e9119007c248/0/part-0/tok-0",
+        "token_count": 1655
+      },
+      {
+        "chunk_id": "sigma/baecf8fb-edbf-429f-9ade-31fc3f22b970/0/part-0/tok-0",
+        "token_count": 1587
+      },
+      {
+        "chunk_id": "sigma/b29aed60-ebd1-442b-9cb5-16a1d0324adb/0/part-0/tok-0",
+        "token_count": 2100
+      },
+      {
+        "chunk_id": "sigma/b64a026b-8deb-4c1d-92fd-98893209dff1/0/part-0/tok-0",
+        "token_count": 2722
+      },
+      {
+        "chunk_id": "sigma/f37b4bce-49d0-4087-9f5b-58bffda77316/0/part-0/tok-0",
+        "token_count": 991
+      },
+      {
+        "chunk_id": "sigma/e2482f8d-3443-4237-b906-cc145d87a076/0/part-0/tok-0",
+        "token_count": 1766
+      },
+      {
+        "chunk_id": "sigma/790317c0-0a36-4a6a-a105-6e576bf99a14/0/part-0/tok-0",
+        "token_count": 1324
+      },
+      {
+        "chunk_id": "sigma/b23818c7-e575-4d13-8012-332075ec0a2b/0/part-0/tok-0",
+        "token_count": 1775
+      },
+      {
+        "chunk_id": "sigma/4720b7df-40c3-48fd-bbdf-fd4b3c464f0d/0/part-0/tok-0",
+        "token_count": 1246
+      },
+      {
+        "chunk_id": "sigma/3f6b7b62-61aa-45db-96bd-9c31b36b653c/0/part-0/tok-0",
+        "token_count": 2358
+      },
+      {
+        "chunk_id": "sigma/0eb46774-f1ab-4a74-8238-1155855f2263/0/part-0/tok-0",
+        "token_count": 983
+      }
+    ],
+    "sample_selection": "dev-label parents plus deterministic hash order among <=950-token chunks",
+    "truncate_count": 0,
+    "max_input_tokens": 871,
+    "encoding_seconds": 155.3213023000003,
+    "vectors_sha256": "e59967b743874e60a1b9fc389556d5da63da8a8157088278d95edcfe73b0bb2d",
+    "chunks_sha256": "66b428d86a7d83486369480b8990cf247c99b9baca76427352f2ee7be4fc8141",
+    "metadata_correction": "Excluded list reconstructed from frozen full corpus after avoiding accidental reset; selection and vectors unchanged"
+  },
+  "questions": 55,
+  "metrics": {
+    "bm25": {
+      "5": {
+        "recall": 0.9090909090909091,
+        "mrr": 0.8278787878787879,
+        "ndcg": 0.8326210946529036
+      },
+      "10": {
+        "recall": 0.9545454545454546,
+        "mrr": 0.8301515151515151,
+        "ndcg": 0.8509527924283661
+      }
+    },
+    "dense": {
+      "5": {
+        "recall": 0.9181818181818182,
+        "mrr": 0.903030303030303,
+        "ndcg": 0.8937120044288838
+      },
+      "10": {
+        "recall": 0.9636363636363636,
+        "mrr": 0.9050505050505051,
+        "ndcg": 0.9100948974626053
+      }
+    },
+    "hybrid": {
+      "5": {
+        "recall": 0.9272727272727272,
+        "mrr": 0.8678787878787879,
+        "ndcg": 0.8750635372817579
+      },
+      "10": {
+        "recall": 1.0,
+        "mrr": 0.8743145743145745,
+        "ndcg": 0.8990467168984382
+      }
+    }
+  },
+  "latency_ms": {
+    "bm25": {
+      "p50": 38.836000000173954,
+      "p95": 44.60595999994439
+    },
+    "dense": {
+      "p50": 190.2839999997923,
+      "p95": 217.3260300000038
+    },
+    "hybrid": {
+      "p50": 228.65609999962544,
+      "p95": 256.7889800003286
+    }
+  },
+  "limitations": [
+    "200-fragment subset contains development label evidence",
+    "assistant title-derived questions and draft labels",
+    "split child relevance requires human review",
+    "not a full-corpus evaluation"
+  ],
+  "vector_reload_identical": true,
+  "peak_process_rss": 2203320320
+}

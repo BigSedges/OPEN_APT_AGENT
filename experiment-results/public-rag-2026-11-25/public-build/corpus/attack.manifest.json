@@ -1,0 +1,26 @@
+{
+  "repository": "https://github.com/mitre-attack/attack-stix-data",
+  "revision": "a8db2f52eb933c9c99060c123e088b3326d3a607",
+  "retrieved_at": "2026-11-25T02:48:51.550000+00:00",
+  "license_file": "LICENSE.txt",
+  "files": [
+    {
+      "path": "enterprise-attack/enterprise-attack.json",
+      "bytes": 55277605,
+      "sha256": "539a843a7b53ed9749740b2123dddae3726b1a4831841c32aca740b011b910b5"
+    },
+    {
+      "path": "LICENSE.txt",
+      "bytes": 1354,
+      "sha256": "738144f7fb054722a4ef9d3367c51710341dc12fc574c6ac3a41daaaecd8bf5e"
+    },
+    {
+      "path": "index.json",
+      "bytes": 33842,
+      "sha256": "cac2458fdcf9368aec5354f4c942f7b078cd83e10f1d372bae40a96b7e4f2527"
+    }
+  ],
+  "chunks": 2593,
+  "relations": 21822,
+  "oversize_chunks": 0
+}

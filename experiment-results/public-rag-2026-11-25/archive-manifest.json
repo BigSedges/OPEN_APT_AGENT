@@ -1,0 +1,127 @@
+{
+  "source_commit": "d9c3a5b635e50e75994e50190dcccf29018736f0",
+  "files": [
+    {
+      "path": "reports/investigation-round.md",
+      "sha256": "3e8f1d41ac4f238a3eb65658cefb3b7ef6577a09a91161887b7a4c00068d5b23",
+      "bytes": 4365
+    },
+    {
+      "path": "reports/next-experiment-plan.md",
+      "sha256": "b6e9b4b9f9fa28404fca54d3619a3b88a52ba970665c4eb6beea9d67ae9070bf",
+      "bytes": 1419
+    },
+    {
+      "path": "reports/token600-pilot.md",
+      "sha256": "ac35fbcd82a2319a422c1b665850e75fa709cd22920d9f4c58e4a9badcc4632e",
+      "bytes": 4731
+    },
+    {
+      "path": "reports/runtime.lock.txt",
+      "sha256": "06b72700448b1b8972da47520d0f70c1bca0636e074adc2341af9873e3e54379",
+      "bytes": 1535
+    },
+    {
+      "path": "reports/token600-runtime.lock.txt",
+      "sha256": "06b72700448b1b8972da47520d0f70c1bca0636e074adc2341af9873e3e54379",
+      "bytes": 1535
+    },
+    {
+      "path": "experiments/token600-pilot200/summary.json",
+      "sha256": "7b0451feaa80fb5327cde208f20f4871be957dd5131cf9b2694fc431815e4b18",
+      "bytes": 17184
+    },
+    {
+      "path": "experiments/token600-pilot200/manifest.json",
+      "sha256": "b5d494956a6fc86eeb14f7c277f8db44f3ce92924960d046ec5f00ace3a39b48",
+      "bytes": 14705
+    },
+    {
+      "path": "experiments/token600-pilot200/per-question.json",
+      "sha256": "d1ea8116aab83bf640194e222b67dc900d34f7ae6bff1b547b62355929ec0c39",
+      "bytes": 155575
+    },
+    {
+      "path": "experiments/token600-pilot200/reload-review-report.json",
+      "sha256": "36fec197b8d2f1fd8112f14609487a4e4b09899d8b00e6fa76381aa9f8a218f5",
+      "bytes": 418
+    },
+    {
+      "path": "experiments/token600-rebuild.json",
+      "sha256": "8926a4b6f74dbae17b03637b5b9f9e56729fc9b65164297ae6e4d5853ef57866",
+      "bytes": 188
+    },
+    {
+      "path": "experiments/bge-m3-probe.json",
+      "sha256": "01a6dbd11d913837129f5e812208eb6c2eb7b71fa9f4962bd1b14e5720e935c4",
+      "bytes": 13628
+    },
+    {
+      "path": "experiments/chunking-dev30/results.json",
+      "sha256": "76b8b6b36b4eacc4327a35fa16ea3833dc55b678b91fcd4746f4e003974877e1",
+      "bytes": 32482
+    },
+    {
+      "path": "public-build/corpus/build-report.json",
+      "sha256": "e0d8f57c6d39553cda2f4d6330f8274894da92ccb4f2fb719cd43b44aa5ba26d",
+      "bytes": 614
+    },
+    {
+      "path": "public-build/corpus/attack.manifest.json",
+      "sha256": "976f7b792df3ba14433d93b8297f1683019df5f9dd7d8ec62dbc3c98be8ba599",
+      "bytes": 792
+    },
+    {
+      "path": "public-build/corpus-v1-candidate/quality-report.json",
+      "sha256": "4b6886dfc8adf56516f555322283ebe57fd65e6403badea5d1880c602a5b070f",
+      "bytes": 892
+    },
+    {
+      "path": "public-build/corpus-v1-candidate/manifest.json",
+      "sha256": "7a40c52bebe87fe70e5dca63b4b16c417e6910acf2a9771cd74927ba4648ce0e",
+      "bytes": 468
+    },
+    {
+      "path": "public-build/corpus-v1-candidate/exclusions.json",
+      "sha256": "7d266a753dd177113b3e8d6ba478d908957c0162c7f4b98c582e534f17362670",
+      "bytes": 544
+    },
+    {
+      "path": "public-build/corpus-v1-candidate/duplicates.json",
+      "sha256": "757c58a5f79766e6bd2ee557b9adb7cce7aecddbc070ca02bfdc1ab4b8c9eb36",
+      "bytes": 3333
+    },
+    {
+      "path": "public-build/corpus-v1-token600/manifest.json",
+      "sha256": "86db6c2119b465eb7bee77c3f74555cf78b07c77438edbd598634d1d8286f412",
+      "bytes": 1061
+    },
+    {
+      "path": "evaluation/tasks-v2/manifest.json",
+      "sha256": "d7ffaecaba25f4f0c70415cbc75b8c7f557a1afe4ad81f1a70dc0fa7a03df13c",
+      "bytes": 460
+    },
+    {
+      "path": "evaluation/tasks-v2/dev.draft.json",
+      "sha256": "2585e416fe55bb436cdb0bbfe09392b86bc00f77b8bb39fb6dfe2e1e8c2ea025",
+      "bytes": 57030
+    },
+    {
+      "path": "outputs/apt-rag/evaluation.json",
+      "sha256": "d89aab0273f2d592dd419dd29b6b6b560f136bacefa410b582c0def2755ab673",
+      "bytes": 7284
+    },
+    {
+      "path": "outputs/apt-rag/sysmon-example.json",
+      "sha256": "9eeb3e88c72fa8c21b748aeb2f8e11f9bba6dfc8586481d90f8f2b2340059c7d",
+      "bytes": 1627
+    }
+  ],
+  "test_set_seal": {
+    "sha256": "d5900c15333cb2141262281d5f9f1b6f7a4eee25f6b5d4026f87e9c409220159",
+    "questions": 90
+  },
+  "label_status": "assistant drafts; independent human judgments pending",
+  "artifact_scope": "experimental result archive; full local corpus, model and indexes referenced by hashes",
+  "source_snapshot_manifest_sha256": "c616dcb85d97f46e540dcd5222345bc45bc4e752dd962170b18bc4e8f612bd13"
+}

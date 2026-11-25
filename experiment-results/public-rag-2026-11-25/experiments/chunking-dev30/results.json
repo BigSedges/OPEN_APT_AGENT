@@ -1,0 +1,864 @@
+{
+  "generic_800_overlap150": {
+    "chunks": 12078,
+    "queries": [
+      {
+        "question_id": "q001",
+        "ranking": [
+          "sysmon/40/part-0/0",
+          "sigma/8834e2f7-6b4b-4f09-8906-d2276470ee23/0/part-0/2",
+          "sigma/58cb02d5-78ce-4692-b3e1-dce850aae41a/0/part-0/1",
+          "sysmon/3/part-0/0",
+          "x-mitre-data-component--f5a9a1dd-82f9-41a3-85b8-13e5b9cd6c79/0/part-0/1"
+        ],
+        "parent_hits": 0,
+        "context_omitted": [],
+        "latency_ms": 97.026200000073,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q005",
+        "ranking": [
+          "sysmon/40/part-0/1",
+          "sysmon/3/part-0/0",
+          "attack-pattern--2e34237d-8574-43f6-aace-ae2915de8597/0/part-0/1",
+          "x-mitre-data-component--f5a9a1dd-82f9-41a3-85b8-13e5b9cd6c79/0/part-0/1",
+          "sigma/401e5d00-b944-11ea-8f9a-00163ecd60ae/0/part-0/0"
+        ],
+        "parent_hits": 0,
+        "context_omitted": [],
+        "latency_ms": 176.14739999999074,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q012",
+        "ranking": [
+          "sigma/387df17d-3b04-448f-8669-9e7fd5e5fd8c/0/part-0/1",
+          "sysmon/40/part-0/0",
+          "sysmon/3/part-0/0",
+          "x-mitre-data-component--f5a9a1dd-82f9-41a3-85b8-13e5b9cd6c79/0/part-0/1",
+          "sigma/401e5d00-b944-11ea-8f9a-00163ecd60ae/0/part-0/0"
+        ],
+        "parent_hits": 0,
+        "context_omitted": [],
+        "latency_ms": 80.40040000014415,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q013",
+        "ranking": [
+          "zeek-conn/0/part-0/0",
+          "zeek-conn/2/part-0/0",
+          "zeek-conn/2/part-0/1",
+          "zeek-dns/4/part-0/0",
+          "zeek-dns/4/part-0/2"
+        ],
+        "parent_hits": 0,
+        "context_omitted": [],
+        "latency_ms": 98.539399999936,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q014",
+        "ranking": [
+          "sysmon/3/part-0/1",
+          "sysmon/3/part-0/0",
+          "sigma/7c0dcd3d-acf8-4f71-9570-f448b0034f94/0/part-0/1",
+          "sigma/8834e2f7-6b4b-4f09-8906-d2276470ee23/0/part-0/2",
+          "sigma/48d91a3a-2363-43ba-a456-ca71ac3da5c2/0/part-0/0"
+        ],
+        "parent_hits": 0,
+        "context_omitted": [],
+        "latency_ms": 98.0928999997559,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q022",
+        "ranking": [
+          "sigma/968eef52-9cff-4454-8992-1e74b9cbad6c/0/part-0/0",
+          "car/CAR-2013-10-001/0/part-0/0",
+          "sigma/7c0dcd3d-acf8-4f71-9570-f448b0034f94/0/part-0/1",
+          "sigma/401e5d00-b944-11ea-8f9a-00163ecd60ae/0/part-0/0",
+          "sigma/8834e2f7-6b4b-4f09-8906-d2276470ee23/0/part-0/2"
+        ],
+        "parent_hits": 0,
+        "context_omitted": [],
+        "latency_ms": 84.85670000027312,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q025",
+        "ranking": [
+          "sigma/7c0dcd3d-acf8-4f71-9570-f448b0034f94/0/part-0/1",
+          "sigma/8834e2f7-6b4b-4f09-8906-d2276470ee23/0/part-0/2",
+          "sysmon/3/part-0/0",
+          "sysmon/3/part-0/1",
+          "sigma/401e5d00-b944-11ea-8f9a-00163ecd60ae/0/part-0/0"
+        ],
+        "parent_hits": 0,
+        "context_omitted": [],
+        "latency_ms": 65.84560000010242,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q029",
+        "ranking": [
+          "sysmon/40/part-0/1",
+          "x-mitre-data-component--b9a1578e-8653-4103-be23-cb52e0b1816e/0/part-0/0",
+          "sigma/493fb4ab-cdcc-4c4f-818c-0e363bd1e4bb/0/part-0/0",
+          "sigma/1f7025a6-e747-4130-aac4-961eb47015f1/0/part-0/0",
+          "sigma/f6451de4-df0a-41fa-8d72-b39f54a08db5/0/part-0/0"
+        ],
+        "parent_hits": 0,
+        "context_omitted": [],
+        "latency_ms": 93.78079999987676,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q030",
+        "ranking": [
+          "sysmon/3/part-0/0",
+          "sysmon/9/part-0/0",
+          "sysmon/40/part-0/0",
+          "x-mitre-data-component--b9a1578e-8653-4103-be23-cb52e0b1816e/0/part-0/0",
+          "sysmon/4/part-0/0"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [],
+        "latency_ms": 102.26000000011481,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q031",
+        "ranking": [
+          "sysmon/3/part-0/0",
+          "sigma/23b71bc5-953e-4971-be4c-c896cda73fc2/0/part-0/0",
+          "x-mitre-data-component--f5a9a1dd-82f9-41a3-85b8-13e5b9cd6c79/0/part-0/1",
+          "sigma/401e5d00-b944-11ea-8f9a-00163ecd60ae/0/part-0/0",
+          "sigma/7c0dcd3d-acf8-4f71-9570-f448b0034f94/0/part-0/1"
+        ],
+        "parent_hits": 0,
+        "context_omitted": [],
+        "latency_ms": 82.26220000005924,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q034",
+        "ranking": [
+          "sigma/7c0dcd3d-acf8-4f71-9570-f448b0034f94/0/part-0/1",
+          "sigma/8834e2f7-6b4b-4f09-8906-d2276470ee23/0/part-0/2",
+          "sysmon/3/part-0/0",
+          "attack-pattern--52759bf1-fe12-4052-ace6-c5b0cf7dd7fd/0/part-0/0",
+          "sysmon/3/part-0/1"
+        ],
+        "parent_hits": 0,
+        "context_omitted": [],
+        "latency_ms": 184.85929999997097,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q036",
+        "ranking": [
+          "sigma/0f06a3a5-6a09-413f-8743-e6cf35561297/0/part-0/0",
+          "sysmon/40/part-0/1",
+          "sysmon/3/part-0/0",
+          "sigma/968eef52-9cff-4454-8992-1e74b9cbad6c/0/part-0/0",
+          "x-mitre-data-component--f5a9a1dd-82f9-41a3-85b8-13e5b9cd6c79/0/part-0/1"
+        ],
+        "parent_hits": 0,
+        "context_omitted": [],
+        "latency_ms": 98.13199999962308,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q038",
+        "ranking": [
+          "sysmon/39/part-0/2",
+          "sysmon/40/part-0/0",
+          "sysmon/3/part-0/0",
+          "sysmon/40/part-0/1",
+          "x-mitre-data-component--f5a9a1dd-82f9-41a3-85b8-13e5b9cd6c79/0/part-0/1"
+        ],
+        "parent_hits": 0,
+        "context_omitted": [],
+        "latency_ms": 95.25329999996757,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q040",
+        "ranking": [
+          "zeek-conn/5/part-0/0",
+          "zeek-conn/0/part-0/0",
+          "zeek-dns/4/part-0/2",
+          "zeek-dns/4/part-0/0",
+          "zeek-conn/1/part-0/0"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [],
+        "latency_ms": 97.41230000008727,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q042",
+        "ranking": [
+          "sigma/021310d9-30a6-480a-84b7-eaa69aeb92bb/0/part-0/0",
+          "sigma/52d8b0c6-53d6-439a-9e41-52ad442ad9ad/0/part-0/0",
+          "x-mitre-data-component--b9a1578e-8653-4103-be23-cb52e0b1816e/0/part-0/0",
+          "sigma/0e7163d4-9e19-4fa7-9be6-000c61aad77a/0/part-0/0",
+          "sigma/5f03babb-12db-4eec-8c82-7b4cb5580868/0/part-0/2"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [],
+        "latency_ms": 120.17689999993308,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q043",
+        "ranking": [
+          "sigma/a85ffc3a-e8fd-4040-93bf-78aff284d801/0/part-0/0",
+          "sigma/73a883d0-0348-4be4-a8d8-51031c2564f8/0/part-0/0",
+          "sigma/5f03babb-12db-4eec-8c82-7b4cb5580868/0/part-0/2",
+          "sigma/762bb580-79b4-40f4-8b9e-9349ce1710f4/0/part-0/0",
+          "attack-pattern--005cc321-08ce-4d17-b1ea-cb5275926520/0/part-0/0"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [],
+        "latency_ms": 136.7645000000266,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q047",
+        "ranking": [
+          "sigma/4bc90587-e6ca-4b41-be0b-ed4d04e4ed0c/0/part-0/0",
+          "sigma/4bc90587-e6ca-4b41-be0b-ed4d04e4ed0c/0/part-0/2",
+          "sigma/5f03babb-12db-4eec-8c82-7b4cb5580868/0/part-0/2",
+          "sigma/4bc90587-e6ca-4b41-be0b-ed4d04e4ed0c/0/part-0/1",
+          "sigma/ce72ef99-22f1-43d4-8695-419dcb5d9330/0/part-0/14"
+        ],
+        "parent_hits": 3,
+        "context_omitted": [],
+        "latency_ms": 118.12390000022788,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q048",
+        "ranking": [
+          "sigma/970823b7-273b-460a-8afc-3a6811998529/0/part-0/0",
+          "car/CAR-2013-05-004/0/part-0/4",
+          "car/CAR-2013-08-001/0/part-0/4",
+          "attack-pattern--005a06c6-14bf-4118-afa0-ebcd8aebb0c9/0/part-0/1",
+          "attack-pattern--f3d95a1f-bba2-44ce-9af7-37866cd63fd0/0/part-0/0"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [],
+        "latency_ms": 117.62399999997797,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q049",
+        "ranking": [
+          "sigma/aaafa146-074c-11eb-adc1-0242ac120002/0/part-0/0",
+          "sigma/5f03babb-12db-4eec-8c82-7b4cb5580868/0/part-0/2",
+          "sigma/846c7a87-8e14-4569-9d49-ecfd4276a01c/0/part-0/0",
+          "sigma/43d91656-a9b2-4541-b7e2-6a9bd3a13f4e/0/part-0/0",
+          "sigma/39b31e81-5f5f-4898-9c0e-2160cfc0f9bf/0/part-0/0"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [],
+        "latency_ms": 99.81870000001436,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q050",
+        "ranking": [
+          "sigma/5f03babb-12db-4eec-8c82-7b4cb5580868/0/part-0/2",
+          "sigma/73a883d0-0348-4be4-a8d8-51031c2564f8/0/part-0/0",
+          "sigma/f0e53e89-8d22-46ea-9db5-9d4796ee2f8a/0/part-0/0",
+          "sigma/82880171-b475-4201-b811-e9c826cd5eaa/0/part-0/0",
+          "sigma/58c0bff0-40a0-46e8-b5e8-b734b84d2017/0/part-0/0"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [],
+        "latency_ms": 194.81640000003608,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q053",
+        "ranking": [
+          "sigma/3d2a2d59-929c-4b78-8c1a-145dfe9e07b1/0/part-0/0",
+          "sigma/7fd164ba-126a-4d9c-9392-0d4f7c243df0/0/part-0/0",
+          "sigma/5f03babb-12db-4eec-8c82-7b4cb5580868/0/part-0/2",
+          "attack-pattern--11f29a39-0942-4d62-92b6-fe236cf3066e/0/part-0/1",
+          "x-mitre-analytic--5880eb25-eec5-4b40-a3fa-6a3c633a3e56/0/part-0/0"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [],
+        "latency_ms": 107.83149999997477,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q055",
+        "ranking": [
+          "sigma/b593fd50-7335-4682-a36c-4edcb68e4641/0/part-0/0",
+          "sigma/fa5b1358-b040-4403-9868-15f7d9ab6329/0/part-0/0",
+          "sigma/66c3b204-9f88-4d0a-a7f7-8a57d521ca55/0/part-0/0",
+          "sigma/fa5b1358-b040-4403-9868-15f7d9ab6329/0/part-0/8",
+          "sigma/b593fd50-7335-4682-a36c-4edcb68e4641/0/part-0/1"
+        ],
+        "parent_hits": 2,
+        "context_omitted": [],
+        "latency_ms": 105.6616999999278,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q056",
+        "ranking": [
+          "sigma/2f9356ae-bf43-41b8-b858-4496d83b2acb/0/part-0/0",
+          "sigma/5f03babb-12db-4eec-8c82-7b4cb5580868/0/part-0/2",
+          "sigma/4358e5a5-7542-4dcb-b9f3-87667371839b/0/part-0/0",
+          "sigma/aba15bdd-657f-422a-bab3-ac2d2a0d6f1c/0/part-0/1",
+          "sigma/576426ad-0131-4001-ae01-be175da0c108/0/part-0/1"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [],
+        "latency_ms": 98.6256000001049,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q062",
+        "ranking": [
+          "sigma/f356a9c4-effd-4608-bbf8-408afd5cd006/0/part-0/0",
+          "sigma/0d18728b-f5bf-4381-9dcf-915539fff6c2/0/part-0/0",
+          "sigma/2975af79-28c4-4d2f-a951-9095f229df29/0/part-0/0",
+          "sigma/637f689e-b4a5-4a86-be0e-0100a0a33ba2/0/part-0/1",
+          "sigma/85adeb13-4fc9-4e68-8a4a-c7cb2c336eb7/0/part-0/2"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [],
+        "latency_ms": 108.93970000006448,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q065",
+        "ranking": [
+          "sigma/e2812b49-bae0-4b21-b366-7c142eafcde2/0/part-0/0",
+          "sigma/caf201a9-c2ce-4a26-9c3a-2b9525413711/0/part-0/0",
+          "sigma/5f03babb-12db-4eec-8c82-7b4cb5580868/0/part-0/2",
+          "x-mitre-analytic--ac4bf64e-da14-4416-8961-f0736eb4d9be/0/part-0/0",
+          "x-mitre-analytic--5880eb25-eec5-4b40-a3fa-6a3c633a3e56/0/part-0/0"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [],
+        "latency_ms": 117.05579999988913,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q067",
+        "ranking": [
+          "sigma/9c0295ce-d60d-40bd-bd74-84673b7592b1/0/part-0/0",
+          "sigma/62b7ccc9-23b4-471e-aa15-6da3663c4d59/0/part-0/2",
+          "sigma/62b7ccc9-23b4-471e-aa15-6da3663c4d59/0/part-0/1",
+          "sigma/1f49f2ab-26bc-48b3-96cc-dcffbc93eadf/0/part-0/1",
+          "sigma/5f03babb-12db-4eec-8c82-7b4cb5580868/0/part-0/2"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [],
+        "latency_ms": 128.91209999997955,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q069",
+        "ranking": [
+          "sigma/fff9d2b7-e11c-4a69-93d3-40ef66189767/0/part-0/0",
+          "sigma/5f03babb-12db-4eec-8c82-7b4cb5580868/0/part-0/2",
+          "sysmon/39/part-0/0",
+          "sigma/846c7a87-8e14-4569-9d49-ecfd4276a01c/0/part-0/0",
+          "sigma/43d91656-a9b2-4541-b7e2-6a9bd3a13f4e/0/part-0/0"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [],
+        "latency_ms": 106.54359999989538,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q071",
+        "ranking": [
+          "x-mitre-analytic--747a2974-0c77-4c47-9c02-2775025327c6/0/part-0/0",
+          "sigma/5f03babb-12db-4eec-8c82-7b4cb5580868/0/part-0/2",
+          "sigma/1f49f2ab-26bc-48b3-96cc-dcffbc93eadf/0/part-0/0",
+          "x-mitre-analytic--487d9ddf-a790-4adc-9be4-ec5651e790f1/0/part-0/0",
+          "car/CAR-2020-05-001/0/part-0/2"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [],
+        "latency_ms": 92.62639999997191,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q075",
+        "ranking": [
+          "sigma/46490193-1b22-4c29-bdd6-5bf63907216f/0/part-0/0",
+          "sigma/5f03babb-12db-4eec-8c82-7b4cb5580868/0/part-0/2",
+          "attack-pattern--f8ba7d61-11c5-4130-bafd-7c3ff5fbf4b5/0/part-0/0",
+          "sigma/86588b36-c6d3-465f-9cee-8f9093e07798/0/part-0/0",
+          "sigma/c4eeeeae-89f4-43a7-8b48-8d1bdfa66c78/0/part-0/0"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [],
+        "latency_ms": 107.25560000037149,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q077",
+        "ranking": [
+          "sigma/5f03babb-12db-4eec-8c82-7b4cb5580868/0/part-0/2",
+          "attack-pattern--707399d6-ab3e-4963-9315-d9d3818cd6a0/0/part-0/2",
+          "x-mitre-analytic--aad71d3e-93b0-4cb6-8240-274369f8ad34/0/part-0/0",
+          "sigma/71d65515-c436-43c0-841b-236b1f32c21e/0/part-0/0",
+          "attack-pattern--005cc321-08ce-4d17-b1ea-cb5275926520/0/part-0/0"
+        ],
+        "parent_hits": 0,
+        "context_omitted": [],
+        "latency_ms": 94.46680000019114,
+        "human_support_review": null
+      }
+    ],
+    "sigma_fragments_with_detection_and_condition": 1483,
+    "sigma_fragments": 7519,
+    "interpretation": "assistant-derived queries; integrity probe only, independent relevance labels pending"
+  },
+  "structure_candidate": {
+    "chunks": 5254,
+    "queries": [
+      {
+        "question_id": "q001",
+        "ranking": [
+          "sysmon/3/part-0/0",
+          "x-mitre-data-component--f5a9a1dd-82f9-41a3-85b8-13e5b9cd6c79/0/part-0/0",
+          "sigma/401e5d00-b944-11ea-8f9a-00163ecd60ae/0/part-0/0",
+          "sysmon/40/part-0/0",
+          "sigma/8834e2f7-6b4b-4f09-8906-d2276470ee23/0/part-0/0"
+        ],
+        "parent_hits": 0,
+        "context_omitted": [],
+        "latency_ms": 50.545400000373775,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q005",
+        "ranking": [
+          "sysmon/40/part-0/0",
+          "sysmon/3/part-0/0",
+          "sigma/401e5d00-b944-11ea-8f9a-00163ecd60ae/0/part-0/0",
+          "attack-pattern--2e34237d-8574-43f6-aace-ae2915de8597/0/part-0/0",
+          "sigma/8834e2f7-6b4b-4f09-8906-d2276470ee23/0/part-0/0"
+        ],
+        "parent_hits": 0,
+        "context_omitted": [],
+        "latency_ms": 57.58869999999661,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q012",
+        "ranking": [
+          "sigma/387df17d-3b04-448f-8669-9e7fd5e5fd8c/0/part-0/0",
+          "sysmon/3/part-0/0",
+          "sigma/401e5d00-b944-11ea-8f9a-00163ecd60ae/0/part-0/0",
+          "sysmon/40/part-0/0",
+          "sigma/48d91a3a-2363-43ba-a456-ca71ac3da5c2/0/part-0/0"
+        ],
+        "parent_hits": 0,
+        "context_omitted": [],
+        "latency_ms": 36.27199999982622,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q013",
+        "ranking": [
+          "zeek-conn/0/part-0/0",
+          "zeek-conn/2/part-0/0",
+          "zeek-dns/4/part-0/0",
+          "zeek-conn/1/part-0/0",
+          "zeek-dns/3/part-0/0"
+        ],
+        "parent_hits": 0,
+        "context_omitted": [],
+        "latency_ms": 46.65079999995214,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q014",
+        "ranking": [
+          "sysmon/3/part-0/0",
+          "sigma/401e5d00-b944-11ea-8f9a-00163ecd60ae/0/part-0/0",
+          "sigma/7c0dcd3d-acf8-4f71-9570-f448b0034f94/0/part-0/0",
+          "sigma/8834e2f7-6b4b-4f09-8906-d2276470ee23/0/part-0/0",
+          "x-mitre-data-component--b9a1578e-8653-4103-be23-cb52e0b1816e/0/part-0/0"
+        ],
+        "parent_hits": 0,
+        "context_omitted": [],
+        "latency_ms": 45.881899999585585,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q022",
+        "ranking": [
+          "sigma/968eef52-9cff-4454-8992-1e74b9cbad6c/0/part-0/0",
+          "sigma/401e5d00-b944-11ea-8f9a-00163ecd60ae/0/part-0/0",
+          "car/CAR-2013-10-001/0/part-0/0",
+          "sigma/7c0dcd3d-acf8-4f71-9570-f448b0034f94/0/part-0/0",
+          "windows-4624/4/part-0/0"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [],
+        "latency_ms": 38.22820000004867,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q025",
+        "ranking": [
+          "sysmon/3/part-0/0",
+          "sigma/401e5d00-b944-11ea-8f9a-00163ecd60ae/0/part-0/0",
+          "sigma/7c0dcd3d-acf8-4f71-9570-f448b0034f94/0/part-0/0",
+          "sigma/8834e2f7-6b4b-4f09-8906-d2276470ee23/0/part-0/0",
+          "attack-pattern--0c4b4fda-9062-47da-98b9-ceae2dcf052a/0/part-0/0"
+        ],
+        "parent_hits": 0,
+        "context_omitted": [],
+        "latency_ms": 31.71429999974862,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q029",
+        "ranking": [
+          "sysmon/40/part-0/0",
+          "x-mitre-data-component--b9a1578e-8653-4103-be23-cb52e0b1816e/0/part-0/0",
+          "sigma/493fb4ab-cdcc-4c4f-818c-0e363bd1e4bb/0/part-0/0",
+          "sigma/637f689e-b4a5-4a86-be0e-0100a0a33ba2/0/part-0/0",
+          "sigma/4d0083b3-580b-40da-9bba-626c19fe4033/0/part-0/0"
+        ],
+        "parent_hits": 0,
+        "context_omitted": [],
+        "latency_ms": 50.45990000007805,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q030",
+        "ranking": [
+          "sysmon/3/part-0/0",
+          "sysmon/9/part-0/0",
+          "sysmon/40/part-0/0",
+          "sysmon/4/part-0/0",
+          "x-mitre-data-component--b9a1578e-8653-4103-be23-cb52e0b1816e/0/part-0/0"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [],
+        "latency_ms": 47.2263000001476,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q031",
+        "ranking": [
+          "sysmon/3/part-0/0",
+          "sigma/401e5d00-b944-11ea-8f9a-00163ecd60ae/0/part-0/0",
+          "sigma/23b71bc5-953e-4971-be4c-c896cda73fc2/0/part-0/0",
+          "x-mitre-data-component--f5a9a1dd-82f9-41a3-85b8-13e5b9cd6c79/0/part-0/0",
+          "sigma/7c0dcd3d-acf8-4f71-9570-f448b0034f94/0/part-0/0"
+        ],
+        "parent_hits": 0,
+        "context_omitted": [],
+        "latency_ms": 39.08930000034161,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q034",
+        "ranking": [
+          "sysmon/3/part-0/0",
+          "attack-pattern--278716b1-61ce-4a74-8d17-891d0c494101/0/part-0/0",
+          "sigma/401e5d00-b944-11ea-8f9a-00163ecd60ae/0/part-0/0",
+          "sysmon/38/part-0/0",
+          "sigma/7c0dcd3d-acf8-4f71-9570-f448b0034f94/0/part-0/0"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [],
+        "latency_ms": 38.314899999932095,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q036",
+        "ranking": [
+          "sigma/0f06a3a5-6a09-413f-8743-e6cf35561297/0/part-0/0",
+          "sysmon/40/part-0/0",
+          "sysmon/3/part-0/0",
+          "sigma/968eef52-9cff-4454-8992-1e74b9cbad6c/0/part-0/0",
+          "sigma/401e5d00-b944-11ea-8f9a-00163ecd60ae/0/part-0/0"
+        ],
+        "parent_hits": 0,
+        "context_omitted": [],
+        "latency_ms": 51.61080000016227,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q038",
+        "ranking": [
+          "sysmon/39/part-0/0",
+          "sysmon/40/part-0/0",
+          "sysmon/3/part-0/0",
+          "sigma/401e5d00-b944-11ea-8f9a-00163ecd60ae/0/part-0/0",
+          "car/CAR-2013-07-001/0/part-0/0"
+        ],
+        "parent_hits": 0,
+        "context_omitted": [],
+        "latency_ms": 39.342300000043906,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q040",
+        "ranking": [
+          "zeek-conn/5/part-0/0",
+          "zeek-dns/4/part-0/0",
+          "zeek-conn/0/part-0/0",
+          "zeek-conn/1/part-0/0",
+          "zeek-dns/1/part-0/0"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [],
+        "latency_ms": 37.139099999876635,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q042",
+        "ranking": [
+          "sigma/021310d9-30a6-480a-84b7-eaa69aeb92bb/0/part-0/0",
+          "sigma/52d8b0c6-53d6-439a-9e41-52ad442ad9ad/0/part-0/0",
+          "x-mitre-data-component--b9a1578e-8653-4103-be23-cb52e0b1816e/0/part-0/0",
+          "sysmon/40/part-0/0",
+          "car/CAR-2015-04-001/0/part-0/0"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [],
+        "latency_ms": 50.894699999844306,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q043",
+        "ranking": [
+          "sigma/a85ffc3a-e8fd-4040-93bf-78aff284d801/0/part-0/0",
+          "sigma/5f03babb-12db-4eec-8c82-7b4cb5580868/0/part-0/0",
+          "sigma/762bb580-79b4-40f4-8b9e-9349ce1710f4/0/part-0/0",
+          "sigma/99c8be4f-3087-4f9f-9c24-8c7e257b442e/0/part-0/0",
+          "sigma/73a883d0-0348-4be4-a8d8-51031c2564f8/0/part-0/0"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [],
+        "latency_ms": 55.44830000008005,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q047",
+        "ranking": [
+          "sigma/4bc90587-e6ca-4b41-be0b-ed4d04e4ed0c/0/part-0/0",
+          "sigma/b6676963-0353-4f88-90f5-36c20d443c6a/0/part-0/0",
+          "sigma/fa1a7e52-3d02-435b-81b8-00da14dd66c1/0/part-0/0",
+          "sigma/6f0947a4-1c5e-4e0d-8ac7-53159b8f23ca/0/part-0/0",
+          "x-mitre-analytic--5880eb25-eec5-4b40-a3fa-6a3c633a3e56/0/part-0/0"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [],
+        "latency_ms": 48.600400000395894,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q048",
+        "ranking": [
+          "sigma/970823b7-273b-460a-8afc-3a6811998529/0/part-0/0",
+          "car/CAR-2013-05-004/0/part-0/0",
+          "car/CAR-2013-08-001/0/part-0/0",
+          "attack-pattern--35dd844a-b219-4e2b-a6bb-efa9a75995a9/0/part-0/0",
+          "car/CAR-2014-12-001/0/part-0/0"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [
+          "car/CAR-2014-12-001/0/part-0/0"
+        ],
+        "latency_ms": 50.98450000014054,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q049",
+        "ranking": [
+          "sigma/aaafa146-074c-11eb-adc1-0242ac120002/0/part-0/0",
+          "sigma/c41ec561-872d-469b-847c-1653ad19b45d/0/part-0/0",
+          "sigma/5f03babb-12db-4eec-8c82-7b4cb5580868/0/part-0/0",
+          "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/0",
+          "sigma/851fd622-b675-4d26-b803-14bc7baa517a/0/part-0/0"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [],
+        "latency_ms": 47.21849999987171,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q050",
+        "ranking": [
+          "sigma/58c0bff0-40a0-46e8-b5e8-b734b84d2017/0/part-0/0",
+          "sigma/e2b5163d-7deb-4566-9af3-40afea6858c3/0/part-0/0",
+          "sigma/f0e53e89-8d22-46ea-9db5-9d4796ee2f8a/0/part-0/0",
+          "sigma/0d7a9363-af70-4e7b-a3b7-1a176b7fbe84/0/part-0/0",
+          "sigma/82880171-b475-4201-b811-e9c826cd5eaa/0/part-0/0"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [],
+        "latency_ms": 49.00699999961944,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q053",
+        "ranking": [
+          "sigma/3d2a2d59-929c-4b78-8c1a-145dfe9e07b1/0/part-0/0",
+          "sigma/7fd164ba-126a-4d9c-9392-0d4f7c243df0/0/part-0/0",
+          "sigma/576426ad-0131-4001-ae01-be175da0c108/0/part-0/0",
+          "sigma/4f6edb78-5c21-42ab-a558-fd2a6fc1fd57/0/part-0/0",
+          "sigma/5f03babb-12db-4eec-8c82-7b4cb5580868/0/part-0/0"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [],
+        "latency_ms": 52.69980000002761,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q055",
+        "ranking": [
+          "sigma/b593fd50-7335-4682-a36c-4edcb68e4641/0/part-0/0",
+          "sigma/66c3b204-9f88-4d0a-a7f7-8a57d521ca55/0/part-0/0",
+          "sigma/fa5b1358-b040-4403-9868-15f7d9ab6329/0/part-0/0",
+          "sigma/bf74135c-18e8-4a72-a926-0e4f47888c19/0/part-0/0",
+          "attack-pattern--a718a0c8-5768-41a1-9958-a1cc3f995e99/0/part-0/0"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [
+          "sigma/fa5b1358-b040-4403-9868-15f7d9ab6329/0/part-0/0"
+        ],
+        "latency_ms": 54.02309999999488,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q056",
+        "ranking": [
+          "sigma/2f9356ae-bf43-41b8-b858-4496d83b2acb/0/part-0/0",
+          "sigma/4358e5a5-7542-4dcb-b9f3-87667371839b/0/part-0/0",
+          "sigma/aba15bdd-657f-422a-bab3-ac2d2a0d6f1c/0/part-0/0",
+          "attack-pattern--0cf55441-b176-4332-89e7-2c4c7799d0ff/0/part-0/0",
+          "sigma/379fa130-190e-4c3f-b7bc-6c8e834485f3/0/part-0/0"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [],
+        "latency_ms": 51.140200000190816,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q062",
+        "ranking": [
+          "sigma/f356a9c4-effd-4608-bbf8-408afd5cd006/0/part-0/0",
+          "sigma/2975af79-28c4-4d2f-a951-9095f229df29/0/part-0/0",
+          "sigma/0d18728b-f5bf-4381-9dcf-915539fff6c2/0/part-0/0",
+          "sigma/0e7163d4-9e19-4fa7-9be6-000c61aad77a/0/part-0/0",
+          "sigma/d5601f8c-b26f-4ab0-9035-69e11a8d4ad2/0/part-0/0"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [],
+        "latency_ms": 55.31899999959933,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q065",
+        "ranking": [
+          "sigma/e2812b49-bae0-4b21-b366-7c142eafcde2/0/part-0/0",
+          "sigma/caf201a9-c2ce-4a26-9c3a-2b9525413711/0/part-0/0",
+          "sigma/c453ab7a-1f5c-4716-a3b4-dea8135fb43a/0/part-0/0",
+          "x-mitre-analytic--ac4bf64e-da14-4416-8961-f0736eb4d9be/0/part-0/0",
+          "x-mitre-analytic--058452ee-f484-4e2f-b2ad-d562e34847fb/0/part-0/0"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [],
+        "latency_ms": 56.263400000261754,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q067",
+        "ranking": [
+          "sigma/9c0295ce-d60d-40bd-bd74-84673b7592b1/0/part-0/0",
+          "sigma/62b7ccc9-23b4-471e-aa15-6da3663c4d59/0/part-0/0",
+          "sigma/1f49f2ab-26bc-48b3-96cc-dcffbc93eadf/0/part-0/0",
+          "sigma/ddcd88cb-7f62-4ce5-86f9-1704190feb0a/0/part-0/0",
+          "sigma/a1473adb-5338-4a20-b4c3-126763e2d3d3/0/part-0/0"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [],
+        "latency_ms": 63.22050000017043,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q069",
+        "ranking": [
+          "sysmon/39/part-0/0",
+          "sigma/1d2de8a6-4803-4fde-b85b-f58f3aa7a705/0/part-0/0",
+          "sigma/fff9d2b7-e11c-4a69-93d3-40ef66189767/0/part-0/0",
+          "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/0",
+          "sigma/f5d19838-41b5-476c-98d8-ba8af4929ee2/0/part-0/0"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [
+          "sigma/f5d19838-41b5-476c-98d8-ba8af4929ee2/0/part-0/0"
+        ],
+        "latency_ms": 45.076000000335625,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q071",
+        "ranking": [
+          "x-mitre-analytic--747a2974-0c77-4c47-9c02-2775025327c6/0/part-0/0",
+          "sigma/851fd622-b675-4d26-b803-14bc7baa517a/0/part-0/0",
+          "sigma/e8a52bbd-bced-459f-bd93-64db45ce7657/0/part-0/0",
+          "x-mitre-analytic--487d9ddf-a790-4adc-9be4-ec5651e790f1/0/part-0/0",
+          "sigma/1f49f2ab-26bc-48b3-96cc-dcffbc93eadf/0/part-0/0"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [],
+        "latency_ms": 46.15379999995639,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q075",
+        "ranking": [
+          "sigma/46490193-1b22-4c29-bdd6-5bf63907216f/0/part-0/0",
+          "zeek-dns/1/part-0/0",
+          "attack-pattern--f8ba7d61-11c5-4130-bafd-7c3ff5fbf4b5/0/part-0/0",
+          "x-mitre-data-component--167b48f7-76e9-4fcb-9e8d-7121f7bf56c3/0/part-0/0",
+          "sigma/f548a603-c9f2-4c89-b511-b089f7e94549/0/part-0/0"
+        ],
+        "parent_hits": 1,
+        "context_omitted": [],
+        "latency_ms": 61.2873000000036,
+        "human_support_review": null
+      },
+      {
+        "question_id": "q077",
+        "ranking": [
+          "sigma/904e8e61-8edf-4350-b59c-b905fc8e810c/0/part-0/0",
+          "sigma/71d65515-c436-43c0-841b-236b1f32c21e/0/part-0/0",
+          "sigma/557e3bd3-7f21-495d-8d50-7c8bdfb8041c/0/part-0/0",
+          "sigma/5f03babb-12db-4eec-8c82-7b4cb5580868/0/part-0/0",
+          "sigma/b094d9fb-b1ad-4650-9f1a-fb7be9f1d34b/0/part-0/0"
+        ],
+        "parent_hits": 0,
+        "context_omitted": [],
+        "latency_ms": 48.68679999981396,
+        "human_support_review": null
+      }
+    ],
+    "sigma_fragments_with_detection_and_condition": 2481,
+    "sigma_fragments": 2481,
+    "interpretation": "assistant-derived queries; integrity probe only, independent relevance labels pending"
+  }
+}

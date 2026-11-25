@@ -1,0 +1,15 @@
+{
+  "corpus_sha256": "235587545b26ff3ee51a7cfb9edc95360b42267d1984c431ae326eab5d6302be",
+  "input_sha256": "ac5ecc5eb00167ef5b42533ececca96002b63055f87e48fce4a0d1db30704329",
+  "parser_sha256": "3c3a65c03f00015d36847a6d25d45493c4545b01f0e931c1aef8fff4a6f1ce35",
+  "config": {
+    "text_target_chars": 3000,
+    "split_threshold_chars": 3600,
+    "preserve_complete": [
+      "sigma",
+      "car"
+    ],
+    "seed": 20261125
+  },
+  "status": "candidate"
+}

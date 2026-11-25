@@ -1,0 +1,26 @@
+[
+  {
+    "id": "sysmon/2",
+    "reason": "web navigation or feedback section"
+  },
+  {
+    "id": "sysmon/41",
+    "reason": "web navigation or feedback section"
+  },
+  {
+    "id": "windows-4624/2",
+    "reason": "web navigation or feedback section"
+  },
+  {
+    "id": "windows-4624/5",
+    "reason": "web navigation or feedback section"
+  },
+  {
+    "id": "windows-4688/2",
+    "reason": "web navigation or feedback section"
+  },
+  {
+    "id": "windows-4688/4",
+    "reason": "web navigation or feedback section"
+  }
+]

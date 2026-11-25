@@ -1,0 +1,35 @@
+{
+  "chunks": 5247,
+  "by_family": {
+    "attack": 2593,
+    "car": 102,
+    "ecar": 5,
+    "sigma": 2481,
+    "sysmon": 42,
+    "windows": 11,
+    "zeek": 13
+  },
+  "relations": 25579,
+  "hash_checks": "passed",
+  "sample_query": "ProcessGuid",
+  "sample_hits": [
+    [
+      "sysmon/12",
+      "sysmon"
+    ],
+    [
+      "sysmon/10",
+      "sysmon"
+    ],
+    [
+      "sysmon/8",
+      "sysmon"
+    ],
+    [
+      "sysmon/39",
+      "sysmon"
+    ]
+  ],
+  "long_document_sections": 6,
+  "stage": "initial ingestion; finer chunking and independent relevance assessment pending"
+}
