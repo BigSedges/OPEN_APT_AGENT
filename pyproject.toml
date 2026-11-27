@@ -5,3 +5,14 @@ description = "Interfaces for defensive security log analysis"
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = []
+
+[project.optional-dependencies]
+screening = ["numpy>=1.26,<3", "scipy>=1.11,<2", "orjson>=3.10,<4", "jsonschema>=4.23,<5"]
+langgraph-tools = ["langgraph>=1.0,<2", "langchain-core>=1,<2"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["apt_agent*"]

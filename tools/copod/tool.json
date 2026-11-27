@@ -1,0 +1,175 @@
+{
+  "protocol_version": "1.0",
+  "name": "rank_copod_candidates",
+  "tool_version": "1.0.0",
+  "description": "用独立参考日志的固定尾部分布给本案记录排序；返回异常候选，不代表恶意结论。",
+  "argv": [
+    "{python}",
+    "worker.py"
+  ],
+  "timeout_ms": 180000,
+  "resources": [
+    "records",
+    "references"
+  ],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "k": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 10000,
+        "default": 5000,
+        "description": "总候选预算；分页共享同一排序。"
+      },
+      "offset": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 10000,
+        "default": 0
+      },
+      "limit": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 200,
+        "default": 100
+      }
+    },
+    "required": [],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "method": {
+        "type": "string",
+        "enum": [
+          "rank_copod_candidates"
+        ]
+      },
+      "candidates": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "physical_record_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rank": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "score": {
+              "type": "number"
+            },
+            "copod_score": {
+              "type": "number"
+            },
+            "entity_score": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "locator": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "filepath": {
+                      "type": "string"
+                    },
+                    "linenumber": {
+                      "type": "integer",
+                      "minimum": 1
+                    }
+                  },
+                  "required": [
+                    "filepath",
+                    "linenumber"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "required": [
+            "physical_record_id",
+            "rank",
+            "score",
+            "copod_score",
+            "entity_score",
+            "locator"
+          ],
+          "additionalProperties": false
+        },
+        "maxItems": 200
+      },
+      "coverage": {
+        "type": "object",
+        "properties": {
+          "records": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "copod_scored": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "entity_scored": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "candidate_pool": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "reference_records": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "records",
+          "copod_scored",
+          "entity_scored",
+          "candidate_pool",
+          "reference_records"
+        ],
+        "additionalProperties": false
+      },
+      "selected_count": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "offset": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "next_offset": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "minimum": 0
+      },
+      "score_semantics": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "method",
+      "candidates",
+      "coverage",
+      "selected_count",
+      "offset",
+      "next_offset",
+      "score_semantics"
+    ],
+    "additionalProperties": false
+  }
+}
