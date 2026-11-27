@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-11-27",
+  "delivery_version": "0.1.0",
+  "software": {
+    "name": "apt-rag",
+    "version": "0.1.0",
+    "requires_python": ">=3.10",
+    "tested_python": "3.11.4",
+    "wheel": {
+      "file": "apt_rag-0.1.0-py3-none-any.whl",
+      "size_bytes": 51459,
+      "sha256": "0c1580fcaa724ffacb8569a33f29fca45e30e783a66f2cc509e0bb934eb9b734",
+      "files": 28
+    },
+    "source_files": {
+      "README.md": "d9cfa76b202e29d5951758113bf0e16a09549e9fd7334b5e9407d92ae758570d",
+      "pyproject.toml": "8d306f020cffe7e17486add8961fdb8cc8a920d9a87daa7f84eb0ffa5146794b",
+      "examples/rag.yaml": "ea197e8795c62b3075c23681ecf04195f75d115261d3cfec9c10570ff92cf465",
+      "apt_rag/__init__.py": "18ee58f3b8f2bf8c77d29c91be367491af880d018f39fc6a7dfc17bed1e08b5f",
+      "apt_rag/client.py": "d98d1cab66eaf238b80c555dc379f4eeb1ff8da8ede74248ba5c2593c55b3cfc",
+      "apt_rag/cli.py": "854385e2bc87cfad8ea31834394b252dd7b98aafb1b170e21cc0cd3ca3bfa5c0",
+      "apt_rag/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "apt_rag/README.md": "c687eeffe71adf482e445066a3351f4bcb21a6b6c7fe9abea88cfead9292bfd5"
+    },
+    "cli": {
+      "module": "python -m apt_rag",
+      "console": "apt-rag",
+      "version_output": "apt-rag 0.1.0"
+    }
+  },
+  "external_assets": {
+    "note": "Not bundled. Configure paths and obtain assets separately under their own terms.",
+    "corpus": {
+      "rows": 5500,
+      "sha256": "704fec1934a5309a5504e558cc7477037d2bc01d6bad2c1eb3069c8d7178922f"
+    },
+    "bge_index": {
+      "rows": 5500,
+      "dimensions": 1024,
+      "vectors_sha256": "66b9cdc97f084bde3ac5415f01a9478c640a396ac0df69224917e38ae8795b4a",
+      "ids_sha256": "3d26023e82071b063fac1a4b0ba131d22925c521f121ba9092d558104549a230",
+      "manifest_sha256": "76f79771f28ef73f51817d16c233f071e0353d9d78c12b0811d07643b602598d",
+      "model_revision": "5617a9f61b028005a4858fdac845db406aefb181"
+    },
+    "bm25": {
+      "rows": 5500,
+      "vocab_size": 41565,
+      "bm25_sha256": "576029210e02c80ce42a359ac982910022fcf6b19c9a131aa59011391038683a",
+      "vocab_sha256": "251d2ed05c64a0c712066c0026a50cb6ff9827bd8128f85144032a7de995f767",
+      "manifest_sha256": "0d07f1f2b4da3d411913ea31fe06424087aa53735e78ec73053f2014ee3ce6cb"
+    }
+  },
+  "evaluation": {
+    "labels": "Silver, not human Gold",
+    "recall_scope": "candidate-pool estimate, not whole-corpus recall",
+    "main_scope": "3403 historical extension pairs",
+    "sensitivity_scope": "2197 four-method Q-anchor Top-20 union",
+    "question_counts": {
+      "all": 60,
+      "confirmatory": 49,
+      "valid_rel2_49": 38,
+      "valid_rel2_60": 47
+    },
+    "report": {
+      "path": "docs/retrieval_comparison.md",
+      "sha256": "35479e4b5d863f6768a92495b38b7c91fca01a182ab5104bfff9ad317e793f6d"
+    },
+    "comparison": "AiSOC PostgreSQL FTS component vs local RAG"
+  },
+  "verification": {
+    "wheel_target_install": true,
+    "console_and_module_version": true,
+    "bm25_cli": true,
+    "dense_api": true,
+    "empty_and_config_error_distinguishable": true,
+    "strict_clean_venv_with_independent_dependencies": false,
+    "strict_clean_venv_note": "Clean venv accepted the wheel but lacked PyYAML and other runtime dependencies; no local wheelhouse/network install was used.",
+    "install_report": {
+      "path": "docs/install_verification.md",
+      "sha256": "a903e0cf6ac8b0414f06961d0df0985e37bc4e29d9757dd241bd7f1fc7b083d3"
+    }
+  },
+  "license": {
+    "software_license": "TBD",
+    "note": "Select and add a root LICENSE before public release; third-party assets remain under their own terms."
+  },
+  "privacy": {
+    "contains_competition_data": false,
+    "contains_official_labels": false,
+    "contains_credentials": false,
+    "contains_models_or_indexes": false
+  }
+}

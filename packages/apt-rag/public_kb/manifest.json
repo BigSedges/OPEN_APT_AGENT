@@ -1,0 +1,44 @@
+{
+  "snapshot": "public-v2-redistributable",
+  "derived_from": "corpus-v2-docs-20261126",
+  "chunks": {
+    "car": 197,
+    "sigma": 2481,
+    "sysmon": 42,
+    "zeek": 53,
+    "attack": 2667
+  },
+  "excluded_chunks": {
+    "windows": 41,
+    "ecar": 5,
+    "sysmon": 14
+  },
+  "source_revisions": {
+    "car": [
+      "1b922fe1527d956e222a99473472e594f10f610b"
+    ],
+    "sigma": [
+      "7228cccddc63a771924ab585e072f4fbb63690fb"
+    ],
+    "sysmon": [
+      "534c8bf12eccd0915ea0cd9f286881862dcc09e0c0d2a4c6007aba8f2f41910b"
+    ],
+    "zeek": [
+      "320f873439ef62a47a9ee00653d42f20135d83efd724c6aa09008f4aacc6aaf3",
+      "396bd8d60d5073b4074b1d8b8ebba673b169c1906c0fccfe34a5ce3524d966b9",
+      "5ed4e4b312e8b3fbaa7d4d25c01e37f84818f3493de747aa1d1a96246169faef",
+      "a32b949efbd2c6123afa75f1d9c3a90a87bf6cf3cf4a57e44dbf13cb2dc22bdb",
+      "b7792705ca1024d2674b3a3e39b3b49a66448e5bdb80f05dc77a081614c7cf59"
+    ],
+    "attack": [
+      "a8db2f52eb933c9c99060c123e088b3326d3a607"
+    ]
+  },
+  "files_sha256": {
+    "ATTACK-LICENSE.txt": "738144f7fb054722a4ef9d3367c51710341dc12fc574c6ac3a41daaaecd8bf5e",
+    "CAR-LICENSE.txt": "ce763bfd00233a3bcc83ba95a8446eae7b277213c359539ed9dbbb680d9ae1b2",
+    "CAR-NOTICE.txt": "a6ee559435b776c8b96580274aac43da349b2a5b4769051e645cab324f0015ed",
+    "chunks.jsonl.gz": "c928b286109df51302b5146fa92c452b30e499ac388a3b30c09abafcb68cc772",
+    "ZEEK-LICENSE.txt": "1f984adb6b5cd93d5035c2a87c2df5f38922649fbea90c7bd79ff321d17333aa"
+  }
+}

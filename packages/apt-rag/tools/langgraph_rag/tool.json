@@ -1,0 +1,164 @@
+{
+  "protocol_version": "1.0",
+  "name": "search_knowledge",
+  "tool_version": "1.0.0",
+  "description": "只读检索调查知识库，用于解释日志字段、检测规则或调查手册。返回知识引用，不返回案件物理证据。",
+  "argv": [
+    "{python}",
+    "-B",
+    "worker.py"
+  ],
+  "timeout_ms": 60000,
+  "resources": [
+    "knowledge"
+  ],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 2000,
+        "pattern": "\\S",
+        "description": "要查询的字段、检测规则或调查手册问题。"
+      },
+      "top_k": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 20,
+        "default": 5,
+        "description": "最多返回的知识片段数。"
+      },
+      "mode": {
+        "type": "string",
+        "enum": [
+          "bm25",
+          "dense",
+          "hybrid"
+        ],
+        "default": "bm25",
+        "description": "JSONL 语料支持 BM25；已安装索引的 YAML 配置也支持 Dense 和 Hybrid。"
+      }
+    },
+    "required": [
+      "query"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "retrieval_id": {
+        "type": "string",
+        "minLength": 1
+      },
+      "snapshot_id": {
+        "type": "string",
+        "minLength": 1
+      },
+      "requested_mode": {
+        "type": "string",
+        "enum": [
+          "bm25",
+          "dense",
+          "hybrid"
+        ]
+      },
+      "mode": {
+        "type": "string",
+        "enum": [
+          "bm25",
+          "dense",
+          "hybrid",
+          "dense_fallback"
+        ]
+      },
+      "refs": {
+        "type": "array",
+        "maxItems": 20,
+        "items": {
+          "type": "object",
+          "properties": {
+            "retrieval_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "doc_id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 512
+            },
+            "chunk_id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 512
+            },
+            "version": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 512
+            },
+            "locator": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048
+            },
+            "excerpt": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1200
+            },
+            "match_reason": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 512
+            },
+            "source_url": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 2048
+            },
+            "author": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 512
+            }
+          },
+          "required": [
+            "retrieval_id",
+            "doc_id",
+            "chunk_id",
+            "version",
+            "locator",
+            "excerpt",
+            "match_reason",
+            "source_url",
+            "author"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "warnings": {
+        "type": "array",
+        "maxItems": 12,
+        "items": {
+          "type": "string",
+          "maxLength": 512
+        }
+      }
+    },
+    "required": [
+      "retrieval_id",
+      "snapshot_id",
+      "requested_mode",
+      "mode",
+      "refs",
+      "warnings"
+    ],
+    "additionalProperties": false
+  }
+}
