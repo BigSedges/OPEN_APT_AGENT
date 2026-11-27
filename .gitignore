@@ -2,5 +2,12 @@ __pycache__/
 *.py[cod]
 .venv/
 .env
+.env.*
+!.env.example
+*.egg-info/
+build/
+dist/
 /data/
 /reports/
+/A/
+/packages/apt-rag/local-assets/

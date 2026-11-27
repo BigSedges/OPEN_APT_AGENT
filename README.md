@@ -1,29 +1,32 @@
 # OPEN_APT_AGENT
 
-面向 APT 防守场景的日志分析智能体。当前提交定义 Python 项目结构、事件模型和各阶段接口，供后续实现。
+面向 APT 防守场景的日志分析项目。仓库包含日志分析接口和可独立运行的 RAG 检索包。日志分析流水线仍处于接口阶段。
 
 ## RAG 知识库快速体验
 
-安装 Python 3.10 或更新版本后，在仓库根目录运行：
+使用带 RAG 文件的 checkout 和 Python 3.10+。如果当前 checkout 还没有 `packages/apt-rag/`，先克隆 [PR #2 的分支](https://github.com/BigSedges/OPEN_APT_AGENT/pull/2)：
+
+```sh
+git clone --branch release/apt-rag-0.1.0 https://github.com/BigSedges/OPEN_APT_AGENT.git
+cd OPEN_APT_AGENT
+```
+
+在仓库根目录运行：
 
 ```sh
 python packages/apt-rag/search_public.py "Sysmon process creation" --top-k 3
 ```
 
-首次搜索无需安装依赖或下载模型。语料范围、授权和完整 API 用法见 [apt-rag 文档](packages/apt-rag/README.md)。
+首次搜索无需安装依赖或下载模型。随仓库提供 5,440 个公开片段，并支持输入本地全量资产。见 [apt-rag 使用说明](packages/apt-rag/README.md)。
 
-## 模块
+## 仓库导航
 
-- `apt_agent/models.py` 定义统一事件、初筛发现和关联案件。发现通过事件 ID 引用日志证据。
-- `apt_agent/parsing.py` 定义日志解析接口。不同日志格式可分别实现适配器。
-- `apt_agent/detection.py` 定义规则检测与统计检测共用的初筛接口。
-- `apt_agent/correlation.py` 定义告警关联接口，将初筛发现和对应证据组成案件。
-- `apt_agent/retrieval.py` 定义 RAG 知识库索引和检索接口，检索结果携带来源和片段编号。
-- `apt_agent/analysis.py` 定义供 LLM 适配器实现的分析接口，接收案件和检索片段。
-- `apt_agent/pipeline.py` 定义流水线契约，`apt_agent/config.py` 定义初始配置。
-- `tests/` 预留后续单元测试位置。
-- `apt_agent/log_type.py` 日志类型定义模块，方便工具选择以及Agent任务编排。
+- [日志分析接口](apt_agent/)：事件模型、日志类型与解析、初筛、关联、检索、分析和编排协议。根目录项目声明 Python 3.9+。
+- [日志类型参考](LOG_TYPE.md)：主机、应用和网络日志分类。
+- [独立检索包](packages/apt-rag/)：Python 3.10+。包含离线查询、Python API、命令行和公开语料快照。
+- [当前检索评估](packages/apt-rag/docs/retrieval_comparison.md)：完整 v2 语料上的 Phase 5B 比较与指标口径。
+- [早期实验归档](https://github.com/BigSedges/OPEN_APT_AGENT/tree/codex/public-rag-results/experiment-results/public-rag-2026-11-25)：2026-11-25 先导指标、配置和逐题结果，留在独立归档分支。
 
-## 开发入口
+## 开发状态
 
-项目元数据声明 Python 3.9+，当前阶段无第三方依赖。接入各模块实现后，由流水线按解析、初筛、关联、检索、分析的顺序编排。当前版本供代码协作使用，运行入口留待实现阶段添加。
+日志分析入口由各阶段接口继续实现。RAG 可以独立调用。GitHub 上的 RAG 历史评估、当前公开快照和本地完整索引使用不同的资产范围，详细对应关系见 [仓库与产物说明](docs/repository-guide.md)。

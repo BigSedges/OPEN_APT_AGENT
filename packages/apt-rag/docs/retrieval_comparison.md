@@ -1,9 +1,10 @@
 # Retrieval comparison (Silver, public evaluation summary)
 
-This document summarizes a retrieval comparison run on a frozen public
-knowledge corpus and a frozen set of 60 questions. It is a **public, compact
-summary**. The corpus, indexes, model, and experiment artifacts are external
-assets and are not distributed with this package.
+This document summarizes a comparison on the full **5,500-chunk v2 corpus**
+and a frozen set of 60 questions. The experiment's full corpus, indexes, model
+and detailed artifacts are external assets. The checkout includes a separate
+[5,440-chunk snapshot](../public_kb/README.md) for offline search. None of the
+metrics below were computed on that snapshot.
 
 - Comparison unit: **AiSOC PostgreSQL FTS component** vs the local RAG
   implementation.
@@ -44,6 +45,8 @@ result does not establish a universal winner. Dense remains the default; BM25
 and Hybrid remain configurable.
 
 ## 60-question exploratory set
+
+Recall macro denominator is **47**; MRR and graded nDCG denominators are **60**.
 
 | Method | R@20 | MRR@10 | nDCG@20 | Empty |
 |---|---:|---:|---:|---:|

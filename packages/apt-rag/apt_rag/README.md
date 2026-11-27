@@ -9,7 +9,7 @@ models, read competition labels, require PostgreSQL, or start AiSOC.
 ```python
 from apt_rag import RagClient
 
-client = RagClient.from_config("configs/rag.yaml")
+client = RagClient.from_config("/path/to/your/rag.yaml")
 result = client.search(
     "What fields are recorded in a Sysmon process creation event?",
     top_k=5,
@@ -74,11 +74,8 @@ actual/requested mode, warnings, error, empty, dedup and context statistics.
 
 ## CLI
 
-```powershell
-E:\APT_agent\rag-experiment\work\rag-venv\Scripts\python.exe -m apt_rag `
-  --config E:\APT_agent\configs\rag.yaml `
-  --query "Sysmon Event ID 1 process creation" `
-  --mode dense --top-k 5
+```sh
+python -m apt_rag --config /path/to/your/rag.yaml --query "Sysmon Event ID 1 process creation" --mode dense --top-k 5
 ```
 
 After installation, the same logic is exposed as `apt-rag`. Both entry points

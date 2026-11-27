@@ -48,18 +48,13 @@ python packages/apt-rag/search_public.py "Sysmon process creation" --asset-root 
 The indexed path defaults to CPU and accepts `--device cuda` for a compatible
 environment. It validates the original corpus and index hashes before use.
 
-Local APT RAG knowledge-retrieval facade, version `0.1.0`. It exposes the
-existing `rag/` retrieval implementation as a small Python API and CLI. It does
-**not** bundle a model, corpus, vector index, BM25 index, competition data, or
-credentials.
+## Install the Python package
 
-## Install
-
-Download `apt_rag-0.1.0-py3-none-any.whl` and verify its SHA256 against
-`SHA256SUMS.txt`, then install it in your own environment:
+`apt_rag` 0.1.0 exposes the `rag/` retrieval implementation as a Python API and
+CLI. To install from the repository root:
 
 ```bash
-python -m pip install apt_rag-0.1.0-py3-none-any.whl
+python -m pip install ./packages/apt-rag
 ```
 
 Dense retrieval needs the optional `dense` extras (`sentence-transformers`,
@@ -67,6 +62,8 @@ Dense retrieval needs the optional `dense` extras (`sentence-transformers`,
 dependencies.
 
 Tested on Python 3.11.4; `pyproject.toml` declares `>=3.10`.
+See the [local wheel verification record](docs/install_verification.md) for the
+tested artifact and its scope. No GitHub wheel release is currently available.
 
 ## First query
 
@@ -100,8 +97,9 @@ paths. The package loads:
 - BM25 pointer/index;
 - local BGE-M3 model directory.
 
-No public asset pack is included in this release. If you do not have the
-assets, the wheel can be installed but retrieval cannot run.
+The installed package uses the external assets above. To query the checkout's
+bundled public corpus without these assets, use `search_public.py` as shown
+in the quick start.
 
 ## Behaviour
 
@@ -124,6 +122,7 @@ Labels are Silver; this is not human Gold.
 
 ## Scope and licensing
 
-This repository contains software only. Third-party corpora, models, indexes,
-and competition data are external and remain subject to their own licenses and
-terms. A root software license is still to be confirmed before public release.
+The public corpus snapshot includes its [source terms and attribution](public_kb/README.md).
+Full v2 assets and model weights are external. A root software license has not
+been selected. See the [repository guide](../../docs/repository-guide.md) for the
+distinction between current assets, historical evaluations, and wheel records.

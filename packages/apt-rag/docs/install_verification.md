@@ -1,5 +1,8 @@
 # apt_rag 0.1.0 installation verification
 
+This is a record of the local 0.1.0 build and test, not a GitHub download list.
+For the current checkout, see the [quick start and source installation](../README.md).
+
 ## Artifact
 
 - Wheel: `apt_rag-0.1.0-py3-none-any.whl`
