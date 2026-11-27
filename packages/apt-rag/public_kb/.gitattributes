@@ -1,0 +1,3 @@
+# Files listed in manifest.json must keep their exact bytes in every checkout.
+*.txt -text
+*.gz binary
