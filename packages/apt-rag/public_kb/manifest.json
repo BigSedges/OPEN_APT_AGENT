@@ -1,0 +1,22 @@
+{
+  "snapshot": "public-attack-car-v1",
+  "derived_from": "corpus-v2-docs-20261126",
+  "chunks": {
+    "car": 197,
+    "attack": 2667
+  },
+  "source_revisions": {
+    "car": [
+      "1b922fe1527d956e222a99473472e594f10f610b"
+    ],
+    "attack": [
+      "a8db2f52eb933c9c99060c123e088b3326d3a607"
+    ]
+  },
+  "files_sha256": {
+    "ATTACK-LICENSE.txt": "738144f7fb054722a4ef9d3367c51710341dc12fc574c6ac3a41daaaecd8bf5e",
+    "CAR-LICENSE.txt": "ce763bfd00233a3bcc83ba95a8446eae7b277213c359539ed9dbbb680d9ae1b2",
+    "CAR-NOTICE.txt": "a6ee559435b776c8b96580274aac43da349b2a5b4769051e645cab324f0015ed",
+    "chunks.jsonl.gz": "f8280fb55eba2ae8a4c0330db829e0545f8e55f3ed861e79e388ff57e4573fdd"
+  }
+}

@@ -1,5 +1,23 @@
 # apt_rag
 
+## Quick start from Git
+
+This checkout includes a public ATT&CK and CAR knowledge snapshot (2,864 chunks).
+With Python 3.10 or newer, run from the repository root:
+
+```sh
+python packages/apt-rag/search_public.py "Sysmon process creation" --top-k 3
+```
+
+Add `--json` for full chunk text, identifiers, source URLs and scores. The bundled
+search builds BM25 scores in memory using only the Python standard library. It
+works offline without pip, an API key, a model or a YAML configuration.
+
+See [corpus scope and attribution](public_kb/README.md). This snapshot is a
+subset of the local 5,500-chunk corpus. The historical Phase 5B metrics below
+apply to that full corpus and its indexes. The full `RagClient` workflow with
+external assets and optional Dense/Hybrid retrieval is described below.
+
 Local APT RAG knowledge-retrieval facade, version `0.1.0`. It exposes the
 existing `rag/` retrieval implementation as a small Python API and CLI. It does
 **not** bundle a model, corpus, vector index, BM25 index, competition data, or

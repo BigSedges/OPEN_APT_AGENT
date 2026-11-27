@@ -2,6 +2,16 @@
 
 面向 APT 防守场景的日志分析智能体。当前提交定义 Python 项目结构、事件模型和各阶段接口，供后续实现。
 
+## RAG 知识库快速体验
+
+安装 Python 3.10 或更新版本后，在仓库根目录运行：
+
+```sh
+python packages/apt-rag/search_public.py "Sysmon process creation" --top-k 3
+```
+
+首次搜索无需安装依赖或下载模型。语料范围、授权和完整 API 用法见 [apt-rag 文档](packages/apt-rag/README.md)。
+
 ## 模块
 
 - `apt_agent/models.py` 定义统一事件、初筛发现和关联案件。发现通过事件 ID 引用日志证据。
