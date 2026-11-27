@@ -1,0 +1,110 @@
+# Chainsaw custom mapping reference for non-Windows JSON array outputs
+# (zeek_json, ecar_json, syslog, web_access, bash_history).
+# For Windows Event JSON (`chainsaw_winxml_json.py`), use Chainsaw's
+# `mappings/sigma-event-logs-json.yml` directly.
+name: log_convert_custom_jsonl
+kind: json
+rules: sigma
+
+extensions:
+  fields:
+    - name: Event ID
+      to: event_id
+    - name: Source File
+      to: source_file
+    - name: Log Source
+      to: log_source
+
+groups:
+  - name: Zeek Network Logs
+    timestamp: timestamp
+    filter:
+      log_source: zeek
+    fields:
+      - name: Log Type
+        from: zeek_log_type
+        to: zeek_log_type
+      - name: Source IP
+        from: src_ip
+        to: id.orig_h
+      - name: Destination IP
+        from: dst_ip
+        to: id.resp_h
+      - name: Source Port
+        from: src_port
+        to: id.orig_p
+      - name: Destination Port
+        from: dst_port
+        to: id.resp_p
+
+  - name: ECAR Endpoint Telemetry
+    timestamp: timestamp
+    filter:
+      log_source: ecar
+    fields:
+      - name: Host
+        from: Computer
+        to: Computer
+      - name: User
+        from: User
+        to: User
+      - name: Image
+        from: Image
+        to: Image
+      - name: CommandLine
+        from: CommandLine
+        to: CommandLine
+      - name: TargetFilename
+        from: TargetFilename
+        to: TargetFilename
+
+  - name: Linux Syslog
+    timestamp: timestamp
+    filter:
+      log_source: syslog
+    fields:
+      - name: Host
+        from: hostname
+        to: hostname
+      - name: App
+        from: app_name
+        to: app_name
+      - name: Message
+        from: message
+        to: message
+
+  - name: Web Access Logs
+    timestamp: timestamp
+    filter:
+      log_source: web_access
+    fields:
+      - name: Client IP
+        from: c-ip
+        to: c-ip
+      - name: Method
+        from: cs-method
+        to: cs-method
+      - name: URI
+        from: cs-uri
+        to: cs-uri
+      - name: Status
+        from: sc-status
+        to: sc-status
+      - name: User-Agent
+        from: cs-User-Agent
+        to: cs-User-Agent
+
+  - name: Linux Bash History
+    timestamp: timestamp
+    filter:
+      log_source: bash_history
+    fields:
+      - name: User
+        from: User
+        to: User
+      - name: Image
+        from: Image
+        to: Image
+      - name: CommandLine
+        from: CommandLine
+        to: CommandLine

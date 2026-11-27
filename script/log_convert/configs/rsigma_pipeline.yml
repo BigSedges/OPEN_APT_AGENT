@@ -1,0 +1,13 @@
+# RSigma processing pipeline aligned with log_convert NDJSON outputs.
+# Preserves @timestamp (UTC ISO-8601) and event_id for correlation evidence traceability.
+name: log_convert_rsigma_pipeline
+priority: 10
+transformations:
+  - id: set_timestamp_field
+    type: set_custom_attribute
+    attribute: rsigma.timestamp_field
+    value: "@timestamp"
+  - id: set_correlation_event_mode
+    type: set_custom_attribute
+    attribute: rsigma.correlation_event_mode
+    value: "full"
