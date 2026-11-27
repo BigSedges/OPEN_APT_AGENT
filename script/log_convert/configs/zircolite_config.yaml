@@ -1,0 +1,26 @@
+# Zircolite field-mapping reference for flattened JSONL outputs produced by log_convert.
+# Ensures `event_id`, `raw_id`, `source_file`, and `@timestamp` are preserved (never excluded).
+exclusions: []
+
+useless: []
+
+mappings:
+  "@timestamp": "SystemTime"
+  "Provider_Name": "Provider_Name"
+  "EventID": "EventID"
+  "Channel": "Channel"
+  "Computer": "Computer"
+  "EventRecordID": "EventRecordID"
+  "event_id": "event_id"
+  "raw_id": "raw_id"
+  "source_file": "source_file"
+  "record_index": "record_index"
+
+alias:
+  src_ip: "SourceIp"
+  dst_ip: "DestinationIp"
+  src_port: "SourcePort"
+  dst_port: "DestinationPort"
+
+split: {}
+transforms_enabled: false

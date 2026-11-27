@@ -1,0 +1,76 @@
+2026-11-27 14:41:41 INFO     [+] Loading ruleset(s)
+2026-11-27 14:41:41 INFO         [>] Loaded JSON/Zircolite ruleset : [link=file:///home/yue/experience/Zircolite/rules/rules_windows_merged.json][cyan]/home/yue/experience/Zircolite/rules/rules_windows_merged.json[/][/link]
+2026-11-27 14:41:41 INFO     [+] 4529 rules loaded
+2026-11-27 14:41:41 INFO     [+] Event filter enabled: [cyan]38[/] channels, [cyan]36[/] EventID-bounded ([cyan]218[/] channel/eventID pairs)
+2026-11-27 14:41:41 INFO     [+]   any EventID allowed on: [cyan]Security, Windows PowerShell[/]
+2026-11-27 14:41:41 INFO     [+] Checking prerequisites
+2026-11-27 14:41:41 INFO     [+] Processing [yellow]1[/] file(s) separately in streaming mode
+2026-11-27 14:41:41 INFO     [+] Processing file: [link=file:///tmp/real_tool_final/zircolite/windows.jsonl][cyan]windows.jsonl[/][/link]
+2026-11-27 14:41:41 INFO     [+] Processing events (streaming mode)
+2026-11-27 14:41:41 INFO     [+] Flattening: auto → cython
+2026-11-27 14:41:41 INFO     [+] Creating dynamic model
+2026-11-27 14:41:43 INFO     [+] Creating indexes
+2026-11-27 14:41:43 INFO     [+] Total events processed: [magenta]33,492[/] ([dim]643 filtered out by log source[/])
+2026-11-27 14:41:43 INFO     [+] Executing ruleset for [link=file:///tmp/real_tool_final/zircolite/windows.jsonl][cyan]windows.jsonl[/][/link] - [yellow]4529[/] rules
+2026-11-27 14:41:45 INFO     [+] Loading ruleset(s)
+2026-11-27 14:41:45 INFO         [>] Converting Native Sigma to Zircolite ruleset : [link=file:///home/yue/experience/sigma/rules/network/zeek][cyan]/home/yue/experience/sigma/rules/network/zeek[/][/link]
+2026-11-27 14:41:46 INFO     [green]\[✓][/] Converted [cyan]21[/] rules
+2026-11-27 14:41:46 INFO     [+] 21 rules loaded
+2026-11-27 14:41:46 INFO     [+] Checking prerequisites
+2026-11-27 14:41:46 INFO     [+] Processing [yellow]1[/] file(s) separately in streaming mode
+2026-11-27 14:41:46 INFO     [+] Processing file: [link=file:///tmp/real_tool_final/zircolite/zeek.jsonl][cyan]zeek.jsonl[/][/link]
+2026-11-27 14:41:46 INFO     [+] Processing events (streaming mode)
+2026-11-27 14:41:46 INFO     [+] Flattening: auto → cython
+2026-11-27 14:41:46 INFO     [+] Creating dynamic model
+2026-11-27 14:41:47 INFO     [+] Creating indexes
+2026-11-27 14:41:47 INFO     [+] Total events processed: [magenta]32,760[/]
+2026-11-27 14:41:47 INFO     [+] Executing ruleset for [link=file:///tmp/real_tool_final/zircolite/zeek.jsonl][cyan]zeek.jsonl[/][/link] - [yellow]21[/] rules
+2026-11-27 14:41:49 INFO     [+] Loading ruleset(s)
+2026-11-27 14:41:49 INFO         [>] Loaded JSON/Zircolite ruleset : [link=file:///home/yue/experience/Zircolite/rules/rules_linux.json][cyan]/home/yue/experience/Zircolite/rules/rules_linux.json[/][/link]
+2026-11-27 14:41:49 INFO     [+] 217 rules loaded
+2026-11-27 14:41:49 INFO     [+] Checking prerequisites
+2026-11-27 14:41:49 INFO     [+] Processing [yellow]1[/] file(s) separately in streaming mode
+2026-11-27 14:41:49 INFO     [+] Processing file: [link=file:///tmp/real_tool_final/zircolite/ecar.jsonl][cyan]ecar.jsonl[/][/link]
+2026-11-27 14:41:49 INFO     [+] Processing events (streaming mode)
+2026-11-27 14:41:49 INFO     [+] Flattening: auto → cython
+2026-11-27 14:41:49 INFO     [+] Creating dynamic model
+2026-11-27 14:41:49 INFO     [+] Creating indexes
+2026-11-27 14:41:49 INFO     [+] Total events processed: [magenta]4,243[/]
+2026-11-27 14:41:49 INFO     [+] Executing ruleset for [link=file:///tmp/real_tool_final/zircolite/ecar.jsonl][cyan]ecar.jsonl[/][/link] - [yellow]217[/] rules
+2026-11-27 14:41:50 INFO     [+] Loading ruleset(s)
+2026-11-27 14:41:50 INFO         [>] Loaded JSON/Zircolite ruleset : [link=file:///home/yue/experience/Zircolite/rules/rules_linux.json][cyan]/home/yue/experience/Zircolite/rules/rules_linux.json[/][/link]
+2026-11-27 14:41:50 INFO     [+] 217 rules loaded
+2026-11-27 14:41:50 INFO     [+] Checking prerequisites
+2026-11-27 14:41:50 INFO     [+] Processing [yellow]1[/] file(s) separately in streaming mode
+2026-11-27 14:41:50 INFO     [+] Processing file: [link=file:///tmp/real_tool_final/zircolite/syslog.jsonl][cyan]syslog.jsonl[/][/link]
+2026-11-27 14:41:50 INFO     [+] Processing events (streaming mode)
+2026-11-27 14:41:50 INFO     [+] Flattening: auto → cython
+2026-11-27 14:41:50 INFO     [+] Creating dynamic model
+2026-11-27 14:41:50 INFO     [+] Creating indexes
+2026-11-27 14:41:50 INFO     [+] Total events processed: [magenta]2,037[/]
+2026-11-27 14:41:50 INFO     [+] Executing ruleset for [link=file:///tmp/real_tool_final/zircolite/syslog.jsonl][cyan]syslog.jsonl[/][/link] - [yellow]217[/] rules
+2026-11-27 14:41:50 INFO     [+] Loading ruleset(s)
+2026-11-27 14:41:50 INFO         [>] Converting Native Sigma to Zircolite ruleset : [link=file:///home/yue/experience/sigma/rules/web/webserver_generic][cyan]/home/yue/experience/sigma/rules/web/webserver_generic[/][/link]
+2026-11-27 14:41:51 INFO     [green]\[✓][/] Converted [cyan]13[/] rules
+2026-11-27 14:41:51 INFO     [+] 13 rules loaded
+2026-11-27 14:41:51 INFO     [+] Checking prerequisites
+2026-11-27 14:41:51 INFO     [+] Processing [yellow]1[/] file(s) separately in streaming mode
+2026-11-27 14:41:51 INFO     [+] Processing file: [link=file:///tmp/real_tool_final/zircolite/web_access.jsonl][cyan]web_access.jsonl[/][/link]
+2026-11-27 14:41:51 INFO     [+] Processing events (streaming mode)
+2026-11-27 14:41:51 INFO     [+] Flattening: auto → cython
+2026-11-27 14:41:51 INFO     [+] Creating dynamic model
+2026-11-27 14:41:51 INFO     [+] Creating indexes
+2026-11-27 14:41:51 INFO     [+] Total events processed: [magenta]1,698[/]
+2026-11-27 14:41:51 INFO     [+] Executing ruleset for [link=file:///tmp/real_tool_final/zircolite/web_access.jsonl][cyan]web_access.jsonl[/][/link] - [yellow]13[/] rules
+2026-11-27 14:41:51 INFO     [+] Loading ruleset(s)
+2026-11-27 14:41:51 INFO         [>] Loaded JSON/Zircolite ruleset : [link=file:///home/yue/experience/Zircolite/rules/rules_linux.json][cyan]/home/yue/experience/Zircolite/rules/rules_linux.json[/][/link]
+2026-11-27 14:41:51 INFO     [+] 217 rules loaded
+2026-11-27 14:41:51 INFO     [+] Checking prerequisites
+2026-11-27 14:41:51 INFO     [+] Processing [yellow]1[/] file(s) separately in streaming mode
+2026-11-27 14:41:51 INFO     [+] Processing file: [link=file:///tmp/real_tool_final/zircolite/bash_history.jsonl][cyan]bash_history.jsonl[/][/link]
+2026-11-27 14:41:51 INFO     [+] Processing events (streaming mode)
+2026-11-27 14:41:51 INFO     [+] Flattening: auto → cython
+2026-11-27 14:41:51 INFO     [+] Creating dynamic model
+2026-11-27 14:41:51 INFO     [+] Creating indexes
+2026-11-27 14:41:51 INFO     [+] Total events processed: [magenta]33[/]
+2026-11-27 14:41:51 INFO     [+] Executing ruleset for [link=file:///tmp/real_tool_final/zircolite/bash_history.jsonl][cyan]bash_history.jsonl[/][/link] - [yellow]217[/] rules
