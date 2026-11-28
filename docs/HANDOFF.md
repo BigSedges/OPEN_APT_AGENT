@@ -1,6 +1,6 @@
 # OPEN_APT_AGENT 项目交接
 
-交接基线为 `2026-11-28` 的 `origin/y3u1`，实现提交为 [`d6015d6`](https://github.com/BigSedges/OPEN_APT_AGENT/commit/d6015d6)。项目已能单遍读入场景日志、运行本地检测与证据核验，并输出官方评分器接受的预测。当前主要缺口是实战检测质量。已完成的 DeepSeek 单场景运行只检出 27 条标注记录中的 1 条。
+本交接以 `2026-11-28` 已合并到 `main` 的 [实现提交 `d6015d6`](https://github.com/BigSedges/OPEN_APT_AGENT/commit/d6015d6) 为准。项目已能单遍读入场景日志、运行本地检测与证据核验，并输出官方评分器接受的预测。当前主要缺口是实战检测质量。已完成的 DeepSeek 单场景运行只检出 27 条标注记录中的 1 条。
 
 ## 1. 安装与配置
 
@@ -132,40 +132,78 @@ export APT_AGENT_CONFIG="$APT_AGENT_PROJECT_ROOT/config/local.yaml"
 
 验收时检查进程退出码、`predictions/done.txt`、场景的 `predict.json` 和 `scores/<场景名>/evaluation.json`。路径相对 starter 输出的本次运行目录。开启 LLM 后还要确认实际请求成功并通过计划校验。项目的 Lead 在多个可安排任务及可用预算存在时才会发出请求。
 
-## 2. 已交付的框架与验证结果
+## 2. 已实现的行为与当前边界
 
-| 环节 | 当前行为 | 实现入口 |
+### R1 日志调查主链路
+
+`analyze_records()` → `ingest_records()` → `Normalizer.normalize_batch()` → `DetectionCoordinator.detect()` → `run_investigation()` → `verify()` / `rank()` → `to_prediction()`。调试时用 `investigate_records()` 跑同一条主链路并取回 `CaseResult`。 [分析入口](../src/apt_agent/pipeline.py) · [结果模型](../src/apt_agent/models.py)
+
+| 组件 | 已实现且可调用 | 当前边界 |
 | --- | --- | --- |
-| 接入和证据回查 | 单次消费物理记录，归一化 6 类 16 种输入，保留原始证据、事件到物理 ID 的映射和解析缺口 | [ingestion](../src/apt_agent/ingestion/) · [日志类型](../LOG_TYPE.md) |
-| 检测汇总 | 复用 19 个转换脚本共享的解析及格式化模块和 3 份引擎配置。统一引擎命中与覆盖状态，按 YAML 规则的产品和服务约束核对命中 | [转换模块](../script/log_convert/) · [引擎适配](../src/apt_agent/detection/) |
-| RAG 与工具权限 | 复用 apt-rag，保留可独立调用的 LangGraph v1 `search_knowledge`。管线中的知识引用和案件取证有独立来源。工具注册表校验角色、案件和作用域，记录审计并约束维护工具的草稿路径 | [apt-rag](../packages/apt-rag/) · [工具注册表](../src/apt_agent/tools/registry.py) |
-| 调查和合并 | Lead 基于检测种子生成有预算的候选任务，可调用 LLM 排序。主机和网络分支做只读取证，Challenger 回查待定关系。黑板按查询来源合并，支持并发提交和幂等重试。Verifier 与 Ranker 复核关系和证据顺序 | [调查调度](../src/apt_agent/agents.py) · [黑板](../src/apt_agent/blackboard.py) |
-| 维护和快照 | `validate_candidate` 做映射字段保全与样本检查，支持 pySigma 检查及 RSigma 的 Sigma 单规则、关联规则正负样本回放。提供基线规则时记录命中差异。转换与规则维护接口接收候选文本，通过校验后发布版本化快照 | [维护接口](../src/apt_agent/maintenance.py) |
-| 标准入口与诊断 | `analyze_records()` 导出 `physical_id_set` 与 `ta_physical_ids`。战术证据限于物理集合，先按物理 ID 去重，再取每个战术的前三条。`investigate_records()` 返回候选链、覆盖、停止原因和审计 | [分析入口](../src/apt_agent/pipeline.py) · [接口规范](Sigma多Agent调查系统接口规范.md) |
+| 索引读取与原始证据 | `load_indexed_records()` 按 `Label_Index.json` 读取 JSONL、Windows XML、文本和 Bash 历史。接入层单遍消费 `(physical_record_id, payload)`，拒绝重复 ID 和显式范围之外的 ID，保存可回查的原始记录 | 公开回调只收到记录迭代器时，范围由收到的记录确定。文件和行号定位依赖调用方传入 `locator_map`。 [接入和索引读取](../src/apt_agent/ingestion/store.py) |
+| 日志归一化 | 支持 Windows Event XML、Zeek、eCAR、syslog、Web access、Bash history，共 6 类 16 个子类型。复用 `script/log_convert/` 的解析器、格式化模块及 3 份引擎配置。保留事件 ID 到物理 ID 的映射，并输出解析缺口 | 输入按场景存入内存。未知字段、未知格式和不完整记录的后续处理有待按实际场景扩充。 [归一化](../src/apt_agent/ingestion/normalizer.py) · [日志类型](../LOG_TYPE.md) · [转换层](../script/log_convert/) |
+| 检测与覆盖 | Zircolite、Hayabusa、RSigma、Chainsaw 输出统一命中。Takajo 接 Hayabusa 时间线做补充，pySigma 做静态规则检查。保留 `ran`、`partial`、`skipped`、`failed`；单个适配器失败可继续其他引擎 | YAML 规则按已识别的产品和服务核对命中。只有计数的关联命中保留为线索。各引擎仍有规则或日志源覆盖差异。 [引擎汇总](../src/apt_agent/detection/coordinator.py) · [日志源校验](../src/apt_agent/detection/routing.py) |
+| RAG | 调查管线通过工具注册表调用 `RagService`。Lead 和 Challenger 可取回知识引用。仓库内有离线 BM25 知识库及可独立调用的 LangGraph v1 `search_knowledge`，知识引用和本案日志证据各有独立记录 | 当前 Lead 与 Challenger 使用预设检索问题。案件专有的检索规划及外部知识快照覆盖需继续验证。 [RAG 说明](RAG.md) · [工具协议](LangGraph外部工具接入规范-v1.md) |
+| 黑板与输出 | `record_task_query()` 记录取证来源，`submit_findings()` 检查案件、运行和查询引用。同一提交 ID 的相同内容可重试，内容变化返回冲突。Verifier 核查关系，Ranker 确定性排序。导出时把事件映射回物理 ID，战术列表先去重再取前三，且只引用攻击物理集合内的记录 | 并发验收覆盖黑板提交与顺序一致性。完整案件活动存档和逐物理 ID 的阶段轨迹待补。 [黑板](../src/apt_agent/blackboard.py) · [输出契约](Sigma多Agent调查系统接口规范.md) |
 
-交接基线跑通了 **292 项**锁定依赖的离线回归及 **5 项** LangGraph 搜索工具冒烟检查。已在本机用真实工具跑过合成场景，并用真实 RSigma 验证了单条规则与时间关联规则的正负样本。公式和指标以 starter 的评分器为准。
+#### 调查角色当前如何执行
 
-### 官方场景实测
+- **Lead。** 从达到 `minimum_seed_level` 的命中沿已有候选关系生成任务。LLM 只返回已有任务 ID 的排列，缺少配置、任务不足两个、预算不足或调用失败时采用确定性顺序。模型收到任务角色、关系类型和少量知识库摘录。
+- **主机与网络。** `run_investigation()` 在同一进程依次用 `query_events` 执行分批取证。主机侧围绕进程关系取证，网络侧核对连接关系。各批次记录查询 ID 并把找到的案件证据交给黑板。实际工作流仍待支持独立并行调度、取消和失败重试。
+- **Challenger。** 对待定或有争议的关系再查本案日志和知识库，并提交假设。当前 `max_challenger_rounds` 只用来决定是否执行一次回查。
+- **Verifier、Ranker 与 Repair。** 黑板核对查询来源。Verifier 校验同主机关联、五元组、跨源与时间窗口，保留待定和争议。Ranker 根据证据和关系排序。已可用 `repair` 角色通过同一工具和黑板接口补交证据，调度器中的自动派修、重查和复验闭环待实现。
+- **预算。** 目前实际约束调查的有墙钟余量、模型 token 余量和任务数。检测工具有各自的 `timeout_s`。`max_steps_per_task` 和 `max_repair_rounds` 已定义在配置中，尚未接入运行控制。 [调度与预算](../src/apt_agent/agents.py) · [预算配置](../src/apt_agent/config.py)
 
-两轮都通过 `2024-05-30-apt28` 的官方读取、预测校验和评分流程。此次评测在进程内绑定 starter 回调，使用该仓库实际的 runner 和 scorer。第 1 节给出接入 starter 副本的方式。
+### R2 工具权限与维护
+
+- **工具权限已接入。** 调查角色可通过 `ToolRegistry` 使用 `read`、`fetch_raw_evidence`、`query_events`、`search_knowledge`。转换与规则维护角色可在受限工作区调用 `read`、`write`、`edit`、`bash`、`query_events`、`search_knowledge`。角色、案件和作用域检查经过回归，越权和工具错误会留下审计。 [工具注册表](../src/apt_agent/tools/registry.py) · [基础工具](../src/apt_agent/tools/base_tools.py)
+- **映射候选已能校验。** `validate_candidate(..., "mapping", ...)` 检查 Zircolite `mappings` 或 Chainsaw `groups` 的结构、时间字段及样本的字段值和类型保全。默认要求保留 `event_id`、`raw_id` 和 `@timestamp`。目前这里回放的是字段映射检查，各目标引擎的真实映射运行验收待补。
+- **Sigma 候选已能回放。** `validate_candidate(..., "sigma_rule", ...)` 做 pySigma 检查并通过 RSigma 回放正例、反例。关联规则可附带 `base_rules`，提供 `baseline_rules` 时会给出命中增减。现有发布路径仍需扩展到其他目标检测引擎的编译和回放。
+- **快照发布已接入。** `ConverterAgent` 和 `RuleAgent` 接收调用方提供的候选与样本，通过校验后发布。`SnapshotRegistry` 拒绝覆盖已存在的版本。路径未显式设置时，运行可按配置绑定规则和知识版本，以及 Zircolite 和 Chainsaw 映射。由未知字段自动提出可审查候选、绑定其他引擎的映射和为显式资源目录生成版本指纹仍待完成。 [校验与版本实现](../src/apt_agent/maintenance.py)
+
+### R3 工程、接口与验证
+
+- **环境和接口已接通。** Python 版本和依赖由 `.python-version`、`pyproject.toml` 和 `uv.lock` 管理，引擎路径、规则集、预算及 LLM 由 YAML、环境变量或调用参数注入。源码和配置模板自身独立于外部 starter 安装目录。 [项目配置](../pyproject.toml) · [本地示例](../config/local.example.yaml)
+- **验收有具体回归入口。** [接口验收测试](../tests/e2e/test_acceptance_matrix.py) 中的 `test_s7_1`–`test_s7_6` 分别覆盖物理定位、空预测和非法战术、同源去重与截断、引擎覆盖状态、RAG/跨案/计数线索隔离、幂等与排序。项目库回归 **292 项**通过，LangGraph 搜索协议冒烟 **5 项**通过。另在真实引擎上跑过合成场景，并用真实 RSigma 验证单规则和时间关联规则回放。
+- **诊断入口已提供。** `CaseResult` 包含 `event_to_physical`、`coverage`、`edges`、`validation_errors`、`knowledge_refs`、`investigation_ledger` 和 `stop_reason`。它能解释部分证据和关系处置。覆盖报告是规则或引擎级摘要，按单条物理 ID 判断原始命中、被过滤及入种子的全链路记录仍待增加。
+
+### R4 外部评测已验证范围
+
+两轮都通过 `2024-05-30-apt28` 的官方读取、预测校验和评分流程。`apt29-adfs` 和 `uat4356` 的完整运行，以及 starter 容器的交付验证待补。此次评测在进程内绑定 starter 回调，使用该仓库实际的 runner 和 scorer。第 1 节给出接入 starter 副本的方式。
 
 | 运行 | 工具与预算 | 提交物理 ID | 真阳性 / 总标注 | 误报 | 正确战术 | 官方分数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
 | 无 LLM，日志源修复后 | Zircolite、Hayabusa、RSigma，墙钟预算 150 秒 | 6,832 | 1 / 27 | 6,831 | 0 / 2 | 0.020447 / 100 |
 | DeepSeek Flash | `local.yaml` 的 6 个工具，运行时墙钟预算 900 秒 | 6,989 | 1 / 27 | 6,988 | 0 / 2 | 0.019989 / 100 |
 
-DeepSeek 返回了针对 15 个候选任务的有效排序，项目采用了该计划。只发起 1 次模型请求，耗时 3.29 秒，共 1,133 tokens。官方 runner 退出码为 0，生成了预测与 `done.txt`。本轮在内存中启用 LLM、将 provider 映射为 `openai_compatible` 并增加预算，本地配置文件保留原值。两轮工具与预算不同，分差无法归因于 LLM。WSL 当次报告路径如下，`/tmp` 由系统清理，表中保留可供交接的指标。
+DeepSeek 返回了针对 15 个候选任务的有效排序，项目采用了该计划。只发起 1 次模型请求，耗时 3.29 秒，共 1,133 tokens。官方 runner 退出码为 0，生成了预测与 `done.txt`。该次运行的覆盖报告包含 6 个工具，pySigma 记录 1,328 项 `ran`、49 项 `partial`，RSigma 记录 1,374 项 `ran`、3 项 `skipped`。本轮在内存中启用 LLM、将 provider 映射为 `openai_compatible` 并增加预算，本地配置文件保留原值。两轮工具与预算不同，分差无法归因于 LLM。WSL 当次报告路径如下，`/tmp` 由系统清理，表中保留可供交接的指标。
 
 - 无 LLM 评分报告 `/tmp/open-apt-agent-official-qw6jj_2n/evaluation.json`。
 - LLM 评分和运行报告 `/tmp/open-apt-agent-llm-eval-jsj2vzfe/evaluation.json` 与 `/tmp/open-apt-agent-llm-eval-jsj2vzfe/runtime.json`。
 
-## 3. 待完成事项
+## 3. 接手后待完成的工作
 
-1. **定位漏检和误报，再改判断规则。** 用 `investigate_records()` 取得现有核验与覆盖诊断，再补齐按物理 ID 追踪接入、归一化、引擎命中、日志源过滤、调查种子和战术排序的观测。只在预测之后用评分报告做漏检归因。优先记录哪些标注证据在各阶段失去，按高频误报规则及日志源做负样本回放。能复现归因后再改映射、规则或排序。
-2. **固化评测配置并补齐对照。** 在独立 starter 副本应用公开回调，固定引擎版本、规则与知识快照、门槛、预算和输出目录，覆盖 `2024-05-30-apt28`、`apt29-adfs`、`uat4356`。仅切换 LLM 开关，记录各场景的分数、请求是否实际发生、阶段耗时与预算终止理由。需要比赛提交时，把项目及其依赖接入 starter 的容器构建并做运行验收。
-3. **补齐调查角色和执行编排。** 当前 LLM 的实际职责是排序既有只读任务。Repair 已能通过同一黑板提交入口补查证据，自动识别失败分支、派修和复验的闭环待补。主机与网络当前按确定性顺序执行，独立 Agent 调度、并行执行与取消需要在实测预算下验证。预算耗尽和检测阶段超时应在运行报告中清楚区分。
-4. **完善维护与可复现发布。** 转换和规则维护 Agent 当前处理调用方提供的候选。候选生成、未知字段的协作调查，以及全部实际目标引擎的编译、回放和失败隔离仍需完善。目前映射快照自动绑定覆盖 Zircolite 与 Chainsaw，显式引擎路径优先。补齐其他引擎映射绑定，并为本地规则目录补版本指纹，验证新快照发布时旧案件可按原资源复现。
-5. **保留可交接的案件诊断。** 公开入口已能返回 `CaseResult`。为持续评测增加脱敏的持久运行报告，记录提交 SHA、工具和规则版本、候选证据的阶段流转、各引擎覆盖、模型审计与最终评分。
+### P0 定位漏检与误报
+
+- **已知现象。** 官方 `2024-05-30-apt28` 的 LLM 版只检出 1/27 条标注记录，同时提交了 6,988 条误报。当前报告可确认结果和各引擎覆盖，逐条漏检归因尚未完成。
+- **改动入口。** 从 `investigate_records()` 的诊断入手，在 `Normalizer.normalize_batch()`、`DetectionCoordinator.detect()`、日志源过滤、`_detection_seeds()`、`verify()` 和 `to_prediction()` 的交界处记录按物理 ID 可关联的阶段结果。按规则、引擎和日志源聚合误报，再做负样本回放。
+- **验收。** 先生成预测，再与标注对照。为 26 条漏检分别指出最后通过的阶段及可核对的原因，单列输入缺失或原因待查的记录。为主要误报规则提供命中分布和复现用例。用修复前后可重复的指标验证变化，并用其他场景检查误报与漏检是否转移。
+
+### P0 补完外部评测交付
+
+- **已有证据。** 目前只完成一个官方场景的无 LLM 与 DeepSeek 运行，starter 回调是运行时绑定。两轮工具和预算不同。发布用 starter 适配及完整三场景对照待交付。
+- **改动入口。** 在团队维护的外部 starter 副本接上公开入口。固定提交、工具、规则及知识快照、映射、门槛和预算，对 `2024-05-30-apt28`、`apt29-adfs`、`uat4356` 各跑一次离线和一次开启 LLM。需要比赛容器交付时在同一副本验证镜像构建和工具可执行性。
+- **验收。** 三场景均保留退出码、`done.txt`、可通过校验的预测和评分报告。对照只切换 LLM 开关，并记录实际有无模型请求、停止原因和耗时。将工具和规则版本、阶段耗时、覆盖及评分写入脱敏的持久产物。
+
+### P1 补齐自动 Repair 与任务调度
+
+- **改动入口。** 在 `run_investigation()` 根据取证错误、待核验关系和预算生成可执行的 Repair 任务，受 `max_repair_rounds`、`max_steps_per_task` 约束。让主机和网络任务按明确策略并行，结果继续经原黑板接口与 Verifier 汇总。
+- **验收。** 用一个可修复的缺证据场景展示派修、补证、复验到输出。用一个不可修复或预算耗尽的场景展示停止理由。并发与不同完成顺序下，同一经验证据的排序和预测保持一致。
+
+### P1 补齐维护发布和快照复现
+
+- **改动入口。** 给未知字段输出来源、样本与候选变更，纳入转换 Agent 的评审入口。为每种启用引擎增加相应映射或规则的实际编译、正负样本与基线回放，补齐映射版本绑定与外部资源指纹。
+- **验收。** 错误映射和命中负样本的规则都被拒绝发布。正常变更报告各目标引擎的校验和差异。发布新版本后，旧运行仍能拿到绑定的规则、映射及知识内容并重放，这项检查需要覆盖显式挂载的资源目录。
 
 ## 4. 交接前 Gemini Teamwork 计划
 
