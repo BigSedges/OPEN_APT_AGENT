@@ -50,6 +50,28 @@ def test_event_specific_fields_and_rsigma_round_trip(obj, action, property_name,
     assert not Logsource("windows", "", "process_creation").matches(event)
 
 
+def test_file_read_is_routed_to_file_access_with_both_path_aliases():
+    path = r"C:\Corpus\example.txt"
+    properties = {"image_path": r"C:\Windows\tool.exe", "file_path": path}
+    accessed = normalize("FILE", "READ", properties=properties)
+    assert accessed.fields["event_categories"] == ["file_access"]
+    assert accessed.fields["FileName"] == accessed.fields["TargetFilename"] == path
+    assert accessed.fields["ProcessGuid"] == "actor-uuid"
+    native, = format_for_rsigma([accessed])
+    assert native["FileName"] == native["TargetFilename"] == path
+
+    specific = Logsource("windows", "", "file_access")
+    assert specific.matches(accessed)
+    assert not Logsource("windows", "security", "file_access").matches(accessed)
+    assert not Logsource("linux", "", "file_access").matches(accessed)
+    for obj, action in (("FILE", "CREATE"), ("FILE", "WRITE"), ("FILE", "DELETE"), ("MODULE", "LOAD")):
+        control = normalize(obj, action, properties=properties)
+        assert not specific.matches(control)
+        assert "FileName" not in control.fields
+    missing_path = normalize("FILE", "READ")
+    assert "FileName" not in missing_path.fields
+
+
 def test_unknown_event_does_not_fabricate_process_identity_or_category():
     event = normalize("UNRECOGNIZED", "CREATE")
     assert "ProcessGuid" not in event.fields

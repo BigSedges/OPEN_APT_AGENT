@@ -196,6 +196,7 @@ def _ecar_sigma_fields(data: dict[str, Any]) -> dict[str, Any]:
         ("PROCESS", "OPEN"): ["process_access"],
         ("FLOW", "CONNECT"): ["network_connection"],
         ("MODULE", "LOAD"): ["image_load"],
+        ("FILE", "READ"): ["file_access"],
         ("FILE", "CREATE"): ["file_event"],
         ("FILE", "WRITE"): ["file_event"],
         ("FILE", "DELETE"): ["file_delete"],
@@ -208,9 +209,13 @@ def _ecar_sigma_fields(data: dict[str, Any]) -> dict[str, Any]:
             mapped["ProcessGuid"] = data["objectID"]
         if kind == ("PROCESS", "CREATE") and data.get("actorID"):
             mapped["ParentProcessGuid"] = data["actorID"]
-    elif kind in categories or kind in {("FILE", "READ"), ("FILE", "WRITE")}:
+    elif kind in categories:
         if data.get("actorID"):
             mapped["ProcessGuid"] = data["actorID"]
+    if kind == ("FILE", "READ"):
+        path = props.get("file_path")
+        if isinstance(path, str) and path.strip():
+            mapped["FileName"] = path
     if kind == ("MODULE", "LOAD") and props.get("file_path") is not None:
         mapped["ImageLoaded"] = props["file_path"]
     if kind == ("REGISTRY", "MODIFY"):

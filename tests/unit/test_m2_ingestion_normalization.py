@@ -12,6 +12,7 @@ from typing import Any
 import pytest
 
 from apt_agent.exceptions import InvalidArgumentError, OutOfScopeError
+from apt_agent.ingestion import store as store_module
 from apt_agent.ingestion import (
     NormalizationResult,
     Normalizer,
@@ -291,6 +292,33 @@ def test_label_index_multiformat_s71_and_edge_cases(tmp_path: Path) -> None:
     assert by_id["pr-syslog-2"] == {
         "raw_text": "<34>1 2024-05-30T10:00:02Z host1 app 11 - - second"
     }
+
+
+def test_index_resolves_each_path_once_per_load(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    data_dir = tmp_path / "data"
+    data_dir.mkdir()
+    (data_dir / "events.log").write_text("first\nsecond\n", encoding="utf-8")
+    index = tmp_path / "Label_Index.json"
+    index.write_text(json.dumps({
+        "pr-2": {"filepath": "data/events.log", "linenumber": 2},
+        "pr-1": {"filepath": "data/events.log", "linenumber": 1},
+    }), encoding="utf-8")
+    original = store_module._resolve_indexed_filepath
+    resolved: list[str] = []
+
+    def track(filepath: str, root: Path | None) -> Path | None:
+        resolved.append(filepath)
+        return original(filepath, root)
+
+    monkeypatch.setattr(store_module, "_resolve_indexed_filepath", track)
+    assert list(load_label_index(index, data_dir=data_dir)) == ["pr-2", "pr-1"]
+    assert resolved == ["data/events.log"]
+    resolved.clear()
+    assert list(load_indexed_records(index, data_dir)) == [
+        ("pr-2", {"raw_text": "second"}),
+        ("pr-1", {"raw_text": "first"}),
+    ]
+    assert resolved == ["data/events.log"]
 
 
 def test_label_index_security_and_validation_errors(tmp_path: Path) -> None:

@@ -104,6 +104,6 @@ eCAR 的 `objectID` 随对象类型改变含义。转换层仅对 PROCESS CREATE
 
 MODULE LOAD 补 `ImageLoaded`，REGISTRY MODIFY 补 `TargetObject` / `Details`，PROCESS OPEN 与 THREAD REMOTE_CREATE 补已有样本实际提供的 `SourceImage`、`TargetImage`、`GrantedAccess`、`CallTrace` 和进程标识字段。缺失字段保持未知。
 
-转换层还为已识别的 eCAR 对象/动作生成 `event_categories`。调查管线用它核对 Sigma 的 category；例如 image_load 规则不能只因共享 Image 字段便接纳文件创建记录。它不会把 eCAR 伪装成 Sysmon 或 Security，带这些 service 声明的规则仍受日志源限制。
+转换层还为已识别的 eCAR 对象/动作生成 `event_categories`。FILE READ 使用 `file_access`，读取路径同时提供 `FileName` 和原有的 `TargetFilename`。文件创建、写入、删除继续使用各自的事件分类。调查管线用它核对 Sigma 的 category；例如 image_load 规则不能只因共享 Image 字段便接纳文件创建记录。它不会把 eCAR 伪装成 Sysmon 或 Security，带这些 service 声明的规则仍受日志源限制。
 
 同主机、明确进程标识、唯一且有时间的创建记录，可与该进程创建至退出（含退出记录）期间的记录形成 `same_process_guid` 候选关系；经原取证查询、黑板和核验接口后，Ranker 允许沿该身份关系双向回查。不同主机、缺失标识、多个创建记录、创建前或退出后的记录不通过此路径关联，父子关系不会自动扩大攻击集合。

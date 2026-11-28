@@ -402,6 +402,13 @@ def load_label_index(
     data_dir: Path | str | None = None,
 ) -> dict[str, Locator]:
     """Load and strictly validate a `Label_Index.json` file into `pid -> Locator`."""
+    index, _ = _load_label_index(index_path, data_dir)
+    return index
+
+
+def _load_label_index(
+    index_path: Path | str, data_dir: Path | str | None,
+) -> tuple[dict[str, Locator], dict[str, Path | None]]:
     if not isinstance(index_path, (str, Path)):
         raise InvalidArgumentError(
             "index_path must be a str or Path.",
@@ -444,6 +451,7 @@ def load_label_index(
         )
 
     result: dict[str, Locator] = {}
+    resolved_paths: dict[str, Path | None] = {}
     for pid, entry in raw_index.items():
         if not isinstance(pid, str) or not PR_ID_PATTERN.fullmatch(pid):
             raise InvalidArgumentError(
@@ -462,10 +470,13 @@ def load_label_index(
                 details={"physical_record_id": pid, "linenumber": ln},
             )
 
-        _resolve_indexed_filepath(entry["filepath"], resolved_data_dir)
-        result[pid] = Locator(filepath=entry["filepath"], linenumber=ln)
+        filepath = entry["filepath"]
+        # Many index rows refer to the same file. Resolve it once per load.
+        if not isinstance(filepath, str) or filepath not in resolved_paths:
+            resolved_paths[filepath] = _resolve_indexed_filepath(filepath, resolved_data_dir)
+        result[pid] = Locator(filepath=filepath, linenumber=ln)
 
-    return result
+    return result, resolved_paths
 
 
 def _read_jsonl_records(
@@ -720,17 +731,13 @@ def load_indexed_records(
     strict_json: bool = True,
 ) -> Iterator[tuple[str, dict[str, Any]]]:
     """Validate `Label_Index.json` and yield `(physical_record_id, payload)` in index order."""
-    index_map = load_label_index(index_path, data_dir=data_dir)
-    resolved_data_dir = Path(data_dir)
-    resolved_targets: list[tuple[str, Locator, Path]] = []
-    for pid, locator in index_map.items():
-        target = _resolve_indexed_filepath(locator.filepath, resolved_data_dir)
-        assert target is not None
-        resolved_targets.append((pid, locator, target))
+    index_map, resolved_paths = _load_label_index(index_path, data_dir)
 
     def _iter_records() -> Iterator[tuple[str, dict[str, Any]]]:
         file_cache: dict[Path, list[dict[str, Any]]] = {}
-        for pid, locator, target in resolved_targets:
+        for pid, locator in index_map.items():
+            target = resolved_paths[locator.filepath]
+            assert target is not None
             if target not in file_cache:
                 file_cache[target] = _load_file_records(
                     target,
