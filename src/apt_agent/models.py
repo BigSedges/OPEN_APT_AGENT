@@ -496,6 +496,12 @@ class CaseResult(BaseModel):
     edges: list[Edge] = Field(default_factory=list)
     validation_errors: list[dict[str, Any]] = Field(default_factory=list)
     investigation_ledger: list[dict[str, Any]] = Field(default_factory=list)
+    seed_event_ids: list[str] = Field(default_factory=list)
+    attack_decisions: dict[str, dict[str, Any]] = Field(default_factory=dict)
+    record_diagnostics: dict[str, dict[str, Any]] = Field(default_factory=dict)
+    stage_timings_s: dict[str, float] = Field(default_factory=dict)
+    llm_calls: list[dict[str, Any]] = Field(default_factory=list)
+    input_record_count: int = Field(default=0, ge=0)
 
     @field_validator("case_id", "run_id")
     @classmethod

@@ -12,6 +12,7 @@ from threading import Lock
 from typing import Any
 
 from apt_agent.exceptions import ConflictError, OutOfScopeError
+from apt_agent.detection.base import severity_rank
 from apt_agent.ingestion import Normalizer, RawEvidenceStore
 from apt_agent.models import (
     TACTIC_ID_PATTERN,
@@ -328,12 +329,14 @@ def verify(ctx: RunContext, blackboard: Blackboard | GraphState) -> Verification
     state.candidate_edges, unresolved = _verify_edges(state, events)
     opposing = defaultdict(set)
     for finding in state.findings:
-        if finding.verdict_malicious is not None and finding.status != "hypothesis":
-            for event_id in finding.evidence_event_ids:
+        if finding.verdict_malicious is not None and finding.status == "observed":
+            for event_id in set(finding.evidence_event_ids) & state.verified_event_refs.keys():
                 opposing[event_id].add(finding.verdict_malicious)
     for event_id, verdicts in sorted(opposing.items()):
         if len(verdicts) > 1:
-            state.disputed_items.append({"event_id": event_id, "reason": "conflicting_findings"})
+            conflict = {"event_id": event_id, "reason": "conflicting_findings"}
+            if conflict not in state.disputed_items:
+                state.disputed_items.append(conflict)
     unresolved.extend(state.disputed_items)
     return VerificationResult(state, state.validation_errors, unresolved)
 
@@ -368,26 +371,69 @@ def rank(
     rule_sources: dict[str, set[str]] = defaultdict(set)
     tactics: dict[str, set[str]] = defaultdict(set)
     finding_sources: dict[str, set[str]] = defaultdict(set)
+    expansion_level = ctx.config.minimum_expansion_level if ctx.config is not None else None
+    expansion_seeds: set[str] = set()
+    explicit_malicious: set[str] = set()
+    benign_ids: set[str] = set()
+    decisions: dict[str, dict[str, Any]] = {}
+    context_rules = ctx.config.context_only_rules if ctx.config is not None else {}
+    minimum = severity_rank(ctx.config.minimum_seed_level) if ctx.config is not None else 0
     for hit in hits:
+        contributors = hit.matched_fields.get("contributing_sources")
+        sources = contributors or [{"rule_id": hit.rule_id, "level": hit.level,
+                                     "tactic_ids": hit.tactic_ids}]
+        eligible = [source for source in sources
+                    if source.get("rule_id") not in context_rules
+                    and (not contributors or severity_rank(source.get("level")) >= minimum)]
+        context_ids = sorted({source["rule_id"] for source in sources
+                              if source.get("rule_id") in context_rules})
         for event_id in set(hit.event_ids) & by_id.keys():
-            direct[event_id].add(hit.rule_id)
+            if not eligible:
+                decisions.setdefault(event_id, {"classification": "context", "reason": ("context_only_rule" if context_ids else "no_eligible_rule_source"),
+                    "policy_reasons": {rule: context_rules[rule] for rule in context_ids}, "can_expand": False})
+                continue
+            direct[event_id].update(str(source.get("rule_id") or hit.rule_id) for source in eligible)
             rule_sources[event_id].update(hit.matched_fields.get("rule_ids", ()))
-            tactics[event_id].update(hit.tactic_ids)
+            tactics[event_id].update(tactic for source in eligible for tactic in source.get("tactic_ids", ()))
+            if expansion_level is None or any(
+                severity_rank(source.get("level")) >= severity_rank(expansion_level) for source in eligible
+            ):
+                expansion_seeds.add(event_id)
 
     attack_ids = set(direct)
     observed_ids: set[str] = set()
     disputed_ids = {item.get("event_id") for item in state.disputed_items}
     for finding in state.findings:
-        if finding.status != "observed" or finding.verdict_malicious is False:
+        if finding.status != "observed":
             continue
         for event_id in set(finding.evidence_event_ids) & state.verified_event_refs.keys():
-            if event_id in disputed_ids:
+            if event_id not in by_id:
                 continue
             observed_ids.add(event_id)
+            if finding.verdict_malicious is False:
+                benign_ids.add(event_id)
+                continue
+            if event_id in disputed_ids:
+                continue
             if finding.verdict_malicious is True:
                 attack_ids.add(event_id)
+                explicit_malicious.add(event_id)
             tactics[event_id].update(finding.tactic_ids)
             finding_sources[event_id].update(finding.sources)
+
+    blocked_ids = benign_ids | disputed_ids
+    attack_ids.difference_update(blocked_ids)
+    expansion_seeds = (expansion_seeds | explicit_malicious) - blocked_ids
+    for event_id in direct:
+        decisions[event_id] = {"classification": "attack", "reason": "direct_detection_seed",
+                               "can_expand": event_id in expansion_seeds}
+    for event_id in explicit_malicious:
+        decisions[event_id] = {"classification": "attack", "reason": "explicit_malicious_finding",
+                               "can_expand": event_id in expansion_seeds}
+    for event_id in sorted(blocked_ids & by_id.keys()):
+        decisions[event_id] = {"classification": "context", "reason": (
+            "conflicting_findings" if event_id in disputed_ids else "explicit_benign_finding"
+        ), "can_expand": False}
 
     adjacency: dict[str, list[Edge]] = defaultdict(list)
     unresolved_by_id: dict[str, set[str]] = defaultdict(set)
@@ -399,7 +445,8 @@ def rank(
             for eid in (edge.from_event_id, edge.to_event_id):
                 unresolved_by_id[eid].add(edge.relation)
 
-    pending_attack = deque(sorted(attack_ids))
+    reached = set(expansion_seeds)
+    pending_attack = deque(sorted(expansion_seeds))
     while pending_attack:
         event_id = pending_attack.popleft()
         for edge in adjacency[event_id]:
@@ -407,13 +454,24 @@ def rank(
                 edge.relation in _FLOW_RELATIONS or edge.relation in _PROCESS_RELATIONS - {"spawned"}
             ):
                 next_id = edge.to_event_id
-            elif edge.relation in _FLOW_RELATIONS:
+            elif edge.relation in _FLOW_RELATIONS or edge.relation == "same_process_guid":
                 next_id = edge.from_event_id
             else:
                 continue
-            if next_id not in attack_ids and next_id not in disputed_ids:
+            if next_id not in blocked_ids and next_id not in reached:
+                reached.add(next_id)
                 attack_ids.add(next_id)
+                if decisions.get(next_id, {}).get("classification") != "attack":
+                    decisions[next_id] = {"classification": "attack", "reason": "verified_expansion",
+                                          "from_event_id": event_id, "can_expand": True}
+                else:
+                    decisions[next_id]["can_expand"] = True
+                    decisions[next_id]["expansion_from_event_id"] = event_id
                 pending_attack.append(next_id)
+
+    for event_id in observed_ids - attack_ids - blocked_ids:
+        decisions.setdefault(event_id, {"classification": "context", "reason": "no_qualifying_expansion_seed",
+                                        "can_expand": False})
 
     chains = []
     seen: set[str] = set()
@@ -484,6 +542,7 @@ def rank(
         run_id=ctx.run_id,
         chains=sorted(chains, key=AttackChain.sort_key),
         attack_event_ids=sorted(attack_ids),
+        attack_decisions=decisions,
         tactic_ranked_event_ids=dict(sorted(tactic_candidates.items())),
         tactic_top_k=tactic_top_k,
         unresolved=unresolved,

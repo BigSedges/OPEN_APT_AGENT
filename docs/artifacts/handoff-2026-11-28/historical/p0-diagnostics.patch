@@ -1,0 +1,518 @@
+diff --git a/README.md b/README.md
+index 1c2a1b6..9ea7a14 100644
+--- a/README.md
++++ b/README.md
+@@ -66,6 +66,8 @@ uv run python packages/apt-rag/search_public.py "Sysmon process creation" --top-
+ 
+ 需要查看候选链、引擎覆盖、知识引用和查询审计时，可调用 `apt_agent.pipeline.investigate_records(records, config=..., locator_map=...)`，返回 `CaseResult`。主机和网络角色使用本案只读事件查询，比赛输出只包含两个约定字段。配置项 `minimum_seed_level` 控制进入调查种子的最低规则级别，默认为 `medium`。低级别告警保留于检测覆盖中，相关原文仍可回查。对带日志源声明的 YAML 规则，汇总器核对命中事件的产品和服务。
+ 
++`CaseResult.record_diagnostics` 提供按物理 ID 的解析、原始命中、日志源过滤、入种子、关系核验及导出追踪，`stage_timings_s` 提供阶段耗时。可通过 `script/diagnose/run_scene.py` 保存预测及诊断，再用独立的 `compare_scene.py` 与标注对照；命令和边界见 [交接增量](docs/HANDOFF.md#31-macos-接手增量2026-11-28)。
++
+ 维护接口 `apt_agent.maintenance.validate_candidate` 支持映射样本检查以及 Sigma 正例和负例回放。通过校验的变更可由 `ConverterAgent` 或 `RuleAgent` 发布到 `SnapshotRegistry`。一次运行内固定所用版本，显式配置的引擎或知识文件路径具有优先级。
+ 
+ A 榜 starter 提供索引读取和预测落盘。在其 `submission_agent/runner.py` 的 `analyze_records` 回调中调用本项目入口，即可使用相同的迭代器和输出格式。
+diff --git a/docs/HANDOFF.md b/docs/HANDOFF.md
+index 1ba4184..10f97ad 100644
+--- a/docs/HANDOFF.md
++++ b/docs/HANDOFF.md
+@@ -205,6 +205,36 @@ DeepSeek 返回了针对 15 个候选任务的有效排序，项目采用了该
+ - **改动入口。** 给未知字段输出来源、样本与候选变更，纳入转换 Agent 的评审入口。为每种启用引擎增加相应映射或规则的实际编译、正负样本与基线回放，补齐映射版本绑定与外部资源指纹。
+ - **验收。** 错误映射和命中负样本的规则都被拒绝发布。正常变更报告各目标引擎的校验和差异。发布新版本后，旧运行仍能拿到绑定的规则、映射及知识内容并重放，这项检查需要覆盖显式挂载的资源目录。
+ 
++## 3.1 macOS 接手增量（2026-11-28）
++
++本次先推进 P0 的观测能力。`CaseResult.record_diagnostics` 按输入物理 ID 保留归一化事件、日志源、解析告警与缺口、引擎过滤前命中及过滤原因、实际种子、已核验和未决关系、Ranker 攻击判定及最终导出。`seed_event_ids` 记录调度器实际使用的种子；`stage_timings_s` 记录接入、归一化、检测、调查核验排序和诊断耗时。`DetectionResult.hit_trace` 保留合并前来源，原有字典访问的四个键保持不变。比赛 JSON 仍只有两个约定字段。
++
++阶段记录中的 `ranked_attack` 不代表每条种子都有已核验的关联边。当前 Ranker 会把直接规则种子加入攻击集合，再沿部分已核验关系扩展。诊断为导出物理记录区分 `direct_detection_seed` 和 `investigation_expansion`，便于下一步检查误报来源。这是待验证的误报路径，尚不能据此认定接力文档中近七千条误报的根因。
++
++新增入口在仓库根目录运行，配置必须显式指定；输出目录必须尚不存在，避免覆盖以前结果：
++
++```bash
++uv run --locked --offline python script/diagnose/run_scene.py   /path/to/starter/data/train/2024-05-30-apt28   --config config/local.yaml --output /path/to/new-run
++```
++
++依次生成 `predict.json`、含逐记录追踪的 `case.json` 和 `runtime.json`。该程序不读标注、不写 starter 的 `done.txt`。预测完成后单独对照：
++
++```bash
++uv run --locked --offline python script/diagnose/compare_scene.py   --case /path/to/new-run/case.json   --gold /path/to/starter/data/train/2024-05-30-apt28/Label.json   --output /path/to/new-run/comparison.json
++```
++
++对照报告包含逐条漏检的最后阶段、原因和追踪；未收到的标注 ID 单列为 `input_missing`。按引擎、规则和日志源统计去重后的物理命中、过滤后命中、导出和误报，并给出误报物理 ID 供负样本回放。规则分组表示该规则与误报记录的命中关系，不表示它是唯一归因；关联扩展产生的误报也可能没有直接规则命中。无事件命中时提示检查覆盖，不能据此宣称引擎已完整扫描。这里的计数不是官方总分。
++
++新增回归从接力文档契约构造过滤、低等级、解析失败、直接种子、输入缺失和标注隔离场景。尚未完成的验收包括原 Linux 六工具配置的复现、26 条历史漏检的逐条归因、负样本修复前后对照、三场景固定条件 LLM 对照及容器交付。P1 的自动 Repair、并行调度和维护快照工作仍保持待办。
++
++### 本次本机验证结果
++
++- Python 3.12.14，按未修改的 `uv.lock` 同步依赖。项目回归 **293 项通过**（含新增 1 项 P0 复合场景）；LangGraph 协议冒烟 **5 项通过**。macOS 的 `/var` 与 `/private/var` 路径别名会触发既有 CLI 测试中的 cwd 字符串比较，验证时使用 `TMPDIR=/private/tmp`。未修改测试断言。
++- 在本机已有的 macOS ARM64 Hayabusa **4.4.0** 与同目录规则上，关闭其他检测引擎及 LLM，`minimum_seed_level=medium`、墙钟预算 900 秒，完整读取 APT28 的 **209,109 条**记录，诊断命令退出码为 0，约 **174.23 秒**生成预测与案件诊断。官方评分器命令退出码为 0：**1/27 真阳性、6,010 误报、26 漏检，0.023233/100**。本次没有通过 starter runner，因此没有 `done.txt`，不算完成 R4 交付。
++- 本次 26 条漏检中，**15 条最后停在 normalized**（11 条 eCAR、4 条 Windows），**11 条停在 source_accepted**（全部 Windows，只有 informational/low 命中，未达到 medium 门槛）。没有输入缺失或完全解析失败的标注记录。这是本次单引擎运行的逐条归因，不能替代历史 Linux 六工具运行的归因。
++- 6,010 条误报中，**5,853 条带直接检测种子、157 条由调查扩展入选**。达到种子门槛的主要关联规则包括 `5c67a566-7829-eb05-4a1f-0eb292ef993f`（External Remote SMB Logon from Public IP，high，4,054 条误报物理记录）、`4386b4e0-f268-42a6-b91d-e3bb768976d6`（Kerberoasting Activity - Initial Query，medium，889 条）及 `f19849e7-b5ba-404b-a731-9b624d7f6d19`（Possible Kerberoasting，medium，889 条）。不同规则命中可重叠，不能相加。
++- 下一步用上述误报 ID 经原索引回查，构造独立正负样本，检查公网地址语义、环境背景和攻击判定条件，再固定资产跑修复前后对照。此次只新增观测能力，未根据标注调整检测逻辑，也没有声称检测质量提升。
++
+ ## 4. 交接前 Gemini Teamwork 计划
+ 
+ 以下保留原计划的工作目标和验收口径，供接手后按里程碑推进。工作目录为 `/home/yue/OPEN_APT_AGENT`，`Integrity mode: demo`。团队不得复制其他开源项目的代码作为核心逻辑，不得在实现前阅读测试源码推断预期行为。以设计和接口规范推导行为，提交实现后按验收清单运行测试和外部验证。
+diff --git a/script/diagnose/compare_scene.py b/script/diagnose/compare_scene.py
+new file mode 100644
+index 0000000..5dd8382
+--- /dev/null
++++ b/script/diagnose/compare_scene.py
+@@ -0,0 +1,31 @@
++"""Compare a completed diagnostic case with labels, after prediction is saved."""
++from __future__ import annotations
++
++import argparse
++import json
++from pathlib import Path
++
++from apt_agent.diagnostics import compare_records
++from apt_agent.models import CaseResult
++
++
++def main() -> None:
++    parser = argparse.ArgumentParser(description=__doc__)
++    parser.add_argument("--case", type=Path, required=True)
++    parser.add_argument("--gold", type=Path, required=True)
++    parser.add_argument("--output", type=Path, required=True)
++    args = parser.parse_args()
++    if args.output.exists():
++        parser.error("Output already exists; choose a new file.")
++    case = CaseResult.model_validate_json(args.case.read_bytes())
++    gold = json.loads(args.gold.read_text(encoding="utf-8"))
++    ids = gold["physical_id_set"]
++    if not isinstance(ids, list):
++        parser.error("Label.json physical_id_set must be a list.")
++    report = compare_records(case, ids)
++    args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
++    print(json.dumps(report["counts"]))
++
++
++if __name__ == "__main__":
++    main()
+diff --git a/script/diagnose/run_scene.py b/script/diagnose/run_scene.py
+new file mode 100644
+index 0000000..c01bd5f
+--- /dev/null
++++ b/script/diagnose/run_scene.py
+@@ -0,0 +1,45 @@
++"""Persist prediction and record diagnostics; deliberately never reads Label.json."""
++from __future__ import annotations
++
++import argparse
++import json
++from pathlib import Path
++from time import perf_counter
++
++from apt_agent.config import load_config
++from apt_agent.ingestion import load_indexed_records
++from apt_agent.models import Locator, RunContext
++from apt_agent.pipeline import investigate_records, to_prediction
++
++
++def main() -> None:
++    parser = argparse.ArgumentParser(description=__doc__)
++    parser.add_argument("scene", type=Path)
++    parser.add_argument("--config", type=Path, required=True)
++    parser.add_argument("--output", type=Path, required=True,
++                        help="New output directory; existing directories are rejected")
++    args = parser.parse_args()
++    args.output.mkdir(parents=True, exist_ok=False)
++    config = load_config(args.config)
++    index_path = args.scene / "Label_Index.json"
++    index = json.loads(index_path.read_text(encoding="utf-8"))
++    locators = {pid: Locator.model_validate(value) for pid, value in index.items()}
++    started = perf_counter()
++    case = investigate_records(load_indexed_records(index_path, args.scene / "data"),
++                               config=config, valid_physical_ids=set(index), locator_map=locators)
++    ctx = RunContext(case_id=case.case_id, run_id=case.run_id, valid_physical_ids=frozenset(index))
++    prediction = to_prediction(ctx, case)
++    # Prediction is saved first; labels must be compared only in a separate step.
++    (args.output / "predict.json").write_text(json.dumps(prediction, ensure_ascii=False), encoding="utf-8")
++    (args.output / "case.json").write_text(case.model_dump_json(indent=2), encoding="utf-8")
++    summary = {"case_id": case.case_id, "run_id": case.run_id,
++               "elapsed_s": perf_counter() - started, "stop_reason": case.stop_reason,
++               "input_records": len(index), "predicted_records": len(prediction["physical_id_set"]),
++               "snapshots": case.snapshot_refs, "stage_timings_s": case.stage_timings_s,
++               "llm_enabled": config.llm.enabled}
++    (args.output / "runtime.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
++    print(json.dumps(summary, ensure_ascii=False))
++
++
++if __name__ == "__main__":
++    main()
+diff --git a/src/apt_agent/agents.py b/src/apt_agent/agents.py
+index 3f8a868..bd2aa31 100644
+--- a/src/apt_agent/agents.py
++++ b/src/apt_agent/agents.py
+@@ -316,6 +316,7 @@ def run_investigation(
+         else "INVESTIGATION_COMPLETE" if seeds else "NO_DETECTION_SEEDS"
+     )
+     result = rank(ctx, state, store, primary_hits, detection.coverage, events=events)
++    result.seed_event_ids = sorted(seeds)
+     result.knowledge_refs.extend(knowledge)
+     result.validation_errors.extend(verification.errors)
+     result.investigation_ledger.extend(state.investigation_ledger)
+diff --git a/src/apt_agent/detection/base.py b/src/apt_agent/detection/base.py
+index 5d85047..9e1cd35 100644
+--- a/src/apt_agent/detection/base.py
++++ b/src/apt_agent/detection/base.py
+@@ -121,6 +121,8 @@ class DetectionResult(BaseModel):
+     leads: list[dict[str, Any]] = Field(default_factory=list)
+     event_to_physical: dict[str, str] = Field(default_factory=dict)
+ 
++    hit_trace: list[dict[str, Any]] = Field(default_factory=list)
++
+     _DICT_FIELDS = ("hits", "coverage", "leads", "event_to_physical")
+ 
+     def __getitem__(self, key: str) -> Any:
+diff --git a/src/apt_agent/detection/coordinator.py b/src/apt_agent/detection/coordinator.py
+index a420922..75848ff 100644
+--- a/src/apt_agent/detection/coordinator.py
++++ b/src/apt_agent/detection/coordinator.py
+@@ -188,6 +188,7 @@ class DetectionCoordinator:
+             fmt for ev in events if (fmt := classify_event_format(ev)) != "unknown"
+         }
+ 
++        hit_trace: list[dict[str, Any]] = []
+         raw_event_hits: list[Hit] = []
+         lead_only_hits: list[Hit] = []
+         all_coverage: list[RuleRun] = []
+@@ -226,11 +227,28 @@ class DetectionCoordinator:
+                 )
+                 continue
+ 
++            unscoped_hits = out.hits
+             if out.hits and engine_cfg.rules_dir is not None:
+                 rules_path = engine_cfg.rules_dir
+                 if rules_path not in rule_scopes:
+                     rule_scopes[rules_path] = read_rule_logsources(rules_path)
+                 out = scope_detector_output(out, rule_scopes[rules_path], events_by_id)
++            accepted_pairs = {(hit.hit_id, eid) for hit in out.hits for eid in hit.event_ids}
++            for hit in unscoped_hits:
++                for eid in sorted(set(hit.event_ids)):
++                    event = events_by_id.get(eid)
++                    accepted = (hit.hit_id, eid) in accepted_pairs and event is not None
++                    hit_trace.append({
++                        "event_id": eid,
++                        "physical_record_id": event.physical_record_id if event else None,
++                        "source_type": event.source_type if event else None,
++                        "hit_id": hit.hit_id, "rule_id": hit.rule_id,
++                        "engine": hit.engine, "level": hit.level,
++                        "accepted": accepted,
++                        "reason": "accepted" if accepted else (
++                            "unknown_event_id" if event is None else "outside_rule_logsource"
++                        ),
++                    })
+             all_coverage.extend(out.coverage)
+ 
+             for lead in out.leads:
+@@ -316,6 +334,7 @@ class DetectionCoordinator:
+         )
+ 
+         return DetectionResult(
++            hit_trace=sorted(hit_trace, key=lambda item: (item["event_id"], item["engine"], item["rule_id"], item["hit_id"])),
+             hits=final_hits,
+             coverage=sorted_coverage,
+             leads=sorted_leads,
+diff --git a/src/apt_agent/diagnostics.py b/src/apt_agent/diagnostics.py
+new file mode 100644
+index 0000000..70dcbec
+--- /dev/null
++++ b/src/apt_agent/diagnostics.py
+@@ -0,0 +1,142 @@
++"""Prediction-independent provenance and post-prediction physical-ID comparison.
++
++No labels enter ingestion, detection or investigation. ``compare_records`` accepts
++only a completed CaseResult and a caller-supplied set of expected physical IDs.
++"""
++from __future__ import annotations
++
++from collections import defaultdict
++from collections.abc import Iterable, Sequence
++from typing import Any
++
++from apt_agent.detection.base import DetectionResult
++from apt_agent.ingestion.store import RawEvidenceStore
++from apt_agent.models import CaseResult, Event
++
++
++def build_record_diagnostics(
++    store: RawEvidenceStore,
++    events: Sequence[Event],
++    gaps: list[dict[str, Any]],
++    detection: DetectionResult,
++    result: CaseResult,
++    prediction: dict[str, Any],
++) -> dict[str, dict[str, Any]]:
++    """Keep all input IDs, including records that produced no normalized event.
++
++    ``ranked_attack`` records Ranker's decision; it does not claim that every
++    direct Sigma seed was corroborated by a verified relationship.
++    """
++    records = {}
++    for pid in sorted(store.physical_ids()):
++        locator = store.get_locator(pid)
++        records[pid] = {
++            "locator": locator.model_dump() if locator else None,
++            "event_ids": [], "source_types": [], "parse_warnings": [],
++            "gaps": [], "hits": [], "seed_event_ids": [],
++            "verified_relations": [], "unresolved_relations": [],
++            "ranked_attack_event_ids": [], "exported": False,
++            "exported_tactics": [], "last_stage": "ingested",
++            "reason": "normalization_produced_no_events",
++        }
++    seeds = set(result.seed_event_ids)
++    attacks = set(result.attack_event_ids)
++    for event in events:
++        item = records[event.physical_record_id]
++        item["event_ids"].append(event.event_id)
++        if event.source_type:
++            item["source_types"].append(event.source_type)
++        item["parse_warnings"].extend(event.parse_metadata.get("warnings", []))
++        if event.event_id in seeds:
++            item["seed_event_ids"].append(event.event_id)
++        if event.event_id in attacks:
++            item["ranked_attack_event_ids"].append(event.event_id)
++    for gap in gaps:
++        pid = gap.get("physical_record_id")
++        if pid in records:
++            records[pid]["gaps"].append(gap)
++    for hit in detection.hit_trace:
++        pid = hit.get("physical_record_id")
++        if pid in records:
++            records[pid]["hits"].append(dict(hit))
++    for edge in result.edges:
++        for pid in sorted({result.event_to_physical[eid] for eid in
++                           (edge.from_event_id, edge.to_event_id)
++                           if eid in result.event_to_physical}):
++            records[pid]["verified_relations" if edge.status == "verified" else
++                         "unresolved_relations"].append({
++                "from_event_id": edge.from_event_id, "to_event_id": edge.to_event_id,
++                "relation": edge.relation, "status": edge.status,
++                "reason": edge.ambiguity_reason,
++            })
++    exported = set(prediction["physical_id_set"])
++    for pid, item in records.items():
++        item["exported"] = pid in exported
++        item["exported_tactics"] = sorted(tactic for tactic, ids in
++                                            prediction["ta_physical_ids"].items() if pid in ids)
++        for key in ("event_ids", "source_types", "parse_warnings", "seed_event_ids",
++                    "ranked_attack_event_ids"):
++            item[key] = sorted(set(item[key]))
++        if item["event_ids"]:
++            item.update(last_stage="normalized", reason="no_event_backed_detector_hit;check_coverage")
++        if item["hits"]:
++            item.update(last_stage="detected", reason="all_hits_rejected_by_logsource")
++        if any(hit["accepted"] for hit in item["hits"]):
++            item.update(last_stage="source_accepted", reason="below_minimum_seed_level")
++        if item["seed_event_ids"]:
++            item.update(last_stage="seeded", reason="not_selected_by_ranker;check_validation")
++        if item["ranked_attack_event_ids"]:
++            item.update(last_stage="ranked_attack", reason="excluded_by_export_scope")
++        if item["exported"]:
++            item.update(last_stage="exported", reason=(
++                "direct_detection_seed" if item["seed_event_ids"] else "investigation_expansion"
++            ))
++    return records
++
++
++def compare_records(result: CaseResult, expected_physical_ids: Iterable[str]) -> dict[str, Any]:
++    """Compare after prediction; count unique physical IDs rather than hit rows.
++
++    The caller extracts IDs from their scorer's label schema. This report is a
++    diagnostic comparison, not an implementation of the official scoring formula.
++    """
++    expected = set(expected_physical_ids)
++    if any(not isinstance(pid, str) or not pid.strip() for pid in expected):
++        raise ValueError("Expected physical IDs must be non-blank strings.")
++    records = result.record_diagnostics
++    predicted = {pid for pid, item in records.items() if item["exported"]}
++    missed = sorted(expected - predicted)
++    false_positives = predicted - expected
++    groups: dict[tuple[str, str, str], dict[str, set[str]]] = defaultdict(
++        lambda: {"raw": set(), "accepted": set(), "exported": set(), "false_positive": set()}
++    )
++    for pid, item in records.items():
++        for hit in item["hits"]:
++            group = groups[(hit["engine"], hit["rule_id"], hit["source_type"] or "unknown")]
++            group["raw"].add(pid)
++            if hit["accepted"]:
++                group["accepted"].add(pid)
++                if pid in predicted:
++                    group["exported"].add(pid)
++                if pid in false_positives:
++                    group["false_positive"].add(pid)
++    return {
++        "case_id": result.case_id, "run_id": result.run_id,
++        "stop_reason": result.stop_reason,
++        "counts": {"expected": len(expected), "predicted": len(predicted),
++                   "true_positive": len(expected & predicted),
++                   "false_positive": len(false_positives), "false_negative": len(missed)},
++        "missed_records": [{"physical_record_id": pid,
++                            "last_stage": records[pid]["last_stage"] if pid in records else "input_missing",
++                            "reason": records[pid]["reason"] if pid in records else "not_in_received_records",
++                            "trace": records.get(pid)} for pid in missed],
++        "false_positive_ids": sorted(false_positives),
++        "rule_distribution": [
++            {"engine": key[0], "rule_id": key[1], "source_type": key[2],
++             **{name + "_physical_count": len(ids) for name, ids in group.items()},
++             "false_positive_ids": sorted(group["false_positive"])}
++            for key, group in sorted(groups.items())
++        ],
++        "coverage": [run.model_dump(mode="json") for run in result.coverage],
++        "validation_errors": result.validation_errors,
++    }
+diff --git a/src/apt_agent/models.py b/src/apt_agent/models.py
+index 47fefb4..3c51f78 100644
+--- a/src/apt_agent/models.py
++++ b/src/apt_agent/models.py
+@@ -496,6 +496,9 @@ class CaseResult(BaseModel):
+     edges: list[Edge] = Field(default_factory=list)
+     validation_errors: list[dict[str, Any]] = Field(default_factory=list)
+     investigation_ledger: list[dict[str, Any]] = Field(default_factory=list)
++    seed_event_ids: list[str] = Field(default_factory=list)
++    record_diagnostics: dict[str, dict[str, Any]] = Field(default_factory=dict)
++    stage_timings_s: dict[str, float] = Field(default_factory=dict)
+ 
+     @field_validator("case_id", "run_id")
+     @classmethod
+diff --git a/src/apt_agent/pipeline.py b/src/apt_agent/pipeline.py
+index a39cecd..e0b6e3d 100644
+--- a/src/apt_agent/pipeline.py
++++ b/src/apt_agent/pipeline.py
+@@ -4,6 +4,7 @@ from __future__ import annotations
+ 
+ from collections.abc import Iterable, Mapping, Set
+ from pathlib import Path
++from time import perf_counter
+ from typing import Any
+ from uuid import uuid4
+ 
+@@ -11,6 +12,7 @@ from apt_agent.agents import BudgetManager, run_investigation
+ from apt_agent.config import AppConfig, load_config
+ from apt_agent.detection import DetectionCoordinator, DetectionResult
+ from apt_agent.exceptions import OutOfScopeError
++from apt_agent.diagnostics import build_record_diagnostics
+ from apt_agent.ingestion import Normalizer, RawEvidenceStore, ingest_records
+ from apt_agent.maintenance import bind_snapshot_assets
+ from apt_agent.models import (
+@@ -93,6 +95,7 @@ def _investigate_records(
+     else:
+         effective_config = load_config(config)
+ 
++    started = perf_counter()
+     budget = BudgetManager(effective_config.budget)
+     run_id = f"run-{uuid4().hex}"
+     store = ingest_records(
+@@ -102,8 +105,12 @@ def _investigate_records(
+         valid_physical_ids=valid_physical_ids,
+         locator_map=locator_map,
+     )
++    ingested_at = perf_counter()
+     with bind_snapshot_assets(effective_config) as bound_config:
+-        return _run_case(store, bound_config, budget)
++        ctx, result = _run_case(store, bound_config, budget)
++    result.stage_timings_s["ingestion"] = ingested_at - started
++    result.stage_timings_s["total"] = perf_counter() - started
++    return ctx, result
+ 
+ 
+ def _run_case(
+@@ -121,13 +128,26 @@ def _run_case(
+         config=effective_config,
+         valid_physical_ids=store.physical_id_frozenset(),
+     )
++    started = perf_counter()
+     normalized = Normalizer.normalize_batch(ctx, store)
++    normalized_at = perf_counter()
+     detection = (
+         DetectionCoordinator(effective_config).detect(ctx, normalized.events)
+         if normalized.events else DetectionResult()
+     )
++    detected_at = perf_counter()
+     result = run_investigation(
+         ctx, store, normalized.events, detection, budget_manager=budget
+     )
++    investigated_at = perf_counter()
+     result.unresolved.extend(normalized.gaps)
++    result.record_diagnostics = build_record_diagnostics(
++        store, normalized.events, normalized.gaps, detection, result, to_prediction(ctx, result)
++    )
++    result.stage_timings_s = {
++        "normalization": normalized_at - started,
++        "detection": detected_at - normalized_at,
++        "investigation_verification_ranking": investigated_at - detected_at,
++        "diagnostics_export": perf_counter() - investigated_at,
++    }
+     return ctx, result
+diff --git a/tests/test_record_diagnostics.py b/tests/test_record_diagnostics.py
+new file mode 100644
+index 0000000..bde022b
+--- /dev/null
++++ b/tests/test_record_diagnostics.py
+@@ -0,0 +1,65 @@
++"""P0 provenance tests derived from the handoff and physical-ID contract."""
++from apt_agent.config import AppConfig
++from apt_agent.detection.base import AdapterOutput
++from apt_agent.detection.coordinator import DetectionCoordinator
++from apt_agent.diagnostics import compare_records
++from apt_agent.models import Hit
++from apt_agent.pipeline import investigate_records
++
++
++class FixtureAdapter:
++    engine_name = "rsigma"
++    supported_formats = frozenset({"bash_history"})
++
++    def run(self, ctx, events, engine_cfg, **kwargs):
++        hits = []
++        for event in events:
++            pid = event.physical_record_id
++            rule = "wrong-source" if pid == "pr-filtered" else "bash-rule"
++            hits.append(Hit(hit_id=pid, rule_id=rule, engine="rsigma",
++                            event_ids=[event.event_id],
++                            level="low" if pid == "pr-low" else "high"))
++        return AdapterOutput(engine="rsigma", hits=hits)
++
++
++def test_physical_trace_and_post_prediction_comparison(tmp_path, monkeypatch):
++    (tmp_path / "rules.yml").write_text("""id: bash-rule
++logsource:
++  product: linux
++  service: bash
++---
++id: wrong-source
++logsource:
++  product: windows
++  service: sysmon
++""")
++    config = AppConfig.model_validate({
++        "engines": {"rsigma": {"rules_dir": str(tmp_path)}, "pysigma": {"enabled": False}},
++        "rag": {"offline": True}, "llm": {"enabled": False},
++    })
++    coordinator = DetectionCoordinator(config, adapters=[FixtureAdapter()])
++    monkeypatch.setattr("apt_agent.pipeline.DetectionCoordinator", lambda cfg: coordinator)
++    consumed = []
++
++    def records():
++        for pid in ("pr-attack", "pr-low", "pr-filtered", "pr-bad"):
++            consumed.append(pid)
++            yield pid, ({"raw_text": "echo benign", "timestamp": 1700000000}
++                        if pid != "pr-bad" else {"unrecognized": "value"})
++
++    case = investigate_records(records(), config=config)
++    trace = case.record_diagnostics
++    assert len(consumed) == 4
++    assert trace["pr-bad"]["last_stage"] == "ingested"
++    assert trace["pr-bad"]["gaps"]
++    assert trace["pr-filtered"]["last_stage"] == "detected"
++    assert trace["pr-filtered"]["hits"][0]["reason"] == "outside_rule_logsource"
++    assert trace["pr-low"]["last_stage"] == "source_accepted"
++    assert trace["pr-attack"]["exported"]
++    before = case.model_dump_json()
++    report = compare_records(case, {"pr-filtered", "pr-missing"})
++    assert report["counts"] == {"expected": 2, "predicted": 1, "true_positive": 0,
++                                 "false_positive": 1, "false_negative": 2}
++    assert report["missed_records"][1]["last_stage"] == "input_missing"
++    assert case.model_dump_json() == before
++    assert report["rule_distribution"][0]["raw_physical_count"] == 2

@@ -121,6 +121,8 @@ class DetectionResult(BaseModel):
     leads: list[dict[str, Any]] = Field(default_factory=list)
     event_to_physical: dict[str, str] = Field(default_factory=dict)
 
+    hit_trace: list[dict[str, Any]] = Field(default_factory=list)
+
     _DICT_FIELDS = ("hits", "coverage", "leads", "event_to_physical")
 
     def __getitem__(self, key: str) -> Any:

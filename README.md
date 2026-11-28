@@ -66,6 +66,8 @@ uv run python packages/apt-rag/search_public.py "Sysmon process creation" --top-
 
 需要查看候选链、引擎覆盖、知识引用和查询审计时，可调用 `apt_agent.pipeline.investigate_records(records, config=..., locator_map=...)`，返回 `CaseResult`。主机和网络角色使用本案只读事件查询，比赛输出只包含两个约定字段。配置项 `minimum_seed_level` 控制进入调查种子的最低规则级别，默认为 `medium`。低级别告警保留于检测覆盖中，相关原文仍可回查。对带日志源声明的 YAML 规则，汇总器核对命中事件的产品和服务。
 
+`CaseResult.record_diagnostics` 提供按物理 ID 的解析、原始命中、日志源过滤、入种子、关系核验及导出追踪，`stage_timings_s` 提供阶段耗时。可通过 `script/diagnose/run_scene.py` 保存预测及诊断，再用独立的 `compare_scene.py` 与标注对照；命令和边界见 [交接增量](docs/HANDOFF.md#31-macos-接手增量2026-11-28)。
+
 维护接口 `apt_agent.maintenance.validate_candidate` 支持映射样本检查以及 Sigma 正例和负例回放。通过校验的变更可由 `ConverterAgent` 或 `RuleAgent` 发布到 `SnapshotRegistry`。一次运行内固定所用版本，显式配置的引擎或知识文件路径具有优先级。
 
 A 榜 starter 提供索引读取和预测落盘。在其 `submission_agent/runner.py` 的 `analyze_records` 回调中调用本项目入口，即可使用相同的迭代器和输出格式。

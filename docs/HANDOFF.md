@@ -1,4 +1,8 @@
+> GitHub 最新交接入口：[HANDOFF-2026-11-28.md](HANDOFF-2026-11-28.md)。源码已归入本仓库，附件位于 docs/artifacts/handoff-2026-11-28/。
+
 # OPEN_APT_AGENT 项目交接
+
+> 最新交接（2026-11-28）：请先阅读 [当前检查点](HANDOFF-2026-11-28-CHECKPOINT.md)。其中明确最新工作副本、338 项回归、三场景离线结果和未完成的 LLM 对照；下文保留历史记录。
 
 本交接以 `2026-11-28` 已合并到 `main` 的 [实现提交 `d6015d6`](https://github.com/BigSedges/OPEN_APT_AGENT/commit/d6015d6) 为准。项目已能单遍读入场景日志、运行本地检测与证据核验，并输出官方评分器接受的预测。当前主要缺口是实战检测质量。已完成的 DeepSeek 单场景运行只检出 27 条标注记录中的 1 条。
 
@@ -204,6 +208,83 @@ DeepSeek 返回了针对 15 个候选任务的有效排序，项目采用了该�
 
 - **改动入口。** 给未知字段输出来源、样本与候选变更，纳入转换 Agent 的评审入口。为每种启用引擎增加相应映射或规则的实际编译、正负样本与基线回放，补齐映射版本绑定与外部资源指纹。
 - **验收。** 错误映射和命中负样本的规则都被拒绝发布。正常变更报告各目标引擎的校验和差异。发布新版本后，旧运行仍能拿到绑定的规则、映射及知识内容并重放，这项检查需要覆盖显式挂载的资源目录。
+
+## 3.1 macOS 接手增量（2026-11-28）
+
+本次先推进 P0 的观测能力。`CaseResult.record_diagnostics` 按输入物理 ID 保留归一化事件、日志源、解析告警与缺口、引擎过滤前命中及过滤原因、实际种子、已核验和未决关系、Ranker 攻击判定及最终导出。`seed_event_ids` 记录调度器实际使用的种子；`stage_timings_s` 记录接入、归一化、检测、调查核验排序和诊断耗时。`DetectionResult.hit_trace` 保留合并前来源，原有字典访问的四个键保持不变。比赛 JSON 仍只有两个约定字段。
+
+阶段记录中的 `ranked_attack` 不代表每条种子都有已核验的关联边。当前 Ranker 会把直接规则种子加入攻击集合，再沿部分已核验关系扩展。诊断为导出物理记录区分 `direct_detection_seed` 和 `investigation_expansion`，便于下一步检查误报来源。这是待验证的误报路径，尚不能据此认定接力文档中近七千条误报的根因。
+
+新增入口在仓库根目录运行，配置必须显式指定；输出目录必须尚不存在，避免覆盖以前结果：
+
+```bash
+uv run --locked --offline python script/diagnose/run_scene.py   /path/to/starter/data/train/2024-05-30-apt28   --config config/local.yaml --output /path/to/new-run
+```
+
+依次生成 `predict.json`、含逐记录追踪的 `case.json` 和 `runtime.json`。该程序不读标注、不写 starter 的 `done.txt`。预测完成后单独对照：
+
+```bash
+uv run --locked --offline python script/diagnose/compare_scene.py   --case /path/to/new-run/case.json   --gold /path/to/starter/data/train/2024-05-30-apt28/Label.json   --output /path/to/new-run/comparison.json
+```
+
+对照报告包含逐条漏检的最后阶段、原因和追踪；未收到的标注 ID 单列为 `input_missing`。按引擎、规则和日志源统计去重后的物理命中、过滤后命中、导出和误报，并给出误报物理 ID 供负样本回放。规则分组表示该规则与误报记录的命中关系，不表示它是唯一归因；关联扩展产生的误报也可能没有直接规则命中。无事件命中时提示检查覆盖，不能据此宣称引擎已完整扫描。这里的计数不是官方总分。
+
+新增回归从接力文档契约构造过滤、低等级、解析失败、直接种子、输入缺失和标注隔离场景。尚未完成的验收包括原 Linux 六工具配置的复现、26 条历史漏检的逐条归因、负样本修复前后对照、三场景固定条件 LLM 对照及容器交付。P1 的自动 Repair、并行调度和维护快照工作仍保持待办。
+
+### 本次本机验证结果
+
+- Python 3.12.14，按未修改的 `uv.lock` 同步依赖。项目回归 **293 项通过**（含新增 1 项 P0 复合场景）；LangGraph 协议冒烟 **5 项通过**。macOS 的 `/var` 与 `/private/var` 路径别名会触发既有 CLI 测试中的 cwd 字符串比较，验证时使用 `TMPDIR=/private/tmp`。未修改测试断言。
+- 在本机已有的 macOS ARM64 Hayabusa **4.4.0** 与同目录规则上，关闭其他检测引擎及 LLM，`minimum_seed_level=medium`、墙钟预算 900 秒，完整读取 APT28 的 **209,109 条**记录，诊断命令退出码为 0，约 **174.23 秒**生成预测与案件诊断。官方评分器命令退出码为 0：**1/27 真阳性、6,010 误报、26 漏检，0.023233/100**。本次没有通过 starter runner，因此没有 `done.txt`，不算完成 R4 交付。
+- 本次 26 条漏检中，**15 条最后停在 normalized**（11 条 eCAR、4 条 Windows），**11 条停在 source_accepted**（全部 Windows，只有 informational/low 命中，未达到 medium 门槛）。没有输入缺失或完全解析失败的标注记录。这是本次单引擎运行的逐条归因，不能替代历史 Linux 六工具运行的归因。
+- 6,010 条误报中，**5,853 条带直接检测种子、157 条由调查扩展入选**。达到种子门槛的主要关联规则包括 `5c67a566-7829-eb05-4a1f-0eb292ef993f`（External Remote SMB Logon from Public IP，high，4,054 条误报物理记录）、`4386b4e0-f268-42a6-b91d-e3bb768976d6`（Kerberoasting Activity - Initial Query，medium，889 条）及 `f19849e7-b5ba-404b-a731-9b624d7f6d19`（Possible Kerberoasting，medium，889 条）。不同规则命中可重叠，不能相加。
+- 下一步用上述误报 ID 经原索引回查，构造独立正负样本，检查公网地址语义、环境背景和攻击判定条件，再固定资产跑修复前后对照。此次只新增观测能力，未根据标注调整检测逻辑，也没有声称检测质量提升。
+
+### P0 修复：IPv4 映射 IPv6 的 CIDR 误报
+
+回查前述误报发现，Windows Security 原文的内网来源地址使用 `::ffff:10.20.x.x`。原转换层把这个字符串原样送进检测器，而对应规则只列出 IPv4 的内网 CIDR，导致它绕过排除条件。该现象已用独立合成样本在真实 Hayabusa 中复现：修复前两个映射内网地址误报，修复后排除；公网 IPv4、映射公网 IPv4 及原生公网 IPv6 三个正例仍命中。
+
+`script/log_convert/lib/formatters.py` 现在在生成 Windows 引擎输入时，将明确地址字段中的有效 IPv4 映射 IPv6 转成等价 IPv4；包含十六进制尾部的映射形式也受支持。四种引擎的 Windows 格式化器共用此行为，原始记录、归一化 Event、ID、原生 IPv6 和非地址字段保留原值。未改外部规则、种子门槛、LLM 或攻击判定逻辑。RSigma、Zircolite、Chainsaw 在本轮验证了输入格式和原文保全；真实引擎 CIDR 回放仅验证 Hayabusa。
+
+固定 Hayabusa 4.4.0、同一规则和知识资产、medium 门槛、900 秒预算，关闭其他引擎与 LLM，预测生成后才调用官方评分器和标注对照程序。修复前后指标如下：
+
+| 场景 | 修复前 TP / FP / FN | 修复后 TP / FP / FN | 官方分数（前 → 后，满分 100） |
+| --- | --- | --- | --- |
+| APT28 | 1 / 6,010 / 26 | 1 / 1,791 / 26 | 0.023233 → 0.077484 |
+| APT29 | 3 / 9,735 / 24 | 3 / 3,525 / 24 | 0.043074 → 0.118621 |
+
+APT28 删除 4,219 条误报且未新增误报，已检出的攻击记录保留。原始规则命中变化仅涉及公网 SMB 登录（4,054 → 0）、公网 RDP 登录（158 → 0）及另一个公网地址规则（7 → 0）。APT29 修复前后均以 `TASK_LIMIT` 停止，预算与任务配置一致，未减少已检出的攻击记录。剩余漏检仍为 APT28 的 26 条、APT29 的 24 条，召回率没有改善；本轮结果不构成 R4 三场景、LLM 或容器交付验收。
+
+新增 `tests/test_windows_address_canonicalization.py`，独立覆盖内网、公网、原生 IPv6、十六进制映射、无效地址、四引擎输入、原文与 ID 保全，并支持通过环境变量执行真实 Hayabusa 正负例回放。设置本机原生工具后，全部回归 **303 项通过**。本轮对照产物包含预测、逐条对照、官方评分、运行耗时、规则变化、独立回放结果，以及核对过的工具、规则、配置与格式化器源码指纹。
+
+后续仍须处理：普通 RC4 票据请求等上下文型告警被直接当作攻击证据、仅低级别命中的攻击上下文未被取回、eCAR 检测引擎覆盖不足，并在独立场景和完整引擎配置下复验。
+
+### P0 漏检增量：eCAR 类型、进程实例及双引擎对照
+
+本轮在本机接入经过官方 SHA256 校验的 RSigma 0.28.0，并固定 SigmaHQ `r2026-07-01` 的 `sigma_all_rules.zip`（归档 SHA256：`5725c91b5813587ad6a4b0b8e0233fa44348b1595f818d8b7fd39d6033385085`）。包内共 3,302 条 YAML，本轮配置其 `rules/` 下 2,842 条规则，不含另一个 emerging-threats 目录。官方来源：[RSigma 发行版](https://github.com/timescale/rsigma/releases/tag/v0.28.0) · [SigmaHQ 固定发行版](https://github.com/SigmaHQ/sigma/releases/tag/r2026-07-01)。
+
+实现增量：
+
+- 转换层按 eCAR object/action 解释 `objectID` 和 `actorID`，区分进程、父进程与文件/模块对象；显式 process_guid 优先，原始属性保留。补齐 `ImageLoaded`、注册表 `TargetObject` / `Details`、进程访问和远程线程的已有字段。
+- 给已识别 eCAR 类型生成 `event_categories`，在协调器核对规则 category；generic Windows/Linux endpoint category 的静态兼容性纳入 eCAR，特定 Sysmon/Security service 仍不可冒充。此处新增的 category 核对限定于 eCAR，其他源的完整 category 路由仍待继续完善。
+- 只有同主机、明确进程实例标识、唯一创建记录且时间有效时，产生创建至退出区间内的同进程候选关系。取证仍经原查询、黑板和 Verifier。Ranker 对同进程关系允许双向回查，父子关系不会自动判恶；不同主机、创建前、退出后、未知身份不通过此路径。
+- RSigma 逐行读取 NDJSON，普通事件仅保留后续使用的 ID/时间，关联组成事件完整保留；案件诊断增量编码，减少完整文本、解析对象和导出副本同时驻留内存。协议、命中和比赛两字段格式不变。
+
+本节前后对照均固定 Hayabusa 4.4.0、RSigma 0.28.0、相同两份规则及知识资产、medium 门槛、900 秒预算和关闭 LLM。上一节为 Hayabusa 单引擎评测。预测持久化后才读取标注。最终普通 CLI 的四次运行均退出 0，APT28 的预测均获官方评分器接受。
+
+| 验证范围 | TP（前 → 后） | FP（前 → 后） | FN（前 → 后） | 官方分数（满分 100） |
+| --- | --- | --- | --- | --- |
+| APT28 完整 209,109 条索引记录 | 1 → 7 / 27 | 3,607 → 3,449 | 26 → 20 | 0.038644 → 0.281578 |
+| APT29 的全部 124,427 条 eCAR 索引记录 | 0 → 6 / 12 | 1,674 → 1,603 | 12 → 6 | 未作全场景官方评分 |
+
+APT29 范围在预测前仅按索引 filepath 的文件名 `ecar.json` 选择，不使用标注选输入；预测后将标准答案物理 ID 与该输入范围求交得到 12 条。该结果只验证 eCAR 迁移，不能当作 APT29 完整场景或 R4 验收。APT28 前后均为 `TASK_LIMIT`；APT29 eCAR 基线为 `INVESTIGATION_COMPLETE`，修复版为 `TASK_LIMIT`，均未耗尽墙钟预算。
+
+APT28 新增 6 条真阳性（4 条 eCAR、2 条 Windows），未丢失已有真阳性；同时移除 995 条旧误报、引入 837 条新误报，净减少 158 条。APT29 eCAR 移除 1,072 条旧误报、引入 1,001 条新误报，净减少 71 条。关联补证仍会扩大错误种子的影响，净计数改善不意味着误报已经收敛。
+
+最终完整回归 **313 项通过**，包含显式 GUID 优先、事件类型隔离、普通/关联输出解析、原文保全、进程区间边界、反向回查、跨主机和子进程隔离，以及真实 RSigma 与 Hayabusa 回放；检索协议冒烟 **5 项通过**。普通入口复跑与较早诊断包装生成的预测逐项一致。曾中止的并行/诊断包装尝试排除在有效运行之外；完整规则回放采用串行方式，避免单进程约 4GB 的旧读取方式造成资源争用。
+
+本机持久产物目录为 `/Users/zhangjunhao/Documents/Codex/2026-11-28/gen/outputs/ecar-recall/`，其中 `report.json`、`manifest.json` 和各范围前后目录保存预测、逐条漏检、官方评分或专项计数、运行停止原因、增删误报 ID、配置及源码/规则/二进制哈希。运行绑定的版本标签仍为 v1，本轮依靠这些哈希区分资产；P1 的完整快照绑定与重放尚未完成。本机本地配置仅启用已经验证的两个检测引擎，其他工具保留 skipped 语义。
+
+下一步 P0：逐条处理剩余 20 条 APT28 漏检，收敛普通 RC4 票据等宽泛种子及关联扩展引入的误报，改进战术证据排序（本轮 APT28 战术仍为 0/2）。当前多条无关原始命中来自 Zeek 的 `not selection` 规则在缺少字段时的匹配，已由日志源检查拒绝；这些记录尚无可用的本源检测证据，不能放宽跨源检查来补召回。完整三场景、仅切换 LLM 的对照和 starter/container 交付仍待完成。
 
 ## 4. 交接前 Gemini Teamwork 计划
 

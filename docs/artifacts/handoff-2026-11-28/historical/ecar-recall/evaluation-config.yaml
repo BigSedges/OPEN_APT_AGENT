@@ -1,0 +1,29 @@
+budget:
+  wall_clock_s: 900
+engines:
+  chainsaw:
+    enabled: false
+  hayabusa:
+    bin_path: /Users/zhangjunhao/Documents/Codex/2026-11-27/bang/work/tool-test/hayabusa/hayabusa-4.4.0-mac-aarch64
+    config_path: /Users/zhangjunhao/Documents/Codex/2026-11-27/bang/work/tool-test/hayabusa/config
+    enabled: true
+    rules_dir: /Users/zhangjunhao/Documents/Codex/2026-11-27/bang/work/tool-test/hayabusa/rules
+    timeout_s: 240
+  pysigma:
+    enabled: false
+  rsigma:
+    bin_path: /Users/zhangjunhao/Documents/Codex/2026-11-28/gen/work/tools/rsigma/rsigma
+    config_path: /Users/zhangjunhao/Documents/Codex/2026-11-28/gen/work/OPEN_APT_AGENT/script/log_convert/configs/rsigma_pipeline.yml
+    enabled: true
+    rules_dir: /Users/zhangjunhao/Documents/Codex/2026-11-28/gen/work/tools/sigma-r2026-07-01/rules
+    timeout_s: 240
+  takajo:
+    enabled: false
+  zircolite:
+    enabled: false
+llm:
+  enabled: false
+rag:
+  knowledge_path: /Users/zhangjunhao/Documents/Codex/2026-11-28/gen/work/OPEN_APT_AGENT/packages/apt-rag/public_kb/chunks.jsonl.gz
+  mode: bm25
+  offline: true

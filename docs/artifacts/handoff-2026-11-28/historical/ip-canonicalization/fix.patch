@@ -1,0 +1,215 @@
+diff --git a/script/log_convert/README.md b/script/log_convert/README.md
+index cc2d00f..e290435 100644
+--- a/script/log_convert/README.md
++++ b/script/log_convert/README.md
+@@ -89,3 +89,11 @@ uv run chainsaw_bash_history_json.py -i log_example/sarah.oconnell.bash_history
+ - `configs/zircolite_config.yaml`：Zircolite 扁平化映射与 `event_id` 保留配置参考
+ - `configs/rsigma_pipeline.yml`：RSigma `@timestamp` 与关联证据保全（`correlation_event_mode: full`）Pipeline 参考
+ - `configs/chainsaw_custom_mapping.yml`：Chainsaw 非 Windows 自定义 JSONL 映射参考
++
++## 五、Windows 地址字段的检测表示
++
++Windows XML 的地址字段（如 `IpAddress`、`SourceIp`、`DestinationIp`）在交给检测引擎前，将有效的 IPv4 映射 IPv6 地址转换为等价 IPv4。例如 `::ffff:10.1.2.3` 和 `::ffff:a01:203` 均写为 `10.1.2.3`，让 Sigma 中的 IPv4 CIDR 条件覆盖相同地址。Zircolite、Hayabusa、RSigma 和 Chainsaw 共用此行为。
++
++原始证据库、归一化事件和解析器输入字典保留原值。转换仅作用于明确的地址字段；命令行、原生 IPv6、缺失值和无效地址保持原样。该转换不把公网地址加入排除名单，也不调整规则级别或种子门槛。
++
++常规回归会检查四种引擎输入的地址语义与原文保全。设置 `APT_TEST_HAYABUSA_BIN` 和 `APT_TEST_HAYABUSA_CONFIG` 后，`tests/test_windows_address_canonicalization.py` 还会用本机 Hayabusa 对独立正负样本执行真实 CIDR 回放；不设置时只跳过该项原生工具检查。
+diff --git a/script/log_convert/lib/formatters.py b/script/log_convert/lib/formatters.py
+index 3e27b29..b2c5cd3 100644
+--- a/script/log_convert/lib/formatters.py
++++ b/script/log_convert/lib/formatters.py
+@@ -2,6 +2,7 @@
+ 
+ from __future__ import annotations
+ 
++from ipaddress import IPv6Address
+ from typing import Any
+ 
+ 
+@@ -9,6 +10,33 @@ from typing import Any
+ # Helpers
+ # ---------------------------------------------------------------------------
+ 
++# These are address fields, not command lines or arbitrary strings containing IPs.
++_WINDOWS_IP_FIELDS = frozenset({
++    "IpAddress", "SourceIp", "DestinationIp", "ClientAddress", "ClientIP",
++    "SourceAddress", "DestAddress",
++})
++
++
++def _canonical_windows_addresses(fields: dict[str, Any]) -> dict[str, Any]:
++    """Represent IPv4-mapped IPv6 as IPv4 for IPv4 Sigma CIDR predicates.
++
++    The parser's dictionaries and raw evidence remain unchanged. Native IPv6,
++    missing values and unparseable values retain their original representation.
++    """
++    result = dict(fields)
++    for key in _WINDOWS_IP_FIELDS & fields.keys():
++        value = fields[key]
++        if not isinstance(value, str) or ":" not in value:
++            continue
++        try:
++            mapped = IPv6Address(value.strip()).ipv4_mapped
++        except ValueError:
++            continue
++        if mapped is not None:
++            result[key] = str(mapped)
++    return result
++
++
+ def _flatten_value_for_sqlite(val: Any) -> Any:
+     """Convert lists/dicts into SQLite-friendly scalar strings for Zircolite."""
+     if isinstance(val, list):
+@@ -56,9 +84,9 @@ def _build_evtx_dump_event(parsed: dict[str, Any]) -> dict[str, Any]:
+         "System": system_obj,
+     }
+     if parsed["event_data"]:
+-        event_obj["EventData"] = parsed["event_data"]
++        event_obj["EventData"] = _canonical_windows_addresses(parsed["event_data"])
+     elif parsed["user_data"]:
+-        event_obj["UserData"] = parsed["user_data"]
++        event_obj["UserData"] = _canonical_windows_addresses(parsed["user_data"])
+     else:
+         event_obj["EventData"] = None
+ 
+@@ -97,11 +125,11 @@ def _build_flat_winxml_record(parsed: dict[str, Any]) -> dict[str, Any]:
+         rec["Security_UserID"] = security["UserID"]
+ 
+     existing_lower = {k.lower() for k in rec}
+-    for k, v in parsed["event_data"].items():
++    for k, v in _canonical_windows_addresses(parsed["event_data"]).items():
+         key = k if k.lower() not in existing_lower else f"EventData_{k}"
+         rec[key] = v
+         existing_lower.add(key.lower())
+-    for k, v in parsed["user_data"].items():
++    for k, v in _canonical_windows_addresses(parsed["user_data"]).items():
+         key = k if k.lower() not in existing_lower else f"UserData_{k}"
+         rec[key] = v
+         existing_lower.add(key.lower())
+@@ -327,10 +355,10 @@ def format_hayabusa_winxml(parsed: dict[str, Any]) -> tuple[dict[str, Any], dict
+     if security.get("UserID") is not None:
+         hayabusa_rec["SecurityUserID"] = security["UserID"]
+ 
+-    for k, v in parsed["event_data"].items():
++    for k, v in _canonical_windows_addresses(parsed["event_data"]).items():
+         if k not in hayabusa_rec:
+             hayabusa_rec[k] = v
+-    for k, v in parsed["user_data"].items():
++    for k, v in _canonical_windows_addresses(parsed["user_data"]).items():
+         if k not in hayabusa_rec:
+             hayabusa_rec[k] = v
+ 
+@@ -443,9 +471,9 @@ def format_chainsaw_winxml(parsed: dict[str, Any]) -> dict[str, Any]:
+ 
+     event_obj: dict[str, Any] = {"System": system_obj}
+     if parsed["event_data"]:
+-        event_obj["EventData"] = parsed["event_data"]
++        event_obj["EventData"] = _canonical_windows_addresses(parsed["event_data"])
+     elif parsed["user_data"]:
+-        event_obj["UserData"] = parsed["user_data"]
++        event_obj["UserData"] = _canonical_windows_addresses(parsed["user_data"])
+     else:
+         event_obj["EventData"] = {}
+ 
+diff --git a/tests/test_windows_address_canonicalization.py b/tests/test_windows_address_canonicalization.py
+new file mode 100644
+index 0000000..7e0d8eb
+--- /dev/null
++++ b/tests/test_windows_address_canonicalization.py
+@@ -0,0 +1,96 @@
++"""Windows engine inputs must give equivalent IPv4 addresses equivalent meaning."""
++from copy import deepcopy
++from pathlib import Path
++
++import pytest
++
++from apt_agent.config import EngineConfig
++from apt_agent.detection.hayabusa import HayabusaAdapter
++from apt_agent.ingestion import Normalizer, ingest_records
++from apt_agent.ingestion.normalizer import (
++    format_for_chainsaw, format_for_hayabusa, format_for_rsigma, format_for_zircolite,
++)
++from apt_agent.models import RunContext
++
++
++def windows_record(address, number=1):
++    return {"raw_text": f'''<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
++<System><Provider Name="Microsoft-Windows-Security-Auditing"/><EventID>4624</EventID>
++<TimeCreated SystemTime="2024-01-01T00:00:00Z"/><EventRecordID>{number}</EventRecordID>
++<Channel>Security</Channel><Computer>host.example</Computer></System>
++<EventData><Data Name="LogonType">3</Data><Data Name="IpAddress">{address}</Data>
++<Data Name="CommandLine">echo ::ffff:10.1.2.3</Data></EventData></Event>'''}
++
++
++def normalized(address, number=1):
++    store = ingest_records([(f"pr-{number}", windows_record(address, number))],
++                           case_id="address-case", run_id="run")
++    ctx = RunContext(case_id=store.case_id, run_id=store.run_id)
++    return ctx, store, Normalizer.normalize_batch(ctx, store).events
++
++
++@pytest.mark.parametrize("address,expected", [
++    ("::ffff:10.1.2.3", "10.1.2.3"), ("::FFFF:a01:203", "10.1.2.3"),
++    ("::ffff:192.168.1.2", "192.168.1.2"), ("::ffff:8.8.8.8", "8.8.8.8"),
++    ("::1", "::1"), ("2001:4860:4860::8888", "2001:4860:4860::8888"),
++    ("10.1.2.3", "10.1.2.3"), ("-", "-"), ("not-an-ip", "not-an-ip"),
++])
++def test_all_windows_engine_inputs_preserve_evidence(address, expected):
++    _, store, events = normalized(address)
++    before = deepcopy(events[0].model_dump())
++    rows, index = format_for_hayabusa(events)
++    assert rows[0]["IpAddress"] == expected
++    assert format_for_chainsaw(events)[0]["Event"]["EventData"]["IpAddress"] == expected
++    assert format_for_rsigma(events)[0]["IpAddress"] == expected
++    assert format_for_zircolite(events)[0]["IpAddress"] == expected
++    assert rows[0]["CommandLine"] == "echo ::ffff:10.1.2.3"
++    assert index[0]["event_id"] == events[0].event_id
++    assert events[0].model_dump() == before
++    assert store.get("pr-1").payload == windows_record(address)
++
++
++def test_real_hayabusa_cidr_replay_when_configured(tmp_path):
++    """Optional native-engine replay against a self-contained CIDR rule."""
++    import os
++    binary = os.environ.get("APT_TEST_HAYABUSA_BIN")
++    config_dir = os.environ.get("APT_TEST_HAYABUSA_CONFIG")
++    if not binary or not config_dir:
++        pytest.skip("Native Hayabusa fixture is not configured")
++    rule_id = "870d6880-ad88-4513-8c0b-eefc87d097cd"
++    (tmp_path / "rule.yml").write_text(f'''title: Public Address Fixture
++id: {rule_id}
++status: test
++author: OPEN_APT_AGENT
++date: 2026-11-28
++description: Self-contained CIDR replay fixture
++ruletype: Sigma
++logsource:
++  product: windows
++  service: security
++detection:
++  selection:
++    Channel: Security
++    EventID: 4624
++    LogonType: 3
++  private:
++    IpAddress|cidr:
++      - 10.0.0.0/8
++      - 192.168.0.0/16
++      - ::1/128
++  condition: selection and not private
++level: high
++''')
++    samples = ["10.1.2.3", "::ffff:10.1.2.3", "::ffff:192.168.1.2",
++               "8.8.8.8", "::ffff:8.8.8.8", "2001:4860:4860::8888", "::1"]
++    store = ingest_records([(f"pr-{i}", windows_record(address, i))
++                            for i, address in enumerate(samples, 1)],
++                           case_id="replay", run_id="run")
++    ctx = RunContext(case_id=store.case_id, run_id=store.run_id)
++    events = Normalizer.normalize_batch(ctx, store).events
++    output = HayabusaAdapter().run(ctx, events, EngineConfig(
++        bin_path=Path(binary), rules_dir=tmp_path, config_path=Path(config_dir)),
++        ruleset_version="fixture")
++    assert output.hits, [run.model_dump() for run in output.coverage]
++    assert {eid for hit in output.hits for eid in hit.event_ids} == {
++        event.event_id for event in events if event.physical_record_id in {"pr-4", "pr-5", "pr-6"}
++    }

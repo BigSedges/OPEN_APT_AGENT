@@ -1,0 +1,583 @@
+{
+  "configuration": {
+    "minimum_seed_level": "medium",
+    "minimum_expansion_level": "high",
+    "context_only_rules": {
+      "03daf7a7-8e32-c4d8-0511-ac5fa9416fa5": "A remote desktop connection is an observation; require independent malicious evidence.",
+      "2d20edf4-6141-35c5-e54f-3c578082d1d3": "RC4 ticket encryption alone needs corroboration of credential abuse.",
+      "4386b4e0-f268-42a6-b91d-e3bb768976d6": "An initial collection query explicitly requires additional temporal/service analysis.",
+      "496a0e47-0a33-4dca-b009-9e6ca3591f39": "RC4 ticket encryption alone needs corroboration of credential abuse.",
+      "954f0af7-62dd-418f-b3df-a84bc2c7a774": "A remote desktop connection is an observation; require independent malicious evidence.",
+      "d04ae2b8-ad54-4de0-bd87-4bc1da66aa59": "An initial collection query explicitly requires additional temporal/service analysis.",
+      "df2b1ca6-a4d3-e875-ca48-ed65bd486a5f": "A remote desktop connection is an observation; require independent malicious evidence.",
+      "f19849e7-b5ba-404b-a731-9b624d7f6d19": "An RC4 ticket request alone also occurs in legacy applications."
+    },
+    "engines": {
+      "zircolite": {
+        "enabled": false,
+        "bin_path": null,
+        "rules_dir": null,
+        "config_path": null,
+        "mapping_path": null,
+        "working_dir": null,
+        "timeout_s": 120.0
+      },
+      "hayabusa": {
+        "enabled": true,
+        "bin_path": "/Users/zhangjunhao/Documents/Codex/2026-11-27/bang/work/tool-test/hayabusa/hayabusa-4.4.0-mac-aarch64",
+        "rules_dir": "/Users/zhangjunhao/Documents/Codex/2026-11-27/bang/work/tool-test/hayabusa/rules",
+        "config_path": "/Users/zhangjunhao/Documents/Codex/2026-11-27/bang/work/tool-test/hayabusa/config",
+        "mapping_path": null,
+        "working_dir": null,
+        "timeout_s": 240.0
+      },
+      "takajo": {
+        "enabled": false,
+        "bin_path": null,
+        "rules_dir": null,
+        "config_path": null,
+        "mapping_path": null,
+        "working_dir": null,
+        "timeout_s": 120.0
+      },
+      "chainsaw": {
+        "enabled": false,
+        "bin_path": null,
+        "rules_dir": null,
+        "config_path": null,
+        "mapping_path": null,
+        "working_dir": null,
+        "timeout_s": 120.0
+      },
+      "rsigma": {
+        "enabled": true,
+        "bin_path": "/Users/zhangjunhao/Documents/Codex/2026-11-28/gen/work/tools/rsigma/rsigma",
+        "rules_dir": "/Users/zhangjunhao/Documents/Codex/2026-11-28/gen/work/tools/sigma-r2026-07-01/rules",
+        "config_path": "/Users/zhangjunhao/Desktop/OPEN_APT_AGENT/script/log_convert/configs/rsigma_pipeline.yml",
+        "mapping_path": null,
+        "working_dir": null,
+        "timeout_s": 240.0
+      },
+      "pysigma": {
+        "enabled": false,
+        "bin_path": null,
+        "rules_dir": null,
+        "config_path": null,
+        "mapping_path": null,
+        "working_dir": null,
+        "timeout_s": 120.0
+      }
+    },
+    "rag": {
+      "knowledge_path": "/Users/zhangjunhao/Desktop/OPEN_APT_AGENT/packages/apt-rag/public_kb/chunks.jsonl.gz",
+      "config_path": null,
+      "mode": "bm25",
+      "top_k": 5,
+      "timeout_ms": 60000,
+      "offline": true
+    },
+    "llm": {
+      "enabled": true,
+      "provider": "openai_compatible",
+      "base_url": "https://api.deepseek.com",
+      "api_key": "***",
+      "model": "deepseek-flash",
+      "temperature": 0.0,
+      "max_tokens": 4096,
+      "timeout_s": 60.0
+    },
+    "budget": {
+      "max_tasks_per_round": 3,
+      "max_rounds": 5,
+      "max_steps_per_task": 8,
+      "max_challenger_rounds": 1,
+      "max_repair_rounds": 1,
+      "wall_clock_s": 900.0,
+      "max_tokens": 120000,
+      "reserve_ratio": 0.8
+    },
+    "snapshots": {
+      "root_dir": ".apt_agent/snapshots",
+      "mapping_version": "v1",
+      "ruleset_version": "v1",
+      "knowledge_snapshot_id": "public_kb"
+    }
+  },
+  "frozen_config_sha256": "37ed436c3cb4eb4e3a5e1bbedae4a9910c77bb3085a49ea2226b758016b0ec36",
+  "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+  "resources": {
+    "hayabusa/bin_path": {
+      "path": "/Users/zhangjunhao/Documents/Codex/2026-11-27/bang/work/tool-test/hayabusa/hayabusa-4.4.0-mac-aarch64",
+      "sha256": "9d73576714045451808bd7e4b886b4c61de70d0c9ce17e37900bd522e0c403f6"
+    },
+    "hayabusa/rules_dir": {
+      "path": "/Users/zhangjunhao/Documents/Codex/2026-11-27/bang/work/tool-test/hayabusa/rules",
+      "files": 5079,
+      "sha256": "40bd6392d7823977f9b210886166b483b52e494c909b022f7780f4a59436f8d2"
+    },
+    "hayabusa/config_path": {
+      "path": "/Users/zhangjunhao/Documents/Codex/2026-11-27/bang/work/tool-test/hayabusa/config",
+      "files": 11,
+      "sha256": "2cfc8968fa827add19a1bb3d2e7275c6e420153dda81c5e829bb944865048c65"
+    },
+    "hayabusa/resolved_config": {
+      "path": "/Users/zhangjunhao/Documents/Codex/2026-11-27/bang/work/tool-test/hayabusa/rules/config",
+      "files": 29,
+      "sha256": "1ba091146d3a7b78516bd3a01f39ff7a86a8d56f909471f7850909a97a722a86"
+    },
+    "rsigma/bin_path": {
+      "path": "/Users/zhangjunhao/Documents/Codex/2026-11-28/gen/work/tools/rsigma/rsigma",
+      "sha256": "2bb4afe8d04ca2d5d2cefe12a549d817fae3b2a2f2f578d5c12936d7a19f080e"
+    },
+    "rsigma/rules_dir": {
+      "path": "/Users/zhangjunhao/Documents/Codex/2026-11-28/gen/work/tools/sigma-r2026-07-01/rules",
+      "files": 2842,
+      "sha256": "2f3d8cb92201904f17bbdac7d78edffd52e95d8e4070eba1762958c505134169"
+    },
+    "rsigma/config_path": {
+      "path": "/Users/zhangjunhao/Desktop/OPEN_APT_AGENT/script/log_convert/configs/rsigma_pipeline.yml",
+      "sha256": "3ee9a596a17a70b1f6b69e5665980df14f17f61535d5b4984860b24dd49ad29b"
+    },
+    "knowledge": {
+      "path": "/Users/zhangjunhao/Desktop/OPEN_APT_AGENT/packages/apt-rag/public_kb/chunks.jsonl.gz",
+      "sha256": "c928b286109df51302b5146fa92c452b30e499ac388a3b30c09abafcb68cc772"
+    },
+    "source": {
+      "src/apt_agent/__init__.py": "3ed3e1b6252d1a0fbbe2626aa9d78fa47ea0518714be3d2c6f4ef3f12afa094d",
+      "src/apt_agent/agents.py": "4c5e4a80b6dd231264c90a6346a7fccff4646499129c98241a623a4fbb295eb6",
+      "src/apt_agent/blackboard.py": "d2bec410a9914e93597bc7c39b8f25211f53d4ec9c0ac2de34883b662ebd3e35",
+      "src/apt_agent/config.py": "01c47f7333547f1233e34ac95a35d85e9b0a3f51f6f97d4bc21d2e926113cb84",
+      "src/apt_agent/detection/__init__.py": "d1fc06c2b52b7c439b1a261bec8a184b5f7fa95767b14b98f695bc601e0683d9",
+      "src/apt_agent/detection/base.py": "11758a665312ecc142cbed5c18b15b271361071a25367384d11afbfffdc4b179",
+      "src/apt_agent/detection/chainsaw.py": "78c1fe351176227d01a75e5dfa20b5bd0e48ebab2d58d299772b197d51f7d14c",
+      "src/apt_agent/detection/coordinator.py": "e583fdbcaaae7cf4a05d17d781be66c2c392ae16e89e058ae37444fc2f73a512",
+      "src/apt_agent/detection/hayabusa.py": "9c571ff95ab8348497a6dfdac62f1737974c78aee43a66703ca77e7f6690587d",
+      "src/apt_agent/detection/routing.py": "fba3c0c33550c39c53a34d49eea7f43c9cde02fafe226bfb2d3b39cd80df999f",
+      "src/apt_agent/detection/rsigma.py": "05e488c8ab93165fc5e975e5940d714e45e9b4985dcbee05cafe7588c1986679",
+      "src/apt_agent/detection/zircolite.py": "1b0cc365dc32feef1728eb7688c0ad20cbe803a2ed5dd0885f2d46503ba2c086",
+      "src/apt_agent/diagnostics.py": "184d47d5a0890191fcbbb5f75f63171800f9f7f4ad9da331a4ec54f6e3bbf175",
+      "src/apt_agent/exceptions.py": "780eb9017856ff16738284d76bfde98ea0c7b33bd4319f6f51251cdc8855591b",
+      "src/apt_agent/ingestion/__init__.py": "55ae24b79ed7d280f6b638318ae6ae2ca9be9f807ea32e000c50d3292e833275",
+      "src/apt_agent/ingestion/normalizer.py": "09ea6b76f1f98ab7cf63bdda6bf51048daa388f5e688e2f91ee9f7d6b3f0f9fd",
+      "src/apt_agent/ingestion/store.py": "b263c09c07417bb5742d3563f81cca8c7fc101624ae49be59e8b695d62e1f41b",
+      "src/apt_agent/maintenance.py": "40917a65c38410862ec7aad5d6cdfa7c0e58b93e19d620cbb7937c6f924226fc",
+      "src/apt_agent/models.py": "c4466a2d94f7481d22f9b6ff9b77cf812c188b7aec837a4d4d0ca04721e730fd",
+      "src/apt_agent/pipeline.py": "16ae8fadde9fc8c07449878f98453c94cc811f5893a757e7300993cc15fff121",
+      "src/apt_agent/tools/__init__.py": "2ad339e2aa8baf312e074647ca7e3d7ddb9d0c9fa0b325040386724a5de3a0c3",
+      "src/apt_agent/tools/base_tools.py": "cc7cc2ad25350c42388fdfa79301684e1f657410f814612f271cdc4649927090",
+      "src/apt_agent/tools/investigation.py": "a5b5242f8f6e876105d27297e29451db3d9b899cbd33c11407c533ff0b7dbc65",
+      "src/apt_agent/tools/rag_service.py": "2282facdfe4fb8a180469b259bab40a4709c9f1e2cc74e6a65931ff2b5fffbf2",
+      "src/apt_agent/tools/registry.py": "6f1e173820253f1fe781f7fb8e17162e243e712ea7a9c3dd57d243aa43da3a4d",
+      "script/log_convert/lib/__init__.py": "ed76c60c064c6ba97f76fcddf3eae26b97f887734e4de37a81ef398e1ccb7c6b",
+      "script/log_convert/lib/common.py": "8c8676b316fabc4be8619e7cf233fc7c4a3209b3778d36f9bcb7c36529a5dd62",
+      "script/log_convert/lib/formatters.py": "90a6d4508c0e8bec10daac0e6914345986274f87c1d7fd7e5da12b71104b1e72",
+      "script/log_convert/lib/parsers.py": "7b1c53593ea8b4924bdb7ee549da5d823c4cb2e8d8a960f1112c8d3cbe8838c0",
+      "script/evaluate/prepare_starter.py": "2814c5eba5fcaea19c17628579a255c2cb8b52d00c07eaed9320b6ef32b0ffb4",
+      "script/evaluate/run_pair.py": "bf177f8c9d7cac7be3c4e310a6d46b8b3f6af0ed17c24d544ce6be1a8636ba81",
+      "packages/apt-rag/apt_rag/__init__.py": "18ee58f3b8f2bf8c77d29c91be367491af880d018f39fc6a7dfc17bed1e08b5f",
+      "packages/apt-rag/apt_rag/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "packages/apt-rag/apt_rag/cli.py": "854385e2bc87cfad8ea31834394b252dd7b98aafb1b170e21cc0cd3ca3bfa5c0",
+      "packages/apt-rag/apt_rag/client.py": "d98d1cab66eaf238b80c555dc379f4eeb1ff8da8ede74248ba5c2593c55b3cfc",
+      "packages/apt-rag/tools/langgraph_rag/langgraph_adapter.py": "7406fe838304aec25bf6a9820191f3df972dabd1afc1444788e4c3786fdccc2e",
+      "packages/apt-rag/tools/langgraph_rag/smoke.py": "71c9b029c7a69236662b971dd0148694738c727be0f3929fa98f3c7553809b32",
+      "packages/apt-rag/tools/langgraph_rag/wire.py": "1ca026b2573f6a89f2b162676a406855f25c278b67cef0cab8927053c6d063ea",
+      "packages/apt-rag/tools/langgraph_rag/worker.py": "adc4d51736dd493b72566433ab57c252182742e905e69c2f05408e1f3f1f1550",
+      "uv.lock": "f8546a25f44a56d540b702be63e065a171da2cdb2409a031932dc3e7205fc03e"
+    }
+  },
+  "runs": {
+    "offline": {
+      "exit_code": 0,
+      "elapsed_s": 962.498896083096,
+      "done_txt": true,
+      "scene_count": 3,
+      "scenes": [
+        {
+          "scene": "2024-05-30-apt28",
+          "runtime": {
+            "case_id": "case-4b9a689772a2a358b8396ec512606b08bffaa977a5db81d4d1433fbb663105e5",
+            "run_id": "run-d32bbd78dbdc4f4eae0dc4a3c0454840",
+            "scene": "2024-05-30-apt28",
+            "stop_reason": "TASK_LIMIT",
+            "elapsed_s": 196.2627223749878,
+            "stage_timings_s": {
+              "normalization": 27.00359854195267,
+              "detection": 62.79406754206866,
+              "investigation_verification_ranking": 35.315600499976426,
+              "diagnostics_export": 7.866602391004562e-05,
+              "ingestion": 41.201407666900195,
+              "total": 167.4602987919934
+            },
+            "llm_calls": [
+              {
+                "requested": false,
+                "outcome": "skipped",
+                "reason": "disabled_or_unconfigured"
+              }
+            ],
+            "input_record_count": 209109,
+            "physical_prediction_count": 1322,
+            "coverage": [
+              {
+                "engine": "chainsaw",
+                "status": "skipped",
+                "count": 1
+              },
+              {
+                "engine": "hayabusa",
+                "status": "ran",
+                "count": 84
+              },
+              {
+                "engine": "pysigma",
+                "status": "skipped",
+                "count": 1
+              },
+              {
+                "engine": "rsigma",
+                "status": "partial",
+                "count": 14
+              },
+              {
+                "engine": "rsigma",
+                "status": "ran",
+                "count": 2815
+              },
+              {
+                "engine": "rsigma",
+                "status": "skipped",
+                "count": 13
+              },
+              {
+                "engine": "takajo",
+                "status": "skipped",
+                "count": 1
+              },
+              {
+                "engine": "zircolite",
+                "status": "skipped",
+                "count": 1
+              }
+            ]
+          },
+          "evaluation": {
+            "schema_version": 2,
+            "weights": {
+              "ta_stage": 0.3,
+              "physical_id_f1": 0.2,
+              "attack_step": 0.5
+            },
+            "ta_stage": {
+              "gold_stages": 2,
+              "submitted_stages": 11,
+              "correct_stages": 0,
+              "wrong_stages": 11,
+              "missed_stages": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "score": 0.0
+            },
+            "physical_id_set": {
+              "gold_ids": 27,
+              "submitted_ids": 1322,
+              "true_positives": 7,
+              "false_positives": 1315,
+              "false_negatives": 20,
+              "precision": 0.00529500756429652,
+              "recall": 0.25925925925925924,
+              "f1": 0.010378057820607857,
+              "score": 0.010378057820607857
+            },
+            "storyline_attack_steps": {
+              "total_steps": 10,
+              "hit_steps": 3,
+              "missed_steps": 7,
+              "recall": 0.3,
+              "physical_id_precision": 0.00529500756429652,
+              "score": 0.010406342913776016
+            },
+            "weighted_contributions": {
+              "ta_stage": 0.0,
+              "physical_id_f1": 0.0020756115641215717,
+              "attack_step": 0.005203171456888008
+            },
+            "overall_score": 0.00727878302100958,
+            "overall_score_100": 0.727878302100958,
+            "submission_normalization": {
+              "ta_evidence_limit": 3,
+              "duplicate_physical_ids_ignored": 0,
+              "ta_extra_evidence_ignored": 0
+            }
+          },
+          "prediction_path": "/Users/zhangjunhao/Documents/Codex/2026-11-28/gen/work/evaluation/confirmation/starter-paired-final/.local-output/run-mijmlv0e/predictions/2024-05-30-apt28/predict.json",
+          "prediction_sha256": "777b38ecc82931fd229eb2fdc46c4a483ecc516bc4f7f582a00f597e1abcb750",
+          "score_path": "/Users/zhangjunhao/Documents/Codex/2026-11-28/gen/work/evaluation/confirmation/starter-paired-final/.local-output/run-mijmlv0e/scores/2024-05-30-apt28/evaluation.json",
+          "score_sha256": "2b5e7da2c0e193c9f2af034ae6771e5873e63a262eb2715dad5ae6b667e9542d",
+          "index_sha256": "7a06eacbd94a6fb717ffa93572e273e455598bec2a7567f9e34358566a53cac0"
+        },
+        {
+          "scene": "apt29-adfs",
+          "runtime": {
+            "case_id": "case-bb72e6fe49431e0471200e1999f5868cd8f24d0982920b2fdb6d6f91d8bdf6ea",
+            "run_id": "run-b754397f6ffc4f7dbc8563d9282f16a6",
+            "scene": "apt29-adfs",
+            "stop_reason": "TASK_LIMIT",
+            "elapsed_s": 306.3229949999368,
+            "stage_timings_s": {
+              "normalization": 38.63473199994769,
+              "detection": 94.1338369169971,
+              "investigation_verification_ranking": 74.49990779103246,
+              "diagnostics_export": 8.366699330508709e-05,
+              "ingestion": 57.553558332961984,
+              "total": 266.7553714159876
+            },
+            "llm_calls": [
+              {
+                "requested": false,
+                "outcome": "skipped",
+                "reason": "disabled_or_unconfigured"
+              }
+            ],
+            "input_record_count": 312299,
+            "physical_prediction_count": 2785,
+            "coverage": [
+              {
+                "engine": "chainsaw",
+                "status": "skipped",
+                "count": 1
+              },
+              {
+                "engine": "hayabusa",
+                "status": "ran",
+                "count": 68
+              },
+              {
+                "engine": "pysigma",
+                "status": "skipped",
+                "count": 1
+              },
+              {
+                "engine": "rsigma",
+                "status": "partial",
+                "count": 14
+              },
+              {
+                "engine": "rsigma",
+                "status": "ran",
+                "count": 2814
+              },
+              {
+                "engine": "rsigma",
+                "status": "skipped",
+                "count": 14
+              },
+              {
+                "engine": "takajo",
+                "status": "skipped",
+                "count": 1
+              },
+              {
+                "engine": "zircolite",
+                "status": "skipped",
+                "count": 1
+              }
+            ]
+          },
+          "evaluation": {
+            "schema_version": 2,
+            "weights": {
+              "ta_stage": 0.3,
+              "physical_id_f1": 0.2,
+              "attack_step": 0.5
+            },
+            "ta_stage": {
+              "gold_stages": 2,
+              "submitted_stages": 12,
+              "correct_stages": 0,
+              "wrong_stages": 12,
+              "missed_stages": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "score": 0.0
+            },
+            "physical_id_set": {
+              "gold_ids": 27,
+              "submitted_ids": 2785,
+              "true_positives": 9,
+              "false_positives": 2776,
+              "false_negatives": 18,
+              "precision": 0.003231597845601436,
+              "recall": 0.3333333333333333,
+              "f1": 0.006401137980085348,
+              "score": 0.006401137980085348
+            },
+            "storyline_attack_steps": {
+              "total_steps": 7,
+              "hit_steps": 4,
+              "missed_steps": 3,
+              "recall": 0.5714285714285714,
+              "physical_id_precision": 0.003231597845601436,
+              "score": 0.006426849950906007
+            },
+            "weighted_contributions": {
+              "ta_stage": 0.0,
+              "physical_id_f1": 0.0012802275960170698,
+              "attack_step": 0.0032134249754530034
+            },
+            "overall_score": 0.004493652571470073,
+            "overall_score_100": 0.44936525714700737,
+            "submission_normalization": {
+              "ta_evidence_limit": 3,
+              "duplicate_physical_ids_ignored": 0,
+              "ta_extra_evidence_ignored": 0
+            }
+          },
+          "prediction_path": "/Users/zhangjunhao/Documents/Codex/2026-11-28/gen/work/evaluation/confirmation/starter-paired-final/.local-output/run-mijmlv0e/predictions/apt29-adfs/predict.json",
+          "prediction_sha256": "cced6c3d3499f71910b1500af890191130815f6ac83e91bf21f5bf6055d6c591",
+          "score_path": "/Users/zhangjunhao/Documents/Codex/2026-11-28/gen/work/evaluation/confirmation/starter-paired-final/.local-output/run-mijmlv0e/scores/apt29-adfs/evaluation.json",
+          "score_sha256": "3127affebd55e468d26a8ce7447e0247da7e88df7ebcadde9d6194f3a51c884d",
+          "index_sha256": "de83f4ce20d4223af2b82ccb67bee1d08aaa6e233b72b995b217dea3f51502bd"
+        },
+        {
+          "scene": "uat4356",
+          "runtime": {
+            "case_id": "case-f98d110e8ab8b5cc84fa96dee298c038c5b6c8419d8a045e967b35ea7036475a",
+            "run_id": "run-00ffef434d124d4182a1075064d4b206",
+            "scene": "uat4356",
+            "stop_reason": "TASK_LIMIT",
+            "elapsed_s": 458.5896705830237,
+            "stage_timings_s": {
+              "normalization": 58.17128445801791,
+              "detection": 134.9372226250125,
+              "investigation_verification_ranking": 134.372674208018,
+              "diagnostics_export": 0.000923709012567997,
+              "ingestion": 72.83120145904832,
+              "total": 406.24396679201163
+            },
+            "llm_calls": [
+              {
+                "requested": false,
+                "outcome": "skipped",
+                "reason": "disabled_or_unconfigured"
+              }
+            ],
+            "input_record_count": 409495,
+            "physical_prediction_count": 3472,
+            "coverage": [
+              {
+                "engine": "chainsaw",
+                "status": "skipped",
+                "count": 1
+              },
+              {
+                "engine": "hayabusa",
+                "status": "ran",
+                "count": 83
+              },
+              {
+                "engine": "pysigma",
+                "status": "skipped",
+                "count": 1
+              },
+              {
+                "engine": "rsigma",
+                "status": "partial",
+                "count": 15
+              },
+              {
+                "engine": "rsigma",
+                "status": "ran",
+                "count": 2814
+              },
+              {
+                "engine": "rsigma",
+                "status": "skipped",
+                "count": 13
+              },
+              {
+                "engine": "takajo",
+                "status": "skipped",
+                "count": 1
+              },
+              {
+                "engine": "zircolite",
+                "status": "skipped",
+                "count": 1
+              }
+            ]
+          },
+          "evaluation": {
+            "schema_version": 2,
+            "weights": {
+              "ta_stage": 0.3,
+              "physical_id_f1": 0.2,
+              "attack_step": 0.5
+            },
+            "ta_stage": {
+              "gold_stages": 6,
+              "submitted_stages": 11,
+              "correct_stages": 0,
+              "wrong_stages": 11,
+              "missed_stages": 6,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "score": 0.0
+            },
+            "physical_id_set": {
+              "gold_ids": 21,
+              "submitted_ids": 3472,
+              "true_positives": 0,
+              "false_positives": 3472,
+              "false_negatives": 21,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "score": 0.0
+            },
+            "storyline_attack_steps": {
+              "total_steps": 6,
+              "hit_steps": 0,
+              "missed_steps": 6,
+              "recall": 0.0,
+              "physical_id_precision": 0.0,
+              "score": 0.0
+            },
+            "weighted_contributions": {
+              "ta_stage": 0.0,
+              "physical_id_f1": 0.0,
+              "attack_step": 0.0
+            },
+            "overall_score": 0.0,
+            "overall_score_100": 0.0,
+            "submission_normalization": {
+              "ta_evidence_limit": 3,
+              "duplicate_physical_ids_ignored": 0,
+              "ta_extra_evidence_ignored": 0
+            }
+          },
+          "prediction_path": "/Users/zhangjunhao/Documents/Codex/2026-11-28/gen/work/evaluation/confirmation/starter-paired-final/.local-output/run-mijmlv0e/predictions/uat4356/predict.json",
+          "prediction_sha256": "b9f8d16585945d8af6ad46baadca3d3e659e5ee87dd6e6469ad5cb98b94888e2",
+          "score_path": "/Users/zhangjunhao/Documents/Codex/2026-11-28/gen/work/evaluation/confirmation/starter-paired-final/.local-output/run-mijmlv0e/scores/uat4356/evaluation.json",
+          "score_sha256": "15b61b3eb3743a4f6efe858bafdd27b6e3357b017e80896ab26a322fb3eb7900",
+          "index_sha256": "547d88510d952be0fd497c3d490740363a490d835d24a16460cb67e3f1565db0"
+        }
+      ],
+      "llm_requests": 0,
+      "llm_applied": 0,
+      "llm_tokens": 0,
+      "llm_control_valid": true
+    }
+  },
+  "adapter": {
+    "source": "/Users/zhangjunhao/Documents/Codex/2026-11-27/bang/work/apt-agent-a-starter",
+    "original_runner_sha256": "f6d24a05c004da629459f11e28b32dc0165daca4168a21caefab3ad4602be41b",
+    "adapted_runner_sha256": "892ffa132dc3e26cec9b19015b05050109ea613e5ccba9089ba4965b845020a3",
+    "callback": "apt_agent.analyze_records",
+    "read_only_index_context": true,
+    "data_mode": "symlink",
+    "container_ready": false
+  }
+}

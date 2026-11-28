@@ -1,0 +1,50 @@
+{
+  "schema_version": 2,
+  "weights": {
+    "ta_stage": 0.3,
+    "physical_id_f1": 0.2,
+    "attack_step": 0.5
+  },
+  "ta_stage": {
+    "gold_stages": 2,
+    "submitted_stages": 11,
+    "correct_stages": 0,
+    "wrong_stages": 11,
+    "missed_stages": 2,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "score": 0.0
+  },
+  "physical_id_set": {
+    "gold_ids": 27,
+    "submitted_ids": 1322,
+    "true_positives": 7,
+    "false_positives": 1315,
+    "false_negatives": 20,
+    "precision": 0.00529500756429652,
+    "recall": 0.25925925925925924,
+    "f1": 0.010378057820607857,
+    "score": 0.010378057820607857
+  },
+  "storyline_attack_steps": {
+    "total_steps": 10,
+    "hit_steps": 3,
+    "missed_steps": 7,
+    "recall": 0.3,
+    "physical_id_precision": 0.00529500756429652,
+    "score": 0.010406342913776016
+  },
+  "weighted_contributions": {
+    "ta_stage": 0.0,
+    "physical_id_f1": 0.0020756115641215717,
+    "attack_step": 0.005203171456888008
+  },
+  "overall_score": 0.00727878302100958,
+  "overall_score_100": 0.727878302100958,
+  "submission_normalization": {
+    "ta_evidence_limit": 3,
+    "duplicate_physical_ids_ignored": 0,
+    "ta_extra_evidence_ignored": 0
+  }
+}

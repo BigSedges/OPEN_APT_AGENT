@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from collections.abc import Iterator, Mapping
+from collections.abc import Callable, Iterator, Mapping
 from collections.abc import Set as AbstractSet
 from pathlib import Path
 from typing import Any
@@ -62,6 +62,7 @@ def analyze_records(
     config: AppConfig | Mapping[str, Any] | Path | str | None = None,
     valid_physical_ids: AbstractSet[str] | None = None,
     locator_map: Mapping[str, Locator] | None = None,
+    on_result: Callable[[CaseResult], None] | None = None,
 ) -> dict[str, Any]:
     """Standard single-pass log investigation entrypoint (`analyze_records`)."""
     from apt_agent.pipeline import analyze_records as _analyze_records
@@ -71,6 +72,7 @@ def analyze_records(
         config=config,
         valid_physical_ids=valid_physical_ids,
         locator_map=locator_map,
+        on_result=on_result,
     )
 
 

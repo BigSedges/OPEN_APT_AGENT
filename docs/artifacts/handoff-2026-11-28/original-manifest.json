@@ -1,0 +1,26 @@
+{
+  "snapshot_time": "2026-11-28T16:29:47.465251+08:00",
+  "project_head": "aa8c3be36115a90635d66e6c58d8f028831aa864",
+  "latest_source": "/Users/zhangjunhao/Documents/Codex/2026-11-28/gen/work/OPEN_APT_AGENT",
+  "desktop_source_synced": false,
+  "completed_modes": [
+    "offline"
+  ],
+  "online_final_validated": false,
+  "files": {
+    "implementation-current.patch": "9843963634f85f2a96ccb739907e776635969632d0e66096ae7b7d6832583e2a",
+    "offline/2024-05-30-apt28/evaluation.json": "2b5e7da2c0e193c9f2af034ae6771e5873e63a262eb2715dad5ae6b667e9542d",
+    "offline/2024-05-30-apt28/predict.json": "777b38ecc82931fd229eb2fdc46c4a483ecc516bc4f7f582a00f597e1abcb750",
+    "offline/apt29-adfs/evaluation.json": "3127affebd55e468d26a8ce7447e0247da7e88df7ebcadde9d6194f3a51c884d",
+    "offline/apt29-adfs/predict.json": "cced6c3d3499f71910b1500af890191130815f6ac83e91bf21f5bf6055d6c591",
+    "offline/done.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "offline/uat4356/evaluation.json": "15b61b3eb3743a4f6efe858bafdd27b6e3357b017e80896ab26a322fb3eb7900",
+    "offline/uat4356/predict.json": "b9f8d16585945d8af6ad46baadca3d3e659e5ee87dd6e6469ad5cb98b94888e2",
+    "offline-runtime/run-00ffef434d124d4182a1075064d4b206.json": "5c4dbd71035ac502ba5f2d6b045a1d7470f4ae8a187d61158cef827d41a4df88",
+    "offline-runtime/run-b754397f6ffc4f7dbc8563d9282f16a6.json": "33b1a80bd94c5168dd62caeed1ebae565016b3a9a5e930043fc6154087225f2b",
+    "offline-runtime/run-d32bbd78dbdc4f4eae0dc4a3c0454840.json": "7c7a38eee25285bb79d5ab9d32bb9bd90925bedb5a1b429e6a228c49055c6c71",
+    "online-runtime.snapshot/run-766c694d62f74b6aaaeaa616c79ede17.json": "b80eb8a933efc3b54f2a7e822a3c9b6cbcc2b078b7449f2f859f61524c13efb7",
+    "paired-report.snapshot.json": "650f734b3f005e1e7186be7f362bd974a21ecadf8a70ce5510598c1bc5897e89",
+    "source-status.txt": "40e537134654912aa9a19964dbdea5c88ab3a8b0f48133359bac6912906de509"
+  }
+}

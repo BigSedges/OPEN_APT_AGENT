@@ -1,0 +1,66 @@
+{
+  "case_id": "case-4b9a689772a2a358b8396ec512606b08bffaa977a5db81d4d1433fbb663105e5",
+  "run_id": "run-d32bbd78dbdc4f4eae0dc4a3c0454840",
+  "scene": "2024-05-30-apt28",
+  "stop_reason": "TASK_LIMIT",
+  "elapsed_s": 196.2627223749878,
+  "stage_timings_s": {
+    "normalization": 27.00359854195267,
+    "detection": 62.79406754206866,
+    "investigation_verification_ranking": 35.315600499976426,
+    "diagnostics_export": 7.866602391004562e-05,
+    "ingestion": 41.201407666900195,
+    "total": 167.4602987919934
+  },
+  "llm_calls": [
+    {
+      "requested": false,
+      "outcome": "skipped",
+      "reason": "disabled_or_unconfigured"
+    }
+  ],
+  "input_record_count": 209109,
+  "physical_prediction_count": 1322,
+  "coverage": [
+    {
+      "engine": "chainsaw",
+      "status": "skipped",
+      "count": 1
+    },
+    {
+      "engine": "hayabusa",
+      "status": "ran",
+      "count": 84
+    },
+    {
+      "engine": "pysigma",
+      "status": "skipped",
+      "count": 1
+    },
+    {
+      "engine": "rsigma",
+      "status": "partial",
+      "count": 14
+    },
+    {
+      "engine": "rsigma",
+      "status": "ran",
+      "count": 2815
+    },
+    {
+      "engine": "rsigma",
+      "status": "skipped",
+      "count": 13
+    },
+    {
+      "engine": "takajo",
+      "status": "skipped",
+      "count": 1
+    },
+    {
+      "engine": "zircolite",
+      "status": "skipped",
+      "count": 1
+    }
+  ]
+}

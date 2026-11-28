@@ -2,12 +2,40 @@
 
 from __future__ import annotations
 
+from ipaddress import IPv6Address
 from typing import Any
 
 
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
+
+# These are address fields, not command lines or arbitrary strings containing IPs.
+_WINDOWS_IP_FIELDS = frozenset({
+    "IpAddress", "SourceIp", "DestinationIp", "ClientAddress", "ClientIP",
+    "SourceAddress", "DestAddress",
+})
+
+
+def _canonical_windows_addresses(fields: dict[str, Any]) -> dict[str, Any]:
+    """Represent IPv4-mapped IPv6 as IPv4 for IPv4 Sigma CIDR predicates.
+
+    The parser's dictionaries and raw evidence remain unchanged. Native IPv6,
+    missing values and unparseable values retain their original representation.
+    """
+    result = dict(fields)
+    for key in _WINDOWS_IP_FIELDS & fields.keys():
+        value = fields[key]
+        if not isinstance(value, str) or ":" not in value:
+            continue
+        try:
+            mapped = IPv6Address(value.strip()).ipv4_mapped
+        except ValueError:
+            continue
+        if mapped is not None:
+            result[key] = str(mapped)
+    return result
+
 
 def _flatten_value_for_sqlite(val: Any) -> Any:
     """Convert lists/dicts into SQLite-friendly scalar strings for Zircolite."""
@@ -56,9 +84,9 @@ def _build_evtx_dump_event(parsed: dict[str, Any]) -> dict[str, Any]:
         "System": system_obj,
     }
     if parsed["event_data"]:
-        event_obj["EventData"] = parsed["event_data"]
+        event_obj["EventData"] = _canonical_windows_addresses(parsed["event_data"])
     elif parsed["user_data"]:
-        event_obj["UserData"] = parsed["user_data"]
+        event_obj["UserData"] = _canonical_windows_addresses(parsed["user_data"])
     else:
         event_obj["EventData"] = None
 
@@ -97,11 +125,11 @@ def _build_flat_winxml_record(parsed: dict[str, Any]) -> dict[str, Any]:
         rec["Security_UserID"] = security["UserID"]
 
     existing_lower = {k.lower() for k in rec}
-    for k, v in parsed["event_data"].items():
+    for k, v in _canonical_windows_addresses(parsed["event_data"]).items():
         key = k if k.lower() not in existing_lower else f"EventData_{k}"
         rec[key] = v
         existing_lower.add(key.lower())
-    for k, v in parsed["user_data"].items():
+    for k, v in _canonical_windows_addresses(parsed["user_data"]).items():
         key = k if k.lower() not in existing_lower else f"UserData_{k}"
         rec[key] = v
         existing_lower.add(key.lower())
@@ -136,6 +164,8 @@ def _ecar_sigma_fields(data: dict[str, Any]) -> dict[str, Any]:
     }
 
     prop_to_sigma = {
+        "process_guid": "ProcessGuid",
+        "parent_process_guid": "ParentProcessGuid",
         "image_path": "Image",
         "parent_image_path": "ParentImage",
         "command_line": "CommandLine",
@@ -156,6 +186,48 @@ def _ecar_sigma_fields(data: dict[str, Any]) -> dict[str, Any]:
         "icmp_type": "IcmpType",
         "icmp_code": "IcmpCode",
     }
+
+    # ECAR object IDs have different meanings for different event kinds.
+    # Only process lifecycle records identify the process with objectID.
+    kind = (str(obj_type).upper(), str(action).upper())
+    categories = {
+        ("PROCESS", "CREATE"): ["process_creation"],
+        ("PROCESS", "TERMINATE"): ["process_termination"],
+        ("PROCESS", "OPEN"): ["process_access"],
+        ("FLOW", "CONNECT"): ["network_connection"],
+        ("MODULE", "LOAD"): ["image_load"],
+        ("FILE", "CREATE"): ["file_event"],
+        ("FILE", "WRITE"): ["file_event"],
+        ("FILE", "DELETE"): ["file_delete"],
+        ("REGISTRY", "MODIFY"): ["registry_event", "registry_set"],
+        ("THREAD", "REMOTE_CREATE"): ["create_remote_thread"],
+    }
+    mapped["event_categories"] = categories.get(kind, [])
+    if kind in {("PROCESS", "CREATE"), ("PROCESS", "TERMINATE")}:
+        if data.get("objectID"):
+            mapped["ProcessGuid"] = data["objectID"]
+        if kind == ("PROCESS", "CREATE") and data.get("actorID"):
+            mapped["ParentProcessGuid"] = data["actorID"]
+    elif kind in categories or kind in {("FILE", "READ"), ("FILE", "WRITE")}:
+        if data.get("actorID"):
+            mapped["ProcessGuid"] = data["actorID"]
+    if kind == ("MODULE", "LOAD") and props.get("file_path") is not None:
+        mapped["ImageLoaded"] = props["file_path"]
+    if kind == ("REGISTRY", "MODIFY"):
+        if props.get("registry_key") is not None:
+            mapped["TargetObject"] = props["registry_key"]
+        if props.get("registry_value") is not None:
+            mapped["Details"] = props["registry_value"]
+    if kind in {("PROCESS", "OPEN"), ("THREAD", "REMOTE_CREATE")}:
+        for source, target in {
+            "image_path": "SourceImage", "target_image_path": "TargetImage",
+            "granted_access": "GrantedAccess", "call_trace": "CallTrace",
+            "target_process_uuid": "TargetProcessGUID",
+        }.items():
+            if props.get(source) is not None:
+                mapped[target] = props[source]
+        if data.get("actorID"):
+            mapped["SourceProcessGUID"] = data["actorID"]
 
     for pk, pv in props.items():
         mapped[f"properties_{pk}"] = pv
@@ -327,10 +399,10 @@ def format_hayabusa_winxml(parsed: dict[str, Any]) -> tuple[dict[str, Any], dict
     if security.get("UserID") is not None:
         hayabusa_rec["SecurityUserID"] = security["UserID"]
 
-    for k, v in parsed["event_data"].items():
+    for k, v in _canonical_windows_addresses(parsed["event_data"]).items():
         if k not in hayabusa_rec:
             hayabusa_rec[k] = v
-    for k, v in parsed["user_data"].items():
+    for k, v in _canonical_windows_addresses(parsed["user_data"]).items():
         if k not in hayabusa_rec:
             hayabusa_rec[k] = v
 
@@ -443,9 +515,9 @@ def format_chainsaw_winxml(parsed: dict[str, Any]) -> dict[str, Any]:
 
     event_obj: dict[str, Any] = {"System": system_obj}
     if parsed["event_data"]:
-        event_obj["EventData"] = parsed["event_data"]
+        event_obj["EventData"] = _canonical_windows_addresses(parsed["event_data"])
     elif parsed["user_data"]:
-        event_obj["UserData"] = parsed["user_data"]
+        event_obj["UserData"] = _canonical_windows_addresses(parsed["user_data"])
     else:
         event_obj["EventData"] = {}
 

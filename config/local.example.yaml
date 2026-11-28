@@ -3,6 +3,8 @@
 # Point APT_AGENT_CONFIG=config/local.yaml or pass load_config("config/local.yaml").
 
 minimum_seed_level: medium
+# Only high-confidence seeds may promote verified context into the attack set.
+minimum_expansion_level: high
 
 engines:
   zircolite:

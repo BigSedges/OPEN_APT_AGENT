@@ -1,0 +1,1 @@
+{"matched_physical_ids": ["pr-4", "pr-5", "pr-6"], "coverage": [{"rule_id": "870d6880-ad88-4513-8c0b-eefc87d097cd", "engine": "hayabusa", "engine_version": "unknown", "rule_version": "2026-11-28", "status": "ran", "reason": null, "hit_count": 3}], "passed": true}

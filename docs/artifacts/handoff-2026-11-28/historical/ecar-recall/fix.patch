@@ -1,0 +1,428 @@
+diff --git a/script/log_convert/lib/formatters.py b/script/log_convert/lib/formatters.py
+--- a/script/log_convert/lib/formatters.py
++++ b/script/log_convert/lib/formatters.py
+@@ -164,6 +164,8 @@
+     }
+ 
+     prop_to_sigma = {
++        "process_guid": "ProcessGuid",
++        "parent_process_guid": "ParentProcessGuid",
+         "image_path": "Image",
+         "parent_image_path": "ParentImage",
+         "command_line": "CommandLine",
+@@ -185,6 +187,48 @@
+         "icmp_code": "IcmpCode",
+     }
+ 
++    # ECAR object IDs have different meanings for different event kinds.
++    # Only process lifecycle records identify the process with objectID.
++    kind = (str(obj_type).upper(), str(action).upper())
++    categories = {
++        ("PROCESS", "CREATE"): ["process_creation"],
++        ("PROCESS", "TERMINATE"): ["process_termination"],
++        ("PROCESS", "OPEN"): ["process_access"],
++        ("FLOW", "CONNECT"): ["network_connection"],
++        ("MODULE", "LOAD"): ["image_load"],
++        ("FILE", "CREATE"): ["file_event"],
++        ("FILE", "WRITE"): ["file_event"],
++        ("FILE", "DELETE"): ["file_delete"],
++        ("REGISTRY", "MODIFY"): ["registry_event", "registry_set"],
++        ("THREAD", "REMOTE_CREATE"): ["create_remote_thread"],
++    }
++    mapped["event_categories"] = categories.get(kind, [])
++    if kind in {("PROCESS", "CREATE"), ("PROCESS", "TERMINATE")}:
++        if data.get("objectID"):
++            mapped["ProcessGuid"] = data["objectID"]
++        if kind == ("PROCESS", "CREATE") and data.get("actorID"):
++            mapped["ParentProcessGuid"] = data["actorID"]
++    elif kind in categories or kind in {("FILE", "READ"), ("FILE", "WRITE")}:
++        if data.get("actorID"):
++            mapped["ProcessGuid"] = data["actorID"]
++    if kind == ("MODULE", "LOAD") and props.get("file_path") is not None:
++        mapped["ImageLoaded"] = props["file_path"]
++    if kind == ("REGISTRY", "MODIFY"):
++        if props.get("registry_key") is not None:
++            mapped["TargetObject"] = props["registry_key"]
++        if props.get("registry_value") is not None:
++            mapped["Details"] = props["registry_value"]
++    if kind in {("PROCESS", "OPEN"), ("THREAD", "REMOTE_CREATE")}:
++        for source, target in {
++            "image_path": "SourceImage", "target_image_path": "TargetImage",
++            "granted_access": "GrantedAccess", "call_trace": "CallTrace",
++            "target_process_uuid": "TargetProcessGUID",
++        }.items():
++            if props.get(source) is not None:
++                mapped[target] = props[source]
++        if data.get("actorID"):
++            mapped["SourceProcessGUID"] = data["actorID"]
++
+     for pk, pv in props.items():
+         mapped[f"properties_{pk}"] = pv
+         sigma_key = prop_to_sigma.get(pk)
+diff --git a/src/apt_agent/detection/routing.py b/src/apt_agent/detection/routing.py
+--- a/src/apt_agent/detection/routing.py
++++ b/src/apt_agent/detection/routing.py
+@@ -23,12 +23,15 @@
+ class Logsource:
+     product: str
+     service: str
++    category: str = ""
+ 
+     def matches(self, event: Event) -> bool:
+         products, services = _event_scope(event)
+         return (
+             (not self.product or self.product in products)
+             and (not self.service or self.service in services)
++            and (not self.category or event.source_type != "ecar"
++                 or self.category in event.fields.get("event_categories", ()))
+         )
+ 
+ 
+@@ -93,8 +96,9 @@
+             if not isinstance(doc, dict) or not isinstance(doc.get("logsource"), dict):
+                 continue
+             source = doc["logsource"]
+-            scope = Logsource(_key(source.get("product")), _key(source.get("service")))
+-            if scope.product or scope.service:
++            scope = Logsource(_key(source.get("product")), _key(source.get("service")),
++                              _key(source.get("category")))
++            if scope.product or scope.service or scope.category:
+                 for rule_id in (doc.get("id"), doc.get("title")):
+                     if isinstance(rule_id, str) and rule_id:
+                         scopes[rule_id] = scope
+diff --git a/src/apt_agent/detection/rsigma.py b/src/apt_agent/detection/rsigma.py
+--- a/src/apt_agent/detection/rsigma.py
++++ b/src/apt_agent/detection/rsigma.py
+@@ -49,6 +49,9 @@
+     if not product and not category and not service:
+         return set(ALL_LOG_FORMATS)
+ 
++    if product in {"windows", "linux"} and category and not service:
++        # Generic endpoint categories can be supplied by typed ECAR telemetry.
++        return {"winxml", "ecar_json"} if product == "windows" else {"bash_history", "syslog", "ecar_json"}
+     if product == "windows" or service in {"sysmon", "security", "system", "powershell", "windefend"}:
+         return {"winxml"}
+     if product == "zeek" or service == "zeek":
+@@ -612,16 +615,24 @@
+                 )
+ 
+             try:
+-                raw_lines = out_ndjson.read_text(encoding="utf-8").splitlines()
+                 parsed_rows: list[dict[str, Any]] = []
+-                for line in raw_lines:
+-                    stripped = line.strip()
+-                    if not stripped:
+-                        continue
+-                    obj = json.loads(stripped)
+-                    if not isinstance(obj, dict):
+-                        raise ValueError("RSigma NDJSON line must be a JSON object.")
+-                    parsed_rows.append(obj)
++                with out_ndjson.open(encoding="utf-8") as rows:
++                    for line in rows:
++                        stripped = line.strip()
++                        if not stripped:
++                            continue
++                        obj = json.loads(stripped)
++                        if not isinstance(obj, dict):
++                            raise ValueError("RSigma NDJSON line must be a JSON object.")
++                        if not any(key in obj for key in (
++                            "correlation_type", "events", "matched_events", "aggregated_value"
++                        )) and isinstance(obj.get("event"), dict):
++                            # The raw evidence store already owns the full record.
++                            # Ordinary hits need only these two event fields below.
++                            event = obj["event"]
++                            obj["event"] = {key: event[key] for key in ("event_id", "@timestamp")
++                                            if key in event}
++                        parsed_rows.append(obj)
+             except (OSError, ValueError) as exc:
+                 return AdapterOutput(
+                     engine=self.engine_name,
+diff --git a/src/apt_agent/tools/investigation.py b/src/apt_agent/tools/investigation.py
+--- a/src/apt_agent/tools/investigation.py
++++ b/src/apt_agent/tools/investigation.py
+@@ -674,6 +674,40 @@
+                 protos[0].lower(),
+             )
+             flow_buckets[five_tuple].append(ev)
++
++    # An explicit process instance can explain its own later module/file/lifecycle
++    # records. Do not infer this identity from PID, path, user or time proximity.
++    for (host, guid), members in sorted(by_host_guid.items()):
++        if not host or not guid.strip("{}0-") or guid in {"unknown", "null"}:
++            continue
++        creators = [event for event in members if (
++            (event.source_type == "ecar" and
++             "process_creation" in event.fields.get("event_categories", ()))
++            or (event.source_type == "winxml_sysmon" and str(event.fields.get("EventID")) == "1")
++        )]
++        if len(creators) != 1 or not creators[0].event_time:
++            continue
++        creator = creators[0]
++        start = _parse_utc_datetime(creator.event_time)
++        endings = [
++            _parse_utc_datetime(event.event_time) for event in members if event.event_time and (
++                "process_termination" in event.fields.get("event_categories", ())
++                or (event.source_type == "winxml_sysmon" and str(event.fields.get("EventID")) == "5")
++            ) and _parse_utc_datetime(event.event_time) >= start
++        ]
++        end = min(endings) if endings else None
++        for event in members:
++            if event.event_id == creator.event_id or not event.event_time:
++                continue
++            timestamp = _parse_utc_datetime(event.event_time)
++            if timestamp < start or (end is not None and timestamp > end):
++                continue
++            _add_edge(Edge(
++                from_event_id=creator.event_id, to_event_id=event.event_id,
++                relation="same_process_guid", join_keys={"host": host, "process_guid": guid},
++                evidence_event_ids=[creator.event_id, event.event_id],
++                sources=["query_events"], status="proposed",
++            ))
+ 
+     # 1) Same-host process lineage (ProcessGuid first, then pid/ppid fallback)
+     for ev in ordered:
+diff --git a/src/apt_agent/blackboard.py b/src/apt_agent/blackboard.py
+--- a/src/apt_agent/blackboard.py
++++ b/src/apt_agent/blackboard.py
+@@ -407,7 +407,7 @@
+                 edge.relation in _FLOW_RELATIONS or edge.relation in _PROCESS_RELATIONS - {"spawned"}
+             ):
+                 next_id = edge.to_event_id
+-            elif edge.relation in _FLOW_RELATIONS:
++            elif edge.relation in _FLOW_RELATIONS or edge.relation == "same_process_guid":
+                 next_id = edge.from_event_id
+             else:
+                 continue
+diff --git a/script/diagnose/run_scene.py b/script/diagnose/run_scene.py
+--- a/script/diagnose/run_scene.py
++++ b/script/diagnose/run_scene.py
+@@ -5,6 +5,8 @@
+ import json
+ from pathlib import Path
+ from time import perf_counter
++
++from pydantic_core import to_jsonable_python
+ 
+ from apt_agent.config import load_config
+ from apt_agent.ingestion import load_indexed_records
+@@ -31,7 +33,11 @@
+     prediction = to_prediction(ctx, case)
+     # Prediction is saved first; labels must be compared only in a separate step.
+     (args.output / "predict.json").write_text(json.dumps(prediction, ensure_ascii=False), encoding="utf-8")
+-    (args.output / "case.json").write_text(case.model_dump_json(indent=2), encoding="utf-8")
++    # Serialize references to fields, avoiding a second complete case dictionary
++    # and a full-size JSON string in memory at the same time.
++    with (args.output / "case.json").open("w", encoding="utf-8") as output:
++        json.dump({name: getattr(case, name) for name in type(case).model_fields},
++                  output, default=to_jsonable_python, ensure_ascii=False, indent=2)
+     summary = {"case_id": case.case_id, "run_id": case.run_id,
+                "elapsed_s": perf_counter() - started, "stop_reason": case.stop_reason,
+                "input_records": len(index), "predicted_records": len(prediction["physical_id_set"]),
+diff --git a/tests/test_ecar_semantics.py b/tests/test_ecar_semantics.py
+new file mode 100644
+--- /dev/null
++++ b/tests/test_ecar_semantics.py
+@@ -0,0 +1,148 @@
++"""Typed ECAR mapping must preserve event semantics and source evidence."""
++from copy import deepcopy
++
++import pytest
++
++from apt_agent.detection.routing import Logsource
++from apt_agent.ingestion import Normalizer, ingest_records
++from apt_agent.ingestion.normalizer import format_for_rsigma
++from apt_agent.models import RunContext
++
++
++def normalize(obj, action, **extra):
++    payload = {"id": "raw-event", "hostname": "endpoint", "timestamp_ms": 1700000000000,
++               "object": obj, "action": action, "objectID": "object-uuid",
++               "actorID": "actor-uuid", "properties": {"image_path": r"C:\Windows\tool.exe"}, **extra}
++    before = deepcopy(payload)
++    store = ingest_records([("pr-one", payload)], case_id="case", run_id="run")
++    ctx = RunContext(case_id=store.case_id, run_id=store.run_id)
++    event = Normalizer.normalize_batch(ctx, store).events[0]
++    assert store.get("pr-one").payload == before
++    return event
++
++
++def test_process_lifecycle_and_parent_are_not_file_ids():
++    created = normalize("PROCESS", "CREATE")
++    assert created.fields["ProcessGuid"] == "object-uuid"
++    assert created.fields["ParentProcessGuid"] == "actor-uuid"
++    terminated = normalize("PROCESS", "TERMINATE")
++    assert terminated.fields["ProcessGuid"] == "object-uuid"
++    assert "ParentProcessGuid" not in terminated.fields
++    file = normalize("FILE", "CREATE")
++    assert file.fields["ProcessGuid"] == "actor-uuid"
++    assert "ParentProcessGuid" not in file.fields
++    assert Logsource("windows", "", "process_creation").matches(created)
++    assert not Logsource("windows", "", "process_creation").matches(file)
++    assert not Logsource("windows", "sysmon", "process_creation").matches(created)
++
++
++@pytest.mark.parametrize("obj,action,property_name,value,target,category", [
++    ("MODULE", "LOAD", "file_path", r"C:\module.dll", "ImageLoaded", "image_load"),
++    ("REGISTRY", "MODIFY", "registry_key", r"HKLM\Software\Example", "TargetObject", "registry_set"),
++    ("PROCESS", "OPEN", "granted_access", "0x1fffff", "GrantedAccess", "process_access"),
++    ("THREAD", "REMOTE_CREATE", "target_process_uuid", "target-uuid", "TargetProcessGUID", "create_remote_thread"),
++])
++def test_event_specific_fields_and_rsigma_round_trip(obj, action, property_name, value, target, category):
++    event = normalize(obj, action, properties={"image_path": r"C:\Windows\tool.exe", property_name: value})
++    assert event.fields[target] == value
++    assert format_for_rsigma([event])[0][target] == value
++    assert Logsource("windows", "", category).matches(event)
++    assert not Logsource("windows", "", "process_creation").matches(event)
++
++
++def test_unknown_event_does_not_fabricate_process_identity_or_category():
++    event = normalize("UNRECOGNIZED", "CREATE")
++    assert "ProcessGuid" not in event.fields
++    assert event.fields["event_categories"] == []
++    assert not Logsource("windows", "", "process_creation").matches(event)
++
++
++def test_explicit_guid_takes_precedence_over_generic_object_identity():
++    event = normalize("PROCESS", "CREATE", properties={
++        "process_guid": "provider-process", "parent_process_guid": "provider-parent"})
++    assert event.fields["ProcessGuid"] == "provider-process"
++    assert event.fields["ParentProcessGuid"] == "provider-parent"
++
++
++@pytest.mark.parametrize("seed_index", [0, 1])
++def test_confirmed_process_recovers_its_context_without_adopting_children(seed_index):
++    from apt_agent.agents import run_investigation
++    from apt_agent.detection.base import DetectionResult
++    from apt_agent.models import Hit
++    from apt_agent.tools.investigation import correlate_lineage_and_flows
++    records = []
++    for number, obj, action, process, actor, host in [
++        (1, "PROCESS", "CREATE", "proc-instance", "parent-instance", "host"),
++        (2, "MODULE", "LOAD", "dll-object", "proc-instance", "host"),
++        (3, "FILE", "CREATE", "file-object", "proc-instance", "host"),
++        (4, "PROCESS", "TERMINATE", "proc-instance", None, "host"),
++        (5, "FILE", "CREATE", "post-exit", "proc-instance", "host"),
++        (6, "FILE", "CREATE", "other-host", "proc-instance", "unrelated-host"),
++        (7, "PROCESS", "CREATE", "child-instance", "proc-instance", "host"),
++    ]:
++        records.append((f"pr-{number}", {"id": str(number), "hostname": host,
++            "timestamp_ms": 1700000000000 + number * 1000,
++            "object": obj, "action": action, "objectID": process, "actorID": actor,
++            "properties": {"image_path": r"C:\tool.exe"}}))
++    store = ingest_records(records, case_id="case", run_id="run")
++    ctx = RunContext(case_id=store.case_id, run_id=store.run_id)
++    events = Normalizer.normalize_batch(ctx, store).events
++    seed = events[seed_index]
++    detection = DetectionResult(hits=[Hit(hit_id="confirmed", rule_id="fixture",
++        engine="fixture", level="high", event_ids=[seed.event_id])])
++    case = run_investigation(ctx, store, events, detection)
++    predicted = {case.event_to_physical[eid] for eid in case.attack_event_ids}
++    assert predicted == {"pr-1", "pr-2", "pr-3", "pr-4"}
++    edges = correlate_lineage_and_flows(list(reversed(events)))
++    assert sorted(edge.dedup_key for edge in edges) == sorted(
++        edge.dedup_key for edge in correlate_lineage_and_flows(events))
++
++
++def test_native_rsigma_ecar_categories_when_configured(tmp_path):
++    import os
++    from pathlib import Path
++    from apt_agent.config import AppConfig, EngineConfig
++    from apt_agent.detection.coordinator import DetectionCoordinator
++    from apt_agent.detection.rsigma import RSigmaAdapter
++    binary = os.environ.get("APT_TEST_RSIGMA_BIN")
++    if not binary:
++        pytest.skip("Native RSigma fixture is not configured")
++    rule = "ab6180ef-00f8-42be-b2c7-081179704bdf"
++    (tmp_path / "module.yml").write_text(f'''title: Staged Module Fixture
++id: {rule}
++status: test
++logsource:
++  product: windows
++  category: image_load
++detection:
++  selection:
++    ImageLoaded|endswith: '\\staged.dll'
++  condition: selection
++level: high
++''')
++    (tmp_path / "category.yml").write_text('''title: Module Category Fixture
++id: bc6180ef-00f8-42be-b2c7-081179704bdf
++status: test
++logsource:
++  product: windows
++  category: image_load
++detection:
++  selection:
++    Image|endswith: '\\tool.exe'
++  condition: selection
++level: high
++''')
++    module = normalize("MODULE", "LOAD", properties={
++        "image_path": r"C:\Windows\tool.exe", "file_path": r"C:\Temp\staged.dll"})
++    file = normalize("FILE", "CREATE", properties={
++        "image_path": r"C:\Windows\tool.exe", "file_path": r"C:\Temp\staged.dll"})
++    # Both records share the process Image. A native match on that field must
++    # still satisfy the module rule's observation category.
++    file = file.model_copy(update={"event_id": "file-event", "physical_record_id": "pr-file"})
++    cfg = AppConfig()
++    cfg.engines.rsigma = EngineConfig(bin_path=Path(binary), rules_dir=tmp_path)
++    cfg.engines.pysigma.enabled = False
++    ctx = RunContext(case_id="case", run_id="run", config=cfg)
++    result = DetectionCoordinator(cfg, adapters=[RSigmaAdapter()]).detect(ctx, [module, file])
++    assert {eid for hit in result.hits for eid in hit.event_ids} == {module.event_id}, result.coverage
++    assert any(trace["event_id"] == "file-event" and not trace["accepted"] for trace in result.hit_trace)
+diff --git a/script/log_convert/README.md b/script/log_convert/README.md
+--- a/script/log_convert/README.md
++++ b/script/log_convert/README.md
+@@ -97,3 +97,13 @@
+ 原始证据库、归一化事件和解析器输入字典保留原值。转换仅作用于明确的地址字段；命令行、原生 IPv6、缺失值和无效地址保持原样。该转换不把公网地址加入排除名单，也不调整规则级别或种子门槛。
+ 
+ 常规回归会检查四种引擎输入的地址语义与原文保全。设置 `APT_TEST_HAYABUSA_BIN` 和 `APT_TEST_HAYABUSA_CONFIG` 后，`tests/test_windows_address_canonicalization.py` 还会用本机 Hayabusa 对独立正负样本执行真实 CIDR 回放；不设置时只跳过该项原生工具检查。
++
++## 六、eCAR 的事件类型与进程身份
++
++eCAR 的 `objectID` 随对象类型改变含义。转换层仅对 PROCESS CREATE / TERMINATE 把它映射为 `ProcessGuid`；CREATE 的 `actorID` 映射为 `ParentProcessGuid`。模块、文件、注册表、流和进程访问记录使用明确的 `actorID` 标识执行进程，不将文件或模块对象 ID 当成进程 ID。显式的 `properties.process_guid`、`parent_process_guid` 优先于推导值，原属性仍保留。
++
++MODULE LOAD 补 `ImageLoaded`，REGISTRY MODIFY 补 `TargetObject` / `Details`，PROCESS OPEN 与 THREAD REMOTE_CREATE 补已有样本实际提供的 `SourceImage`、`TargetImage`、`GrantedAccess`、`CallTrace` 和进程标识字段。缺失字段保持未知。
++
++转换层还为已识别的 eCAR 对象/动作生成 `event_categories`。调查管线用它核对 Sigma 的 category；例如 image_load 规则不能只因共享 Image 字段便接纳文件创建记录。它不会把 eCAR 伪装成 Sysmon 或 Security，带这些 service 声明的规则仍受日志源限制。
++
++同主机、明确进程标识、唯一且有时间的创建记录，可与该进程创建至退出（含退出记录）期间的记录形成 `same_process_guid` 候选关系；经原取证查询、黑板和核验接口后，Ranker 允许沿该身份关系双向回查。不同主机、缺失标识、多个创建记录、创建前或退出后的记录不通过此路径关联，父子关系不会自动扩大攻击集合。
+diff --git a/docs/HANDOFF.md b/docs/HANDOFF.md
+--- a/docs/HANDOFF.md
++++ b/docs/HANDOFF.md
+@@ -254,6 +254,34 @@
+ 
+ 后续仍须处理：普通 RC4 票据请求等上下文型告警被直接当作攻击证据、仅低级别命中的攻击上下文未被取回、eCAR 检测引擎覆盖不足，并在独立场景和完整引擎配置下复验。
+ 
++### P0 漏检增量：eCAR 类型、进程实例及双引擎对照
++
++本轮在本机接入经过官方 SHA256 校验的 RSigma 0.28.0，并固定 SigmaHQ `r2026-07-01` 的 `sigma_all_rules.zip`（归档 SHA256：`5725c91b5813587ad6a4b0b8e0233fa44348b1595f818d8b7fd39d6033385085`）。包内共 3,302 条 YAML，本轮配置其 `rules/` 下 2,842 条规则，不含另一个 emerging-threats 目录。官方来源：[RSigma 发行版](https://github.com/timescale/rsigma/releases/tag/v0.28.0) · [SigmaHQ 固定发行版](https://github.com/SigmaHQ/sigma/releases/tag/r2026-07-01)。
++
++实现增量：
++
++- 转换层按 eCAR object/action 解释 `objectID` 和 `actorID`，区分进程、父进程与文件/模块对象；显式 process_guid 优先，原始属性保留。补齐 `ImageLoaded`、注册表 `TargetObject` / `Details`、进程访问和远程线程的已有字段。
++- 给已识别 eCAR 类型生成 `event_categories`，在协调器核对规则 category；generic Windows/Linux endpoint category 的静态兼容性纳入 eCAR，特定 Sysmon/Security service 仍不可冒充。此处新增的 category 核对限定于 eCAR，其他源的完整 category 路由仍待继续完善。
++- 只有同主机、明确进程实例标识、唯一创建记录且时间有效时，产生创建至退出区间内的同进程候选关系。取证仍经原查询、黑板和 Verifier。Ranker 对同进程关系允许双向回查，父子关系不会自动判恶；不同主机、创建前、退出后、未知身份不通过此路径。
++- RSigma 逐行读取 NDJSON，普通事件仅保留后续使用的 ID/时间，关联组成事件完整保留；案件诊断增量编码，减少完整文本、解析对象和导出副本同时驻留内存。协议、命中和比赛两字段格式不变。
++
++本节前后对照均固定 Hayabusa 4.4.0、RSigma 0.28.0、相同两份规则及知识资产、medium 门槛、900 秒预算和关闭 LLM。上一节为 Hayabusa 单引擎评测。预测持久化后才读取标注。最终普通 CLI 的四次运行均退出 0，APT28 的预测均获官方评分器接受。
++
++| 验证范围 | TP（前 → 后） | FP（前 → 后） | FN（前 → 后） | 官方分数（满分 100） |
++| --- | --- | --- | --- | --- |
++| APT28 完整 209,109 条索引记录 | 1 → 7 / 27 | 3,607 → 3,449 | 26 → 20 | 0.038644 → 0.281578 |
++| APT29 的全部 124,427 条 eCAR 索引记录 | 0 → 6 / 12 | 1,674 → 1,603 | 12 → 6 | 未作全场景官方评分 |
++
++APT29 范围在预测前仅按索引 filepath 的文件名 `ecar.json` 选择，不使用标注选输入；预测后将标准答案物理 ID 与该输入范围求交得到 12 条。该结果只验证 eCAR 迁移，不能当作 APT29 完整场景或 R4 验收。APT28 前后均为 `TASK_LIMIT`；APT29 eCAR 基线为 `INVESTIGATION_COMPLETE`，修复版为 `TASK_LIMIT`，均未耗尽墙钟预算。
++
++APT28 新增 6 条真阳性（4 条 eCAR、2 条 Windows），未丢失已有真阳性；同时移除 995 条旧误报、引入 837 条新误报，净减少 158 条。APT29 eCAR 移除 1,072 条旧误报、引入 1,001 条新误报，净减少 71 条。关联补证仍会扩大错误种子的影响，净计数改善不意味着误报已经收敛。
++
++最终完整回归 **313 项通过**，包含显式 GUID 优先、事件类型隔离、普通/关联输出解析、原文保全、进程区间边界、反向回查、跨主机和子进程隔离，以及真实 RSigma 与 Hayabusa 回放；检索协议冒烟 **5 项通过**。普通入口复跑与较早诊断包装生成的预测逐项一致。曾中止的并行/诊断包装尝试排除在有效运行之外；完整规则回放采用串行方式，避免单进程约 4GB 的旧读取方式造成资源争用。
++
++本机持久产物目录为 `/Users/zhangjunhao/Documents/Codex/2026-11-28/gen/outputs/ecar-recall/`，其中 `report.json`、`manifest.json` 和各范围前后目录保存预测、逐条漏检、官方评分或专项计数、运行停止原因、增删误报 ID、配置及源码/规则/二进制哈希。运行绑定的版本标签仍为 v1，本轮依靠这些哈希区分资产；P1 的完整快照绑定与重放尚未完成。本机本地配置仅启用已经验证的两个检测引擎，其他工具保留 skipped 语义。
++
++下一步 P0：逐条处理剩余 20 条 APT28 漏检，收敛普通 RC4 票据等宽泛种子及关联扩展引入的误报，改进战术证据排序（本轮 APT28 战术仍为 0/2）。当前多条无关原始命中来自 Zeek 的 `not selection` 规则在缺少字段时的匹配，已由日志源检查拒绝；这些记录尚无可用的本源检测证据，不能放宽跨源检查来补召回。完整三场景、仅切换 LLM 的对照和 starter/container 交付仍待完成。
++
+ ## 4. 交接前 Gemini Teamwork 计划
+ 
+ 以下保留原计划的工作目标和验收口径，供接手后按里程碑推进。工作目录为 `/home/yue/OPEN_APT_AGENT`，`Integrity mode: demo`。团队不得复制其他开源项目的代码作为核心逻辑，不得在实现前阅读测试源码推断预期行为。以设计和接口规范推导行为，提交实现后按验收清单运行测试和外部验证。
