@@ -31,6 +31,7 @@ _NULLABLE_ENV_FIELDS = frozenset(
 _BOOL_ENV_FIELDS = frozenset({"enabled", "offline"})
 
 _FLAT_ENV_ALIASES: dict[str, tuple[str, ...]] = {
+    "APT_AGENT_MINIMUM_SEED_LEVEL": ("minimum_seed_level",),
     "APT_AGENT_LLM_ENABLED": ("llm", "enabled"),
     "APT_AGENT_LLM_PROVIDER": ("llm", "provider"),
     "APT_AGENT_LLM_API_KEY": ("llm", "api_key"),
@@ -211,6 +212,7 @@ class AppConfig(BaseModel):
 
     model_config = ConfigDict(extra="forbid")
 
+    minimum_seed_level: Literal["informational", "low", "medium", "high", "critical"] = "medium"
     engines: EnginesConfig = Field(default_factory=EnginesConfig)
     rag: RagConfig = Field(default_factory=RagConfig)
     llm: LLMConfig = Field(default_factory=LLMConfig)

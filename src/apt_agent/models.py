@@ -37,7 +37,7 @@ class Locator(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
 
     filepath: str
-    linenumber: int = Field(ge=1)
+    linenumber: int = Field(ge=1, strict=True)
 
     @field_validator("filepath")
     @classmethod
@@ -491,6 +491,11 @@ class CaseResult(BaseModel):
     stop_reason: str | None = None
     snapshot_refs: dict[str, str] = Field(default_factory=dict)
     event_to_physical: dict[str, str] = Field(default_factory=dict)
+    knowledge_refs: list[KnowledgeRef] = Field(default_factory=list)
+    findings: list[Finding] = Field(default_factory=list)
+    edges: list[Edge] = Field(default_factory=list)
+    validation_errors: list[dict[str, Any]] = Field(default_factory=list)
+    investigation_ledger: list[dict[str, Any]] = Field(default_factory=list)
 
     @field_validator("case_id", "run_id")
     @classmethod

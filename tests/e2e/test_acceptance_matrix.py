@@ -553,7 +553,9 @@ def test_s7_3_four_candidates_same_origin_dedup_before_top3(
     )
     bb.submit_findings(ctx, sub)
     v_res = verify(ctx, bb)
-    case_res = rank(ctx, v_res.verified_state, store, [], [])
+    case_res = rank(
+        ctx, v_res.verified_state, store, [], [], events=[ev_a1, ev_a2, ev_2, ev_3, ev_4]
+    )
     forced_res = case_res.model_copy(
         update={
             "attack_event_ids": ranked_eids,
@@ -831,7 +833,9 @@ def test_s7_5_rag_isolation_crosscase_and_count_only_correlation(
         enabled_engines={"rsigma"},
         llm_enabled=False,
     )
-    det_co = DetectionCoordinator(cfg_co).detect(ctx_s1, norm_s1.events)
+    det_co = DetectionCoordinator(cfg_co).detect(
+        ctx_s1.model_copy(update={"config": cfg_co}), norm_s1.events
+    )
     corr_leads = _field(det_co, "leads", []) or []
     corr_hits = [
         h
@@ -932,7 +936,8 @@ def test_s7_6_idempotent_submission_and_order_independent_ranking(
 
     r1 = bb_hn.submit_findings(ctx, sub_host)
     r2 = bb_hn.submit_findings(ctx, sub_host)
-    assert r1 == r2
+    assert r2.replayed
+    assert r1 == r2.model_copy(update={"replayed": False})
     assert _field(r1, "state_version") == _field(r2, "state_version")
 
     sub_conflict = _build_observed_submission(
@@ -2008,3 +2013,76 @@ def test_p9_independent_rag_ablation_budget_and_kb_exclusion(
     )
     assert pred_s9_on == {"physical_id_set": [], "ta_physical_ids": {}}
     assert pred_s9_off == {"physical_id_set": [], "ta_physical_ids": {}}
+
+def test_investigation_binds_published_rules_to_the_requested_version(
+    tmp_path: Path, e2e_fixtures_dir: Path, load_scene_records, make_app_config,
+) -> None:
+    from apt_agent.maintenance import SnapshotRegistry
+    from apt_agent.pipeline import investigate_records
+
+    scene = e2e_fixtures_dir / "scenarios" / "scene_01_phishing_c2"
+    index, records = load_scene_records(scene)
+    registry = SnapshotRegistry(tmp_path / "snapshots")
+    rules = e2e_fixtures_dir / "rules" / "valid"
+    for version, name in (
+        ("v1", "benign_no_match.yml"), ("v2", "win_winword_powershell.yml")
+    ):
+        registry.publish_snapshot("ruleset", version, {name: (rules / name).read_text()})
+
+    low_alert_rule = (rules / "win_winword_powershell.yml").read_text().replace(
+        "level: high", "level: informational"
+    )
+    registry.publish_snapshot("ruleset", "context-only", {"rule.yml": low_alert_rule})
+
+    config = make_app_config(
+        snapshots_dir=registry.root,
+        enabled_engines={"rsigma"},
+        overrides={"engines": {"rsigma": {"rules_dir": None}}},
+    )
+    kwargs = {"valid_physical_ids": set(index), "locator_map": _locator_map(index)}
+    first = investigate_records(iter(records), config=config, **kwargs)
+    updated = config.model_copy(deep=True)
+    updated.snapshots.ruleset_version = "v2"
+    second = investigate_records(iter(records), config=updated, **kwargs)
+    replay = investigate_records(iter(records), config=config, **kwargs)
+
+    assert first.attack_event_ids == replay.attack_event_ids == []
+    assert first.snapshot_refs["ruleset_version"] == replay.snapshot_refs["ruleset_version"] == "v1"
+    assert second.snapshot_refs["ruleset_version"] == "v2"
+    assert {
+        second.event_to_physical[event_id] for event_id in second.attack_event_ids
+    } >= {"pr-s01-0001", "pr-s01-0002", "pr-s01-0003"}
+    assert second.investigation_ledger
+    updated.snapshots.ruleset_version = "context-only"
+    context_only = investigate_records(iter(records), config=updated, **kwargs)
+    assert context_only.attack_event_ids == []
+    assert any(run.hit_count for run in context_only.coverage if run.engine == "rsigma")
+
+def test_unavailable_rule_logsource_cannot_create_attack_evidence(
+    tmp_path: Path, e2e_fixtures_dir: Path, load_scene_records, make_app_config,
+) -> None:
+    from apt_agent.pipeline import investigate_records
+
+    rules = tmp_path / "rules"
+    rules.mkdir()
+    (rules / "wrong_source.yml").write_text(
+        "title: Scoped high-level detection\n"
+        "id: 11111111-1111-4111-8111-111111111111\n"
+        "logsource: {product: zeek, service: rdp}\n"
+        "detection:\n"
+        "  selection: {Image: 'missing.exe'}\n"
+        "  condition: not selection\n"
+        "level: high\n",
+        encoding="utf-8",
+    )
+    scene = e2e_fixtures_dir / "scenarios" / "scene_01_phishing_c2"
+    index, records = load_scene_records(scene)
+    config = make_app_config(rules_dir=rules, enabled_engines={"rsigma", "zircolite"})
+
+    case = investigate_records(iter(records), config=config, locator_map=_locator_map(index))
+
+    assert case.attack_event_ids == []
+    assert any(
+        run.reason == "detector_matches_outside_rule_logsource"
+        for run in case.coverage
+    )

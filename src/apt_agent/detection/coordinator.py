@@ -23,6 +23,7 @@ from apt_agent.detection.chainsaw import ChainsawAdapter
 from apt_agent.detection.hayabusa import HayabusaAdapter
 from apt_agent.detection.rsigma import RSigmaAdapter, inspect_sigma_rules
 from apt_agent.detection.zircolite import ZircoliteAdapter
+from apt_agent.detection.routing import Logsource, read_rule_logsources, scope_detector_output
 from apt_agent.exceptions import InvalidArgumentError
 from apt_agent.models import Event, Hit, RuleRun, RunContext
 
@@ -180,6 +181,7 @@ class DetectionCoordinator:
             effective_ruleset = ctx.ruleset_version
 
         effective_config = ctx.config if ctx.config is not None else self.config
+        events_by_id = {event.event_id: event for event in events}
         event_to_physical = {ev.event_id: ev.physical_record_id for ev in events}
         valid_event_ids = set(event_to_physical)
         batch_formats = {
@@ -190,6 +192,7 @@ class DetectionCoordinator:
         lead_only_hits: list[Hit] = []
         all_coverage: list[RuleRun] = []
         leads_by_id: dict[str, dict[str, Any]] = {}
+        rule_scopes: dict[Path, dict[str, Logsource]] = {}
 
         for adapter in self._adapters:
             engine_name = adapter.engine_name
@@ -223,6 +226,11 @@ class DetectionCoordinator:
                 )
                 continue
 
+            if out.hits and engine_cfg.rules_dir is not None:
+                rules_path = engine_cfg.rules_dir
+                if rules_path not in rule_scopes:
+                    rule_scopes[rules_path] = read_rule_logsources(rules_path)
+                out = scope_detector_output(out, rule_scopes[rules_path], events_by_id)
             all_coverage.extend(out.coverage)
 
             for lead in out.leads:

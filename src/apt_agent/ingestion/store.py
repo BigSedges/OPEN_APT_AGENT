@@ -184,7 +184,7 @@ class RawEvidenceStore:
 def ingest_records(
     records: Iterable[tuple[str, dict[str, Any]]],
     *,
-    case_id: str,
+    case_id: str | None,
     run_id: str,
     locator_map: Mapping[str, Locator] | None = None,
     valid_physical_ids: AbstractSet[str] | None = None,
@@ -193,7 +193,8 @@ def ingest_records(
 
     Builds an immutable, replayable `RawEvidenceStore` binding `raw_id == physical_record_id`.
     """
-    _require_non_blank_str(case_id, "case_id")
+    if case_id is not None:
+        _require_non_blank_str(case_id, "case_id")
     _require_non_blank_str(run_id, "run_id")
 
     if records is None or isinstance(records, (str, bytes, bytearray, Mapping)):
@@ -297,6 +298,13 @@ def ingest_records(
             source_hint=locator.filepath if locator is not None else None,
             content_digest=digest,
         )
+
+    if case_id is None:
+        identity = [
+            (pid, rec.content_digest, rec.locator.model_dump() if rec.locator else None)
+            for pid, rec in sorted(stored.items())
+        ]
+        case_id = "case-" + hashlib.sha256(orjson.dumps(identity)).hexdigest()
 
     return RawEvidenceStore(
         case_id=case_id,

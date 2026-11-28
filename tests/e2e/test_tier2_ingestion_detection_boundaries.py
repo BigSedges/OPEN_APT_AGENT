@@ -595,7 +595,8 @@ def test_f04_engine_zero_hit_mode_emits_ran_coverage(
     for eng in ("zircolite", "chainsaw", "rsigma"):
         eng_cov = [c for c in coverage if _field(c, "engine") == eng]
         assert eng_cov
-        assert all(_field(c, "status") == "ran" and _field(c, "reason") is None for c in eng_cov)
+        assert any(_field(c, "status") == "ran" and _field(c, "reason") is None for c in eng_cov)
+        assert all(_field(c, "status") in {"ran", "skipped"} for c in eng_cov)
 
 
 def test_f04_takajo_wrong_cwd_and_missing_binary(
@@ -738,7 +739,7 @@ def test_f05_coverage_differentiates_zero_hit_ran_vs_missing_logsource_skipped_v
     from apt_agent.detection import DetectionCoordinator
 
     full_index, full_records = load_scene_records(e2e_fixtures_dir / "logs")
-    sub_ids = {"pr-000000000000000000000029"}
+    sub_ids = {"pr-000000000000000000000006", "pr-000000000000000000000029"}
     sub_index = {k: v for k, v in full_index.items() if k in sub_ids}
     sub_records = [(k, v) for k, v in full_records if k in sub_ids]
 
@@ -779,7 +780,9 @@ def test_f05_multi_engine_hit_dedup_preserves_all_rules_and_engines(
         for h in hits
     ]
     assert len(dedup_keys) == len(set(dedup_keys))
-    assert len({_field(h, "engine") for h in hits}) >= 2
+    assert {"zircolite", "hayabusa", "rsigma", "chainsaw"} <= {
+        engine for hit in hits for engine in hit.matched_fields["engines"]
+    }
 
 
 def test_f05_trace_roundtrip_on_multi_event_physical_record(

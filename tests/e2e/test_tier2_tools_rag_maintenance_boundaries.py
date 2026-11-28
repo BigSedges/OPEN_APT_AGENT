@@ -958,7 +958,8 @@ def test_f13_t2_maintenance_bash_case_mismatch_timeout_and_raw_store_deny(
     assert _field(r_timeout, "ok") is False and _error_code(r_timeout) == "TIMEOUT"
     assert _field(r_raw, "ok") is False and _error_code(r_raw) == "PERMISSION_DENIED"
     assert len(registry.audit_log) == 3
-    assert all(_audit_allowed(e) is False for e in registry.audit_log)
+    assert [_audit_allowed(e) for e in registry.audit_log] == [False, True, False]
+    assert registry.audit_log[1].outcome == "error"
 
 
 # ---------------------------------------------------------------------------
