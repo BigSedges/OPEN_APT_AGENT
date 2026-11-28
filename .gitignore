@@ -12,4 +12,6 @@ dist/
 /A/
 /packages/apt-rag/local-assets/
 zircolite.log
-
+/config/local.yaml
+/.apt_agent/
+*:Zone.Identifier

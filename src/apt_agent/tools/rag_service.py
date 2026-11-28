@@ -23,7 +23,7 @@ from uuid import uuid4
 
 from jsonschema import Draft202012Validator
 
-from apt_agent.config import RagConfig
+from apt_agent.config import AppConfig, RagConfig
 from apt_agent.models import KnowledgeRef, RunContext
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
@@ -83,6 +83,8 @@ _SOURCE_FAMILY_TO_KNOWLEDGE_TYPE: dict[str, str] = {
     "documents": "reference",
 }
 
+_KNOWLEDGE_TYPE_ALIASES = {"field_dict": "field_dictionary", "fp_reference": "false_positive"}
+
 _MATCH_REASONS: dict[str, str] = {
     "bm25": "BM25 term match",
     "dense": "Dense vector similarity",
@@ -125,7 +127,7 @@ ROLE_KB_POLICY: dict[str, frozenset[str]] = {
         {"log_documentation", "reference", "field_dictionary", "mapping", "unknown"}
     ),
     "rule_agent": frozenset(
-        {"detection_rule", "log_documentation", "behavior_analytic", "attack_technique", "reference", "unknown"}
+        {"detection_rule", "log_documentation", "behavior_analytic", "attack_technique", "reference", "field_dictionary", "unknown"}
     ),
     "lead": frozenset(
         {
@@ -289,6 +291,10 @@ def _normalize_rag_filters(filters: Mapping[str, Any] | None) -> dict[str, Any]:
             norm[target_key] = sorted(vals)
 
     _merge("knowledge_types", "knowledge_type", "knowledge_types", "doc_type")
+    if "knowledge_types" in norm:
+        norm["knowledge_types"] = sorted({
+            _KNOWLEDGE_TYPE_ALIASES.get(value, value) for value in norm["knowledge_types"]
+        })
     _merge("source_families", "source_family", "source_families")
     _merge("products", "product", "products")
     _merge("versions", "version", "versions", "source_version", "product_version")
@@ -405,6 +411,7 @@ def _chunk_matches_policy(
         or derived_kt
     ).strip().lower()
 
+    knowledge_type = _KNOWLEDGE_TYPE_ALIASES.get(knowledge_type, knowledge_type)
     allowed_kts = ROLE_KB_POLICY.get(role_key)
     if allowed_kts is not None and knowledge_type not in allowed_kts:
         return False
@@ -590,7 +597,7 @@ class RagService:
 
     def __init__(
         self,
-        ctx: RunContext | None = None,
+        ctx: RunContext | AppConfig | RagConfig | None = None,
         *,
         config: RagConfig | None = None,
         manifest_path: Path | str | None = None,
@@ -600,6 +607,10 @@ class RagService:
         allow_mode_fallback: bool = True,
         exclude_scene_ids: Sequence[str] = (),
     ) -> None:
+        if isinstance(ctx, (AppConfig, RagConfig)):
+            if config is None:
+                config = ctx.rag if isinstance(ctx, AppConfig) else ctx
+            ctx = None
         self.ctx = ctx
         if config is not None:
             self.config = config

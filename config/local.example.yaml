@@ -2,6 +2,8 @@
 # Copy this file to an untracked location (e.g., config/local.yaml) and replace placeholder paths.
 # Point APT_AGENT_CONFIG=config/local.yaml or pass load_config("config/local.yaml").
 
+minimum_seed_level: medium
+
 engines:
   zircolite:
     enabled: true

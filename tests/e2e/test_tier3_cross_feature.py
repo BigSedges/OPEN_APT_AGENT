@@ -472,8 +472,8 @@ def test_t3_05_f04_f05_multi_engine_hit_dedup_and_partial_failure_coverage(
             assert event_to_pid[eid] in index
 
     ww_hits = [h for h in hits if h.rule_id == "11111111-2222-3333-4444-555555555501"]
-    assert len(ww_hits) >= 2
-    assert {"zircolite", "rsigma"} <= {h.engine for h in ww_hits}
+    assert len(ww_hits) == 1
+    assert {"zircolite", "rsigma"} <= set(ww_hits[0].matched_fields["engines"])
 
 
 # ---------------------------------------------------------------------------
@@ -1377,7 +1377,7 @@ def test_t3_13_f09_f10_disputed_coexistence_and_deterministic_ranker_tie_break(
     chain_ids = [
         (c["chain_id"] if isinstance(c, dict) else c.chain_id) for c in chains
     ]
-    assert chain_ids == sorted(chain_ids)
+    assert chain_ids == [chain.chain_id for chain in sorted(chains, key=lambda c: c.sort_key())]
 
 
 # ---------------------------------------------------------------------------
@@ -1639,7 +1639,7 @@ def test_t3_15_f10_f11_ranker_sibling_dedup_feeds_prediction_contract(
     ]
 
     ver = verify(ctx, bb)
-    case_result = rank(ctx, _unwrap_verified_state(ver), store, hits=hits, coverage=[])
+    case_result = rank(ctx, _unwrap_verified_state(ver), store, hits=hits, coverage=[], events=events)
     pred = to_prediction(ctx, case_result, valid_physical_ids=set(index.keys()))
 
     _helpers.assert_valid_prediction(pred, valid_physical_ids=set(index.keys()))

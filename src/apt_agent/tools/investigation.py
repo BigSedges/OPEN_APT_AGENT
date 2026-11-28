@@ -222,11 +222,21 @@ def _extract_protocols(event: Event) -> list[str]:
 
 
 def _extract_process_guids(event: Event) -> list[str]:
-    return _all_non_empty_strs(event.fields, ("ProcessGuid", "ProcessGUID"))
+    values = _all_non_empty_strs(event.fields, ("ProcessGuid", "ProcessGUID", "process_guid"))
+    properties = event.fields.get("properties")
+    if isinstance(properties, Mapping):
+        values.extend(_all_non_empty_strs(properties, ("process_guid",)))
+    return list(dict.fromkeys(values))
 
 
 def _extract_parent_process_guids(event: Event) -> list[str]:
-    return _all_non_empty_strs(event.fields, ("ParentProcessGuid", "ParentProcessGUID"))
+    values = _all_non_empty_strs(
+        event.fields, ("ParentProcessGuid", "ParentProcessGUID", "parent_process_guid")
+    )
+    properties = event.fields.get("properties")
+    if isinstance(properties, Mapping):
+        values.extend(_all_non_empty_strs(properties, ("parent_process_guid",)))
+    return list(dict.fromkeys(values))
 
 
 def _extract_pids(event: Event) -> list[str]:

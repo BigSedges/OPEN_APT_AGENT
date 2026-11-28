@@ -602,7 +602,8 @@ def test_prediction_from_candidates_s73_dedup_before_truncate_and_scope() -> Non
 # ---------------------------------------------------------------------------
 
 
-def test_package_root_exports_and_analyze_records_stub() -> None:
+def test_package_root_exports_and_analyze_records_empty_prediction() -> None:
     assert apt_agent.__version__ == "0.1.0"
-    with pytest.raises(NotImplementedError):
-        analyze_records(iter([]))
+    assert analyze_records(iter([]), config=AppConfig()) == {
+        "physical_id_set": [], "ta_physical_ids": {}
+    }

@@ -1,6 +1,8 @@
 # Default portable configuration template for OPEN_APT_AGENT.
 # Copy to config/local.yaml (or pass via APT_AGENT_CONFIG) and customize local paths/credentials.
 
+minimum_seed_level: medium
+
 engines:
   zircolite:
     enabled: true

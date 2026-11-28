@@ -64,12 +64,8 @@ def analyze_records(
     locator_map: Mapping[str, Locator] | None = None,
 ) -> dict[str, Any]:
     """Standard single-pass log investigation entrypoint (`analyze_records`)."""
-    try:
-        from apt_agent.pipeline import analyze_records as _analyze_records
-    except ImportError as exc:
-        raise NotImplementedError(
-            "apt_agent.pipeline.analyze_records is not implemented yet (scheduled for M6)."
-        ) from exc
+    from apt_agent.pipeline import analyze_records as _analyze_records
+
     return _analyze_records(
         records,
         config=config,

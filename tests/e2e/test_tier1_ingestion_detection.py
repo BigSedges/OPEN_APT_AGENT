@@ -807,13 +807,15 @@ def test_f05_multi_engine_hit_dedup_and_provenance(
     hits = _field(result, "hits")
 
     winword_hits = [h for h in hits if _field(h, "rule_id") == _RULE_WINWORD_PS]
-    assert len(winword_hits) >= 2
+    assert len(winword_hits) == 1
     dedup_keys = [
         (_field(h, "engine"), _field(h, "rule_id"), tuple(sorted(_field(h, "event_ids", []))))
         for h in winword_hits
     ]
     assert len(dedup_keys) == len(set(dedup_keys))
-    assert len({_field(h, "engine") for h in winword_hits}) >= 2
+    assert {"zircolite", "hayabusa", "rsigma", "chainsaw"} <= set(
+        winword_hits[0].matched_fields["engines"]
+    )
 
 
 def test_f05_rule_run_coverage_distinguishes_ran_skipped_failed(

@@ -27,6 +27,7 @@ from apt_agent.detection.base import (
     parse_utc_timestamp,
     probe_engine_version,
     resolve_config_path,
+    resolve_rule_files,
     run_cli_readonly,
     validate_event_ids,
 )
@@ -483,6 +484,13 @@ class RSigmaAdapter:
             if rec.get("event_id")
         }
 
+        rule_inventory = inspect_sigma_rules(
+            engine_cfg.rules_dir,
+            batch_formats={classify_event_format(event) for event in routable},
+            ruleset_version=ruleset_version,
+        )
+        invalid_ids = {item.rule_id for item in rule_inventory if item.status == "failed"}
+
         with tempfile.TemporaryDirectory(prefix="apt_rsigma_") as tmp_dir_str:
             work_dir = Path(tmp_dir_str)
             events_ndjson = work_dir / "events.ndjson"
@@ -495,11 +503,31 @@ class RSigmaAdapter:
 
             version = probe_engine_version(engine_cfg.bin_path, cwd=work_dir)
 
+            rules_path = engine_cfg.rules_dir
+            if invalid_ids:
+                rules_path = work_dir / "rules"
+                rules_path.mkdir()
+                for index, rule_file in enumerate(resolve_rule_files(engine_cfg.rules_dir)):
+                    if rule_file.suffix.lower() not in {".yml", ".yaml"}:
+                        continue
+                    try:
+                        docs = list(yaml.safe_load_all(rule_file.read_text(encoding="utf-8")))
+                    except (OSError, yaml.YAMLError):
+                        continue
+                    valid = [
+                        doc for doc in docs if isinstance(doc, dict)
+                        and str(doc.get("id") or doc.get("title") or rule_file.stem) not in invalid_ids
+                    ]
+                    if valid:
+                        (rules_path / f"{index}.yml").write_text(
+                            yaml.safe_dump_all(valid), encoding="utf-8"
+                        )
+
             args: list[str] = [
                 "engine",
                 "eval",
                 "-r",
-                str(engine_cfg.rules_dir),
+                str(rules_path),
             ]
             if pipeline_path is not None:
                 args.extend(["-p", str(pipeline_path)])
@@ -865,6 +893,16 @@ class RSigmaAdapter:
                     hit_count=0,
                 )
             )
+
+        for item in rule_inventory:
+            if item.rule_id in rule_hit_counts or item.rule_id == "pysigma.batch":
+                continue
+            status = item.status if item.status in {"failed", "skipped"} else "ran"
+            coverage.append(RuleRun(
+                rule_id=item.rule_id, engine=self.engine_name, engine_version=version,
+                rule_version=item.rule_version, status=status,
+                reason=item.reason if status != "ran" else None,
+            ))
 
         return AdapterOutput(
             engine=self.engine_name,

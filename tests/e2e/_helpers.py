@@ -1233,8 +1233,14 @@ def main() -> None:
     mode = _resolve_mode("takajo", DEFAULT_MODE)
     _handle_crash_or_timeout("takajo", mode, DEFAULT_SLEEP_S)
 
-    if len(sys.argv) < 2 or sys.argv[1] != "automagic":
-        sys.stderr.write("[fake-takajo] expected subcommand 'automagic'\n")
+    outputs = {
+        "timeline-suspicious-processes": "TimelineSuspiciousProcesses.csv",
+        "stack-processes": "StackProcesses.csv",
+        "stack-cmdlines": "StackCmdlines.csv",
+        "ttp-summary": "TTPSummary.csv",
+    }
+    if len(sys.argv) < 2 or sys.argv[1] not in {*outputs, "automagic"}:
+        sys.stderr.write("[fake-takajo] unsupported subcommand\n")
         sys.exit(2)
 
     if os.path.realpath(os.getcwd()) != os.path.realpath(os.path.dirname(os.path.abspath(__file__))):
@@ -1255,11 +1261,14 @@ def main() -> None:
         sys.stderr.write("[fake-takajo] -t/--timeline and -o/--output are required\n")
         sys.exit(2)
 
-    out_dir = Path(args.output)
+    output = Path(args.output)
+    subcommand = sys.argv[1]
+    out_dir = output if subcommand == "automagic" else output.parent
     out_dir.mkdir(parents=True, exist_ok=True)
 
     if mode == "bad_json":
-        (out_dir / "TTPSummary.csv").write_text("{corrupt-csv\n", encoding="utf-8")
+        target = out_dir / "TTPSummary.csv" if subcommand == "automagic" else output
+        target.write_text("{corrupt-csv\n", encoding="utf-8")
         sys.exit(0)
 
     alerts = []
@@ -1337,7 +1346,10 @@ def main() -> None:
                 domains.add(val)
 
     def _write_csv(name: str, headers: list[str], rows: list[list[str]]) -> None:
-        with (out_dir / name).open("w", encoding="utf-8", newline="") as fh:
+        if subcommand != "automagic" and outputs[subcommand] != name:
+            return
+        target = out_dir / name if subcommand == "automagic" else output
+        with target.open("w", encoding="utf-8", newline="") as fh:
             w = csv.writer(fh)
             w.writerow(headers)
             w.writerows(rows)
@@ -1352,6 +1364,8 @@ def main() -> None:
         ["Timestamp", "Computer", "EventID", "TargetUserName", "IpAddress", "event_id"],
         logon_rows,
     )
+    _write_csv("StackProcesses.csv", ["Image"], [[row[4]] for row in proc_rows])
+    _write_csv("StackCmdlines.csv", ["CommandLine"], [[row[6]] for row in proc_rows])
     _write_csv(
         "TTPSummary.csv",
         ["MitreTag", "RuleTitle", "Count"],
@@ -1367,6 +1381,8 @@ def main() -> None:
         ["Computer", "AlertCount"],
         [[c, str(n)] for c, n in sorted(comp_counts.items())],
     )
+    if subcommand != "automagic":
+        return
     (out_dir / "ListIP-Addresses.txt").write_text(
         "\n".join(sorted(ips)) + ("\n" if ips else ""), encoding="utf-8"
     )
