@@ -1,0 +1,18 @@
+{
+  "pr-s08-0001": {
+    "filepath": "data/H1/ecar.json",
+    "linenumber": 1
+  },
+  "pr-s08-0002": {
+    "filepath": "data/H1/ecar.json",
+    "linenumber": 2
+  },
+  "pr-s08-0003": {
+    "filepath": "data/H1/windows_event_sysmon.xml",
+    "linenumber": 1
+  },
+  "pr-s08-0004": {
+    "filepath": "data/H1/windows_event_sysmon.xml",
+    "linenumber": 2
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "positive": [
+    {
+      "event_id": "evt_pos_001",
+      "raw_id": "pr-000000000000000000000001",
+      "source_file": "ecar.json",
+      "record_index": 1,
+      "@timestamp": "2024-05-30T10:00:00.123000Z",
+      "log_source": "ecar",
+      "Computer": "H1.example.local",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "ParentImage": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+      "CommandLine": "powershell.exe -NoP -W Hidden -Enc SQBFAFgA",
+      "creator_pid": 4120,
+      "ParentProcessId": 4120
+    }
+  ],
+  "negative": [
+    {
+      "event_id": "evt_neg_001",
+      "raw_id": "pr-000000000000000000000002",
+      "source_file": "ecar.json",
+      "record_index": 2,
+      "@timestamp": "2024-05-30T10:05:00.000000Z",
+      "log_source": "ecar",
+      "Computer": "H1.example.local",
+      "Image": "C:\\Windows\\System32\\notepad.exe",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "CommandLine": "notepad.exe readme.txt",
+      "creator_pid": 1000,
+      "ParentProcessId": 1000
+    }
+  ],
+  "expected_fields": {
+    "creator_pid": "ParentProcessId",
+    "required_preserved": [
+      "event_id",
+      "raw_id",
+      "source_file",
+      "@timestamp"
+    ]
+  }
+}

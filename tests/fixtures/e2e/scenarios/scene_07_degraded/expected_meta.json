@@ -1,0 +1,23 @@
+{
+  "scene_id": "scene_07_degraded",
+  "tier4_num": 7,
+  "acceptance_refs": [
+    "P4",
+    "S7.4",
+    "S7.5"
+  ],
+  "fault_injection": {
+    "engine_modes": {
+      "hayabusa": "crash"
+    },
+    "rag_timeout_ms": 1,
+    "reserve_ratio": 0.8,
+    "max_rounds": 1
+  },
+  "expected_coverage_states": [
+    "ran",
+    "skipped",
+    "failed"
+  ],
+  "expect_nonempty_stop_reason": true
+}

@@ -1,0 +1,12 @@
+title: Broken Correlation Rule Missing Timespan
+id: 99999999-0000-0000-0000-000000000002
+status: test
+correlation:
+  type: temporal
+  rules:
+    - 00000000-0000-0000-0000-000000000000
+  group-by:
+    - Computer
+  condition:
+    gte: 2
+level: high

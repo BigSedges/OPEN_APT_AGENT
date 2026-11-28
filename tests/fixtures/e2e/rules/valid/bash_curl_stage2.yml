@@ -1,0 +1,20 @@
+title: Synthetic Bash History Stage2 Curl Download
+id: 11111111-2222-3333-4444-555555555508
+status: test
+description: Detects curl fetching stage2 payload in bash history.
+author: OPEN_APT_AGENT E2E
+date: 2024-05-30
+logsource:
+  product: linux
+  category: process_creation
+detection:
+  selection:
+    Image: 'curl'
+    CommandLine|contains: 'stage2.sh'
+  condition: selection
+falsepositives:
+  - None expected in synthetic fixtures
+level: high
+tags:
+  - attack.execution
+  - attack.t1059.004

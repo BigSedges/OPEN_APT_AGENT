@@ -1,0 +1,20 @@
+title: Synthetic Web Access SQL Injection Attempt
+id: 11111111-2222-3333-4444-555555555507
+status: test
+description: Detects SQL injection pattern in webserver query string.
+author: OPEN_APT_AGENT E2E
+date: 2024-05-30
+logsource:
+  category: webserver
+detection:
+  selection:
+    cs-uri-query|contains:
+      - 'OR 1=1'
+      - 'OR%201=1'
+  condition: selection
+falsepositives:
+  - Security scanner testing
+level: high
+tags:
+  - attack.initial_access
+  - attack.t1190

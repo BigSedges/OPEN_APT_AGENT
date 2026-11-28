@@ -1,0 +1,78 @@
+{
+  "pr-ta2-1": {
+    "filepath": "data/H1/windows_event_sysmon.xml",
+    "linenumber": 1
+  },
+  "pr-ta2-2": {
+    "filepath": "data/H1/ecar.json",
+    "linenumber": 1
+  },
+  "pr-ta2-3": {
+    "filepath": "data/APP-LNX-02/bash_history/sarah.oconnell.bash_history",
+    "linenumber": 1
+  },
+  "pr-ta2-4": {
+    "filepath": "data/APP-LNX-02/bash_history/sarah.oconnell.bash_history",
+    "linenumber": 2
+  },
+  "pr-s05-sysmon-2": {
+    "filepath": "data/H1/windows_event_sysmon.xml",
+    "linenumber": 2
+  },
+  "pr-s05-ecar-file": {
+    "filepath": "data/H1/ecar.json",
+    "linenumber": 4
+  },
+  "pr-s05-security-1": {
+    "filepath": "data/H1/windows_event_security.xml",
+    "linenumber": 1
+  },
+  "pr-s05-syslog-2": {
+    "filepath": "data/APP-LNX-02/syslog.log",
+    "linenumber": 2
+  },
+  "pr-s05-web-1": {
+    "filepath": "data/WEB-01.example.local/web_access.log",
+    "linenumber": 1
+  },
+  "pr-s05-zeek-conn": {
+    "filepath": "data/SENSOR-NET-01/zeek/conn.json",
+    "linenumber": 1
+  },
+  "pr-s05-zeek-dns": {
+    "filepath": "data/SENSOR-NET-01/zeek/dns.json",
+    "linenumber": 1
+  },
+  "pr-s05-zeek-http": {
+    "filepath": "data/SENSOR-NET-01/zeek/http.json",
+    "linenumber": 1
+  },
+  "pr-s05-zeek-ssl": {
+    "filepath": "data/SENSOR-NET-01/zeek/ssl.json",
+    "linenumber": 1
+  },
+  "pr-s05-zeek-x509": {
+    "filepath": "data/SENSOR-NET-01/zeek/x509.json",
+    "linenumber": 1
+  },
+  "pr-s05-zeek-ocsp": {
+    "filepath": "data/SENSOR-NET-01/zeek/ocsp.json",
+    "linenumber": 1
+  },
+  "pr-s05-zeek-dhcp": {
+    "filepath": "data/SENSOR-NET-01/zeek/dhcp.json",
+    "linenumber": 1
+  },
+  "pr-s05-zeek-files": {
+    "filepath": "data/SENSOR-NET-01/zeek/files.json",
+    "linenumber": 1
+  },
+  "pr-s05-zeek-pe": {
+    "filepath": "data/SENSOR-NET-01/zeek/pe.json",
+    "linenumber": 1
+  },
+  "pr-s05-zeek-smtp": {
+    "filepath": "data/SENSOR-NET-01/zeek/smtp.json",
+    "linenumber": 1
+  }
+}

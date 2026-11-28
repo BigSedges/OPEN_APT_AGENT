@@ -1,0 +1,22 @@
+{
+  "scene_id": "scene_01_phishing_c2",
+  "tier4_num": 1,
+  "acceptance_refs": [
+    "P2",
+    "P6",
+    "S7.6"
+  ],
+  "e41_pid": "pr-s01-0001",
+  "e42_pid": "pr-s01-0002",
+  "e43_pid": "pr-s01-0003",
+  "expected_chain_pids": [
+    "pr-s01-0001",
+    "pr-s01-0002",
+    "pr-s01-0003"
+  ],
+  "expected_tactics": [
+    "TA0002",
+    "TA0011"
+  ],
+  "ambiguous_edges": []
+}

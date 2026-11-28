@@ -1,0 +1,11 @@
+{
+  "scene_id": "scene_09_benign",
+  "tier4_num": 9,
+  "acceptance_refs": [
+    "S7.2"
+  ],
+  "expected_prediction": {
+    "physical_id_set": [],
+    "ta_physical_ids": {}
+  }
+}

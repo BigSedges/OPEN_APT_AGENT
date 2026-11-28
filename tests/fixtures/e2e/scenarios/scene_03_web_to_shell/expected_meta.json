@@ -1,0 +1,14 @@
+{
+  "scene_id": "scene_03_web_to_shell",
+  "tier4_num": 3,
+  "expected_tactics": [
+    "TA0001",
+    "TA0003",
+    "TA0002"
+  ],
+  "expected_pids": [
+    "pr-s03-0001",
+    "pr-s03-0003",
+    "pr-s03-0004"
+  ]
+}

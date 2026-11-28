@@ -1,0 +1,16 @@
+{
+  "scene_id": "scene_01c_ambiguous_flows",
+  "acceptance_refs": [
+    "P2"
+  ],
+  "e41_pid": "pr-s01c-0001",
+  "e42_pid": "pr-s01c-0002",
+  "ambiguous_flow_pids": [
+    "pr-s01c-0003",
+    "pr-s01c-0004"
+  ],
+  "ambiguous_edges": [
+    "E42->E43"
+  ],
+  "reason": "duplicate_zeek_5tuple_flows"
+}

@@ -1,0 +1,86 @@
+# Local deployment configuration template for OPEN_APT_AGENT.
+# Copy this file to an untracked location (e.g., config/local.yaml) and replace placeholder paths.
+# Point APT_AGENT_CONFIG=config/local.yaml or pass load_config("config/local.yaml").
+
+engines:
+  zircolite:
+    enabled: true
+    bin_path: "/path/to/tools/Zircolite/Zircolite"
+    rules_dir: "/path/to/sigma/rules"
+    config_path: "script/log_convert/configs/zircolite_config.yaml"
+    timeout_s: 120.0
+
+  hayabusa:
+    enabled: true
+    bin_path: "/path/to/tools/hayabusa/hayabusa"
+    # Operational note: Hayabusa requires explicit rules_dir (-r) and config_path (-c)
+    # when invoked outside its installation directory.
+    rules_dir: "/path/to/tools/hayabusa/rules"
+    config_path: "/path/to/tools/hayabusa/config"
+    timeout_s: 120.0
+
+  takajo:
+    enabled: true
+    bin_path: "/path/to/tools/takajo/takajo"
+    # Operational note: Takajo MUST have working_dir set to its directory so it can
+    # locate bundled shared libraries (e.g., libduckdb.so) and relative assets.
+    working_dir: "/path/to/tools/takajo"
+    timeout_s: 120.0
+
+  chainsaw:
+    enabled: true
+    bin_path: "/path/to/tools/chainsaw/chainsaw"
+    rules_dir: "/path/to/sigma/rules"
+    # Windows Event JSON mapping (for chainsaw_winxml_json outputs):
+    mapping_path: "/path/to/tools/chainsaw/mappings/sigma-event-logs-json.yml"
+    # Non-Windows custom mapping (for zeek_json, ecar_json, syslog, web_access, bash_history):
+    config_path: "script/log_convert/configs/chainsaw_custom_mapping.yml"
+    timeout_s: 120.0
+
+  rsigma:
+    enabled: true
+    bin_path: "/path/to/tools/rsigma/rsigma"
+    rules_dir: "/path/to/sigma/rules"
+    config_path: "script/log_convert/configs/rsigma_pipeline.yml"
+    timeout_s: 120.0
+
+  pysigma:
+    enabled: true
+    rules_dir: "/path/to/sigma/rules"
+    timeout_s: 120.0
+
+rag:
+  knowledge_path: "packages/apt-rag/public_kb/chunks.jsonl.gz"
+  config_path: null
+  mode: "bm25"
+  top_k: 5
+  timeout_ms: 60000
+  offline: true
+
+llm:
+  # Set enabled: true and configure base_url, api_key (or OPENAI_API_KEY env), and model
+  # when ready to run with an OpenAI-compatible LLM endpoint.
+  enabled: false
+  provider: "openai_compatible"
+  base_url: "https://api.openai.com/v1"
+  api_key: null
+  model: "gpt-4o-mini"
+  temperature: 0.0
+  max_tokens: 4096
+  timeout_s: 60.0
+
+budget:
+  max_tasks_per_round: 3
+  max_rounds: 5
+  max_steps_per_task: 8
+  max_challenger_rounds: 1
+  max_repair_rounds: 1
+  wall_clock_s: 300.0
+  max_tokens: 120000
+  reserve_ratio: 0.8
+
+snapshots:
+  root_dir: ".apt_agent/snapshots"
+  mapping_version: "v1"
+  ruleset_version: "v1"
+  knowledge_snapshot_id: "public_kb"

@@ -1,0 +1,146 @@
+{
+  "pr-000000000000000000000001": {
+    "filepath": "data/H1/ecar.json",
+    "linenumber": 1
+  },
+  "pr-000000000000000000000002": {
+    "filepath": "data/H1/ecar.json",
+    "linenumber": 3
+  },
+  "pr-000000000000000000000003": {
+    "filepath": "data/H1/ecar.json",
+    "linenumber": 4
+  },
+  "pr-000000000000000000000004": {
+    "filepath": "data/H1/ecar.json",
+    "linenumber": 5
+  },
+  "pr-000000000000000000000005": {
+    "filepath": "data/H1/ecar.json",
+    "linenumber": 6
+  },
+  "pr-000000000000000000000006": {
+    "filepath": "data/H1/windows_event_sysmon.xml",
+    "linenumber": 1
+  },
+  "pr-000000000000000000000007": {
+    "filepath": "data/H1/windows_event_sysmon.xml",
+    "linenumber": 2
+  },
+  "pr-000000000000000000000008": {
+    "filepath": "data/H1/windows_event_security.xml",
+    "linenumber": 1
+  },
+  "pr-000000000000000000000009": {
+    "filepath": "data/H1/windows_event_security.xml",
+    "linenumber": 2
+  },
+  "pr-000000000000000000000010": {
+    "filepath": "data/H1/windows_event_security.xml",
+    "linenumber": 3
+  },
+  "pr-000000000000000000000011": {
+    "filepath": "data/H1/windows_event_security.xml",
+    "linenumber": 4
+  },
+  "pr-000000000000000000000012": {
+    "filepath": "data/APP-LNX-02/syslog.log",
+    "linenumber": 1
+  },
+  "pr-000000000000000000000013": {
+    "filepath": "data/APP-LNX-02/syslog.log",
+    "linenumber": 2
+  },
+  "pr-000000000000000000000014": {
+    "filepath": "data/APP-LNX-02/syslog.log",
+    "linenumber": 3
+  },
+  "pr-000000000000000000000015": {
+    "filepath": "data/APP-LNX-02/bash_history/sarah.oconnell.bash_history",
+    "linenumber": 1
+  },
+  "pr-000000000000000000000016": {
+    "filepath": "data/APP-LNX-02/bash_history/sarah.oconnell.bash_history",
+    "linenumber": 2
+  },
+  "pr-000000000000000000000017": {
+    "filepath": "data/APP-LNX-02/bash_history/sarah.oconnell.bash_history",
+    "linenumber": 3
+  },
+  "pr-000000000000000000000018": {
+    "filepath": "data/APP-LNX-02/bash_history/sarah.oconnell.bash_history",
+    "linenumber": 4
+  },
+  "pr-000000000000000000000019": {
+    "filepath": "data/APP-LNX-02/bash_history/markerless.bash_history",
+    "linenumber": 1
+  },
+  "pr-000000000000000000000020": {
+    "filepath": "data/APP-LNX-02/bash_history/markerless.bash_history",
+    "linenumber": 2
+  },
+  "pr-000000000000000000000021": {
+    "filepath": "data/APP-LNX-02/bash_history/premarker.bash_history",
+    "linenumber": 1
+  },
+  "pr-000000000000000000000022": {
+    "filepath": "data/WEB-01.example.local/web_access.log",
+    "linenumber": 1
+  },
+  "pr-000000000000000000000023": {
+    "filepath": "data/WEB-01.example.local/web_access.log",
+    "linenumber": 2
+  },
+  "pr-000000000000000000000024": {
+    "filepath": "data/WEB-01.example.local/web_access.log",
+    "linenumber": 3
+  },
+  "pr-000000000000000000000025": {
+    "filepath": "data/SENSOR-NET-01/zeek/conn.json",
+    "linenumber": 1
+  },
+  "pr-000000000000000000000026": {
+    "filepath": "data/SENSOR-NET-01/zeek/conn.json",
+    "linenumber": 3
+  },
+  "pr-000000000000000000000027": {
+    "filepath": "data/SENSOR-NET-01/zeek/dns.json",
+    "linenumber": 1
+  },
+  "pr-000000000000000000000028": {
+    "filepath": "data/SENSOR-NET-01/zeek/dns.json",
+    "linenumber": 2
+  },
+  "pr-000000000000000000000029": {
+    "filepath": "data/SENSOR-NET-01/zeek/http.json",
+    "linenumber": 1
+  },
+  "pr-000000000000000000000030": {
+    "filepath": "data/SENSOR-NET-01/zeek/ssl.json",
+    "linenumber": 1
+  },
+  "pr-000000000000000000000031": {
+    "filepath": "data/SENSOR-NET-01/zeek/x509.json",
+    "linenumber": 1
+  },
+  "pr-000000000000000000000032": {
+    "filepath": "data/SENSOR-NET-01/zeek/ocsp.json",
+    "linenumber": 1
+  },
+  "pr-000000000000000000000033": {
+    "filepath": "data/SENSOR-NET-01/zeek/dhcp.json",
+    "linenumber": 1
+  },
+  "pr-000000000000000000000034": {
+    "filepath": "data/SENSOR-NET-01/zeek/files.json",
+    "linenumber": 1
+  },
+  "pr-000000000000000000000035": {
+    "filepath": "data/SENSOR-NET-01/zeek/pe.json",
+    "linenumber": 1
+  },
+  "pr-000000000000000000000036": {
+    "filepath": "data/SENSOR-NET-01/zeek/smtp.json",
+    "linenumber": 1
+  }
+}

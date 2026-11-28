@@ -1,0 +1,16 @@
+{
+  "scene_id": "scene_05_full_16_types",
+  "tier4_num": 5,
+  "acceptance_refs": [
+    "S7.3"
+  ],
+  "log_type_count": 16,
+  "s7_3_ta0002_candidates": [
+    "pr-ta2-1",
+    "pr-ta2-2",
+    "pr-ta2-3",
+    "pr-ta2-4"
+  ],
+  "s7_3_sibling_source_pid": "pr-ta2-1",
+  "ta0002_max_len": 3
+}

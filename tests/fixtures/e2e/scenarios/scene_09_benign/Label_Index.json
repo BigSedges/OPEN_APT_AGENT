@@ -1,0 +1,22 @@
+{
+  "pr-s09-0001": {
+    "filepath": "data/H1/windows_event_sysmon.xml",
+    "linenumber": 1
+  },
+  "pr-s09-0002": {
+    "filepath": "data/H1/windows_event_sysmon.xml",
+    "linenumber": 2
+  },
+  "pr-s09-0003": {
+    "filepath": "data/APP-LNX-02/syslog.log",
+    "linenumber": 1
+  },
+  "pr-s09-0004": {
+    "filepath": "data/WEB-01.example.local/web_access.log",
+    "linenumber": 1
+  },
+  "pr-s09-0005": {
+    "filepath": "data/SENSOR-NET-01/zeek/conn.json",
+    "linenumber": 1
+  }
+}

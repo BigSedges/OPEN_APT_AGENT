@@ -1,0 +1,60 @@
+<Events>
+  <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385F-C22A-43E0-BF4C-06F5698FFBD9}"/>
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2024-05-30T11:00:00.0000000Z"/>
+      <EventRecordID>9001</EventRecordID>
+      <Correlation/>
+      <Execution ProcessID="2048" ThreadID="2052"/>
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>H1.example.local</Computer>
+      <Security UserID="S-1-5-18"/>
+    </System>
+    <EventData>
+      <Data Name="UtcTime">2024-05-30 11:00:00.000</Data>
+      <Data Name="ProcessGuid">G-BEN-1</Data>
+      <Data Name="ProcessId">3310</Data>
+      <Data Name="Image">C:\Windows\System32\wuauclt.exe</Data>
+      <Data Name="CommandLine">wuauclt.exe /RunHandlerComServer</Data>
+      <Data Name="User">NT AUTHORITY\SYSTEM</Data>
+      <Data Name="ParentProcessGuid">P-SVC</Data>
+      <Data Name="ParentProcessId">650</Data>
+      <Data Name="ParentImage">C:\Windows\System32\svchost.exe</Data>
+    </EventData>
+  </Event>
+  <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385F-C22A-43E0-BF4C-06F5698FFBD9}"/>
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2024-05-30T11:01:00.0000000Z"/>
+      <EventRecordID>9002</EventRecordID>
+      <Correlation/>
+      <Execution ProcessID="2048" ThreadID="2054"/>
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>H1.example.local</Computer>
+      <Security UserID="S-1-5-18"/>
+    </System>
+    <EventData>
+      <Data Name="UtcTime">2024-05-30 11:01:00.000</Data>
+      <Data Name="ProcessGuid">G-BEN-2</Data>
+      <Data Name="ProcessId">3410</Data>
+      <Data Name="Image">C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</Data>
+      <Data Name="CommandLine">powershell.exe -Command Get-Date</Data>
+      <Data Name="User">CONTOSO\admin</Data>
+      <Data Name="ParentProcessGuid">P-EXP</Data>
+      <Data Name="ParentProcessId">1200</Data>
+      <Data Name="ParentImage">C:\Windows\explorer.exe</Data>
+    </EventData>
+  </Event>
+</Events>

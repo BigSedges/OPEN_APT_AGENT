@@ -1,0 +1,50 @@
+name: e2e_custom_mapping_v2
+kind: json
+rules: sigma
+
+extensions:
+  fields:
+    - name: Event ID
+      to: event_id
+    - name: Source File
+      to: source_file
+    - name: Log Source
+      to: log_source
+    - name: Raw ID
+      to: raw_id
+
+groups:
+  - name: ECAR Endpoint Telemetry v2
+    timestamp: timestamp
+    filter:
+      log_source: ecar
+    fields:
+      - name: Host
+        from: Computer
+        to: Computer
+      - name: User
+        from: User
+        to: User
+      - name: Image
+        from: Image
+        to: Image
+      - name: CommandLine
+        from: CommandLine
+        to: CommandLine
+      - name: Creator PID
+        from: creator_pid
+        to: ParentProcessId
+  - name: Zeek Network Logs
+    timestamp: timestamp
+    filter:
+      log_source: zeek
+    fields:
+      - name: Log Type
+        from: zeek_log_type
+        to: zeek_log_type
+      - name: Source IP
+        from: src_ip
+        to: id.orig_h
+      - name: Destination IP
+        from: dst_ip
+        to: id.resp_h
