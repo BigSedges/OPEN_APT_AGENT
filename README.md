@@ -72,6 +72,7 @@ A 榜 starter 提供索引读取和预测落盘。在其 `submission_agent/runne
 
 ## 仓库文档索引
 
+- [项目交接与外部评测](docs/HANDOFF.md)
 - [日志类型参考](LOG_TYPE.md)
 - [Sigma 多 Agent 日志调查系统设计](docs/Sigma多Agent日志调查系统设计.md)
 - [Sigma 多 Agent 调查系统接口规范](docs/Sigma多Agent调查系统接口规范.md)
