@@ -1,0 +1,8 @@
+# Invalid mapping draft: excludes event_id and drops @timestamp mapping
+exclusions:
+  - "event_id"
+useless: []
+
+mappings:
+  "EventID": "EventID"
+  "Computer": "Computer"

@@ -1,0 +1,22 @@
+{
+  "pr-s02-0001": {
+    "filepath": "data/DC-01/windows_event_security.xml",
+    "linenumber": 2
+  },
+  "pr-s02-0002": {
+    "filepath": "data/DC-01/windows_event_security.xml",
+    "linenumber": 1
+  },
+  "pr-s02-0003": {
+    "filepath": "data/DC-01/windows_event_security.xml",
+    "linenumber": 3
+  },
+  "pr-s02-0004": {
+    "filepath": "data/DC-01/windows_event_sysmon.xml",
+    "linenumber": 1
+  },
+  "pr-s02-0005": {
+    "filepath": "data/SENSOR-NET-01/zeek/conn.json",
+    "linenumber": 1
+  }
+}

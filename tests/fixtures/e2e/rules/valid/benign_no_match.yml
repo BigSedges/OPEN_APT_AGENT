@@ -1,0 +1,18 @@
+title: Synthetic Benign Non-Matching Rule
+id: 11111111-2222-3333-4444-555555555599
+status: test
+description: Valid Sigma rule designed to produce zero hits for RuleRun status=ran testing.
+author: OPEN_APT_AGENT E2E
+date: 2024-05-30
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection:
+    Image|endswith: '\nonexistent_never_matched_binary_xyz.exe'
+  condition: selection
+falsepositives:
+  - None
+level: low
+tags:
+  - attack.execution

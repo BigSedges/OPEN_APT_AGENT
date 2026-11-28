@@ -1,0 +1,19 @@
+title: Synthetic eCAR PHP Webshell File Write
+id: 11111111-2222-3333-4444-555555555505
+status: test
+description: Detects eCAR file write creating a PHP webshell script.
+author: OPEN_APT_AGENT E2E
+date: 2024-05-30
+logsource:
+  product: linux
+  category: file_event
+detection:
+  selection:
+    TargetFilename|endswith: '.php'
+  condition: selection
+falsepositives:
+  - Authorized web application deployment
+level: high
+tags:
+  - attack.persistence
+  - attack.t1505.003

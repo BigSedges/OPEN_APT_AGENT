@@ -1,0 +1,10 @@
+{
+  "scene_id": "scene_04_dns_tunnel_ssh",
+  "tier4_num": 4,
+  "expected_tactics": [
+    "TA0006"
+  ],
+  "expected_pids": [
+    "pr-s04-0005"
+  ]
+}

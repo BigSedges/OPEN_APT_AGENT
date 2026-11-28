@@ -1,0 +1,20 @@
+title: Synthetic Winword Spawns PowerShell
+id: 11111111-2222-3333-4444-555555555501
+status: test
+description: Detects Microsoft Word spawning encoded PowerShell in synthetic E2E fixtures.
+author: OPEN_APT_AGENT E2E
+date: 2024-05-30
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection:
+    ParentImage|endswith: '\WINWORD.EXE'
+    Image|endswith: '\powershell.exe'
+  condition: selection
+falsepositives:
+  - Authorized Office add-in maintenance scripts
+level: high
+tags:
+  - attack.execution
+  - attack.t1059.001

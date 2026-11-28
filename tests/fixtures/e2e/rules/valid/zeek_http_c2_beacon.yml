@@ -1,0 +1,21 @@
+title: Synthetic Zeek HTTP C2 Beacon
+id: 11111111-2222-3333-4444-555555555504
+status: test
+description: Detects Zeek HTTP POST beacon to synthetic C2 server.
+author: OPEN_APT_AGENT E2E
+date: 2024-05-30
+logsource:
+  product: zeek
+  service: http
+detection:
+  selection:
+    zeek_log_type: 'http'
+    dst_ip: '203.0.113.8'
+    method: 'POST'
+  condition: selection
+falsepositives:
+  - None expected in synthetic fixtures
+level: high
+tags:
+  - attack.command_and_control
+  - attack.t1071.001

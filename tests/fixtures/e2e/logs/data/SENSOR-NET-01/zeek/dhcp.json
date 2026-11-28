@@ -1,0 +1,1 @@
+{"ts": 1717063180.0, "uids": ["CDhcp0000000000001"], "client_addr": "10.0.1.8", "server_addr": "10.0.1.1", "mac": "00:11:22:33:44:55", "host_name": "H1", "domain": "example.local", "assigned_addr": "10.0.1.8", "lease_time": 86400.0, "msg_types": ["REQUEST", "ACK"], "duration": 0.004}

@@ -1,0 +1,18 @@
+{
+  "pr-s07-0001": {
+    "filepath": "data/H1/windows_event_sysmon.xml",
+    "linenumber": 1
+  },
+  "pr-s07-0002": {
+    "filepath": "data/H1/windows_event_sysmon.xml",
+    "linenumber": 2
+  },
+  "pr-s07-0003": {
+    "filepath": "data/SENSOR-NET-01/zeek/conn.json",
+    "linenumber": 1
+  },
+  "pr-s07-0004": {
+    "filepath": "data/SENSOR-NET-01/zeek/http.json",
+    "linenumber": 1
+  }
+}

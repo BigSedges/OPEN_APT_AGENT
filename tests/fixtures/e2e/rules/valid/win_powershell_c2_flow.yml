@@ -1,0 +1,21 @@
+title: Synthetic PowerShell Outbound C2 Connection
+id: 11111111-2222-3333-4444-555555555503
+status: test
+description: Detects PowerShell making outbound TCP connection to synthetic C2 IP on port 443.
+author: OPEN_APT_AGENT E2E
+date: 2024-05-30
+logsource:
+  category: network_connection
+  product: windows
+detection:
+  selection:
+    Image|endswith: '\powershell.exe'
+    DestinationIp: '203.0.113.8'
+    DestinationPort: 443
+  condition: selection
+falsepositives:
+  - None expected in synthetic fixtures
+level: high
+tags:
+  - attack.command_and_control
+  - attack.t1071.001

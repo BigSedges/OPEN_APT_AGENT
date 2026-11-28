@@ -1,0 +1,1 @@
+{"ts": 1717063500.0, "uid": "CLatConn0000000001", "id.orig_h": "10.0.1.8", "id.orig_p": 51200, "id.resp_h": "10.0.1.12", "id.resp_p": 445, "proto": "tcp", "service": "smb", "duration": 2.1, "orig_bytes": 1024, "resp_bytes": 512, "conn_state": "SF", "missed_bytes": 0, "history": "ShADadFf", "orig_pkts": 10, "orig_ip_bytes": 1544, "resp_pkts": 8, "resp_ip_bytes": 944}

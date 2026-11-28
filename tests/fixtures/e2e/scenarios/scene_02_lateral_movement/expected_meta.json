@@ -1,0 +1,17 @@
+{
+  "scene_id": "scene_02_lateral_movement",
+  "tier4_num": 2,
+  "acceptance_refs": [
+    "S7.5"
+  ],
+  "expected_hosts": [
+    "DC-01.example.local"
+  ],
+  "expected_pids": [
+    "pr-s02-0001",
+    "pr-s02-0002",
+    "pr-s02-0003",
+    "pr-s02-0004",
+    "pr-s02-0005"
+  ]
+}

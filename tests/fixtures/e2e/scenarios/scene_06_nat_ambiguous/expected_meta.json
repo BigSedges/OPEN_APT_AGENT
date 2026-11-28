@@ -1,0 +1,18 @@
+{
+  "scene_id": "scene_06_nat_ambiguous",
+  "tier4_num": 6,
+  "acceptance_refs": [
+    "P2"
+  ],
+  "verified_pids": [
+    "pr-s06-0001",
+    "pr-s06-0002"
+  ],
+  "disputed_pids": [
+    "pr-s06-0003"
+  ],
+  "ambiguous_edges": [
+    "E42->E43"
+  ],
+  "reason": "nat_egress_without_translation_log"
+}

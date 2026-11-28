@@ -1,0 +1,13 @@
+{
+  "scene_id": "scene_01b_missing_g7",
+  "acceptance_refs": [
+    "P2"
+  ],
+  "e41_pid": "pr-s01b-0001",
+  "e42_pid": "pr-s01b-0002",
+  "e43_pid": "pr-s01b-0003",
+  "ambiguous_edges": [
+    "E41->E42"
+  ],
+  "reason": "missing_process_guid_g7"
+}

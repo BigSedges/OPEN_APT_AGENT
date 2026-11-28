@@ -1,0 +1,4 @@
+title: Broken YAML Rule
+id: 99999999-0000-0000-0000-000000000001
+detection:
+  selection: [unclosed

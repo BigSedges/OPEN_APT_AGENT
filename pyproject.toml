@@ -1,7 +1,46 @@
+[build-system]
+requires = ["hatchling>=1.25.0"]
+build-backend = "hatchling.build"
+
 [project]
 name = "open-apt-agent"
 version = "0.1.0"
-description = "Interfaces for defensive security log analysis"
+description = "Multi-agent APT log investigation and Sigma rule/mapping maintenance pipeline"
 readme = "README.md"
-requires-python = ">=3.9"
-dependencies = []
+requires-python = ">=3.12"
+dependencies = [
+    "apt-rag",
+    "httpx>=0.28.0",
+    "jsonschema>=4.26.0",
+    "langchain-core>=1.8.5",
+    "langgraph>=1.2.24",
+    "lxml>=6.1.3",
+    "numpy>=2.0.0",
+    "openai>=2.0.0",
+    "orjson>=3.13.0",
+    "pydantic>=2.10.0",
+    "pysigma>=2.1.2",
+    "pysigma-backend-sqlite>=2.2.0",
+    "pysigma-pipeline-sysmon>=3.0.0",
+    "pysigma-pipeline-windows>=3.0.0",
+    "python-dateutil>=4.0.0",
+    "pyyaml>=6.0.4",
+    "scipy>=1.14.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-timeout>=2.3.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/apt_agent"]
+
+[tool.uv.sources]
+apt-rag = { path = "packages/apt-rag", editable = true }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra"

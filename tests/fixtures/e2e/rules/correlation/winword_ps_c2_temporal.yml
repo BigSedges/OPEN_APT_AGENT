@@ -1,0 +1,21 @@
+title: Synthetic Winword Spawns PowerShell Followed by C2 Flow
+id: 11111111-2222-3333-4444-555555555502
+status: test
+description: Correlates Winword spawning PowerShell followed by outbound C2 flow sharing Computer and ProcessGuid.
+author: OPEN_APT_AGENT E2E
+date: 2024-05-30
+correlation:
+  type: temporal
+  rules:
+    - 11111111-2222-3333-4444-555555555501
+    - 11111111-2222-3333-4444-555555555503
+  group-by:
+    - Computer
+    - ProcessGuid
+  timespan: 5m
+  condition:
+    gte: 2
+tags:
+  - attack.execution
+  - attack.command_and_control
+level: high

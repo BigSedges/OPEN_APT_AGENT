@@ -1,0 +1,14 @@
+{
+  "scene_id": "scene_08_maintenance",
+  "tier4_num": 8,
+  "acceptance_refs": [
+    "P5"
+  ],
+  "v1_snapshot": "v1",
+  "v2_snapshot": "v2",
+  "valid_mapping_ref": "../../rules/mappings/valid_zircolite_mapping.yaml",
+  "invalid_mapping_ref": "../../rules/mappings/invalid_mapping_missing_ts.yaml",
+  "mapping_samples_ref": "../../rules/mappings/mapping_samples.json",
+  "valid_rule_ref": "../../rules/valid/win_winword_powershell.yml",
+  "correlation_rule_ref": "../../rules/correlation/winword_ps_c2_temporal.yml"
+}

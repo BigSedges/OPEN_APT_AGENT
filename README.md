@@ -1,34 +1,73 @@
 # OPEN_APT_AGENT
 
-面向 APT 防守场景的日志分析项目。仓库包含日志分析接口和可独立运行的 RAG 检索包。日志分析流水线仍处于接口阶段。
+面向 APT 防守场景的确定性优先、多 Agent 协作日志调查与 Sigma 规则/映射维护管线，基于 Python `>=3.12` 与 `uv` 管理。
 
-## RAG 知识库快速体验
+## 架构概览
 
-使用带 RAG 文件的 checkout 和 Python 3.10+。如果当前 checkout 还没有 `packages/apt-rag/`，先克隆 [LangGraph 接入分支](https://github.com/BigSedges/OPEN_APT_AGENT/tree/release/langgraph-rag-v1)：
+- **`src/apt_agent/`**：核心调查与规则维护包（配置加载、领域模型、异常契约、原始证据库与归一化、多检测引擎适配、权限受控工具注册表与 RAG 服务、黑板合并/核验/排序、维护流水线与标准分析入口）。
+- **`packages/apt-rag/`**：独立检索包，内含 5,440 个公开知识片段（`public_kb/chunks.jsonl.gz`）、`RagClient`、CLI 及 LangGraph v1 外部工具 `search_knowledge`。见 [apt-rag 使用说明](packages/apt-rag/README.md) 与 [LangGraph 工具接入指南](packages/apt-rag/tools/langgraph_rag/README.md)。
+- **`script/log_convert/`**：面向 6 类日志格式（16 种细分子类型）与 4 类检测引擎（Zircolite、Hayabusa、RSigma、Chainsaw）的确定性转换脚本与引擎配置。见 [log_convert 说明](script/log_convert/README.md) 与 [日志类型参考](LOG_TYPE.md)。
+
+## 环境准备（`uv` + Python `>=3.12`）
+
+如 `uv` 位于 `~/.local/bin`，先将其加入 `PATH`：
 
 ```sh
-git clone --branch release/langgraph-rag-v1 https://github.com/BigSedges/OPEN_APT_AGENT.git
-cd OPEN_APT_AGENT
+export PATH="$HOME/.local/bin:$PATH"
+uv sync
 ```
 
-在仓库根目录运行：
+在离线环境中可使用：
 
 ```sh
-python packages/apt-rag/search_public.py "Sysmon process creation" --top-k 3
+uv sync --offline
 ```
 
-首次搜索无需安装依赖或下载模型。随仓库提供 5,440 个公开片段，并支持输入本地全量资产。见 [apt-rag 使用说明](packages/apt-rag/README.md)。
+常用基础检查命令：
 
-LangGraph 宿主可直接注册 [`search_knowledge` 工具清单](packages/apt-rag/tools/langgraph_rag/tool.json)，绑定公开语料或本地完整索引配置。见 [接入指南](packages/apt-rag/tools/langgraph_rag/README.md)。
+```sh
+# 运行单元测试
+uv run pytest
 
-## 仓库导航
+# 运行 LangGraph v1 search_knowledge 冒烟测试
+uv run python -B packages/apt-rag/tools/langgraph_rag/smoke.py
 
-- [日志分析接口](apt_agent/)：事件模型、日志类型与解析、初筛、关联、检索、分析和编排协议。根目录项目声明 Python 3.9+。
-- [日志类型参考](LOG_TYPE.md)：主机、应用和网络日志分类。
-- [独立检索包](packages/apt-rag/)：Python 3.10+。包含离线查询、Python API、命令行和公开语料快照。
-- [当前检索评估](packages/apt-rag/docs/retrieval_comparison.md)：完整 v2 语料上的 Phase 5B 比较与指标口径。
-- [早期实验归档](https://github.com/BigSedges/OPEN_APT_AGENT/tree/codex/public-rag-results/experiment-results/public-rag-2026-11-25)：2026-11-25 先导指标、配置和逐题结果，留在独立归档分支。
+# 使用公开知识库执行 BM25 检索
+uv run python packages/apt-rag/search_public.py "Sysmon process creation" --top-k 2 --json
+```
 
-## 开发状态
+## 配置与 LLM 接入
 
-日志分析入口由各阶段接口继续实现。RAG 可以独立调用。GitHub 上的 RAG 历史评估、当前公开快照和本地完整索引使用不同的资产范围，详细对应关系见 [仓库与产物说明](docs/repository-guide.md)。
+所有本地检测引擎路径、规则集目录、RAG 资产、预算参数和 LLM 凭据均通过配置与环境变量注入，不写入源码：
+
+1. **YAML 配置模板**：
+   - 通用可移植模板：[`config/default.example.yaml`](config/default.example.yaml)
+   - 本地引擎绑定模板：[`config/local.example.yaml`](config/local.example.yaml)（复制为本地未跟踪文件如 `config/local.yaml` 后填写各引擎路径、Takajo `working_dir`、Hayabusa `rules_dir`/`config_path` 等）。
+2. **环境变量模板**：
+   - 参考 [`.env.example`](.env.example)，支持 `APT_AGENT_CONFIG`、`APT_AGENT_<SECTION>__<FIELD>`（如 `APT_AGENT_LLM__API_KEY`、`APT_AGENT_ENGINES__ZIRCOLITE__BIN_PATH`）、常用扁平别名（如 `APT_AGENT_LLM_MODEL`、`APT_AGENT_RAG_MODE`）以及标准 `OPENAI_API_KEY` / `OPENAI_BASE_URL` / `OPENAI_MODEL`。
+3. **加载优先级**：
+   `overrides` > `APT_AGENT_*` 环境变量 > `OPENAI_*` 环境变量 > YAML 配置文件 > `AppConfig` 默认值。
+4. **运行模式**：
+   - 未配置 LLM（`llm.enabled: false` 或缺少模型/凭据）时，系统支持纯离线确定性回退模式。
+   - 填写完成 `llm` 配置（`enabled: true`、`base_url`、`api_key`、`model`）后即可启用 OpenAI 兼容 LLM 规划与推理。
+
+## 外部标准分析入口契约
+
+主入口 `apt_agent.analyze_records(records)` 接收单遍消费的 `Iterator[tuple[str, dict[str, Any]]]`（`(physical_record_id, payload)`），返回严格满足接口规范的 JSON 兼容字典：
+
+```json
+{
+  "physical_id_set": ["pr-001", "pr-002"],
+  "ta_physical_ids": {
+    "TA0002": ["pr-001"]
+  }
+}
+```
+
+## 仓库文档索引
+
+- [日志类型参考](LOG_TYPE.md)
+- [Sigma 多 Agent 日志调查系统设计](docs/Sigma多Agent日志调查系统设计.md)
+- [Sigma 多 Agent 调查系统接口规范](docs/Sigma多Agent调查系统接口规范.md)
+- [LangGraph 外部工具接入规范 v1](docs/LangGraph外部工具接入规范-v1.md)
+- [独立检索包评估对比](packages/apt-rag/docs/retrieval_comparison.md)

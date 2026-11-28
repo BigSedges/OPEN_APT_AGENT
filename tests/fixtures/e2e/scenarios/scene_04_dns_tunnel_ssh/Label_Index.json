@@ -1,0 +1,22 @@
+{
+  "pr-s04-0001": {
+    "filepath": "data/SENSOR-NET-01/zeek/dns.json",
+    "linenumber": 2
+  },
+  "pr-s04-0002": {
+    "filepath": "data/SENSOR-NET-01/zeek/ssl.json",
+    "linenumber": 1
+  },
+  "pr-s04-0003": {
+    "filepath": "data/SENSOR-NET-01/zeek/x509.json",
+    "linenumber": 1
+  },
+  "pr-s04-0004": {
+    "filepath": "data/APP-LNX-02/syslog.log",
+    "linenumber": 1
+  },
+  "pr-s04-0005": {
+    "filepath": "data/APP-LNX-02/syslog.log",
+    "linenumber": 2
+  }
+}
