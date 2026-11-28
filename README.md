@@ -64,7 +64,7 @@ uv run python packages/apt-rag/search_public.py "Sysmon process creation" --top-
 }
 ```
 
-需要查看候选链、引擎覆盖、知识引用和查询审计时，可调用 `apt_agent.pipeline.investigate_records(records, config=..., locator_map=...)`，返回 `CaseResult`。主机和网络角色使用本案只读事件查询，比赛输出只包含两个约定字段。配置项 `minimum_seed_level` 控制进入调查种子的最低规则级别，默认为 `medium`。低级别告警保留于检测覆盖中，相关原文仍可回查。
+需要查看候选链、引擎覆盖、知识引用和查询审计时，可调用 `apt_agent.pipeline.investigate_records(records, config=..., locator_map=...)`，返回 `CaseResult`。主机和网络角色使用本案只读事件查询，比赛输出只包含两个约定字段。配置项 `minimum_seed_level` 控制进入调查种子的最低规则级别，默认为 `medium`。低级别告警保留于检测覆盖中，相关原文仍可回查。对带日志源声明的 YAML 规则，汇总器核对命中事件的产品和服务。
 
 维护接口 `apt_agent.maintenance.validate_candidate` 支持映射样本检查以及 Sigma 正例和负例回放。通过校验的变更可由 `ConverterAgent` 或 `RuleAgent` 发布到 `SnapshotRegistry`。一次运行内固定所用版本，显式配置的引擎或知识文件路径具有优先级。
 

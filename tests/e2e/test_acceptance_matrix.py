@@ -2057,3 +2057,32 @@ def test_investigation_binds_published_rules_to_the_requested_version(
     context_only = investigate_records(iter(records), config=updated, **kwargs)
     assert context_only.attack_event_ids == []
     assert any(run.hit_count for run in context_only.coverage if run.engine == "rsigma")
+
+def test_unavailable_rule_logsource_cannot_create_attack_evidence(
+    tmp_path: Path, e2e_fixtures_dir: Path, load_scene_records, make_app_config,
+) -> None:
+    from apt_agent.pipeline import investigate_records
+
+    rules = tmp_path / "rules"
+    rules.mkdir()
+    (rules / "wrong_source.yml").write_text(
+        "title: Scoped high-level detection\n"
+        "id: 11111111-1111-4111-8111-111111111111\n"
+        "logsource: {product: zeek, service: rdp}\n"
+        "detection:\n"
+        "  selection: {Image: 'missing.exe'}\n"
+        "  condition: not selection\n"
+        "level: high\n",
+        encoding="utf-8",
+    )
+    scene = e2e_fixtures_dir / "scenarios" / "scene_01_phishing_c2"
+    index, records = load_scene_records(scene)
+    config = make_app_config(rules_dir=rules, enabled_engines={"rsigma", "zircolite"})
+
+    case = investigate_records(iter(records), config=config, locator_map=_locator_map(index))
+
+    assert case.attack_event_ids == []
+    assert any(
+        run.reason == "detector_matches_outside_rule_logsource"
+        for run in case.coverage
+    )
