@@ -89,3 +89,21 @@ uv run chainsaw_bash_history_json.py -i log_example/sarah.oconnell.bash_history 
 - `configs/zircolite_config.yaml`：Zircolite 扁平化映射与 `event_id` 保留配置参考
 - `configs/rsigma_pipeline.yml`：RSigma `@timestamp` 与关联证据保全（`correlation_event_mode: full`）Pipeline 参考
 - `configs/chainsaw_custom_mapping.yml`：Chainsaw 非 Windows 自定义 JSONL 映射参考
+
+## 五、Windows 地址字段的检测表示
+
+Windows XML 的地址字段（如 `IpAddress`、`SourceIp`、`DestinationIp`）在交给检测引擎前，将有效的 IPv4 映射 IPv6 地址转换为等价 IPv4。例如 `::ffff:10.1.2.3` 和 `::ffff:a01:203` 均写为 `10.1.2.3`，让 Sigma 中的 IPv4 CIDR 条件覆盖相同地址。Zircolite、Hayabusa、RSigma 和 Chainsaw 共用此行为。
+
+原始证据库、归一化事件和解析器输入字典保留原值。转换仅作用于明确的地址字段；命令行、原生 IPv6、缺失值和无效地址保持原样。该转换不把公网地址加入排除名单，也不调整规则级别或种子门槛。
+
+常规回归会检查四种引擎输入的地址语义与原文保全。设置 `APT_TEST_HAYABUSA_BIN` 和 `APT_TEST_HAYABUSA_CONFIG` 后，`tests/test_windows_address_canonicalization.py` 还会用本机 Hayabusa 对独立正负样本执行真实 CIDR 回放；不设置时只跳过该项原生工具检查。
+
+## 六、eCAR 的事件类型与进程身份
+
+eCAR 的 `objectID` 随对象类型改变含义。转换层仅对 PROCESS CREATE / TERMINATE 把它映射为 `ProcessGuid`；CREATE 的 `actorID` 映射为 `ParentProcessGuid`。模块、文件、注册表、流和进程访问记录使用明确的 `actorID` 标识执行进程，不将文件或模块对象 ID 当成进程 ID。显式的 `properties.process_guid`、`parent_process_guid` 优先于推导值，原属性仍保留。
+
+MODULE LOAD 补 `ImageLoaded`，REGISTRY MODIFY 补 `TargetObject` / `Details`，PROCESS OPEN 与 THREAD REMOTE_CREATE 补已有样本实际提供的 `SourceImage`、`TargetImage`、`GrantedAccess`、`CallTrace` 和进程标识字段。缺失字段保持未知。
+
+转换层还为已识别的 eCAR 对象/动作生成 `event_categories`。调查管线用它核对 Sigma 的 category；例如 image_load 规则不能只因共享 Image 字段便接纳文件创建记录。它不会把 eCAR 伪装成 Sysmon 或 Security，带这些 service 声明的规则仍受日志源限制。
+
+同主机、明确进程标识、唯一且有时间的创建记录，可与该进程创建至退出（含退出记录）期间的记录形成 `same_process_guid` 候选关系；经原取证查询、黑板和核验接口后，Ranker 允许沿该身份关系双向回查。不同主机、缺失标识、多个创建记录、创建前或退出后的记录不通过此路径关联，父子关系不会自动扩大攻击集合。

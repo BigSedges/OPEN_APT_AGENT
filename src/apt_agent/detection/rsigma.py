@@ -49,6 +49,9 @@ def _logsource_compatible_formats(logsource: Any) -> set[str]:
     if not product and not category and not service:
         return set(ALL_LOG_FORMATS)
 
+    if product in {"windows", "linux"} and category and not service:
+        # Generic endpoint categories can be supplied by typed ECAR telemetry.
+        return {"winxml", "ecar_json"} if product == "windows" else {"bash_history", "syslog", "ecar_json"}
     if product == "windows" or service in {"sysmon", "security", "system", "powershell", "windefend"}:
         return {"winxml"}
     if product == "zeek" or service == "zeek":
@@ -612,16 +615,24 @@ class RSigmaAdapter:
                 )
 
             try:
-                raw_lines = out_ndjson.read_text(encoding="utf-8").splitlines()
                 parsed_rows: list[dict[str, Any]] = []
-                for line in raw_lines:
-                    stripped = line.strip()
-                    if not stripped:
-                        continue
-                    obj = json.loads(stripped)
-                    if not isinstance(obj, dict):
-                        raise ValueError("RSigma NDJSON line must be a JSON object.")
-                    parsed_rows.append(obj)
+                with out_ndjson.open(encoding="utf-8") as rows:
+                    for line in rows:
+                        stripped = line.strip()
+                        if not stripped:
+                            continue
+                        obj = json.loads(stripped)
+                        if not isinstance(obj, dict):
+                            raise ValueError("RSigma NDJSON line must be a JSON object.")
+                        if not any(key in obj for key in (
+                            "correlation_type", "events", "matched_events", "aggregated_value"
+                        )) and isinstance(obj.get("event"), dict):
+                            # The raw evidence store already owns the full record.
+                            # Ordinary hits need only these two event fields below.
+                            event = obj["event"]
+                            obj["event"] = {key: event[key] for key in ("event_id", "@timestamp")
+                                            if key in event}
+                        parsed_rows.append(obj)
             except (OSError, ValueError) as exc:
                 return AdapterOutput(
                     engine=self.engine_name,

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections import defaultdict, deque
 from collections.abc import Sequence
+from copy import deepcopy
 import json
 from time import monotonic
 from typing import Any
@@ -26,6 +27,7 @@ class BudgetManager:
         self.started = monotonic()
         self.tokens = 0
         self.rounds = 0
+        self.llm_calls: list[dict[str, Any]] = []
 
     def consume_tokens(self, tokens: int) -> None:
         self.tokens += tokens
@@ -165,8 +167,10 @@ def _plan_tasks(
     """Let an explicitly configured planner prioritize the available read-only tasks."""
     settings = ctx.config.llm if ctx.config is not None else None
     if settings is None or not settings.is_configured or settings.provider != "openai_compatible":
+        budget.llm_calls.append({"requested": False, "outcome": "skipped", "reason": "disabled_or_unconfigured"})
         return tasks
     if len(tasks) < 2 or budget.exhausted:
+        budget.llm_calls.append({"requested": False, "outcome": "skipped", "reason": "tasks_or_budget"})
         return tasks
 
     from openai import APIError, OpenAI
@@ -187,8 +191,13 @@ def _plan_tasks(
     prompt_budget = len(prompt.encode("utf-8")) + len(framing) + 64
     output_budget = min(settings.max_tokens, budget.remaining_tokens - prompt_budget)
     if output_budget < 1:
+        budget.llm_calls.append({"requested": False, "outcome": "skipped", "reason": "token_budget"})
         return tasks
 
+    started = monotonic()
+    call: dict[str, Any] = {"requested": True, "model": settings.model,
+                           "candidate_tasks": len(tasks), "outcome": "requested"}
+    budget.llm_calls.append(call)
     try:
         with OpenAI(
             api_key=settings.api_key or "local",
@@ -208,6 +217,8 @@ def _plan_tasks(
         budget.consume_tokens(
             completion.usage.total_tokens if completion.usage else prompt_budget + output_budget
         )
+        call["request_succeeded"] = True
+        call["tokens"] = completion.usage.total_tokens if completion.usage else None
         if not completion.choices:
             raise ValueError("Planner returned no tasks.")
         order = json.loads(completion.choices[0].message.content or "null")
@@ -217,10 +228,14 @@ def _plan_tasks(
             or sorted(order) != list(range(len(tasks)))
         ):
             raise ValueError("Planner returned an invalid task order.")
+        call.update(outcome="applied", plan_order=list(order))
         return [tasks[index] for index in order]
     except (APIError, ValueError) as exc:
+        call.update(outcome="fallback", error_type=type(exc).__name__, status_code=getattr(exc, "status_code", None))
         issues.append({"role": "lead", "reason": "planner_fallback", "error": type(exc).__name__})
         return tasks
+    finally:
+        call["elapsed_s"] = monotonic() - started
 
 
 def _detection_seeds(ctx: RunContext, hits: Sequence[Hit]) -> list[Hit]:
@@ -316,6 +331,8 @@ def run_investigation(
         else "INVESTIGATION_COMPLETE" if seeds else "NO_DETECTION_SEEDS"
     )
     result = rank(ctx, state, store, primary_hits, detection.coverage, events=events)
+    result.seed_event_ids = sorted(seeds)
+    result.llm_calls = deepcopy(budget.llm_calls)
     result.knowledge_refs.extend(knowledge)
     result.validation_errors.extend(verification.errors)
     result.investigation_ledger.extend(state.investigation_ledger)

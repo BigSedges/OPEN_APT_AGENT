@@ -1,0 +1,30 @@
+ M .env.example
+ M README.md
+ M config/default.example.yaml
+ M config/local.example.yaml
+ M docs/HANDOFF.md
+ A script/diagnose/compare_scene.py
+ A script/diagnose/run_scene.py
+ M script/log_convert/README.md
+ M script/log_convert/lib/formatters.py
+ M src/apt_agent/__init__.py
+ M src/apt_agent/agents.py
+ M src/apt_agent/blackboard.py
+ M src/apt_agent/config.py
+ M src/apt_agent/detection/base.py
+ M src/apt_agent/detection/coordinator.py
+ M src/apt_agent/detection/routing.py
+ M src/apt_agent/detection/rsigma.py
+ A src/apt_agent/diagnostics.py
+ M src/apt_agent/models.py
+ M src/apt_agent/pipeline.py
+ M src/apt_agent/tools/investigation.py
+ A tests/test_record_diagnostics.py
+ A tests/test_windows_address_canonicalization.py
+?? config/triage.conservative.yaml
+?? script/evaluate/
+?? tests/test_attack_confirmation.py
+?? tests/test_ecar_semantics.py
+?? tests/test_official_run_audit.py
+?? tests/test_planner_telemetry.py
+?? tests/test_starter_preparation.py

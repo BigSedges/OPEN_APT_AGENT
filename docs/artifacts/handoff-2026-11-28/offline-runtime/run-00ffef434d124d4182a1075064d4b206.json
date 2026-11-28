@@ -1,0 +1,66 @@
+{
+  "case_id": "case-f98d110e8ab8b5cc84fa96dee298c038c5b6c8419d8a045e967b35ea7036475a",
+  "run_id": "run-00ffef434d124d4182a1075064d4b206",
+  "scene": "uat4356",
+  "stop_reason": "TASK_LIMIT",
+  "elapsed_s": 458.5896705830237,
+  "stage_timings_s": {
+    "normalization": 58.17128445801791,
+    "detection": 134.9372226250125,
+    "investigation_verification_ranking": 134.372674208018,
+    "diagnostics_export": 0.000923709012567997,
+    "ingestion": 72.83120145904832,
+    "total": 406.24396679201163
+  },
+  "llm_calls": [
+    {
+      "requested": false,
+      "outcome": "skipped",
+      "reason": "disabled_or_unconfigured"
+    }
+  ],
+  "input_record_count": 409495,
+  "physical_prediction_count": 3472,
+  "coverage": [
+    {
+      "engine": "chainsaw",
+      "status": "skipped",
+      "count": 1
+    },
+    {
+      "engine": "hayabusa",
+      "status": "ran",
+      "count": 83
+    },
+    {
+      "engine": "pysigma",
+      "status": "skipped",
+      "count": 1
+    },
+    {
+      "engine": "rsigma",
+      "status": "partial",
+      "count": 15
+    },
+    {
+      "engine": "rsigma",
+      "status": "ran",
+      "count": 2814
+    },
+    {
+      "engine": "rsigma",
+      "status": "skipped",
+      "count": 13
+    },
+    {
+      "engine": "takajo",
+      "status": "skipped",
+      "count": 1
+    },
+    {
+      "engine": "zircolite",
+      "status": "skipped",
+      "count": 1
+    }
+  ]
+}

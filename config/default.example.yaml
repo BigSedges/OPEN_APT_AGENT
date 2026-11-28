@@ -2,6 +2,8 @@
 # Copy to config/local.yaml (or pass via APT_AGENT_CONFIG) and customize local paths/credentials.
 
 minimum_seed_level: medium
+# Only high-confidence seeds may promote verified context into the attack set.
+minimum_expansion_level: high
 
 engines:
   zircolite:

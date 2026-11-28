@@ -1,0 +1,70 @@
+{
+  "case_id": "case-4b9a689772a2a358b8396ec512606b08bffaa977a5db81d4d1433fbb663105e5",
+  "run_id": "run-766c694d62f74b6aaaeaa616c79ede17",
+  "scene": "2024-05-30-apt28",
+  "stop_reason": "TASK_LIMIT",
+  "elapsed_s": 175.8227101250086,
+  "stage_timings_s": {
+    "normalization": 23.66209591703955,
+    "detection": 53.99052670795936,
+    "investigation_verification_ranking": 33.30891245906241,
+    "diagnostics_export": 0.0001902909716591239,
+    "ingestion": 36.9639116670005,
+    "total": 148.85716200002935
+  },
+  "llm_calls": [
+    {
+      "requested": true,
+      "model": "deepseek-flash",
+      "candidate_tasks": 16,
+      "outcome": "fallback",
+      "error_type": "APIConnectionError",
+      "status_code": null,
+      "elapsed_s": 0.1341574169928208
+    }
+  ],
+  "input_record_count": 209109,
+  "physical_prediction_count": 1322,
+  "coverage": [
+    {
+      "engine": "chainsaw",
+      "status": "skipped",
+      "count": 1
+    },
+    {
+      "engine": "hayabusa",
+      "status": "ran",
+      "count": 84
+    },
+    {
+      "engine": "pysigma",
+      "status": "skipped",
+      "count": 1
+    },
+    {
+      "engine": "rsigma",
+      "status": "partial",
+      "count": 14
+    },
+    {
+      "engine": "rsigma",
+      "status": "ran",
+      "count": 2815
+    },
+    {
+      "engine": "rsigma",
+      "status": "skipped",
+      "count": 13
+    },
+    {
+      "engine": "takajo",
+      "status": "skipped",
+      "count": 1
+    },
+    {
+      "engine": "zircolite",
+      "status": "skipped",
+      "count": 1
+    }
+  ]
+}

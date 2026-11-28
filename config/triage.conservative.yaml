@@ -1,0 +1,20 @@
+# Reviewed rule semantics, independent of scene IDs and labels.
+# Combine with a deployment configuration via load_config(overrides=...).
+minimum_expansion_level: high
+context_only_rules:
+  03daf7a7-8e32-c4d8-0511-ac5fa9416fa5: A remote desktop connection is an observation;
+    require independent malicious evidence.
+  2d20edf4-6141-35c5-e54f-3c578082d1d3: RC4 ticket encryption alone needs corroboration
+    of credential abuse.
+  4386b4e0-f268-42a6-b91d-e3bb768976d6: An initial collection query explicitly requires
+    additional temporal/service analysis.
+  496a0e47-0a33-4dca-b009-9e6ca3591f39: RC4 ticket encryption alone needs corroboration
+    of credential abuse.
+  954f0af7-62dd-418f-b3df-a84bc2c7a774: A remote desktop connection is an observation;
+    require independent malicious evidence.
+  d04ae2b8-ad54-4de0-bd87-4bc1da66aa59: An initial collection query explicitly requires
+    additional temporal/service analysis.
+  df2b1ca6-a4d3-e875-ca48-ed65bd486a5f: A remote desktop connection is an observation;
+    require independent malicious evidence.
+  f19849e7-b5ba-404b-a731-9b624d7f6d19: An RC4 ticket request alone also occurs in
+    legacy applications.

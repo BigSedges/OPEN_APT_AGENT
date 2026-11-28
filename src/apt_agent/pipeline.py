@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
-from collections.abc import Iterable, Mapping, Set
+from collections.abc import Callable, Iterable, Mapping, Set
 from pathlib import Path
+from time import perf_counter
 from typing import Any
 from uuid import uuid4
 
@@ -11,6 +12,7 @@ from apt_agent.agents import BudgetManager, run_investigation
 from apt_agent.config import AppConfig, load_config
 from apt_agent.detection import DetectionCoordinator, DetectionResult
 from apt_agent.exceptions import OutOfScopeError
+from apt_agent.diagnostics import build_record_diagnostics
 from apt_agent.ingestion import Normalizer, RawEvidenceStore, ingest_records
 from apt_agent.maintenance import bind_snapshot_assets
 from apt_agent.models import (
@@ -62,10 +64,15 @@ def analyze_records(
     config: AppConfig | Mapping[str, Any] | Path | str | None = None,
     valid_physical_ids: Set[str] | None = None,
     locator_map: Mapping[str, Locator] | None = None,
+    on_result: Callable[[CaseResult], None] | None = None,
 ) -> dict[str, Any]:
     """Consume a scene once and export a JSON-compatible prediction."""
-    ctx, result = _investigate_records(records, config, valid_physical_ids, locator_map)
-    return to_prediction(ctx, result)
+    ctx, result = _investigate_records(records, config, valid_physical_ids, locator_map,
+                                       collect_diagnostics=False)
+    prediction = to_prediction(ctx, result)
+    if on_result is not None:
+        on_result(result)
+    return prediction
 
 
 def investigate_records(
@@ -85,6 +92,8 @@ def _investigate_records(
     config: AppConfig | Mapping[str, Any] | Path | str | None,
     valid_physical_ids: Set[str] | None,
     locator_map: Mapping[str, Locator] | None,
+    *,
+    collect_diagnostics: bool = True,
 ) -> tuple[RunContext, CaseResult]:
     if isinstance(config, AppConfig):
         effective_config = config
@@ -93,6 +102,7 @@ def _investigate_records(
     else:
         effective_config = load_config(config)
 
+    started = perf_counter()
     budget = BudgetManager(effective_config.budget)
     run_id = f"run-{uuid4().hex}"
     store = ingest_records(
@@ -102,12 +112,17 @@ def _investigate_records(
         valid_physical_ids=valid_physical_ids,
         locator_map=locator_map,
     )
+    ingested_at = perf_counter()
     with bind_snapshot_assets(effective_config) as bound_config:
-        return _run_case(store, bound_config, budget)
+        ctx, result = _run_case(store, bound_config, budget, collect_diagnostics=collect_diagnostics)
+    result.stage_timings_s["ingestion"] = ingested_at - started
+    result.stage_timings_s["total"] = perf_counter() - started
+    return ctx, result
 
 
 def _run_case(
-    store: RawEvidenceStore, effective_config: AppConfig, budget: BudgetManager
+    store: RawEvidenceStore, effective_config: AppConfig, budget: BudgetManager,
+    *, collect_diagnostics: bool = True,
 ) -> tuple[RunContext, CaseResult]:
     snapshots = effective_config.snapshots
     ctx = RunContext(
@@ -121,13 +136,28 @@ def _run_case(
         config=effective_config,
         valid_physical_ids=store.physical_id_frozenset(),
     )
+    started = perf_counter()
     normalized = Normalizer.normalize_batch(ctx, store)
+    normalized_at = perf_counter()
     detection = (
         DetectionCoordinator(effective_config).detect(ctx, normalized.events)
         if normalized.events else DetectionResult()
     )
+    detected_at = perf_counter()
     result = run_investigation(
         ctx, store, normalized.events, detection, budget_manager=budget
     )
+    investigated_at = perf_counter()
     result.unresolved.extend(normalized.gaps)
+    result.input_record_count = len(store)
+    if collect_diagnostics:
+        result.record_diagnostics = build_record_diagnostics(
+            store, normalized.events, normalized.gaps, detection, result, to_prediction(ctx, result)
+        )
+    result.stage_timings_s = {
+        "normalization": normalized_at - started,
+        "detection": detected_at - normalized_at,
+        "investigation_verification_ranking": investigated_at - detected_at,
+        "diagnostics_export": perf_counter() - investigated_at,
+    }
     return ctx, result

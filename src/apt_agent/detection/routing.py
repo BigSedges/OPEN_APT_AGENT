@@ -23,12 +23,15 @@ def _key(value: object) -> str:
 class Logsource:
     product: str
     service: str
+    category: str = ""
 
     def matches(self, event: Event) -> bool:
         products, services = _event_scope(event)
         return (
             (not self.product or self.product in products)
             and (not self.service or self.service in services)
+            and (not self.category or event.source_type != "ecar"
+                 or self.category in event.fields.get("event_categories", ()))
         )
 
 
@@ -93,8 +96,9 @@ def read_rule_logsources(rules_path: Path | None) -> dict[str, Logsource]:
             if not isinstance(doc, dict) or not isinstance(doc.get("logsource"), dict):
                 continue
             source = doc["logsource"]
-            scope = Logsource(_key(source.get("product")), _key(source.get("service")))
-            if scope.product or scope.service:
+            scope = Logsource(_key(source.get("product")), _key(source.get("service")),
+                              _key(source.get("category")))
+            if scope.product or scope.service or scope.category:
                 for rule_id in (doc.get("id"), doc.get("title")):
                     if isinstance(rule_id, str) and rule_id:
                         scopes[rule_id] = scope

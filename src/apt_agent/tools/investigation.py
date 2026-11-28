@@ -675,6 +675,40 @@ def correlate_lineage_and_flows(
             )
             flow_buckets[five_tuple].append(ev)
 
+    # An explicit process instance can explain its own later module/file/lifecycle
+    # records. Do not infer this identity from PID, path, user or time proximity.
+    for (host, guid), members in sorted(by_host_guid.items()):
+        if not host or not guid.strip("{}0-") or guid in {"unknown", "null"}:
+            continue
+        creators = [event for event in members if (
+            (event.source_type == "ecar" and
+             "process_creation" in event.fields.get("event_categories", ()))
+            or (event.source_type == "winxml_sysmon" and str(event.fields.get("EventID")) == "1")
+        )]
+        if len(creators) != 1 or not creators[0].event_time:
+            continue
+        creator = creators[0]
+        start = _parse_utc_datetime(creator.event_time)
+        endings = [
+            _parse_utc_datetime(event.event_time) for event in members if event.event_time and (
+                "process_termination" in event.fields.get("event_categories", ())
+                or (event.source_type == "winxml_sysmon" and str(event.fields.get("EventID")) == "5")
+            ) and _parse_utc_datetime(event.event_time) >= start
+        ]
+        end = min(endings) if endings else None
+        for event in members:
+            if event.event_id == creator.event_id or not event.event_time:
+                continue
+            timestamp = _parse_utc_datetime(event.event_time)
+            if timestamp < start or (end is not None and timestamp > end):
+                continue
+            _add_edge(Edge(
+                from_event_id=creator.event_id, to_event_id=event.event_id,
+                relation="same_process_guid", join_keys={"host": host, "process_guid": guid},
+                evidence_event_ids=[creator.event_id, event.event_id],
+                sources=["query_events"], status="proposed",
+            ))
+
     # 1) Same-host process lineage (ProcessGuid first, then pid/ppid fallback)
     for ev in ordered:
         host_raw = _extract_host(ev)

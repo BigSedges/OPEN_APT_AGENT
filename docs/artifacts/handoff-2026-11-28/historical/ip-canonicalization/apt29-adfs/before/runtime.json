@@ -1,0 +1,23 @@
+{
+  "case_id": "case-bb72e6fe49431e0471200e1999f5868cd8f24d0982920b2fdb6d6f91d8bdf6ea",
+  "run_id": "run-c8df8014504f4b0484698ef71c1fb75a",
+  "elapsed_s": 354.8128731250763,
+  "stop_reason": "TASK_LIMIT",
+  "input_records": 312299,
+  "predicted_records": 9738,
+  "snapshots": {
+    "data_snapshot_id": "case-bb72e6fe49431e0471200e1999f5868cd8f24d0982920b2fdb6d6f91d8bdf6ea",
+    "mapping_version": "v1",
+    "ruleset_version": "v1",
+    "knowledge_snapshot_id": "public_kb"
+  },
+  "stage_timings_s": {
+    "normalization": 56.5958039999241,
+    "detection": 44.81120825000107,
+    "investigation_verification_ranking": 96.53116716700606,
+    "diagnostics_export": 35.56185100006405,
+    "ingestion": 22.391939750057645,
+    "total": 259.0254091670504
+  },
+  "llm_enabled": false
+}

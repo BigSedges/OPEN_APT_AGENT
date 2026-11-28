@@ -188,6 +188,7 @@ class DetectionCoordinator:
             fmt for ev in events if (fmt := classify_event_format(ev)) != "unknown"
         }
 
+        hit_trace: list[dict[str, Any]] = []
         raw_event_hits: list[Hit] = []
         lead_only_hits: list[Hit] = []
         all_coverage: list[RuleRun] = []
@@ -226,11 +227,28 @@ class DetectionCoordinator:
                 )
                 continue
 
+            unscoped_hits = out.hits
             if out.hits and engine_cfg.rules_dir is not None:
                 rules_path = engine_cfg.rules_dir
                 if rules_path not in rule_scopes:
                     rule_scopes[rules_path] = read_rule_logsources(rules_path)
                 out = scope_detector_output(out, rule_scopes[rules_path], events_by_id)
+            accepted_pairs = {(hit.hit_id, eid) for hit in out.hits for eid in hit.event_ids}
+            for hit in unscoped_hits:
+                for eid in sorted(set(hit.event_ids)):
+                    event = events_by_id.get(eid)
+                    accepted = (hit.hit_id, eid) in accepted_pairs and event is not None
+                    hit_trace.append({
+                        "event_id": eid,
+                        "physical_record_id": event.physical_record_id if event else None,
+                        "source_type": event.source_type if event else None,
+                        "hit_id": hit.hit_id, "rule_id": hit.rule_id,
+                        "engine": hit.engine, "level": hit.level,
+                        "accepted": accepted,
+                        "reason": "accepted" if accepted else (
+                            "unknown_event_id" if event is None else "outside_rule_logsource"
+                        ),
+                    })
             all_coverage.extend(out.coverage)
 
             for lead in out.leads:
@@ -316,6 +334,7 @@ class DetectionCoordinator:
         )
 
         return DetectionResult(
+            hit_trace=sorted(hit_trace, key=lambda item: (item["event_id"], item["engine"], item["rule_id"], item["hit_id"])),
             hits=final_hits,
             coverage=sorted_coverage,
             leads=sorted_leads,

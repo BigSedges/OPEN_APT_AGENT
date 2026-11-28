@@ -1,0 +1,11 @@
+{
+  "source": "Prior execution recorded in handoff; tests NOT rerun for upload",
+  "regression": {
+    "passed": 338,
+    "elapsed_s": 80.46
+  },
+  "rag_smoke_passed": 5,
+  "offline": "Official three scenes, exit=0, done.txt verified",
+  "llm": "Not accepted; observed APIConnectionError fallback; no completed valid online control",
+  "benchmark_processes_stopped_on_upload": 0
+}

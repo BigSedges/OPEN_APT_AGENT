@@ -1,0 +1,177 @@
+# OPEN_APT_AGENT 交接文档（2026-11-28）
+
+> 归档更新：用户要求停止所有开发和测试。最新工作副本的必要源码、测试和策略已同步至本项目；下文“尚未同步”描述为 16:27 的历史快照。评测任务已要求停止，在线结果仍未验收。有效离线产物与当时脱敏报告已归档到 `docs/artifacts/handoff-2026-11-28/`。本次仅归档提交，不重新测试。
+
+记录时间：2026-11-28 16:27，Asia/Shanghai。用户要求继续按 `docs/` 接力文档执行，并在额度剩余 10% 时交接；最近一次额度读取为五小时额度剩余 9%、周额度剩余 57%。本文记录实际完成情况，不把计划或未结束的运行计为验收通过。
+
+## 1. 接手先读
+
+当前仍在 P0：诊断链路、IPv4 映射地址修复、eCAR 召回修复、误报收敛和三场景离线评测已经推进；**完整有效的离线/LLM 三场景对照尚未完成，检测质量仍低。** P1 自动 Repair、调度与维护快照等未完成。
+
+务必区分两个代码目录：
+
+| 目录 | 状态 |
+| --- | --- |
+| `/Users/zhangjunhao/Desktop/OPEN_APT_AGENT` | 用户原项目。HEAD 为 `aa8c3be`，存在未提交修改；已同步到 eCAR 召回阶段。实际 LLM 配置在此目录的 `config/local.yaml`。 |
+| `/Users/zhangjunhao/Documents/Codex/2026-11-28/gen/work/OPEN_APT_AGENT` | **本轮最新实现与 338 项通过的回归所在副本**。额外包含误报确认策略、规划遥测和成对评测脚本，尚未完整同步回桌面原项目。当前评测使用这里的 Python 环境与源码。 |
+| `/Users/zhangjunhao/Documents/Codex/2026-11-28/gen/outputs` | 持久交付产物，包括本文、历史修复产物和本次交接附件。 |
+
+不要直接用桌面原项目跑“最新版本复现”，也不要重置任一目录或覆盖 `config/local.yaml`。本轮没有新建提交、推送或创建 PR。先保留原有修改，再比较和同步最新副本。
+
+原始要求仍见原项目 `docs/HANDOFF.md`、`docs/Sigma多Agent调查系统接口规范.md`、`docs/Sigma多Agent日志调查系统设计.md`、`docs/RAG.md`。这些文档描述目标与历史状态；本文补充当前状态。用户已授权使用本地 DeepSeek 配置，不需要再次询问选用模型。
+
+## 2. 当前评测：离线有效，在线未验收
+
+严格成对评测目录：
+
+`/Users/zhangjunhao/Documents/Codex/2026-11-28/gen/work/evaluation/confirmation/paired-verified`
+
+其中 `report.json` 是逐模式更新的快照；**文件存在不代表两种模式都结束**。截至记录时间只有 `runs.offline`，在线日志已经进入 `apt29-adfs`，不能宣称最终对照完成。
+
+离线模式已完成官方三个完整场景，退出码 0、`done.txt` 存在、三个预测与评分齐全；作用域、两字段格式、战术证据子集和运行计数通过脚本核对。总耗时约 962.50 秒，LLM 请求为 0。
+
+| 完整场景 | 输入记录 | TP / 标注总数 | FP | FN | 提交记录 | 官方分数 / 100 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| 2024-05-30-apt28 | 209,109 | 7 / 27 | 1,315 | 20 | 1,322 | 0.7278783021 |
+| apt29-adfs | 312,299 | 9 / 27 | 2,776 | 18 | 2,785 | 0.4493652571 |
+| uat4356 | 409,495 | 0 / 21 | 3,472 | 21 | 3,472 | 0 |
+
+三场景平均约 0.392415 / 100。三场景均以 `TASK_LIMIT` 停止；战术阶段正确数分别为 0/2、0/2、0/6。协议可用与检测质量必须分别评价。
+
+严格离线输出根：
+
+`/Users/zhangjunhao/Documents/Codex/2026-11-28/gen/work/evaluation/confirmation/starter-paired-final/.local-output/run-mijmlv0e`
+
+在线输出根：
+
+`/Users/zhangjunhao/Documents/Codex/2026-11-28/gen/work/evaluation/confirmation/starter-paired-final/.local-output/run-jxy6fj7c`
+
+在线已生成的 APT28 遥测显示：请求 `deepseek-flash`、16 个候选任务，结果为 `fallback`，错误类型 `APIConnectionError`，耗时约 0.134 秒，未采用模型计划。**即使后续官方 runner 退出 0，这一轮也不能作为模型成功参与的完整对照。** 先前单独的连通性检查曾返回 OK、45 tokens，不能替代本次运行的实际请求证据。连接错误原因尚未定位。
+
+本轮任务原启动器的会话标识是 14421，但交接时工具已无法恢复该会话；后续以进程、日志和产物判断运行状态，不依赖会话标识。不要因会话不可恢复就重复启动同一评测。
+
+另有一次早期有效的完整离线运行：`work/evaluation/confirmation/starter/.local-output/run-c2emuucs`，结果与表中相同。`work/evaluation/confirmation/paired-final` 则是失败尝试：公开包入口未转发 `on_result` 导致 TypeError，外层退出 1，已修复并补测试，**必须排除该失败轮次**。
+
+## 3. 已完成的实现
+
+### 3.1 诊断、地址和 eCAR（已同步桌面项目）
+
+- `CaseResult.record_diagnostics`、种子与阶段耗时可关联到物理 ID；`DetectionResult.hit_trace` 不改变原有字典键。`script/diagnose/run_scene.py` 先预测，`compare_scene.py` 再读标注对照，标注不进入预测链路。
+- Windows 引擎输入将有效 IPv4 映射 IPv6 地址转换为等价 IPv4，修复内网地址绕过公网规则排除条件的问题；原始记录不改。真实 Hayabusa 独立正负样本通过。
+- eCAR 按 object/action 区分进程、父进程、模块、文件、注册表和访问字段；补充类型 category 路由，不把 eCAR 冒充为特定 Sysmon/Security service。
+- 同进程证据关联要求同主机、明确进程实例、唯一创建记录和有效生命周期；支持双向回查，不自动将子进程判为攻击。
+- RSigma 按行解析 NDJSON，案件诊断增量写出，减少大场景内存峰值。
+
+历史受控结果（不能与本次不同工具条件直接比较）：
+
+| 阶段与范围 | 修复前 → 后 |
+| --- | --- |
+| 地址修复，Hayabusa 单引擎，APT28 全场景 | TP 1→1，FP 6,010→1,791 |
+| 地址修复，Hayabusa 单引擎，APT29 全场景 | TP 3→3，FP 9,735→3,525 |
+| eCAR 修复，Hayabusa + RSigma，APT28 全场景 | TP 1→7，FP 3,607→3,449，FN 26→20，分数 0.038644→0.281578 /100 |
+| eCAR 修复，APT29 仅 124,427 条 eCAR 输入 | TP 0→6 /12，FP 1,674→1,603；不是 APT29 全场景官方分数 |
+
+eCAR 修复 APT28 虽净减少 158 个误报，但引入 837 个新误报，不能把净计数改善当作误报已经解决。
+
+### 3.2 攻击确认与误报策略（最新工作副本，待同步）
+
+- `minimum_expansion_level` 将直接告警种子与关系扩展锚点分开。API 默认 `None` 保持兼容，部署示例及本次策略使用 `high`；直接种子仍为 `medium`。
+- 新增 `config/triage.conservative.yaml`，包含 8 个已核对公开规则语义的变体：普通 MSTSC 连接、RC4 票据及 Kerberoasting 初始查询仅作上下文线索，需独立恶意证据。没有根据场景 ID、账户或私有 IOC 写死判断。
+- Ranker 尊重有来源的 observed `verdict_malicious=False`；真/假证据冲突保留待定，不直接判攻击；hypothesis 不能否决已观测证据。
+- 合并规则来源时，context-only 告警的高等级或战术不能借给另一条 medium 独立告警。
+- 关系扩展使用单独的到达集合，高可信锚点可穿过已经作为直接种子的 medium 节点。
+- `CaseResult.attack_decisions`、`assessed_context`、`verified_context` 保留逐事件判定原因。
+
+固定两引擎的 APT28 对照中，上一阶段 TP7/FP3449 降到 TP7/FP1315，保留 7 条真阳性，减少 2,134 个误报；官方分数升至 0.727878/100。该策略不代表剩余漏检或误报已解决。
+
+### 3.3 遥测和官方评测适配（最新工作副本，待同步）
+
+- `BudgetManager.llm_calls` 记录实际请求、跳过/回退/采用、耗时、tokens 和安全的错误类型/状态码，不序列化密钥、prompt 或原始日志。
+- `CaseResult.llm_calls` 与 `input_record_count`；公开 `apt_agent.analyze_records` 及管线入口支持可选 `on_result`，预测完成后回调，不增加比赛输出字段。已修复包入口未转发回调的问题。
+- 公开预测入口避免构建全量逐记录诊断；调查/诊断入口保留该能力，减少正式评测内存占用。
+- `script/evaluate/prepare_starter.py` 用 AST 适配独立 starter 副本，接入公开入口和只读索引上下文，记录 runner 哈希，不覆盖原 starter。
+- `script/evaluate/run_pair.py` 固定同一份脱敏配置、资产及源码指纹，仅切换 LLM 开关；逐轮核对官方输出并记录真实模型采用情况。
+
+准备的 starter 使用数据软链接，`container_ready=false`。本轮未验证 Docker 构建，也未完成原 Linux 六工具复现；实际仅 Hayabusa、RSigma 两个原生引擎启用，另外四项 skipped。
+
+## 4. 验证与代码交付状态
+
+最新完整项目回归：**338 passed，80.46 秒**，真实 Hayabusa/RSigma 测试环境已配置。LangGraph RAG 协议冒烟最近为 **5 passed**。包入口回调转发另有专项回归。没有在生成本文时重复跑完整测试。
+
+新增或重点修改文件位于最新副本：
+
+- `src/apt_agent/{__init__,agents,blackboard,config,models,pipeline,diagnostics}.py`
+- `src/apt_agent/detection/{base,coordinator,routing,rsigma}.py`
+- `src/apt_agent/tools/investigation.py`、`script/log_convert/lib/formatters.py`
+- `script/diagnose/`、`script/evaluate/`、`config/triage.conservative.yaml`
+- `config/default.example.yaml`、`config/local.example.yaml`、`.env.example`、README 与相关文档
+- `tests/test_attack_confirmation.py`、`test_starter_preparation.py`、`test_planner_telemetry.py`、`test_official_run_audit.py`、`test_ecar_semantics.py`、`test_record_diagnostics.py`、`test_windows_address_canonicalization.py`
+
+附件 `handoff-2026-11-28/implementation-current.patch` 保存最新副本相对 HEAD 的文本改动（含新增源码、测试与策略，不含本地密钥配置）。应用前核对目标基线与已有修改；不要直接覆盖桌面原项目的未提交修改。运行目录中的 editable 安装当前指向最新工作副本，同步后需要确认解释器实际导入位置。
+
+## 5. 环境与配置
+
+最新副本 Python：`.venv/bin/python`，3.12.14，依赖固定于 `uv.lock`。本地 uv 在 `/Users/zhangjunhao/Documents/Codex/2026-11-28/gen/work/bootstrap/bin/uv`，不保证全局 PATH 可用。
+
+| 资源 | 位置或版本 |
+| --- | --- |
+| RSigma | `work/tools/rsigma/rsigma`，0.28.0，macOS ARM64 |
+| SigmaHQ | `work/tools/sigma-r2026-07-01/rules`，2,842 YAML；发行包总计 3,302，本次未启用 emerging-threats 目录 |
+| Hayabusa | `/Users/zhangjunhao/Documents/Codex/2026-11-27/bang/work/tool-test/hayabusa/hayabusa-4.4.0-mac-aarch64`，同目录 rules；实际配置目录为 `rules/config` |
+| RAG | `packages/apt-rag/public_kb/chunks.jsonl.gz`，BM25、offline，5,440 个公开知识块 |
+| 本地模型配置 | `/Users/zhangjunhao/Desktop/OPEN_APT_AGENT/config/local.yaml`；enabled=true，provider=openai_compatible，base_url=https://api.deepseek.com，model=deepseek-flash |
+
+上表中 `work/` 均相对 `/Users/zhangjunhao/Documents/Codex/2026-11-28/gen/`。密钥已按用户授权写入本地配置，文件权限 600、Git 忽略；本文及附件不包含密钥。不要打印该文件或把它加入 Git。精度策略通过 `--policy` 叠加，本地配置不能据此假定已持久合并全部最新门槛。
+
+资产校验：RSigma 发行归档 SHA256 `4665a75132b929f9e1a6c2ae717b0e5f7397a2dca5a856d9426e3ecbe05f5591`；Sigma 发行归档 SHA256 `5725c91b5813587ad6a4b0b8e0233fa44348b1595f818d8b7fd39d6033385085`。本轮 frozen-config SHA256 `37ed436c3cb4eb4e3a5e1bbedae4a9910c77bb3085a49ea2226b758016b0ec36`；配置副本去掉 API key，子进程通过环境变量取得密钥。完整源码、规则、知识、映射和二进制指纹见成对评测 `report.json`。
+
+## 6. 接手后的操作顺序
+
+1. **先检查正在进行的评测。** 读取 `paired-verified/report.json` 的 `runs`，查看 `online/runner.log` 及 `online/runtime/*.json`。检查进程是否仍运行。不要仅凭 `done.txt` 判断成功，必须同时检查退出码、三个评分、资源审计和 LLM 实际采用情况。
+2. **运行结束前保持冻结资源不变。** 不修改当前工作副本的 Python 源码、转换器、评测脚本、RAG 源码、`uv.lock`、规则和知识文件；脚本在模式结束后核对指纹。可以更新交接 Markdown 或复制归档。
+3. **定位在线连接失败。** 核查启动进程网络权限、代理和请求环境，先做不输出密钥的小请求，再用全新输出目录重跑有效对照。不得把 fallback 的运行解释为模型效果对照；`runs.online.llm_control_valid` 应为 true，并核对各场景的 `llm_calls`。
+4. **归档并同步源码。** 当前附件是生成文档时的快照，在线最终产物需另行归档。保留桌面项目原改动，逐文件合并最新工作副本；保留密钥配置，单独合并策略字段。用正确的 editable 安装和实际工具环境复验再提交。没有用户明确要求时不要自动推送。
+5. **继续 P0 检测质量。** 优先定位 UAT4356 的 21 条全漏检；再逐条处理 APT28 剩余20条、APT29剩余18条及战术证据为零的问题。先生成预测，再做标注对照；按输入、归一化、引擎命中、来源接受、种子、核验和导出逐级归因。为规则语义修复构造独立正负样本，跨场景检查误报转移，不能用放宽日志源约束换召回。
+6. **最后推进 P1。** 自动 Repair 的派修/重查/复验、任务并行与取消/重试、`max_steps_per_task` 和 `max_repair_rounds` 控制、Challenger 轮数、维护资源快照和完整重放仍待按原交接验收。需要容器交付时另做镜像验证。
+
+查看进度（无需重跑）：
+
+```bash
+cd /Users/zhangjunhao/Documents/Codex/2026-11-28/gen
+tail -n 30 work/evaluation/confirmation/paired-verified/online/runner.log
+python3 - <<'PY'
+import json
+from pathlib import Path
+p = Path('work/evaluation/confirmation/paired-verified/report.json')
+d = json.loads(p.read_text())
+for mode, row in d['runs'].items():
+    print(mode, {k: row.get(k) for k in (
+        'exit_code', 'done_txt', 'scene_count',
+        'llm_requests', 'llm_applied', 'llm_control_valid')})
+PY
+```
+
+本轮原启动命令（**仅记录，不要重复运行；新一轮必须使用全新输出目录**）：
+
+```bash
+cd /Users/zhangjunhao/Documents/Codex/2026-11-28/gen/work/OPEN_APT_AGENT
+.venv/bin/python script/evaluate/run_pair.py \
+  --starter /Users/zhangjunhao/Documents/Codex/2026-11-28/gen/work/evaluation/confirmation/starter-paired-final \
+  --config /Users/zhangjunhao/Desktop/OPEN_APT_AGENT/config/local.yaml \
+  --policy config/triage.conservative.yaml \
+  --output /Users/zhangjunhao/Documents/Codex/2026-11-28/gen/work/evaluation/confirmation/paired-verified
+```
+
+回归复现时使用最新副本，设置 `TMPDIR=/private/tmp` 避免 macOS `/var` 路径别名影响既有 cwd 断言。真实引擎用例的环境键为 `APT_TEST_HAYABUSA_BIN`、`APT_TEST_HAYABUSA_CONFIG` 和 `APT_TEST_RSIGMA_BIN`；使用上表对应路径后执行 `.venv/bin/python -m pytest -q`。检索冒烟执行 `.venv/bin/python -B packages/apt-rag/tools/langgraph_rag/smoke.py`。未配置真实引擎时的 skip 不代表通过原生工具验收。
+
+## 7. 交接附件索引
+
+本文旁的 `handoff-2026-11-28/` 保存：
+
+- `paired-report.snapshot.json`：16:27 左右成对报告快照，仅离线完成；不是最终报告。
+- `offline/<场景>/predict.json`、`evaluation.json`，以及 `offline/done.txt`：严格成对运行的有效离线产物。
+- `offline-runtime/` 和 `online-runtime.snapshot/`：生成交接时已有遥测。
+- `implementation-current.patch`、`source-status.txt`：最新副本补丁和 Git 状态。
+- `manifest.json`：附件哈希、基线和快照说明。
+
+历史附件仍保留在 `outputs/ip-canonicalization/`、`outputs/ecar-recall/`、`outputs/p0-diagnostics.patch`。这些轮次的工具、输入范围和预算并不完全一致，按各自报告比较，不能跨轮次推断 LLM 效果。

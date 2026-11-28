@@ -1,0 +1,23 @@
+{
+  "case_id": "case-4b9a689772a2a358b8396ec512606b08bffaa977a5db81d4d1433fbb663105e5",
+  "run_id": "run-1e9be293f6ce4b52a9910ca025c323bf",
+  "elapsed_s": 222.67736091697589,
+  "stop_reason": "TASK_LIMIT",
+  "input_records": 209109,
+  "predicted_records": 3456,
+  "snapshots": {
+    "data_snapshot_id": "case-4b9a689772a2a358b8396ec512606b08bffaa977a5db81d4d1433fbb663105e5",
+    "mapping_version": "v1",
+    "ruleset_version": "v1",
+    "knowledge_snapshot_id": "public_kb"
+  },
+  "stage_timings_s": {
+    "normalization": 27.24322383396793,
+    "detection": 66.43232983304188,
+    "investigation_verification_ranking": 57.188741917023435,
+    "diagnostics_export": 11.63438662502449,
+    "ingestion": 8.540983207989484,
+    "total": 172.31704791693483
+  },
+  "llm_enabled": false
+}

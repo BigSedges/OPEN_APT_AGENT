@@ -32,6 +32,7 @@ _BOOL_ENV_FIELDS = frozenset({"enabled", "offline"})
 
 _FLAT_ENV_ALIASES: dict[str, tuple[str, ...]] = {
     "APT_AGENT_MINIMUM_SEED_LEVEL": ("minimum_seed_level",),
+    "APT_AGENT_MINIMUM_EXPANSION_LEVEL": ("minimum_expansion_level",),
     "APT_AGENT_LLM_ENABLED": ("llm", "enabled"),
     "APT_AGENT_LLM_PROVIDER": ("llm", "provider"),
     "APT_AGENT_LLM_API_KEY": ("llm", "api_key"),
@@ -213,11 +214,25 @@ class AppConfig(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     minimum_seed_level: Literal["informational", "low", "medium", "high", "critical"] = "medium"
+    minimum_expansion_level: Literal["informational", "low", "medium", "high", "critical"] | None = None
+    context_only_rules: dict[str, str] = Field(default_factory=dict)
     engines: EnginesConfig = Field(default_factory=EnginesConfig)
     rag: RagConfig = Field(default_factory=RagConfig)
     llm: LLMConfig = Field(default_factory=LLMConfig)
     budget: BudgetConfig = Field(default_factory=BudgetConfig)
     snapshots: SnapshotsConfig = Field(default_factory=SnapshotsConfig)
+
+    @field_validator("context_only_rules")
+    @classmethod
+    def _validate_context_rules(cls, value: dict[str, str]) -> dict[str, str]:
+        result = {}
+        for rule_id, reason in value.items():
+            key = _require_non_blank_str(rule_id).strip()
+            explanation = _require_non_blank_str(reason).strip()
+            if key in result and result[key] != explanation:
+                raise ValueError("Conflicting reasons for a context-only rule.")
+            result[key] = explanation
+        return result
 
     def redacted_dump(self) -> dict[str, Any]:
         """Return a JSON-safe dict with secret credentials masked."""
